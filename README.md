@@ -1,289 +1,365 @@
-> **Status:** 🚧 *Conceptual Architecture / Work in Progress*  
-> *This specification outlines the proposed design and theoretical framework for PrismAi. Components, data structures, and APIs are subject to change as prototyping progresses.*
+```markdown
+# Neurosymbolic AI Engine
 
-# Neurosymbolic AI Engine (Python)
-
-A production-ready blueprint for a hybrid, logic-first AI system. Implemented in Python, this engine fuses neural language processing with dynamic knowledge graphs, deterministic truth maintenance, symbolic logic, and continuous online learning.
-
----
-
-## Overview & Design Philosophy
-
-Standard Large Language Models (LLMs) operate as statistical pattern matchers—predicting tokens without an explicit internal representation of truth, state, or time. When facts change, an LLM cannot update its weights instantly without full fine-tuning or retraining.
-
-This engine decouples **Language** from **Logic and Memory**:
-
-* **Neural Front-End:** Handles messy human natural language parsing and natural generation.
-* **Symbolic Core:** Handles truth, factual relationships, state consistency, temporal tracking, and deterministic reasoning.
+> **Status:** 🚧 *Conceptual Architecture & Systems Specification*  
+> *A formal proposal for a dual-process (System 1 / System 2) hybrid AI architecture combining neural language capabilities with deterministic symbolic logic, continuous truth maintenance, abstract world modeling, and persistent factual memory.*
 
 ---
 
-## System Architecture
+## 1. System Vision & Architecture
+
+Standard Large Language Models (LLMs) operate strictly as statistical next-token predictors. Because factual knowledge is implicitly frozen within dense parameter weights, LLMs struggle with hallucinations, real-time knowledge revision, deterministic multi-step logic, and long-term memory state tracking.
+
+This engine decouples **Language Comprehension** (Neural Subsystem) from **Logic, Memory, and Truth** (Symbolic Subsystem).
+
+### 1.1 Macro Architecture Flow
 
 ```mermaid
 flowchart TD
-    subgraph Natural Language Interface
-        Input[Raw User Input / Context] --> Parser[Neural Concept & Relation Extractor]
-        Generator[Neural Language Generator] --> Output[Grounded Response]
+    subgraph S1 ["System 1: Neural Subsystem (Perception & Generation)"]
+        U_In[Raw User Input / Multi-Modal Stream] --> Extractor[Neural Feature & Triple Extractor]
+        Generator[Neural Language Synthesizer] --> U_Out[Grounded Response Output]
     end
 
-    subgraph Symbolic Core Engine
-        Parser --> TriplePipeline[Triple Ingestion & Validation]
+    subgraph S2 ["System 2: Symbolic Core Engine (Reasoning & Memory)"]
+        Extractor --> Ingestion[Triple Ingestion & Normalization]
         
-        TriplePipeline --> TMS[Truth Maintenance System]
-        TMS <-->|Conflict Detection & Dependency Tracking| KG[(Semantic Knowledge Graph)]
+        subgraph GraphMemory ["Factual Memory Layer"]
+            KG[(Semantic Knowledge Graph)]
+        end
         
-        LogicEngine[Symbolic Logic Engine] <-->|Pattern Match & Deduction| KG
-        WorldModel[Abstract World Model] <-->|State Simulation| LogicEngine
+        subgraph LogicLayer ["Inference & Verification Layer"]
+            TMS[Truth Maintenance System]
+            LogicEngine[Symbolic Inference Engine]
+            WorldModel[Abstract World Model / State Simulator]
+        end
+
+        Ingestion --> TMS
+        TMS <-->|Belief Revision & Dependency Audit| KG
+        LogicEngine <-->|Pattern Queries & Rule Deduction| KG
+        WorldModel <-->|Constraint Checks & State Simulation| LogicEngine
         
-        LogicEngine --> Deduction[Inferred Truths & Constraints]
-        Deduction --> Generator
+        LogicEngine --> Constraints[Verified Facts & Deduction Proofs]
+        Constraints --> Generator
     end
 
-    subgraph Memory Management
-        CLP[Continual Learning Pipeline] <-->|Buffer & Graph Persist| KG
+    subgraph MemoryControl ["Continual Learning & Persistence Layer"]
+        CLP[Continual Learning Pipeline] <-->|Real-time Memory Stream| KG
+        Persistence[(Persistent Storage Engine)] <-->|Graph Serialization| KG
     end
 
-```
-
----
-
-## Detailed Component Breakdown
-
-### 1. Semantic Knowledge Graph (`knowledge_graph.py`)
-
-Facts are represented as directed hyper-relational graphs using `NetworkX`. Each edge stores rich metadata rather than just static labels.
-
-* **Typed Nodes:** Represent distinct entities, concepts, or temporal states.
-* **Rich Edge Data:** Every relation contains a confidence metric $C \in [0.0, 1.0]$, source provenance ID, and timestamp vector.
-
-```python
-import networkx as nx
-from dataclasses import dataclass, field
-from datetime import datetime
-from typing import Any, Optional
-
-@dataclass
-class Metadata:
-    confidence: float
-    source: str
-    timestamp: datetime = field(default_factory=datetime.utcnow)
-    evidence_ids: list[str] = field(default_factory=list)
-
-class SemanticKnowledgeGraph:
-    def __init__(self):
-        self.graph = nx.MultiDiGraph()
-
-    def add_fact(self, subject: str, predicate: str, obj: str, meta: Metadata):
-        """Inserts a structured triple with attached metadata."""
-        self.graph.add_node(subject, label="Entity")
-        self.graph.add_node(obj, label="Entity")
-        self.graph.add_edge(
-            subject, 
-            obj, 
-            key=predicate, 
-            predicate=predicate, 
-            confidence=meta.confidence, 
-            source=meta.source, 
-            timestamp=meta.timestamp,
-            evidence=meta.evidence_ids
-        )
-
-    def get_relations(self, subject: str) -> list[dict[str, Any]]:
-        if not self.graph.has_node(subject):
-            return []
-        edges = []
-        for u, v, k, data in self.graph.out_edges(subject, keys=True, data=True):
-            edges.append({"subject": u, "object": v, "predicate": k, **data})
-        return edges
+    style S1 fill:#1e293b,stroke:#475569,stroke-width:2px,color:#fff
+    style S2 fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#fff
+    style MemoryControl fill:#1c1917,stroke:#78350f,stroke-width:2px,color:#fff
 
 ```
 
 ---
 
-### 2. Truth Maintenance System (`tms.py`)
+## 2. Core Subsystem Specifications
 
-Based on Doyle’s Reason Maintenance Systems (RMS) and AGM belief revision theory. Automatically resolves contradictions without wiping historical data.
+### 2.1 Dual-Process Information Pipeline
 
-* **Dependency Tracking:** Maintains explicit record of which facts depend on which premises.
-* **Contradiction Management:** When a new fact directly contradicts an existing edge (e.g., `[Alex] -> [likes] -> [Cheese]` vs `[Alex] -> [dislikes] -> [Cheese]`), the TMS compares confidence scores, timestamps, and source authority to mark non-belief nodes.
-
-```python
-class TruthMaintenanceSystem:
-    def __init__(self, kg: SemanticKnowledgeGraph):
-        self.kg = kg
-
-    def evaluate_and_ingest(self, subject: str, predicate: str, obj: str, meta: Metadata) -> str:
-        existing = self.kg.get_relations(subject)
-        
-        # Check for direct antonyms/contradictions
-        for edge in existing:
-            if self._is_contradiction(edge['predicate'], predicate, edge['object'], obj):
-                # Conflict resolution heuristic
-                if meta.confidence > edge['confidence']:
-                    # Retract old belief, favor new belief
-                    self.kg.graph.remove_edge(edge['subject'], edge['object'], key=edge['predicate'])
-                    self.kg.add_fact(subject, predicate, obj, meta)
-                    return f"REVISED: Replaced belief '{edge['predicate']}' with '{predicate}' based on higher confidence."
-                else:
-                    return f"REJECTED: Existing belief holds higher confidence ({edge['confidence']} > {meta.confidence})."
-        
-        self.kg.add_fact(subject, predicate, obj, meta)
-        return "INGESTED: New fact appended with zero conflicts."
-
-    def _is_contradiction(self, pred1: str, pred2: str, obj1: str, obj2: str) -> bool:
-        opposites = {("likes", "dislikes"), ("is", "is_not"), ("supports", "opposes")}
-        if obj1 == obj2 and ((pred1, pred2) in opposites or (pred2, pred1) in opposites):
-            return True
-        return False
+```mermaid
+flowchart LR
+    A[Unstructured Input] -->|Neural Encoding| B(Candidate Triples)
+    B -->|Symbolic Verification| C{Truth Maintenance}
+    C -->|Valid / Non-Conflicting| D[(Knowledge Graph)]
+    C -->|Contradiction| E[AGM Belief Revision]
+    E -->|Override / Retract| D
+    D -->|Rule Execution| F[Inferred Knowledge]
+    F -->|Latent Verification| G[Abstract World Model]
+    G -->|Verified Proof| H[Grounded Neural Output]
 
 ```
 
 ---
 
-### 3. Symbolic Logic Engine (`logic_engine.py`)
+### 2.2 Semantic Knowledge Graph Schema
 
-Executes deterministic inference rules over the graph to derive new unstated facts (forward chaining) or verify queries (backward chaining).
+Factual memory is represented as an attributed multi-relational graph $G = (V, E, M)$, where $V$ represents entity/concept nodes, $E$ represents directional relation edges, and $M$ represents edge metadata.
 
-```python
-class SymbolicLogicEngine:
-    def __init__(self, kg: SemanticKnowledgeGraph):
-        self.kg = kg
-        self.rules = []
+```mermaid
+classDiagram
+    class Node {
+        +UUID node_id
+        +String label
+        +String entity_type
+        +Dict attributes
+    }
 
-    def register_rule(self, rule_func):
-        """Registers a logic rule (e.g., If A is_a B and B lives_in C -> A lives_in C)."""
-        self.rules.append(rule_func)
+    class Edge {
+        +UUID edge_id
+        +UUID source_node_id
+        +UUID target_node_id
+        +String predicate
+        +Metadata metadata
+    }
 
-    def infer_new_facts(self) -> int:
-        inferred_count = 0
-        for rule in self.rules:
-            new_triples = rule(self.kg.graph)
-            for sub, pred, obj, meta in new_triples:
-                if not self.kg.graph.has_edge(sub, obj, key=pred):
-                    self.kg.add_fact(sub, pred, obj, meta)
-                    inferred_count += 1
-        return inferred_count
+    class Metadata {
+        +Float confidence_score
+        +String source_provenance
+        +Timestamp timestamp
+        +List~UUID~ dependency_ids
+        +Boolean is_active
+    }
+
+    Node "1" -- "many" Edge : Outgoing Relations
+    Node "1" -- "many" Edge : Incoming Relations
+    Edge "1" *-- "1" Metadata : Encapsulates
+
+```
+
+```mermaid
+erDiagram
+    ENTITY-NODE ||--o{ RELATION-EDGE : initiates
+    RELATION-EDGE }|--|| ENTITY-NODE : terminates
+    RELATION-EDGE ||--|| METADATA-REGISTRY : annotated_by
+    METADATA-REGISTRY ||--o{ DEPENDENCY-PROOF : depends_on
+
+    ENTITY-NODE {
+        string id PK
+        string label
+        string type
+    }
+    RELATION-EDGE {
+        string id PK
+        string source FK
+        string target FK
+        string relation_type
+    }
+    METADATA-REGISTRY {
+        float confidence
+        timestamp created_at
+        string provenance_id
+    }
+    DEPENDENCY-PROOF {
+        string antecedent_edge_id
+        string rule_applied
+    }
 
 ```
 
 ---
 
-### 4. Abstract World Model (`world_model.py`)
+### 2.3 Truth Maintenance System (TMS) State Machine
 
-Inspired by Yann LeCun's JEPA (Joint Embedding Predictive Architecture). Predicts environmental state transitions in abstract state space rather than predicting language tokens.
+The TMS tracks justification networks and applies belief revision (AGM Theory) to resolve contradictions dynamically without retraining neural components.
 
-```python
-import numpy as np
+```mermaid
+stateDiagram-v2
+    [*] --> Ingestion: New Triple Received
+    
+    Ingestion --> ConflictCheck: Scan KG for Matching (Subject, Object)
+    
+    state ConflictCheck {
+        [*] --> CheckAntonym: Test Relation Antonym Rules
+        CheckAntonym --> CheckMutEx: Test Mutually Exclusive Attributes
+        CheckMutEx --> Evaluated: Return Scan Result
+    }
 
-class AbstractWorldModel:
-    def __init__(self, state_dim: int = 128):
-        self.state_dim = state_dim
-        self.current_state = np.zeros(state_dim)
+    ConflictCheck --> Consistent: No Conflicts Detected
+    ConflictCheck --> Inconsistent: Contradiction Flagged
 
-    def update_state(self, symbolic_changes: list[dict]):
-        """Encodes symbolic graph changes into latent state representations."""
-        for change in symbolic_changes:
-            # Deterministic mapping of symbolic state to latent state projection
-            vector_delta = np.random.RandomState(hash(change['predicate']) % 2**32).randn(self.state_dim) * 0.1
-            self.current_state += vector_delta
+    state Inconsistent {
+        [*] --> EvaluateProvenance: Compare Confidence & Timestamps
+        EvaluateProvenance --> HigherConfidence: New Fact Stronger
+        EvaluateProvenance --> LowerConfidence: Stored Fact Stronger
 
-    def predict_action_outcome(self, action_vector: np.ndarray) -> float:
-        """Predicts feasibility/stability of a hypothetical state change in representation space."""
-        projected_state = self.current_state + action_vector
-        stability_score = float(1.0 / (1.0 + np.linalg.norm(projected_state)))
-        return stability_score
+        HigherConfidence --> RetractBelief: Retract Stored Edge & Dependencies
+        LowerConfidence --> RejectFact: Mark New Fact Inactive
+    }
 
-```
+    Consistent --> CommitGraph: Write Edge to Graph
+    RetractBelief --> CommitGraph: Overwrite & Update Graph State
+    RejectFact --> AuditLog: Append to Discard Log
 
----
-
-### 5. Continual Learning Pipeline (`continual_learning.py`)
-
-Prevents **catastrophic forgetting** by bypassing standard neural weight updates for factual knowledge. Factual updates occur dynamically in the graph, while neural models remain frozen.
-
-```python
-class ContinualLearningPipeline:
-    def __init__(self, kg: SemanticKnowledgeGraph, tms: TruthMaintenanceSystem):
-        self.kg = kg
-        self.tms = tms
-        self.stream_buffer = []
-
-    def process_stream(self, data_packet: dict):
-        """Processes real-time streaming updates without requiring fine-tuning."""
-        meta = Metadata(
-            confidence=data_packet.get("confidence", 1.0),
-            source=data_packet.get("source", "stream"),
-            evidence_ids=[data_packet.get("id", "")]
-        )
-        status = self.tms.evaluate_and_ingest(
-            subject=data_packet["sub"],
-            predicate=data_packet["pred"],
-            obj=data_packet["obj"],
-            meta=meta
-        )
-        self.stream_buffer.append({"packet": data_packet, "status": status})
+    CommitGraph --> TriggerInference: Notify Logic Engine
+    AuditLog --> [*]
+    TriggerInference --> [*]
 
 ```
 
 ---
 
-## Complete Pipeline Execution Example
+### 2.4 End-to-End Execution Sequence Flow
 
-```python
-# main.py
-from datetime import datetime
+This sequence details how a prompt containing contradictory or updated information flows through the engine to produce a verified response.
 
-# Initialize Core System
-kg = SemanticKnowledgeGraph()
-tms = TruthMaintenanceSystem(kg)
-logic = SymbolicLogicEngine(kg)
-pipeline = ContinualLearningPipeline(kg, tms)
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as User / External API
+    participant NL as Neural Interface (Parse/Gen)
+    participant TMS as Truth Maintenance System
+    participant KG as Semantic Knowledge Graph
+    participant Logic as Symbolic Logic Engine
+    participant WM as Abstract World Model
 
-# 1. Ingest Base Facts
-print("--- Step 1: Base Data Ingestion ---")
-res1 = tms.evaluate_and_ingest("Alex", "likes", "Pizza", Metadata(confidence=0.9, source="user_pref"))
-res2 = tms.evaluate_and_ingest("Pizza", "contains", "Cheese", Metadata(confidence=0.99, source="fact_db"))
-print(res1)
-print(res2)
+    User->>NL: Input: "Alex switched to a vegan diet."
+    NL->>TMS: Extract Triple: (Alex, follows_diet, Vegan)
+    TMS->>KG: Query existing relations for (Alex, follows_diet, *)
+    KG-->>TMS: Return: (Alex, follows_diet, Omnivore) [Conf: 0.85, Time: t-1]
 
-# 2. Ingest Contradictory Inbound Stream
-print("\n--- Step 2: Handling Contradiction ---")
-res3 = tms.evaluate_and_ingest("Alex", "dislikes", "Pizza", Metadata(confidence=0.95, source="recent_survey"))
-print(res3)  # Replaces 'likes' with 'dislikes' due to higher confidence (0.95 > 0.90)
+    rect rgb(30, 41, 59)
+        note over TMS,KG: Conflict Resolution Protocol
+        TMS->>TMS: Evaluate Metadata: New Conf (0.95) > Stored Conf (0.85)
+        TMS->>KG: Retract Edge: (Alex, follows_diet, Omnivore)
+        TMS->>KG: Invalidate Downstream Inferences: (Alex, eats, Meat)
+        TMS->>KG: Commit Edge: (Alex, follows_diet, Vegan) [Conf: 0.95, Time: t-0]
+    end
 
-# 3. Query Graph State
-print("\n--- Step 3: Current Graph Memory ---")
-print("Alex's Current State:", kg.get_relations("Alex"))
+    TMS->>Logic: Trigger Forward-Chaining Inference
+    Logic->>KG: Fetch Rules matching "follows_diet: Vegan"
+    Logic->>KG: Deduce New Rule: (Alex, dislikes, Meat)
+    Logic->>WM: Validate Inferred State in Latent Representation Space
+    WM-->>Logic: State Validation Passed (Stability Score: 0.98)
+    Logic->>KG: Commit Verified Inference: (Alex, dislikes, Meat)
+
+    Logic->>NL: Pass Deductive Proof Tree & State Constraints
+    NL-->>User: Output: "Updated Alex's profile to vegan. Inferred that Alex avoids meat products."
 
 ```
 
 ---
 
-## Theoretical Foundations & Historical References
+### 2.5 Abstract World Model Transition Dynamics
 
-| Component | Historical Inspiration / Paper | Solved Problem |
-| --- | --- | --- |
-| **Knowledge Graphs** | M. Ross Quillian (1968) / Wikidata / Cyc | Replaces implicit neural memory with explicit, verifiable relational structures. |
-| **Truth Maintenance** | Jon Doyle (1979) / AGM Theory (1985) | Solves memory rigidity by enabling real-time belief revision without retraining. |
-| **Cognitive Architectures** | SOAR (Laird et al.) / OpenCog AtomSpace | Uses working memory and explicit production rules for deterministic reasoning. |
-| **World Models** | Yann LeCun (Meta JEPA) | Replaces token prediction with continuous state prediction in abstract feature spaces. |
-| **Neurosymbolic Bridge** | Garcez et al. / Marcus (2020) | Combines LLM language comprehension with symbolic logical accuracy. |
+The Abstract World Model models conceptual and physical transition dynamics in representation space, ensuring logical inferences adhere to world constraints.
+
+```mermaid
+flowchart LR
+    subgraph StateSpace ["Latent Representation Space"]
+        S0["Current World State (S₀)"]
+        S1["Predicted World State (S₁)" ]
+    end
+
+    subgraph ActionModel ["Transition Prediction"]
+        Action["Proposed Action / Deduction (A)"]
+        Predictor["Predictor Network (JEPA Architecture)"]
+    end
+
+    subgraph ConstraintVerification ["Validation Gate"]
+        Invariants["World Invariants & Physical Rules"]
+        Evaluator{"Invariant Check"}
+        Approved["State Approved"]
+        Rejected["State Rejected / Constraint Violation"]
+    end
+
+    S0 --> Predictor
+    Action --> Predictor
+    Predictor --> S1
+    S1 --> Evaluator
+    Invariants --> Evaluator
+    Evaluator -->|Pass| Approved
+    Evaluator -->|Fail| Rejected
+
+```
 
 ---
 
-## Installation & Quickstart
+### 2.6 Continual Learning & Memory Stream Routing
 
-```bash
-# Clone repository
-git clone https://github.com/your-u/neurosymbolic-ai-engine.git
-cd neurosymbolic-ai-engine
+```mermaid
+flowchart TD
+    Stream[Continuous Data Input Stream] --> Router{Data Type Classifier}
+    
+    Router -->|Factual / Relational| SymbolicPath[Symbolic Memory Pipeline]
+    Router -->|Linguistic / Pattern| NeuralPath[Neural Memory Buffer]
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+    subgraph Symbolic Processing
+        SymbolicPath --> Parser[Triple Extractor]
+        Parser --> TMSEngine[TMS Conflict Evaluation]
+        TMSEngine --> KGUpdate[(Knowledge Graph Ingestion)]
+    end
 
-# Install dependencies
-pip install networkx numpy
+    subgraph Neural Processing
+        NeuralPath --> ReplayBuffer[Experience Replay Buffer]
+        ReplayBuffer --> ParametricUpdate[Periodic Sparse Fine-Tuning]
+    end
+
+    KGUpdate --> SyncedState[(Unified Memory Core)]
+    ParametricUpdate --> SyncedState
+
+```
+
+---
+
+## 3. Mathematical & Logical Formalization
+
+### 3.1 Graph Representation
+
+Knowledge is structured as an attributed multi-graph:
+
+
+$$G = (V, E)$$
+
+
+Where an edge $e \in E$ is defined as a tuple:
+
+
+$$e = (u, v, r, c, s, t)$$
+
+* $u, v \in V$: Source and target entity nodes.
+* $r$: Relation predicate type.
+* $c \in [0, 1]$: Confidence score derived from source authority and extraction certainty.
+* $s$: Provenance source identifier.
+* $t \in \mathbb{R}^+$: Timestamp marker.
+
+### 3.2 Belief Revision & Conflict Resolution Rule
+
+Let $e_{\text{new}} = (u, v, r_{\text{new}}, c_{\text{new}}, s_{\text{new}}, t_{\text{new}})$ be an incoming relation, and $E_{\text{conflict}} \subset E$ be the set of existing edges that logically contradict $e_{\text{new}}$:
+
+$$\text{Action}(e_{\text{new}}) = 
+\begin{cases} 
+\text{Commit}(e_{\text{new}}) \text{ and } \text{Retract}(E_{\text{conflict}}), & \text{if } c_{\text{new}} > \max_{e \in E_{\text{conflict}}} c(e) \\
+\text{Reject}(e_{\text{new}}), & \text{otherwise}
+\end{cases}$$
+
+---
+
+## 4. Architectural Comparison
+
+| Capability | Standard Token LLMs | Classic Symbolic Systems | Proposed Engine |
+| --- | --- | --- | --- |
+| **Language Processing** | Native / High | Non-Existent / Rigid | **Neural Front-End (Fluent)** |
+| **Fact Storage** | Implicit Weight Matrices | Explicit Static Rulebases | **Dynamic Attributed Multi-Graph** |
+| **Belief Revision** | Requires Retraining / Fine-Tuning | Manual Database Overwrite | **Real-time Automated TMS** |
+| **Hallucination Rate** | Unbounded | Zero | **Zero (Strictly Grounded)** |
+| **Logical Inference** | Probabilistic Pattern Matching | Deterministic Deduction | **Deterministic Forward/Backward Chaining** |
+| **State Tracking** | Context Window Dependent | Structural Dependency Graphs | **Latent World Model & Graph Persistence** |
+
+---
+
+## 5. Implementation Roadmap
+
+```mermaid
+gantt
+    title System Implementation Timeline
+    dateFormat  YYYY-MM-DD
+    section Phase 1: Core Data Layer
+    Data Schemas & Knowledge Graph Engine  :active, p1a, 2026-10-01, 30d
+    Attributed Multi-Graph API Implementation :p1b, 2026-10-15, 30d
+    
+    section Phase 2: Truth Maintenance
+    TMS Ingestion & Conflict Detection Algorithms :p2a, 2026-11-01, 45d
+    AGM Belief Revision Engine                  :p2b, 2026-11-15, 45d
+
+    section Phase 3: Neural & Symbolic Integration
+    Neural Triple Extractor Subsystem         :p3a, 2026-12-15, 30d
+    Symbolic Logic Chaining Engine            :p3b, 2027-01-01, 45d
+
+    section Phase 4: World Model & Validation
+    Latent State Predictor Network            :p4a, 2027-02-01, 60d
+    End-to-End System Evaluation & Grounding  :p4b, 2027-03-15, 45d
+
+```
+
+```
+
+<ElicitationsGroup message="Where would you like to take this repository specification next?">
+  <Elicitation label="Draft the complete core data classes and interfaces in Python" query="Write out the Python data classes and interfaces for the Semantic Knowledge Graph, Edge Metadata, and TMS."/>
+  <Elicitation label="Expand the formal logic rules and inference engine specification" query="Expand the Symbolic Logic Engine section with formal logic syntax, forward/backward chaining rules, and pattern-matching logic."/>
+</ElicitationsGroup>
 
 ```
