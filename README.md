@@ -42,4 +42,4 @@ Unlike standard Large Language Models (LLMs) that rely solely on predicting the 
 
 Modern LLMs excel at language fluency but struggle with long-term memory, strict logic, and instant fact revision. Early symbolic AI had strong logic but failed to process messy human language.
 
-My architecture bridges this gap through a **neurosymbolic hybrid approach**—using neural models for fluid input and output while putting a structured symbolic engine in charge of memory, truth, and reasoning.
+My architecture bridges this gap through a **neurosymbolic hybrid approach** using neural models for fluid input and output while putting a structured symbolic engine in charge of memory, truth, and reasoning.
