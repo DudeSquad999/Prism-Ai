@@ -1,18 +1,24 @@
-```markdown
+> **Author Note:** AI helped me write, format, and structure this description because I am a dyslexic student. I have built an early working prototype of this system, and this document explains how the prototype is designed and where the project is heading.
+
 # Neurosymbolic AI Engine
 
-> **Status:** 🚧 *Conceptual Architecture & Systems Specification*  
-> *A formal proposal for a dual-process (System 1 / System 2) hybrid AI architecture combining neural language capabilities with deterministic symbolic logic, continuous truth maintenance, abstract world modeling, and persistent factual memory.*
+> **Status:** 🧪 *Working Prototype / Evolving Architecture*  
+> *A dual-process (System 1 / System 2) hybrid AI architecture combining neural language capabilities with deterministic symbolic logic, continuous truth maintenance, abstract world modeling, and persistent factual memory.*
 
 ---
 
 ## 1. System Vision & Architecture
 
-Standard Large Language Models (LLMs) operate strictly as statistical next-token predictors. Because factual knowledge is implicitly frozen within dense parameter weights, LLMs struggle with hallucinations, real-time knowledge revision, deterministic multi-step logic, and long-term memory state tracking.
+Standard Large Language Models (LLMs) operate strictly as statistical next-token predictors. Because factual knowledge is frozen inside dense parameter weights, LLMs struggle with hallucinations, real-time factual updates, multi-step logic, and persistent state tracking.
 
-This engine decouples **Language Comprehension** (Neural Subsystem) from **Logic, Memory, and Truth** (Symbolic Subsystem).
+This project decouples **Language Comprehension** (Neural Subsystem) from **Logic, Memory, and Truth** (Symbolic Subsystem).
 
-### 1.1 Macro Architecture Flow
+### 1.1 Prototype State vs. Target Blueprint
+
+* **Current Prototype Capabilities:** The active code prototype successfully extracts candidate triples from text, ingests them into a graph structure (`NetworkX`), runs basic Truth Maintenance System (TMS) conflict resolution in Python, and handles dynamic belief updates without model retraining.
+* **Target Architecture:** Scaling the prototype into a production pipeline with custom continuous learning layers, latent space world models (JEPA-inspired), and hybrid neurosymbolic query generation.
+
+### 1.2 Architecture Flow
 
 ```mermaid
 flowchart TD
@@ -51,7 +57,6 @@ flowchart TD
     style S1 fill:#1e293b,stroke:#475569,stroke-width:2px,color:#fff
     style S2 fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#fff
     style MemoryControl fill:#1c1917,stroke:#78350f,stroke-width:2px,color:#fff
-
 ```
 
 ---
@@ -70,7 +75,6 @@ flowchart LR
     D -->|Rule Execution| F[Inferred Knowledge]
     F -->|Latent Verification| G[Abstract World Model]
     G -->|Verified Proof| H[Grounded Neural Output]
-
 ```
 
 ---
@@ -107,44 +111,13 @@ classDiagram
     Node "1" -- "many" Edge : Outgoing Relations
     Node "1" -- "many" Edge : Incoming Relations
     Edge "1" *-- "1" Metadata : Encapsulates
-
-```
-
-```mermaid
-erDiagram
-    ENTITY-NODE ||--o{ RELATION-EDGE : initiates
-    RELATION-EDGE }|--|| ENTITY-NODE : terminates
-    RELATION-EDGE ||--|| METADATA-REGISTRY : annotated_by
-    METADATA-REGISTRY ||--o{ DEPENDENCY-PROOF : depends_on
-
-    ENTITY-NODE {
-        string id PK
-        string label
-        string type
-    }
-    RELATION-EDGE {
-        string id PK
-        string source FK
-        string target FK
-        string relation_type
-    }
-    METADATA-REGISTRY {
-        float confidence
-        timestamp created_at
-        string provenance_id
-    }
-    DEPENDENCY-PROOF {
-        string antecedent_edge_id
-        string rule_applied
-    }
-
 ```
 
 ---
 
 ### 2.3 Truth Maintenance System (TMS) State Machine
 
-The TMS tracks justification networks and applies belief revision (AGM Theory) to resolve contradictions dynamically without retraining neural components.
+The TMS tracks justification networks and applies belief revision to resolve contradictions dynamically without retraining neural components.
 
 ```mermaid
 stateDiagram-v2
@@ -177,7 +150,6 @@ stateDiagram-v2
     CommitGraph --> TriggerInference: Notify Logic Engine
     AuditLog --> [*]
     TriggerInference --> [*]
-
 ```
 
 ---
@@ -218,7 +190,6 @@ sequenceDiagram
 
     Logic->>NL: Pass Deductive Proof Tree & State Constraints
     NL-->>User: Output: "Updated Alex's profile to vegan. Inferred that Alex avoids meat products."
-
 ```
 
 ---
@@ -253,7 +224,6 @@ flowchart LR
     Invariants --> Evaluator
     Evaluator -->|Pass| Approved
     Evaluator -->|Fail| Rejected
-
 ```
 
 ---
@@ -280,7 +250,6 @@ flowchart TD
 
     KGUpdate --> SyncedState[(Unified Memory Core)]
     ParametricUpdate --> SyncedState
-
 ```
 
 ---
@@ -291,12 +260,9 @@ flowchart TD
 
 Knowledge is structured as an attributed multi-graph:
 
-
 $$G = (V, E)$$
 
-
 Where an edge $e \in E$ is defined as a tuple:
-
 
 $$e = (u, v, r, c, s, t)$$
 
@@ -316,16 +282,18 @@ $$\text{Action}(e_{\text{new}}) =
 \text{Reject}(e_{\text{new}}), & \text{otherwise}
 \end{cases}$$
 
+**Note:** This rule assumes confidence scores are on a unified scale. In practice, scores from different sources (neural extraction vs. curated data) may need calibration before comparison.
+
 ---
 
 ## 4. Architectural Comparison
 
-| Capability | Standard Token LLMs | Classic Symbolic Systems | Proposed Engine |
+| Capability | Standard Token LLMs | Classic Symbolic Systems | This Engine |
 | --- | --- | --- | --- |
 | **Language Processing** | Native / High | Non-Existent / Rigid | **Neural Front-End (Fluent)** |
 | **Fact Storage** | Implicit Weight Matrices | Explicit Static Rulebases | **Dynamic Attributed Multi-Graph** |
 | **Belief Revision** | Requires Retraining / Fine-Tuning | Manual Database Overwrite | **Real-time Automated TMS** |
-| **Hallucination Rate** | Unbounded | Zero | **Zero (Strictly Grounded)** |
+| **Hallucination Rate** | High (Unbounded) | Minimal | **Reduced (Graph-Grounded, but depends on extraction quality)** |
 | **Logical Inference** | Probabilistic Pattern Matching | Deterministic Deduction | **Deterministic Forward/Backward Chaining** |
 | **State Tracking** | Context Window Dependent | Structural Dependency Graphs | **Latent World Model & Graph Persistence** |
 
@@ -352,14 +320,12 @@ gantt
     section Phase 4: World Model & Validation
     Latent State Predictor Network            :p4a, 2027-02-01, 60d
     End-to-End System Evaluation & Grounding  :p4b, 2027-03-15, 45d
-
 ```
 
-```
+---
 
-<ElicitationsGroup message="Where would you like to take this repository specification next?">
-  <Elicitation label="Draft the complete core data classes and interfaces in Python" query="Write out the Python data classes and interfaces for the Semantic Knowledge Graph, Edge Metadata, and TMS."/>
-  <Elicitation label="Expand the formal logic rules and inference engine specification" query="Expand the Symbolic Logic Engine section with formal logic syntax, forward/backward chaining rules, and pattern-matching logic."/>
-</ElicitationsGroup>
+## Next Steps
 
-```
+* **Python Prototype Core:** Draft data classes for the Semantic Knowledge Graph, Edge Metadata, and TMS.
+* **Logic Engine Expansion:** Formalize forward/backward chaining rules and pattern-matching logic.
+* **Benchmark & Eval:** Measure extraction quality, conflict resolution accuracy, and inference correctness.
