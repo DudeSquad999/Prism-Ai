@@ -81,7 +81,13 @@ flowchart LR
 
 ### 2.2 Semantic Knowledge Graph Schema
 
-Factual memory is represented as an attributed multi-relational graph $G = (V, E, M)$, where $V$ represents entity/concept nodes, $E$ represents directional relation edges, and $M$ represents edge metadata.
+Factual memory is represented as a graph with nodes (entities) and directed edges (relationships). Each edge stores:
+
+* **Confidence Score** — How certain we are the fact is true (0-1 scale)
+* **Source** — Where this fact came from (user input, inference, etc.)
+* **Timestamp** — When it was added or updated
+* **Dependencies** — Which other facts depend on this one
+* **Active Status** — Whether this fact is currently in use or has been retracted
 
 ```mermaid
 classDiagram
@@ -117,7 +123,12 @@ classDiagram
 
 ### 2.3 Truth Maintenance System (TMS) State Machine
 
-The TMS tracks justification networks and applies belief revision to resolve contradictions dynamically without retraining neural components.
+The TMS tracks facts and handles contradictions automatically. When a new fact comes in:
+
+1. **Conflict Check** — Does this fact contradict anything already stored?
+2. **Evaluate Evidence** — Which version is more trustworthy? (higher confidence wins)
+3. **Update Graph** — Accept the stronger fact and remove the weaker one
+4. **Cascade Changes** — Update any other facts that depend on it
 
 ```mermaid
 stateDiagram-v2
@@ -254,35 +265,15 @@ flowchart TD
 
 ---
 
-## 3. Mathematical & Logical Formalization
+## 3. How the Belief Revision Works
 
-### 3.1 Graph Representation
+When a new fact comes in that conflicts with what's already stored, the system decides which one to keep based on **confidence scores**:
 
-Knowledge is structured as an attributed multi-graph:
+* If the new fact has a **higher confidence** than the stored one → accept the new fact and remove the old one
+* If the stored fact has a **higher confidence** → reject the new fact
+* The system then updates any other facts that depend on the one that changed (called "cascading updates")
 
-$$G = (V, E)$$
-
-Where an edge $e \in E$ is defined as a tuple:
-
-$$e = (u, v, r, c, s, t)$$
-
-* $u, v \in V$: Source and target entity nodes.
-* $r$: Relation predicate type.
-* $c \in [0, 1]$: Confidence score derived from source authority and extraction certainty.
-* $s$: Provenance source identifier.
-* $t \in \mathbb{R}^+$: Timestamp marker.
-
-### 3.2 Belief Revision & Conflict Resolution Rule
-
-Let $e_{\text{new}} = (u, v, r_{\text{new}}, c_{\text{new}}, s_{\text{new}}, t_{\text{new}})$ be an incoming relation, and $E_{\text{conflict}} \subset E$ be the set of existing edges that logically contradict $e_{\text{new}}$:
-
-$$\text{Action}(e_{\text{new}}) = 
-\begin{cases} 
-\text{Commit}(e_{\text{new}}) \text{ and } \text{Retract}(E_{\text{conflict}}), & \text{if } c_{\text{new}} > \max_{e \in E_{\text{conflict}}} c(e) \\
-\text{Reject}(e_{\text{new}}), & \text{otherwise}
-\end{cases}$$
-
-**Note:** This rule assumes confidence scores are on a unified scale. In practice, scores from different sources (neural extraction vs. curated data) may need calibration before comparison.
+**Important Note:** Confidence scores from different sources (like a neural language model vs. human input) might not be directly comparable. In real use, the system would need to calibrate these scores first.
 
 ---
 
@@ -296,36 +287,3 @@ $$\text{Action}(e_{\text{new}}) =
 | **Hallucination Rate** | High (Unbounded) | Minimal | **Reduced (Graph-Grounded, but depends on extraction quality)** |
 | **Logical Inference** | Probabilistic Pattern Matching | Deterministic Deduction | **Deterministic Forward/Backward Chaining** |
 | **State Tracking** | Context Window Dependent | Structural Dependency Graphs | **Latent World Model & Graph Persistence** |
-
----
-
-## 5. Implementation Roadmap
-
-```mermaid
-gantt
-    title System Implementation Timeline
-    dateFormat  YYYY-MM-DD
-    section Phase 1: Core Data Layer
-    Data Schemas & Knowledge Graph Engine  :active, p1a, 2026-10-01, 30d
-    Attributed Multi-Graph API Implementation :p1b, 2026-10-15, 30d
-    
-    section Phase 2: Truth Maintenance
-    TMS Ingestion & Conflict Detection Algorithms :p2a, 2026-11-01, 45d
-    AGM Belief Revision Engine                  :p2b, 2026-11-15, 45d
-
-    section Phase 3: Neural & Symbolic Integration
-    Neural Triple Extractor Subsystem         :p3a, 2026-12-15, 30d
-    Symbolic Logic Chaining Engine            :p3b, 2027-01-01, 45d
-
-    section Phase 4: World Model & Validation
-    Latent State Predictor Network            :p4a, 2027-02-01, 60d
-    End-to-End System Evaluation & Grounding  :p4b, 2027-03-15, 45d
-```
-
----
-
-## Next Steps
-
-* **Python Prototype Core:** Draft data classes for the Semantic Knowledge Graph, Edge Metadata, and TMS.
-* **Logic Engine Expansion:** Formalize forward/backward chaining rules and pattern-matching logic.
-* **Benchmark & Eval:** Measure extraction quality, conflict resolution accuracy, and inference correctness.
