@@ -1,289 +1,162 @@
-> **Author Note:** AI helped me write, format, and structure this description because I am a dyslexic student. I have built an early working prototype of this system, and this document explains how the prototype is designed and where the project is heading.
+> **Note:** I used AI to help me organize and write this because I'm dyslexic. All the actual coding, the extraction logic, the graph setup, and the truth maintenance system, is mine, I wrote it myself. AI just helped me get my ideas into clean writing so it's easier to read. I already built a working early version of this, and this doc explains how it works and where I want to take it. I'm a student working on this in my free time, so it's not perfect and it's still growing. I'm open to feedback, ideas, or people pointing out mistakes, that's part of why I wrote this up in the first place.
 
 # Neurosymbolic AI Engine
 
-> **Status:** 🧪 *Working Prototype / Evolving Architecture*  
-> *A dual-process (System 1 / System 2) hybrid AI architecture combining neural language capabilities with deterministic symbolic logic, continuous truth maintenance, abstract world modeling, and persistent factual memory.*
+**Status:** 🧪 Working prototype, still growing
+
+**The big idea:** combine an AI's language skills with old-school logical reasoning, so it can remember facts correctly, catch contradictions, and explain *why* it believes something, instead of just guessing the next word.
 
 ---
 
-## 1. System Vision & Architecture
+## 1. The Problem
 
-Standard Large Language Models (LLMs) operate strictly as statistical next-token predictors. Because factual knowledge is frozen inside dense parameter weights, LLMs struggle with hallucinations, real-time factual updates, multi-step logic, and persistent state tracking.
+Regular chatbots (LLMs) are just really good at predicting the next word. That makes them:
+- **Forgetful:** they don't really "remember" facts between conversations
+- **Wrong sometimes:** they can hallucinate made-up info
+- **Bad at logic:** multi-step reasoning can break down
+- **Stuck in time:** their knowledge is frozen from training
 
-This project decouples **Language Comprehension** (Neural Subsystem) from **Logic, Memory, and Truth** (Symbolic Subsystem).
-
-### 1.1 Prototype State vs. Target Blueprint
-
-* **Current Prototype Capabilities:** The active code prototype successfully extracts candidate triples from text, ingests them into a graph structure (`NetworkX`), runs basic Truth Maintenance System (TMS) conflict resolution in Python, and handles dynamic belief updates without model retraining.
-* **Target Architecture:** Scaling the prototype into a production pipeline with custom continuous learning layers, latent space world models (JEPA-inspired), and hybrid neurosymbolic query generation.
-
-### 1.2 Architecture Flow
-
-```mermaid
-flowchart TD
-    subgraph S1 ["System 1: Neural Subsystem (Perception & Generation)"]
-        U_In[Raw User Input / Multi-Modal Stream] --> Extractor[Neural Feature & Triple Extractor]
-        Generator[Neural Language Synthesizer] --> U_Out[Grounded Response Output]
-    end
-
-    subgraph S2 ["System 2: Symbolic Core Engine (Reasoning & Memory)"]
-        Extractor --> Ingestion[Triple Ingestion & Normalization]
-        
-        subgraph GraphMemory ["Factual Memory Layer"]
-            KG[(Semantic Knowledge Graph)]
-        end
-        
-        subgraph LogicLayer ["Inference & Verification Layer"]
-            TMS[Truth Maintenance System]
-            LogicEngine[Symbolic Inference Engine]
-            WorldModel[Abstract World Model / State Simulator]
-        end
-
-        Ingestion --> TMS
-        TMS <-->|Belief Revision & Dependency Audit| KG
-        LogicEngine <-->|Pattern Queries & Rule Deduction| KG
-        WorldModel <-->|Constraint Checks & State Simulation| LogicEngine
-        
-        LogicEngine --> Constraints[Verified Facts & Deduction Proofs]
-        Constraints --> Generator
-    end
-
-    subgraph MemoryControl ["Continual Learning & Persistence Layer"]
-        CLP[Continual Learning Pipeline] <-->|Real-time Memory Stream| KG
-        Persistence[(Persistent Storage Engine)] <-->|Graph Serialization| KG
-    end
-
-    style S1 fill:#1e293b,stroke:#475569,stroke-width:2px,color:#fff
-    style S2 fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#fff
-    style MemoryControl fill:#1c1917,stroke:#78350f,stroke-width:2px,color:#fff
-```
+My fix: split the system into two parts that work together, one for **language**, one for **logic and memory**.
 
 ---
 
-## 2. Core Subsystem Specifications
+## 2. What I've Actually Built vs. What I Want to Build
 
-### 2.1 Dual-Process Information Pipeline
+**Built so far:**
+- Pulls facts out of text and turns them into simple "subject → relationship → object" statements (called *triples*)
+- Stores those facts in a graph (using Python's `NetworkX` library)
+- Has a basic system that catches contradictions and decides which fact to trust
+- Can update its beliefs without retraining the whole AI model
+
+**Where I want to take it:**
+- A full pipeline that keeps learning over time
+- A "world model" that can simulate situations to double check if a fact makes sense
+- Smarter combining of the language side and the logic side
+
+---
+
+## 3. How It Works (Big Picture)
+
+Think of it like a brain with two halves:
+
+- **Side A, Language brain:** reads input, pulls out facts, writes responses
+- **Side B, Logic brain:** stores facts, checks them for contradictions, and reasons about them
 
 ```mermaid
 flowchart LR
-    A[Unstructured Input] -->|Neural Encoding| B(Candidate Triples)
-    B -->|Symbolic Verification| C{Truth Maintenance}
-    C -->|Valid / Non-Conflicting| D[(Knowledge Graph)]
-    C -->|Contradiction| E[AGM Belief Revision]
-    E -->|Override / Retract| D
-    D -->|Rule Execution| F[Inferred Knowledge]
-    F -->|Latent Verification| G[Abstract World Model]
-    G -->|Verified Proof| H[Grounded Neural Output]
+    A[You type something] --> B[Language brain pulls out facts]
+    B --> C[Logic brain checks facts for contradictions]
+    C --> D[(Memory: Knowledge Graph)]
+    D --> E[Logic brain reasons about the facts]
+    E --> F[Language brain writes a reply]
 ```
 
 ---
 
-### 2.2 Semantic Knowledge Graph Schema
+## 4. Memory: The Knowledge Graph
 
-Factual memory is represented as a graph with nodes (entities) and directed edges (relationships). Each edge stores:
+Facts are stored like a web of connected dots. Each dot is a "thing" (like *Alex* or *Vegan*), and each line connecting two dots is a relationship (like *follows diet*).
 
-* **Confidence Score** — How certain we are the fact is true (0-1 scale)
-* **Source** — Where this fact came from (user input, inference, etc.)
-* **Timestamp** — When it was added or updated
-* **Dependencies** — Which other facts depend on this one
-* **Active Status** — Whether this fact is currently in use or has been retracted
+Every fact also carries some extra info:
+- **Confidence:** how sure the system is (0 to 1)
+- **Source:** where the fact came from
+- **Timestamp:** when it was added
+- **Active or not:** is it still true, or was it replaced?
 
 ```mermaid
-classDiagram
-    class Node {
-        +UUID node_id
-        +String label
-        +String entity_type
-        +Dict attributes
-    }
-
-    class Edge {
-        +UUID edge_id
-        +UUID source_node_id
-        +UUID target_node_id
-        +String predicate
-        +Metadata metadata
-    }
-
-    class Metadata {
-        +Float confidence_score
-        +String source_provenance
-        +Timestamp timestamp
-        +List~UUID~ dependency_ids
-        +Boolean is_active
-    }
-
-    Node "1" -- "many" Edge : Outgoing Relations
-    Node "1" -- "many" Edge : Incoming Relations
-    Edge "1" *-- "1" Metadata : Encapsulates
+flowchart LR
+    Alex((Alex)) -- follows_diet --> Vegan((Vegan))
+    Alex -- dislikes --> Meat((Meat))
 ```
 
 ---
 
-### 2.3 Truth Maintenance System (TMS) State Machine
+## 5. Catching Contradictions (Truth Maintenance)
 
-The TMS tracks facts and handles contradictions automatically. When a new fact comes in:
+This is the part that makes sure the memory doesn't get messy. Whenever a new fact comes in:
 
-1. **Conflict Check** — Does this fact contradict anything already stored?
-2. **Evaluate Evidence** — Which version is more trustworthy? (higher confidence wins)
-3. **Update Graph** — Accept the stronger fact and remove the weaker one
-4. **Cascade Changes** — Update any other facts that depend on it
+1. **Check:** does it clash with something already stored?
+2. **Compare:** which one is more trustworthy?
+3. **Update:** keep the stronger fact, drop the weaker one
+4. **Ripple effect:** update anything else that depended on the old fact
 
 ```mermaid
-stateDiagram-v2
-    [*] --> Ingestion: New Triple Received
-    
-    Ingestion --> ConflictCheck: Scan KG for Matching (Subject, Object)
-    
-    state ConflictCheck {
-        [*] --> CheckAntonym: Test Relation Antonym Rules
-        CheckAntonym --> CheckMutEx: Test Mutually Exclusive Attributes
-        CheckMutEx --> Evaluated: Return Scan Result
-    }
-
-    ConflictCheck --> Consistent: No Conflicts Detected
-    ConflictCheck --> Inconsistent: Contradiction Flagged
-
-    state Inconsistent {
-        [*] --> EvaluateProvenance: Compare Confidence & Timestamps
-        EvaluateProvenance --> HigherConfidence: New Fact Stronger
-        EvaluateProvenance --> LowerConfidence: Stored Fact Stronger
-
-        HigherConfidence --> RetractBelief: Retract Stored Edge & Dependencies
-        LowerConfidence --> RejectFact: Mark New Fact Inactive
-    }
-
-    Consistent --> CommitGraph: Write Edge to Graph
-    RetractBelief --> CommitGraph: Overwrite & Update Graph State
-    RejectFact --> AuditLog: Append to Discard Log
-
-    CommitGraph --> TriggerInference: Notify Logic Engine
-    AuditLog --> [*]
-    TriggerInference --> [*]
+flowchart TD
+    A[New fact comes in] --> B{Does it conflict with an old fact?}
+    B -- No --> C[Save it to memory]
+    B -- Yes --> D{Which one is more trustworthy?}
+    D -- New fact --> E[Replace the old fact]
+    D -- Old fact --> F[Ignore the new fact]
+    E --> C
 ```
 
 ---
 
-### 2.4 End-to-End Execution Sequence Flow
+## 6. Example: Watching It Think
 
-This sequence details how a prompt containing contradictory or updated information flows through the engine to produce a verified response.
+Here's a walkthrough of what happens when you tell it something new that contradicts old info.
+
+**You say:** "Alex switched to a vegan diet."
+
+1. The language brain pulls out the fact: *(Alex, follows diet, Vegan)*
+2. The logic brain checks memory and finds an old, conflicting fact: *(Alex, follows diet, Omnivore)*, saved with 85% confidence
+3. The new fact has higher confidence (95%), so it wins
+4. The old fact gets removed, along with anything that depended on it (like "Alex eats meat")
+5. The new fact gets saved
+6. The logic brain notices a pattern, vegans usually dislike meat, and adds a new fact: *(Alex, dislikes, Meat)*
+7. It double-checks that this new guess actually makes sense (see Section 7)
+8. **It replies:** "Updated Alex's profile to vegan. I'm guessing Alex avoids meat products now."
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor User as User / External API
-    participant NL as Neural Interface (Parse/Gen)
-    participant TMS as Truth Maintenance System
-    participant KG as Semantic Knowledge Graph
-    participant Logic as Symbolic Logic Engine
-    participant WM as Abstract World Model
+    participant You
+    participant Language as Language Brain
+    participant Logic as Logic Brain
+    participant Memory as Knowledge Graph
 
-    User->>NL: Input: "Alex switched to a vegan diet."
-    NL->>TMS: Extract Triple: (Alex, follows_diet, Vegan)
-    TMS->>KG: Query existing relations for (Alex, follows_diet, *)
-    KG-->>TMS: Return: (Alex, follows_diet, Omnivore) [Conf: 0.85, Time: t-1]
-
-    rect rgb(30, 41, 59)
-        note over TMS,KG: Conflict Resolution Protocol
-        TMS->>TMS: Evaluate Metadata: New Conf (0.95) > Stored Conf (0.85)
-        TMS->>KG: Retract Edge: (Alex, follows_diet, Omnivore)
-        TMS->>KG: Invalidate Downstream Inferences: (Alex, eats, Meat)
-        TMS->>KG: Commit Edge: (Alex, follows_diet, Vegan) [Conf: 0.95, Time: t-0]
-    end
-
-    TMS->>Logic: Trigger Forward-Chaining Inference
-    Logic->>KG: Fetch Rules matching "follows_diet: Vegan"
-    Logic->>KG: Deduce New Rule: (Alex, dislikes, Meat)
-    Logic->>WM: Validate Inferred State in Latent Representation Space
-    WM-->>Logic: State Validation Passed (Stability Score: 0.98)
-    Logic->>KG: Commit Verified Inference: (Alex, dislikes, Meat)
-
-    Logic->>NL: Pass Deductive Proof Tree & State Constraints
-    NL-->>User: Output: "Updated Alex's profile to vegan. Inferred that Alex avoids meat products."
+    You->>Language: "Alex switched to a vegan diet."
+    Language->>Logic: New fact: Alex follows Vegan diet
+    Logic->>Memory: Check for conflicts
+    Memory-->>Logic: Found old fact: Alex follows Omnivore diet
+    Logic->>Logic: New fact is more confident, so it wins
+    Logic->>Memory: Replace old fact with new one
+    Logic->>Memory: Add new guess: Alex dislikes meat
+    Logic->>Language: Here's the updated, verified info
+    Language-->>You: "Got it, updated to vegan, and I'm guessing you avoid meat now."
 ```
 
 ---
 
-### 2.5 Abstract World Model Transition Dynamics
+## 7. Sanity-Checking Guesses (World Model)
 
-The Abstract World Model models conceptual and physical transition dynamics in representation space, ensuring logical inferences adhere to world constraints.
+Before the system commits to a new *guessed* fact (like "Alex dislikes meat"), it runs a quick sanity check to make sure the guess doesn't break any basic rules about how the world works. If the guess passes, it gets saved. If not, it gets thrown out.
 
 ```mermaid
 flowchart LR
-    subgraph StateSpace ["Latent Representation Space"]
-        S0["Current World State (S₀)"]
-        S1["Predicted World State (S₁)" ]
-    end
-
-    subgraph ActionModel ["Transition Prediction"]
-        Action["Proposed Action / Deduction (A)"]
-        Predictor["Predictor Network (JEPA Architecture)"]
-    end
-
-    subgraph ConstraintVerification ["Validation Gate"]
-        Invariants["World Invariants & Physical Rules"]
-        Evaluator{"Invariant Check"}
-        Approved["State Approved"]
-        Rejected["State Rejected / Constraint Violation"]
-    end
-
-    S0 --> Predictor
-    Action --> Predictor
-    Predictor --> S1
-    S1 --> Evaluator
-    Invariants --> Evaluator
-    Evaluator -->|Pass| Approved
-    Evaluator -->|Fail| Rejected
+    A[New guessed fact] --> B{Does it break any basic rules?}
+    B -- No, looks fine --> C[Save the guess]
+    B -- Yes, breaks a rule --> D[Throw the guess away]
 ```
 
 ---
 
-### 2.6 Continual Learning & Memory Stream Routing
+## 8. How This Compares to Normal AI
 
-```mermaid
-flowchart TD
-    Stream[Continuous Data Input Stream] --> Router{Data Type Classifier}
-    
-    Router -->|Factual / Relational| SymbolicPath[Symbolic Memory Pipeline]
-    Router -->|Linguistic / Pattern| NeuralPath[Neural Memory Buffer]
-
-    subgraph Symbolic Processing
-        SymbolicPath --> Parser[Triple Extractor]
-        Parser --> TMSEngine[TMS Conflict Evaluation]
-        TMSEngine --> KGUpdate[(Knowledge Graph Ingestion)]
-    end
-
-    subgraph Neural Processing
-        NeuralPath --> ReplayBuffer[Experience Replay Buffer]
-        ReplayBuffer --> ParametricUpdate[Periodic Sparse Fine-Tuning]
-    end
-
-    KGUpdate --> SyncedState[(Unified Memory Core)]
-    ParametricUpdate --> SyncedState
-```
-
----
-
-## 3. How the Belief Revision Works
-
-When a new fact comes in that conflicts with what's already stored, the system decides which one to keep based on **confidence scores**:
-
-* If the new fact has a **higher confidence** than the stored one → accept the new fact and remove the old one
-* If the stored fact has a **higher confidence** → reject the new fact
-* The system then updates any other facts that depend on the one that changed (called "cascading updates")
-
-**Important Note:** Confidence scores from different sources (like a neural language model vs. human input) might not be directly comparable. In real use, the system would need to calibrate these scores first.
-
----
-
-## 4. Architectural Comparison
-
-| Capability | Standard Token LLMs | Classic Symbolic Systems | This Engine |
+| Capability | Regular Chatbot | Old-School Logic System | My Engine |
 | --- | --- | --- | --- |
-| **Language Processing** | Native / High | Non-Existent / Rigid | **Neural Front-End (Fluent)** |
-| **Fact Storage** | Implicit Weight Matrices | Explicit Static Rulebases | **Dynamic Attributed Multi-Graph** |
-| **Belief Revision** | Requires Retraining / Fine-Tuning | Manual Database Overwrite | **Real-time Automated TMS** |
-| **Hallucination Rate** | High (Unbounded) | Minimal | **Reduced (Graph-Grounded, but depends on extraction quality)** |
-| **Logical Inference** | Probabilistic Pattern Matching | Deterministic Deduction | **Deterministic Forward/Backward Chaining** |
-| **State Tracking** | Context Window Dependent | Structural Dependency Graphs | **Latent World Model & Graph Persistence** |
+| Talking naturally | Great | Terrible | Great (language brain) |
+| Storing facts | Hidden inside the model | Fixed rulebook | Flexible graph that updates |
+| Updating beliefs | Needs retraining | Manual edits | Automatic, in real time |
+| Making stuff up | Happens a lot | Rare | Less common (facts are checked, but only as good as what it pulls out of the text) |
+| Logical reasoning | Kind of fuzzy | Very precise | Precise, rule-based |
+| Remembering things | Only within one chat | Just a static database | Persistent graph memory |
+
+---
+
+## 9. Why This Matters
+
+A regular chatbot can sound confident while being wrong. This project tries to fix that by giving the AI an actual memory it can check itself against, instead of just trusting its own guesses. It's still early, but the core loop (extract a fact, check it against memory, catch contradictions, reason from it) already works.
+
+---
+
+**Questions or suggestions?** Email me at aakgaming2011@gmail.com
