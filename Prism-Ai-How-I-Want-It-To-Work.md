@@ -1,4 +1,4 @@
-> **Note:** I used AI to help me organize and write this because I'm dyslexic. All the actual coding, extraction logic, graph setup, and truth maintenance concepts are my own work and research. AI helped me structure my ideas into clean, readable writing. Please note: **this document presents a theoretical framework, a conceptual architecture, and a personal project roadmap.** None of the features or specifications listed here are guaranteed promises—this document explains how I believe this system *could* be built and what I want it to become as I continue developing it as a student in my free time. I welcome feedback, ideas, or corrections!
+> **Note:** I used AI to help me organize and write this because I'm dyslexic. All the actual coding, extraction logic, graph setup, and truth maintenance concepts are my own work and research. AI helped me structure my ideas into clean, readable writing. Please note: **this document presents a theoretical framework, a conceptual architecture, and a personal project roadmap.** None of the features or specifications listed here are guaranteed promises this document explains how I believe this system *could* be built and what I want it to become as I continue developing it as a student in my free time. I welcome feedback, ideas, or corrections!
 
 # Neurosymbolic AI Engine
 
@@ -10,9 +10,9 @@
 
 ## 1. Proposed Vision & Everyday Usage (What I Want It to Be)
 
-* **One-Time Buy Concept:** The goal is a system you buy or build once and own forever—zero monthly subscriptions, zero API fees, and no paywalled features.
+* **One-Time Buy Concept:** The goal is a system you buy or build once and own forever zero monthly subscriptions, zero API fees, and no paywalled features.
 * **100% Private & Local:** All conversations, extracted facts, and personal knowledge graphs would stay entirely on your physical storage device. No tracking, cloud telemetry, or data selling.
-* **Plug-and-Play Portability Idea:** Designed so everything runs directly off a standard USB thumb drive or SD card. You could plug it into any PC or laptop, run the executable, and unplug when finished—leaving zero files or trace on the host computer.
+* **Plug-and-Play Portability Idea:** Designed so everything runs directly off a standard USB thumb drive or SD card. You could plug it into any PC or laptop, run the executable, and unplug when finished leaving zero files or trace on the host computer.
 * **Targeting Lightweight Hardware:** The architectural goal is to run smoothly on standard consumer laptops (like an Intel Core i5 or AMD Ryzen 5 with 8 GB of RAM) without requiring an expensive dedicated graphics card (GPU).
 
 ---
@@ -25,7 +25,7 @@ Regular chatbots (LLMs) like GPT or Claude are trained on massive cloud servers.
 - **Unreliable:** They frequently hallucinate or invent false information with high confidence.
 - **Resource-Heavy:** Running a raw model locally usually demands high-end gaming GPUs or workstation rigs.
 
-**My proposed fix:** Split the system into two specialized parts that work together—one for **language** and one for **logic and database memory**.
+**My proposed fix:** Split the system into two specialized parts that work together one for **language** and one for **logic and database memory**.
 
 ---
 
