@@ -22,11 +22,11 @@
 
 ```mermaid
 flowchart TD
-    P0["🧪 Current State<br/>Working Prototype"] --> P1["🚀 Phase 1: Enhanced Core<br/>2-4 weeks"]
-    P1 --> P2["🌍 Phase 2: World Model<br/>4-8 weeks"]
-    P2 --> P3["🧠 Phase 3: Persistent Memory<br/>8-12 weeks"]
-    P3 --> P4["🔗 Phase 4: Language-Logic Integration<br/>12-16 weeks"]
-    P4 --> P5["🎯 Phase 5: Advanced Features<br/>16+ weeks"]
+    P0["🧪 Current State<br/>Working Prototype"] --> P1["🚀 Phase 1: Enhanced Core<br/>4-8 weeks"]
+    P1 --> P2["🌍 Phase 2: World Model<br/>8-16 weeks"]
+    P2 --> P3["🧠 Phase 3: Persistent Memory<br/>16-24 weeks"]
+    P3 --> P4["🔗 Phase 4: Language-Logic Integration<br/>24-32 weeks"]
+    P4 --> P5["🎯 Phase 5: Advanced Features<br/>32+ weeks"]
 
     style P0 fill:#cfe3f7,stroke:#1a1a1a,stroke-width:1px,color:#1a1a1a
     style P1 fill:#cfe3f7,stroke:#1a1a1a,stroke-width:1px,color:#1a1a1a
@@ -38,7 +38,7 @@ flowchart TD
 
 ---
 
-## 🚀 Phase 1: Enhanced Core (Next 2-4 weeks)
+## 🚀 Phase 1: Enhanced Core (Next 4-8 weeks)
 
 **Goal:** Strengthen the foundation and make the system more robust.
 
@@ -67,7 +67,7 @@ flowchart TD
 
 ---
 
-## 🌍 Phase 2: World Model & Reasoning (4-8 weeks)
+## 🌍 Phase 2: World Model & Reasoning (8-16 weeks)
 
 **Goal:** Build simulation and consistency checking for guessed facts.
 
@@ -96,7 +96,7 @@ flowchart TD
 
 ---
 
-## 🧠 Phase 3: Persistent Multi-Turn Memory (8-12 weeks)
+## 🧠 Phase 3: Persistent Multi-Turn Memory (16-24 weeks)
 
 **Goal:** Make memory persistent across conversations and sessions.
 
@@ -125,7 +125,7 @@ flowchart TD
 
 ---
 
-## 🔗 Phase 4: Language-Logic Integration (12-16 weeks)
+## 🔗 Phase 4: Language-Logic Integration (24-32 weeks)
 
 **Goal:** Tightly couple the language and logic "brains."
 
@@ -154,7 +154,7 @@ flowchart TD
 
 ---
 
-## 🎯 Phase 5: Advanced Features (16+ weeks)
+## 🎯 Phase 5: Advanced Features (32+ weeks)
 
 **Goal:** Polish and extend the system with advanced capabilities.
 
@@ -248,19 +248,19 @@ gantt
     title Prism-Ai Development Timeline
     dateFormat YYYY-MM-DD
 
-    Phase 1: Enhanced Core :p1, 2026-09-01, 28d
-    Phase 2: World Model :p2, 2026-10-01, 56d
-    Phase 3: Persistent Memory :p3, 2026-11-15, 84d
-    Phase 4: Language-Logic Integration :p4, 2027-02-15, 112d
-    Phase 5: Advanced Features :p5, 2027-05-15, 120d
+    Phase 1: Enhanced Core :p1, 2026-09-01, 56d
+    Phase 2: World Model :p2, 2026-10-15, 112d
+    Phase 3: Persistent Memory :p3, 2027-01-15, 168d
+    Phase 4: Language-Logic Integration :p4, 2027-06-15, 224d
+    Phase 5: Advanced Features :p5, 2028-01-01, 240d
 ```
 
 **Breakdown:**
-- **Phase 1 (Enhanced Core):** September 2026 (2-4 weeks)
-- **Phase 2 (World Model & Reasoning):** October - November 2026 (4-8 weeks)
-- **Phase 3 (Persistent Memory):** November 2026 - February 2027 (8-12 weeks)
-- **Phase 4 (Language-Logic Integration):** February - June 2027 (12-16 weeks)
-- **Phase 5 (Advanced Features):** May 2027+ (16+ weeks, ongoing)
+- **Phase 1 (Enhanced Core):** September - October 2026 (4-8 weeks)
+- **Phase 2 (World Model & Reasoning):** October 2026 - February 2027 (8-16 weeks)
+- **Phase 3 (Persistent Memory):** January - July 2027 (16-24 weeks)
+- **Phase 4 (Language-Logic Integration):** June 2027 - January 2028 (24-32 weeks)
+- **Phase 5 (Advanced Features):** January 2028+ (32+ weeks, ongoing)
 
 *Note: Estimates are flexible based on student workload and community contributions. Phases overlap slightly for smooth handoff.*
 
