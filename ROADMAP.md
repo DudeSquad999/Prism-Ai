@@ -4,11 +4,11 @@
 
 **Last Updated:** September 2026
 **Project Status:** 🧪 Working prototype, actively growing
-**Vision:** Build a neurosymbolic AI engine that combines language understanding with logical reasoning and persistent memory.
+**Vision:** I'm building a neurosymbolic AI engine that combines language understanding with logical reasoning and persistent memory.
 
 ---
 
-## 📍 Current State (Completed)
+## 📍 What I've Got Working So Far
 
 - ✅ Fact extraction from natural language → triples (subject, relationship, object)
 - ✅ Knowledge graph storage using NetworkX
@@ -18,7 +18,7 @@
 - ✅ Real-time belief updates without retraining
 - ✅ Core prototype working and documented
 
-### Phase Dependencies
+### How the Phases Connect
 
 ```mermaid
 flowchart TD
@@ -40,10 +40,10 @@ flowchart TD
 
 ## 🚀 Phase 1: Enhanced Core (Next 4-8 weeks)
 
-**Goal:** Strengthen the foundation and make the system more robust.
+**What I want to do here:** make the foundation stronger and more robust before I build anything else on top of it.
 
 **Language & Extraction**
-- [ ] Improve triple extraction accuracy (reduce missed facts)
+- [ ] Improve triple extraction accuracy (I'm still missing facts sometimes)
 - [ ] Handle complex sentence structures (conditionals, negations, multi-clause)
 - [ ] Support relationship types beyond simple subject-verb-object
 - [ ] Add entity linking (map "he" → "Alex", etc.)
@@ -52,7 +52,7 @@ flowchart TD
 - [ ] Expand metadata tracking (source reliability, uncertainty types)
 - [ ] Add temporal reasoning (time-dependent facts)
 - [ ] Implement graph traversal for multi-hop reasoning
-- [ ] Build query language for retrieving related facts
+- [ ] Build a query language for retrieving related facts
 
 **Truth Maintenance**
 - [ ] Improve confidence scoring logic
@@ -60,7 +60,7 @@ flowchart TD
 - [ ] Track fact provenance chains (where did this belief come from?)
 - [ ] Test edge cases and failure modes
 
-**Deliverables:**
+**What I want to have by the end of this:**
 - Test suite with >50 test cases
 - Updated documentation with examples
 - Performance benchmarks (extraction speed, graph size limits)
@@ -69,11 +69,11 @@ flowchart TD
 
 ## 🌍 Phase 2: World Model & Reasoning (8-16 weeks)
 
-**Goal:** Build simulation and consistency checking for guessed facts.
+**What I want to do here:** build simulation and consistency checking so I can sanity-check guessed facts instead of just trusting them.
 
 **World Model Foundation**
 - [ ] Define world rules/constraints (ontology)
-- [ ] Implement rule-checking system for sanity checks
+- [ ] Implement a rule-checking system for sanity checks
 - [ ] Add constraint propagation
 - [ ] Build cause-effect reasoning
 
@@ -85,11 +85,11 @@ flowchart TD
 
 **Guess Validation**
 - [ ] Formalize sanity-check scoring
-- [ ] Test guesses against world model before committing
-- [ ] Probabilistic reasoning for uncertain scenarios
-- [ ] Explain why a guess was accepted/rejected
+- [ ] Test guesses against the world model before committing them
+- [ ] Add probabilistic reasoning for uncertain scenarios
+- [ ] Explain why a guess was accepted or rejected
 
-**Deliverables:**
+**What I want to have by the end of this:**
 - Working world model with 20+ rules
 - Validation system for guessed facts
 - Example reasoning chains with explanations
@@ -98,7 +98,7 @@ flowchart TD
 
 ## 🧠 Phase 3: Persistent Multi-Turn Memory (16-24 weeks)
 
-**Goal:** Make memory persistent across conversations and sessions.
+**What I want to do here:** make memory persistent across conversations and sessions instead of resetting every time.
 
 **Persistent Storage**
 - [ ] Swap NetworkX for a persistent graph database (Neo4j or similar)
@@ -114,11 +114,11 @@ flowchart TD
 
 **Memory Management**
 - [ ] Implement efficient graph summarization
-- [ ] Create memory search/retrieval optimization
+- [ ] Improve memory search/retrieval
 - [ ] Add memory consolidation (merge redundant facts)
 - [ ] Handle memory conflicts across sessions
 
-**Deliverables:**
+**What I want to have by the end of this:**
 - Working persistent memory system
 - Multi-session conversation examples
 - Memory growth/decay analysis
@@ -127,7 +127,7 @@ flowchart TD
 
 ## 🔗 Phase 4: Language-Logic Integration (24-32 weeks)
 
-**Goal:** Tightly couple the language and logic "brains."
+**What I want to do here:** tightly couple the language side and the logic side so they actually talk to each other.
 
 **Semantic Understanding**
 - [ ] Map language embeddings to graph concepts
@@ -145,18 +145,18 @@ flowchart TD
 - [ ] Track conversation context in the knowledge graph
 - [ ] Build multi-turn dialogue memory
 - [ ] Implement clarification questions
-- [ ] Handle topic switching and coherence
+- [ ] Handle topic switching and stay coherent
 
-**Deliverables:**
+**What I want to have by the end of this:**
 - Full dialogue examples with reasoning chains
-- Explainability system
+- An explainability system
 - Evaluation on BLEU/factual accuracy metrics
 
 ---
 
 ## 🎯 Phase 5: Advanced Features (32+ weeks)
 
-**Goal:** Polish and extend the system with advanced capabilities.
+**What I want to do here:** polish everything and push the system further.
 
 **Meta-Learning**
 - [ ] Learn world model rules from data
@@ -178,16 +178,16 @@ flowchart TD
 - [ ] Distributed reasoning
 - [ ] GPU-accelerated graph operations
 
-**Deliverables:**
-- Production-ready version
+**What I want to have by the end of this:**
+- A production-ready version
 - Integration examples with knowledge bases
 - Scaling benchmarks
 
 ---
 
-## 📊 Success Metrics
+## 📊 How I'm Measuring Progress
 
-Track progress by:
+Here's what I'm tracking:
 - **Accuracy:** % of extracted facts that are correct
 - **Recall:** % of facts actually mentioned that get extracted
 - **Consistency:** % of contradictions caught correctly
@@ -218,30 +218,30 @@ flowchart LR
 
 ---
 
-## 🐛 Known Limitations & Tech Debt
+## 🐛 Stuff I Know Is Broken or Rough
 
-Current issues to address:
-- Fact extraction relies on prompt quality; needs more robust parsing
-- Confidence scoring is heuristic-based; should be learned
-- World model is manual; needs bootstrapping from data
+Things I still need to fix:
+- Fact extraction relies on prompt quality; I need more robust parsing
+- Confidence scoring is heuristic-based right now; it should be learned instead
+- The world model is manual; it needs to bootstrap from data
 - Scale: NetworkX graphs get slow above ~10k nodes
-- Testing: Need a comprehensive test suite
-- Documentation: Some internal logic needs clearer comments
+- I don't have enough tests yet
+- Some of my internal logic needs clearer comments
 
 ---
 
-## 🤝 How to Contribute
+## 🤝 Want to Help?
 
-Working on this? Pick a phase and attack! Good starting points:
+If you want to work on this with me, pick a phase and go for it. Good starting points:
 - **Easy:** Write tests, improve documentation, find bugs
 - **Medium:** Implement Phase 1 features, optimize existing code
 - **Hard:** Build Phase 2-5 features, design new systems
 
-See contributing guidelines for code standards and submission process.
+Check the contributing guidelines for code standards and how to submit stuff.
 
 ---
 
-## 📅 Timeline Estimate
+## 📅 My Timeline Estimate
 
 ```mermaid
 gantt
@@ -262,13 +262,13 @@ gantt
 - **Phase 4 (Language-Logic Integration):** June 2027 - January 2028 (24-32 weeks)
 - **Phase 5 (Advanced Features):** January 2028+ (32+ weeks, ongoing)
 
-*Note: Estimates are flexible based on student workload and community contributions. Phases overlap slightly for smooth handoff.*
+*Note: These are flexible since I'm doing this around being a student, and I'd love help from anyone who wants to contribute. I let the phases overlap a bit so there's a smooth handoff between them instead of everything stopping and starting.*
 
 ---
 
 ## 💭 Questions or Ideas?
 
-Open an issue or reach out to: aakgaming2011@gmail.com
+Open an issue or email me: aakgaming2011@gmail.com
 
 ---
 
