@@ -1,27 +1,31 @@
 ---
 name: Feature request
-about: Suggest an improvement for Prism AI
-title: "[Feature]: "
+about: Suggest an improvement that supports the Prism AI vision
+title: "feature: "
 labels: enhancement
 assignees: ""
 ---
 
-## Problem
+## Problem or opportunity
 
-What problem would this feature solve? Who experiences it?
+What user need, clarity issue, or project goal would this address?
 
-## Proposed solution
+## Proposed idea
 
-Describe the outcome you would like Prism AI to provide.
+Describe the idea in plain language.
 
-## Example workflow
+## Why it fits Prism AI
 
-Describe how a person would use this feature.
+Explain how this supports transparency, privacy, user control, accessible comparison, or appropriate uncertainty.
 
 ## Alternatives considered
 
-What other approaches or workarounds did you consider?
+What other approaches could address the same need?
+
+## Scope and risks
+
+List expected complexity, privacy concerns, safety considerations, or tradeoffs.
 
 ## Additional context
 
-Include mockups, links, research, or other helpful context.
+Do not include private prompts, personal information, credentials, API keys, tokens, or secrets.

@@ -1,86 +1,67 @@
-<div align="center">
-
 # Prism AI
 
-### One question. Multiple perspectives. A clearer answer.
+Prism AI is a project vision for a more transparent AI experience. It explores how multiple perspectives, structured comparison, user control, memory, and verification could help people examine an answer instead of receiving a single opaque response.
 
-Prism AI is a planned multi-model AI workspace designed to help people compare, combine, and understand responses from different language models in one place.
+> Status: early project documentation with a local static prototype. The prototype uses prewritten example content only. It does not call AI models, connect to providers, send network requests, or store user prompts.
 
-[Explore the vision](./Prism-Ai-How-I-Want-It-To-Work.md) · [View the roadmap](./ROADMAP.md) · [Compare LLM approaches](./How-LLMs-Work-Comparison.md)
+## What Prism AI explores
 
-</div>
+- Multiple selectable perspectives for the same question
+- Side-by-side response comparison
+- A synthesis that identifies agreement, uncertainty, and open questions
+- User control over which perspectives are included
+- Future concepts for memory, claim checking, and transparent reasoning
 
----
+## Current repository contents
 
-> **Project status:** Prism AI is in the research, planning, and product-design phase. This repository documents the product vision, model research, and implementation roadmap.
+| Area | Current state |
+| --- | --- |
+| Product vision and architecture | Documented |
+| Model and workflow comparison | Documented |
+| Roadmap | Documented and subject to change |
+| Browser prototype | Local static demonstration with example content |
+| Live model calls, accounts, storage, or backend | Not included |
 
-## Why Prism AI?
+## Try the local prototype
 
-Most AI tools ask you to choose one model before you know which one fits your task. Prism AI is designed to make that choice more transparent: explore multiple perspectives, understand their trade-offs, and turn them into a more useful result.
+1. Download or clone this repository.
+2. Open `index.html` in a modern browser.
+3. Choose one or more perspectives, enter a prompt if you want, and select **Compare perspectives**.
 
-| Instead of... | Prism AI aims to provide... |
-|---|---|
-| Switching among separate AI tools | One unified workspace |
-| Trusting one answer by default | Multiple model perspectives |
-| Losing context between tools | Shared context and comparisons |
-| Guessing which model to use | Clear strengths, trade-offs, and routing |
+The prompt field is local to your browser session. Submitted text does not leave the page and does not change the prewritten demonstration responses.
 
-## The Prism experience
+## Principles
 
-1. Ask a question or describe a task.
-2. Select models—or let Prism recommend a fit for the task.
-3. Compare responses side by side.
-4. Ask Prism to synthesize the strongest answer.
-5. Keep the context, reasoning, sources, and next steps visible.
+- **Transparency:** Clearly show what is a demonstration, a plan, an inference, or an unresolved question.
+- **Privacy:** Avoid collecting data by default. Do not place secrets, private prompts, or personal information in the repository.
+- **User control:** Let people select perspectives and understand the limits of the output.
+- **Appropriate uncertainty:** Prefer calibrated language over unsupported confidence.
+- **Evidence awareness:** Treat factual claims as candidates for checking, not as automatically verified truth.
 
-## Product principles
+## Documentation
 
-- **Transparent by design:** Make model choice, limitations, and trade-offs clear.
-- **Human-controlled:** Let people choose models, compare outputs, and retain context.
-- **Useful synthesis:** Help transform several perspectives into a clearer final response.
-- **Privacy-aware:** Treat user prompts and data handling as product-critical concerns.
+- [How Prism AI is intended to work](Prism-Ai-How-I-Want-It-To-Work.md)
+- [How LLM workflows compare](How-LLMs-Work-Comparison.md)
+- [Roadmap](ROADMAP.md)
+- [Product specification](docs/PRODUCT_SPEC.md)
+- [Design system](docs/DESIGN_SYSTEM.md)
+- [Contributing guide](CONTRIBUTING.md)
+- [Security policy](SECURITY.md)
 
-## Conceptual architecture
+## Project boundaries
 
-```text
-User prompt
-    │
-    ▼
-Prism workspace
-    │
-    ├── Model selection and task routing
-    ├── Shared context and prompt preparation
-    ├── Parallel model responses
-    └── Comparison and synthesis
-             │
-             ▼
-     Clear, inspectable final result
-```
+Prism AI is not presented as a completed AI system or as a guarantee of factual accuracy. Model quality varies by task, prompt, available context, evaluation method, tool use, and product design. Any future memory or verification features should be evaluated for privacy, reliability, and user benefit before being presented as production capabilities.
 
-## Repository guide
+## Authorship and AI assistance
 
-| Document | What it covers |
-|---|---|
-| [Product vision](./Prism-Ai-How-I-Want-It-To-Work.md) | How Prism AI should work and the intended user experience |
-| [LLM comparison](./How-LLMs-Work-Comparison.md) | Research and comparisons of language-model approaches |
-| [Roadmap](./ROADMAP.md) | Proposed development stages and priorities |
+Prism AI was created from the original ideas, product vision, and decisions of the project owner.
 
-## Roadmap
-
-The detailed plan lives in [ROADMAP.md](./ROADMAP.md). The near-term focus is to refine the product requirements, validate the multi-model workflow, establish safety and privacy expectations, and build an initial usable prototype.
+AI tools were used as writing and development assistants to help organize documentation, simplify wording, improve presentation, and support prototype implementation. The project owner reviewed and directed the work, and remains responsible for the project’s purpose, decisions, and published content.
 
 ## Contributing
 
-Ideas, research, product feedback, and implementation help are welcome. Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before opening an issue or pull request.
-
-Useful contribution areas include:
-
-- Product and UX design
-- Frontend and backend engineering
-- LLM evaluation and routing
-- Safety, privacy, and responsible AI
-- Documentation and research
+Contributions, questions, and design feedback are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening an issue or pull request.
 
 ## License
 
-This project is released under the [MIT License](./LICENSE).
+This project is available under the repository's existing license.

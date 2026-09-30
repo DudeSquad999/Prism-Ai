@@ -1,0 +1,33 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs and local environment files
+*.log
+.env
+.env.*
+!.env.example
+
+# Node and package artifacts, if added later
+node_modules/
+dist/
+coverage/
+
+# Python artifacts, if added later
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local files that should never be committed
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
