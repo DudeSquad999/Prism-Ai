@@ -1,0 +1,33 @@
+name: Markdown checks
+
+on:
+  push:
+    paths:
+      - "**.md"
+      - ".github/workflows/markdown-checks.yml"
+  pull_request:
+    paths:
+      - "**.md"
+      - ".github/workflows/markdown-checks.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  check-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Check Markdown files for trailing whitespace
+        run: |
+          if grep -RIn --include='*.md' --exclude-dir='.git' '[[:blank:]]$' .; then
+            echo "Remove trailing whitespace from Markdown files."
+            exit 1
+          fi
+      - name: Check Markdown files for em dashes
+        run: |
+          if grep -RIn --include='*.md' --exclude-dir='.git' '—' .; then
+            echo "Use commas, periods, parentheses, colons, or hyphens instead of em dashes."
+            exit 1
+          fi

@@ -1,23 +1,31 @@
 ## Summary
 
-Describe what this pull request changes and why.
+What does this pull request change, and why?
 
 ## Type of change
 
 - [ ] Documentation
-- [ ] Feature
-- [ ] Bug fix
-- [ ] Refactor or maintenance
-- [ ] Research or product proposal
+- [ ] Static prototype interface
+- [ ] Accessibility
+- [ ] Security or privacy
+- [ ] Build or workflow
+- [ ] Other
 
-## Checklist
+## Verification
 
-- [ ] I kept this pull request focused on one goal.
-- [ ] I reviewed my changes for clarity and accuracy.
+- [ ] I reviewed the changed content for clarity and accuracy.
+- [ ] I tested the static prototype locally, if applicable.
+- [ ] I checked keyboard navigation, focus visibility, and responsive layout, if applicable.
 - [ ] I updated relevant documentation.
-- [ ] I did not include credentials, API keys, private prompts, or personal data.
-- [ ] I considered privacy, safety, accessibility, and transparency impacts.
+- [ ] I did not add API keys, passwords, tokens, private prompts, personal information, or other secrets.
+- [ ] I did not add network requests, analytics, tracking, provider connections, or backend behavior without explicit approval.
 
-## Testing or review notes
+## Project principles
 
-Explain how you checked the change, or explain why testing is not applicable.
+- [ ] The change distinguishes current behavior from future plans.
+- [ ] The change supports privacy, transparency, user control, or appropriate uncertainty.
+- [ ] The change does not claim that a model or workflow is universally best or perfectly accurate.
+
+## Screenshots or notes
+
+Add screenshots or context when they help review the change.

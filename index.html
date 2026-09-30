@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A local static Prism AI interface demonstration.">
+    <title>Prism AI, local static prototype</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Project navigation">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <div>
+            <p class="eyebrow">Local static prototype</p>
+            <h1>Prism AI</h1>
+          </div>
+        </div>
+
+        <p class="sidebar-copy">A visual demonstration of perspective comparison and transparent synthesis.</p>
+
+        <nav aria-label="Prototype sections">
+          <a class="nav-link is-active" href="#workspace">Workspace</a>
+          <a class="nav-link" href="#perspectives">Perspectives</a>
+          <a class="nav-link" href="#comparison">Comparison</a>
+          <a class="nav-link" href="#synthesis">Synthesis</a>
+        </nav>
+
+        <div class="local-note">
+          <span class="status-dot" aria-hidden="true"></span>
+          <p><strong>Local only.</strong> This demo uses prewritten examples. It does not call AI models, send network requests, or store prompts.</p>
+        </div>
+      </aside>
+
+      <main id="main-content" class="main-content">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Perspective workspace</p>
+            <h2>See the shape of a question</h2>
+            <p class="header-copy">Choose the lenses you want to compare. The response cards and synthesis below are fixed demonstration content.</p>
+          </div>
+          <span class="prototype-badge">Static demonstration</span>
+        </header>
+
+        <section id="workspace" class="composer-panel" aria-labelledby="composer-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Prompt composer</p>
+              <h3 id="composer-title">What would you like to explore?</h3>
+            </div>
+            <span class="privacy-label">No data leaves this page</span>
+          </div>
+          <label for="prompt">Your question</label>
+          <textarea id="prompt" rows="4" placeholder="Example: How should a small team decide which project to prioritize?"></textarea>
+          <div class="composer-footer">
+            <p id="prompt-help">Your text stays in this browser tab and does not affect the prewritten demo responses.</p>
+            <button id="compare-button" type="button">Compare perspectives</button>
+          </div>
+          <p id="demo-status" class="sr-only" aria-live="polite"></p>
+        </section>
+
+        <section id="perspectives" aria-labelledby="perspectives-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Step 1</p>
+              <h3 id="perspectives-title">Select perspectives</h3>
+            </div>
+            <p class="selection-count" id="selection-count">3 selected</p>
+          </div>
+          <p class="section-copy">Each card represents a lens, not a live model or a guarantee of expertise.</p>
+
+          <div class="perspective-grid" role="group" aria-label="Select perspectives to compare">
+            <button class="perspective-card is-selected" type="button" data-perspective="analytical" aria-pressed="true">
+              <span class="card-icon analytical" aria-hidden="true">A</span>
+              <span class="card-content">
+                <strong>Analytical</strong>
+                <span>Maps assumptions, constraints, and decision criteria.</span>
+              </span>
+              <span class="select-state">Selected</span>
+            </button>
+            <button class="perspective-card is-selected" type="button" data-perspective="creative" aria-pressed="true">
+              <span class="card-icon creative" aria-hidden="true">C</span>
+              <span class="card-content">
+                <strong>Creative</strong>
+                <span>Suggests reframes and alternative paths forward.</span>
+              </span>
+              <span class="select-state">Selected</span>
+            </button>
+            <button class="perspective-card is-selected" type="button" data-perspective="practical" aria-pressed="true">
+              <span class="card-icon practical" aria-hidden="true">P</span>
+              <span class="card-content">
+                <strong>Practical</strong>
+                <span>Focuses on effort, sequencing, and workable next steps.</span>
+              </span>
+              <span class="select-state">Selected</span>
+            </button>
+            <button class="perspective-card" type="button" data-perspective="skeptical" aria-pressed="false">
+              <span class="card-icon skeptical" aria-hidden="true">S</span>
+              <span class="card-content">
+                <strong>Skeptical</strong>
+                <span>Looks for missing evidence, risks, and weak assumptions.</span>
+              </span>
+              <span class="select-state">Add</span>
+            </button>
+          </div>
+        </section>
+
+        <section id="comparison" class="comparison-section" aria-labelledby="comparison-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Step 2</p>
+              <h3 id="comparison-title">Response comparison</h3>
+            </div>
+            <p class="section-note">Prewritten example content</p>
+          </div>
+
+          <div id="response-grid" class="response-grid">
+            <article class="response-card" data-response="analytical">
+              <div class="response-card-header">
+                <div class="response-title"><span class="card-icon analytical" aria-hidden="true">A</span><h4>Analytical</h4></div>
+                <span class="confidence-tag">Structured lens</span>
+              </div>
+              <p>Start by naming the decision, the constraints, and the criteria for success. Compare each option against effort, expected impact, risk, and reversibility before choosing a first experiment.</p>
+              <footer>Emphasis: assumptions and decision criteria.</footer>
+            </article>
+
+            <article class="response-card" data-response="creative">
+              <div class="response-card-header">
+                <div class="response-title"><span class="card-icon creative" aria-hidden="true">C</span><h4>Creative</h4></div>
+                <span class="confidence-tag">Idea lens</span>
+              </div>
+              <p>Reframe the choice as a portfolio. Reserve most effort for the strongest current option, while keeping a small, time-boxed experiment for an unusual idea that could reveal a better direction.</p>
+              <footer>Emphasis: alternatives and reframing.</footer>
+            </article>
+
+            <article class="response-card" data-response="practical">
+              <div class="response-card-header">
+                <div class="response-title"><span class="card-icon practical" aria-hidden="true">P</span><h4>Practical</h4></div>
+                <span class="confidence-tag">Execution lens</span>
+              </div>
+              <p>Choose the smallest test that can answer the most important question. Set a short review date, define what evidence would change the decision, and avoid committing the entire team before learning.</p>
+              <footer>Emphasis: sequencing and low-risk action.</footer>
+            </article>
+
+            <article class="response-card is-hidden" data-response="skeptical" hidden>
+              <div class="response-card-header">
+                <div class="response-title"><span class="card-icon skeptical" aria-hidden="true">S</span><h4>Skeptical</h4></div>
+                <span class="confidence-tag amber">Risk lens</span>
+              </div>
+              <p>Check whether the team is assuming that visible demand represents the full market. Identify the riskiest belief, look for disconfirming evidence, and define a stop condition before investing more time.</p>
+              <footer>Emphasis: evidence gaps and downside risk.</footer>
+            </article>
+          </div>
+        </section>
+
+        <section id="synthesis" class="synthesis-panel" aria-labelledby="synthesis-title">
+          <div class="synthesis-header">
+            <div>
+              <p class="eyebrow">Step 3</p>
+              <h3 id="synthesis-title">Synthesis</h3>
+            </div>
+            <span class="synthesis-label">Transparent summary</span>
+          </div>
+
+          <div class="synthesis-grid">
+            <article>
+              <h4>Common ground</h4>
+              <p>Begin with a limited experiment rather than a full commitment. Make the decision criteria visible before comparing options.</p>
+            </article>
+            <article>
+              <h4>Different emphasis</h4>
+              <p>The analytical lens prioritizes a decision framework. The creative lens expands options. The practical lens narrows the next action.</p>
+            </article>
+            <article class="uncertainty-card">
+              <h4>Uncertainty to keep visible</h4>
+              <p>The example does not include market data, team capacity, or user research. A real decision would need relevant evidence.</p>
+            </article>
+          </div>
+
+          <div class="next-step">
+            <span class="next-step-icon" aria-hidden="true">→</span>
+            <div>
+              <h4>Suggested next step</h4>
+              <p>Write down one assumption that would change your decision, then design the smallest test that could challenge it.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
