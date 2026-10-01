@@ -43,8 +43,6 @@ The prompt field is local to your browser session. Submitted text does not leave
 - [How Prism AI is intended to work](Prism-Ai-How-I-Want-It-To-Work.md)
 - [How LLM workflows compare](How-LLMs-Work-Comparison.md)
 - [Roadmap](ROADMAP.md)
-- [Product specification](docs/PRODUCT_SPEC.md)
-- [Design system](docs/DESIGN_SYSTEM.md)
 - [Contributing guide](CONTRIBUTING.md)
 - [Security policy](SECURITY.md)
 
