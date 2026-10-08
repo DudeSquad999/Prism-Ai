@@ -1,65 +1,81 @@
 # Prism AI
 
-Prism AI is a project vision for a more transparent AI experience. It explores how multiple perspectives, structured comparison, user control, memory, and verification could help people examine an answer instead of receiving a single opaque response.
+Prism AI explores a more transparent AI experience: multiple perspectives, structured comparison, user control, memory, and verification, with visible uncertainty rather than a single opaque answer.
 
-> Status: early project documentation with a local static prototype. The prototype uses prewritten example content only. It does not call AI models, connect to providers, send network requests, or store user prompts.
+## Start here
 
-## What Prism AI explores
-
-- Multiple selectable perspectives for the same question
-- Side-by-side response comparison
-- A synthesis that identifies agreement, uncertainty, and open questions
-- User control over which perspectives are included
-- Future concepts for memory, claim checking, and transparent reasoning
-
-## Current repository contents
-
-| Area | Current state |
+| Your goal | Where to go |
 | --- | --- |
-| Product vision and architecture | Documented |
-| Model and workflow comparison | Documented |
-| Roadmap | Documented and subject to change |
-| Browser prototype | Local static demonstration with example content |
-| Live model calls, accounts, storage, or backend | Not included |
+| Install the Windows applications | [Getting Started](GETTING_STARTED.md) |
+| Download a published package | [Releases](https://github.com/DudeSquad999/Prism-Ai/releases) |
+| Explore the local interface demo | Open `index.html` in your browser |
+| Understand the intended design | [Design goals](Prism-Ai-How-I-Want-It-To-Work.md) |
+| See planned work | [Roadmap](ROADMAP.md) |
+| Check a release before publishing | [Windows test checklist](TESTING.md) |
 
-## Try the local prototype
+## Demo, releases, and plans are different
 
-1. Download or clone this repository.
-2. Open `index.html` in a modern browser.
-3. Choose one or more perspectives, enter a prompt if you want, and select **Compare perspectives**.
+### Interface demo in this repository
 
-The prompt field is local to your browser session. Submitted text does not leave the page and does not change the prewritten demonstration responses.
+The root files `index.html`, `styles.css`, and `app.js` form a local static interface prototype. The prototype uses prewritten example content. It does not call AI models, connect to providers, send network requests, or store user prompts.
 
-## Principles
+Open `index.html` in a browser to explore the demo. It is not the Windows installer or evidence that the planned AI features are implemented.
 
-- **Transparency:** Clearly show what is a demonstration, a plan, an inference, or an unresolved question.
-- **Privacy:** Avoid collecting data by default. Do not place secrets, private prompts, or personal information in the repository.
-- **User control:** Let people select perspectives and understand the limits of the output.
-- **Appropriate uncertainty:** Prefer calibrated language over unsupported confidence.
-- **Evidence awareness:** Treat factual claims as candidates for checking, not as automatically verified truth.
+### Packaged Windows applications
 
-## Documentation
+The published v2.0.0 release notes describe two applications:
 
-- [How Prism AI is intended to work](Prism-Ai-How-I-Want-It-To-Work.md)
-- [How LLM workflows compare](How-LLMs-Work-Comparison.md)
-- [Roadmap](ROADMAP.md)
-- [Contributing guide](CONTRIBUTING.md)
-- [Security policy](SECURITY.md)
+- **Prism Chat:** conversations, research, projects, and Markdown documents.
+- **Prism Studio:** LaTeX writing, AI-assisted revisions, references, and PDF compilation.
 
-## Project boundaries
+The attached Windows package is `PrismV2.0.0.zip`. Follow [Getting Started](GETTING_STARTED.md) for the download link and installation instructions. These application descriptions come from the release notes; they are not an independent verification of the package.
 
-Prism AI is not presented as a completed AI system or as a guarantee of factual accuracy. Model quality varies by task, prompt, available context, evaluation method, tool use, and product design. Any future memory or verification features should be evaluated for privacy, reliability, and user benefit before being presented as production capabilities.
+The root demo files are not the Chat and Studio source folders described in the Windows package layout. Do not treat the repository source download as interchangeable with the attached Windows application package.
 
-## Authorship and AI assistance
+### Project direction
 
-Prism AI was created from the original ideas, product vision, and decisions of the project owner.
+The design documents describe intended behavior and future exploration. Planned capabilities are not guarantees of implementation, accuracy, or delivery dates.
 
-AI tools were used as writing and development assistants to help organize documentation, simplify wording, improve presentation, and support prototype implementation. The project owner reviewed and directed the work, and remains responsible for the project’s purpose, decisions, and published content.
+## Repository map
 
-## Contributing
+| File | Purpose |
+| --- | --- |
+| `README.md` | Project overview and navigation |
+| `GETTING_STARTED.md` | Windows release download, setup, and usage overview |
+| `TESTING.md` | Release test plan; not proof that tests passed |
+| `ROADMAP.md` | Planned work and priorities |
+| `Prism-Ai-How-I-Want-It-To-Work.md` | Intended product behavior and design goals |
+| `How-LLMs-Work-Comparison.md` | Language-model comparison and project context |
+| `index.html` | Static demo page |
+| `styles.css` | Demo styling |
+| `app.js` | Demo interactions |
+| `.gitignore` | Git ignore rules |
+| `LICENSE` | License terms |
 
-Contributions, questions, and design feedback are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening an issue or pull request.
+## Release history
+
+| Version | What its release notes describe |
+| --- | --- |
+| [v2.0.0](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v2.0.0) | Combined Windows setup for Prism Chat and Prism Studio |
+| [v1.0.0](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v1.0.0) | Experimental PyTorch Transformer with local training, text generation, and terminal chat |
+
+Use the instructions for the version you downloaded. The v1 training workflow, the v2 Windows applications, and the root static demo are different deliverables.
+
+## Limitations and privacy
+
+- Comparing multiple perspectives does not automatically make an answer correct.
+- The v2 release notes describe research retrieval from extracts and abstracts; finding a matching quote does not verify the truth of a claim.
+- Live AI in the packaged applications requires a configured provider or local model. Cloud requests send included content to that provider.
+- Keep API keys, private conversations, and personal project data out of public uploads and issue reports.
+- The v2 release notes describe an early-stage local application. Do not expose it to the public internet without appropriate authentication and security controls.
+- [TESTING.md](TESTING.md) is a checklist. Only recorded test results can establish which checks were actually performed.
+
+## Feedback and bug reports
+
+[Open an issue](https://github.com/DudeSquad999/Prism-Ai/issues) and identify the component: static demo, Prism Chat, Prism Studio, or Windows Setup.
+
+Include the version, steps to reproduce, expected behavior, actual behavior, and relevant error messages or screenshots. Remove credentials and private information before posting.
 
 ## License
 
-This project is available under the repository's existing license.
+See [LICENSE](LICENSE) for the license terms.
