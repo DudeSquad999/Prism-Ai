@@ -1,0 +1,58 @@
+name: Bug report
+description: Report a reproducible problem with the demo, apps, or setup.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include API keys, credentials, private conversations, or personal project data. Search existing issues before submitting."
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected component
+      options:
+        - Static interface demo
+        - Prism Chat
+        - Prism Studio
+        - Windows Setup
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or source commit
+      description: Include the release version and package filename, or the source commit for the demo.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system and version; browser for the demo; AI provider and model if relevant. Never include an API key.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Open...\n2. Select...\n3. Observe..."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized errors or screenshots
+      description: Optional. Remove secrets and private information before sharing.

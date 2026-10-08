@@ -1,0 +1,45 @@
+name: Feature request
+description: Suggest a focused improvement rather than report a bug.
+title: "[Feature]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Search existing issues first. Keep requests focused and do not include private information. A request is not a commitment to implement it."
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected component
+      options:
+        - Static interface demo
+        - Prism Chat
+        - Prism Studio
+        - Windows Setup
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the user need, not just a feature name.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed improvement
+      description: Describe the smallest useful change and the behavior that should stay the same.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives or current workaround
+  - type: textarea
+    id: success
+    attributes:
+      label: How would we know it works?
+      description: Give a concrete example or acceptance check.
+    validations:
+      required: true
