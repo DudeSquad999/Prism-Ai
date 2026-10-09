@@ -4,7 +4,7 @@ Thanks for your interest in Prism AI.
 
 ## Before you start
 
-Read the [README](README.md) to understand the project. The root `index.html`, `styles.css`, and `app.js` are a static browser demo, not the Windows apps.
+Read the [README](README.md) to understand the project. The `demo/` folder contains the static browser demo, not the Windows apps.
 
 ## Report a problem or suggest an improvement
 
@@ -20,7 +20,7 @@ Use the bug-report form for problems and the feature-request form for ideas. Inc
 
 ## Testing
 
-For browser-demo changes, open `index.html` in a browser and check the behavior you changed.
+For browser-demo changes, open `demo/index.html` in a browser and check the behavior you changed.
 
 For Windows-app changes, use [TESTING.md](TESTING.md). Record only checks you actually performed; do not claim a feature works because it is described in release notes.
 
