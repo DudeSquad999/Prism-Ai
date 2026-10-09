@@ -86,4 +86,4 @@ These ideas are exploratory. They are not currently implemented commitments.
 
 ## How to contribute
 
-If you want to help, start with the documentation, interface accessibility, example scenarios, or clearly scoped issues. See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
+If you want to help, start with the documentation, interface accessibility, example scenarios, or clearly scoped issues. See [CONTRIBUTING.md](../CONTRIBUTING.md) and [SECURITY.md](../SECURITY.md).
