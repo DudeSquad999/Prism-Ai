@@ -69,7 +69,7 @@ function updateModules() {
 
   activeCount.textContent = count;
   activityMeter.style.width = `${count * 25}%`;
-  activityMeter.parentElement.setAttribute('aria-label', `${count} of 4 perspective modules active`);
+  activityMeter.parentElement.setAttribute('aria-label', `${count} of 4 perspective modules selected`);
   coreMode.textContent = count ? `${count} selected` : 'None selected';
   emptySelection.hidden = count > 0;
   runComparison.disabled = count === 0;
@@ -104,8 +104,9 @@ runComparison.addEventListener('click', () => {
     visibleCards.forEach((card, index) => {
       setTimeout(() => card.classList.add('revealing'), index * 140);
     });
-    coreMode.textContent = count ? `${count} selected` : 'None selected';
-    runComparison.disabled = count === 0;
+    const currentCount = getActiveModules().length;
+    coreMode.textContent = currentCount ? `${currentCount} selected` : 'None selected';
+    runComparison.disabled = currentCount === 0;
     runComparison.innerHTML = '<span aria-hidden="true">◈</span> Show selected examples';
     document.querySelector('#comparison').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   }, 700);
