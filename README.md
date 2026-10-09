@@ -4,7 +4,7 @@ An early-stage AI research and writing project with two Windows applications: **
 
 The repository also includes a separate static interface demo exploring more transparent AI workflows, including inspectable perspectives, user control, and visible uncertainty.
 
-**Start here:** [Download the Windows release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) · [Getting started](GETTING_STARTED.md) · [Report a bug](https://github.com/DudeSquad999/Prism-Ai/issues/new/choose) · [Roadmap](ROADMAP.md)
+**Start here:** [Download the Windows release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) · [Getting started](GETTING_STARTED.md) · [Community guide](docs/COMMUNITY_GUIDE.md) · [Report a bug](https://github.com/DudeSquad999/Prism-Ai/issues/new/choose) · [Roadmap](ROADMAP.md)
 
 ## Project status
 
@@ -132,6 +132,10 @@ Priorities may change based on testing and feedback. The roadmap is not a delive
 | `How-LLMs-Work-Comparison.md` | Language-model comparison and project context |
 | `index.html`, `styles.css`, `app.js` | Static demo page, styling, and interactions |
 | `CONTRIBUTING.md` | Contribution guidance |
+| `CODE_OF_CONDUCT.md` | Community expectations and reporting |
+| `SECURITY.md` | Private vulnerability reporting guidance |
+| `docs/COMMUNITY_GUIDE.md` | Where to ask questions, share ideas, and report problems |
+| `docs/wiki/` | Wiki-ready guide pages maintained with the repository |
 | `.github/ISSUE_TEMPLATE/` | Bug-report and feature-request forms |
 | `LICENSE` | License terms |
 
