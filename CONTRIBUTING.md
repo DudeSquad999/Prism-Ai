@@ -22,7 +22,7 @@ Use the bug-report form for problems and the feature-request form for ideas. Inc
 
 For browser-demo changes, open `demo/index.html` in a browser and check the behavior you changed.
 
-For Windows-app changes, use [TESTING.md](TESTING.md). Record only checks you actually performed; do not claim a feature works because it is described in release notes.
+For Windows-app changes, use [TESTING.md](guides/TESTING.md). Record only checks you actually performed; do not claim a feature works because it is described in release notes.
 
 ## License
 
