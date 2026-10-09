@@ -1,41 +1,20 @@
-# Prism AI Wiki
+# Prism AI
 
-Welcome to the Prism AI project wiki. This guide helps you understand the project, get started, and find support.
-
-> **Project status:** Prism AI is early-stage. The downloadable Windows apps, the root static interface demo, and longer-term design ideas are separate. Documentation does not prove that every feature has been tested.
+Prism AI is an early-stage research and writing project.
 
 ## Start here
 
-- [Project overview](../../README.md)
-- [Installation and troubleshooting](Installation-and-Troubleshooting.md)
+- [Download the Windows apps](https://github.com/DudeSquad999/Prism-Ai/releases/latest)
+- [Setup guide](../../GETTING_STARTED.md)
 - [Frequently asked questions](FAQ.md)
-- [Community and support](Community-and-Support.md)
-- [Testing checklist](../../TESTING.md)
+- [Installation help](Installation-and-Troubleshooting.md)
+- [Community support](Community-and-Support.md)
 - [Roadmap](../../ROADMAP.md)
-- [Contributing](../../CONTRIBUTING.md)
-- [Security reporting](../../SECURITY.md)
 
-## Choose the right download
+## What's the difference?
 
-**Windows apps:** open [GitHub Releases](https://github.com/DudeSquad999/Prism-Ai/releases/latest) and download the packaged Windows asset.
+- **Prism Chat and Prism Studio:** Windows apps listed in the published release notes.
+- **Browser demo:** a separate static page with fixed example content. It does not call AI models.
+- **Roadmap:** ideas for future work, not a list of guaranteed features.
 
-**Static demo:** download the repository source, extract it, and open `index.html` in a browser. The demo uses fixed examples and does not call AI models.
-
-These downloads serve different purposes. Downloading the source ZIP does not install the Windows apps.
-
-## Where to get help
-
-- [Report a bug](https://github.com/DudeSquad999/Prism-Ai/issues/new?template=bug_report.yml)
-- [Suggest a feature](https://github.com/DudeSquad999/Prism-Ai/issues/new?template=feature_request.yml)
-- [GitHub Discussions](https://github.com/DudeSquad999/Prism-Ai/discussions) (if enabled)
-- [Security reporting instructions](../../SECURITY.md)
-
-Never post API keys, credentials, private conversations, or sensitive logs.
-
-## Current limitations
-
-- The browser demo is not a live AI application.
-- AI-generated answers and citations can be wrong.
-- Quote matching is not proof that a claim is true.
-- Cloud AI providers receive content sent in requests to them.
-- Prism Studio PDF compilation requires a configured TeX engine.
+AI output can be wrong. Check important claims, and never post API keys or private information in public threads.
