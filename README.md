@@ -20,7 +20,7 @@ The Windows apps are described in the published v2.0.0 release notes. Not every 
 
 ## Try the browser demo
 
-Choose **Code → Download ZIP**, extract the repository, and open `index.html`. The demo uses fixed examples and does not call AI models or demonstrate the live Windows apps.
+Choose **Code → Download ZIP**, extract the repository, and open `demo/index.html`. The demo uses fixed examples and does not call AI models or demonstrate the live Windows apps.
 
 ## AI and privacy
 
@@ -36,4 +36,4 @@ AI answers and citations can be wrong. Quote matching does not prove a claim is 
 - [Contributing](CONTRIBUTING.md)
 - [License](LICENSE)
 
-The root `index.html`, `styles.css`, and `app.js` are the browser demo, not the source for Prism Chat or Prism Studio.
+The `demo/` folder contains the browser demo, not the source for Prism Chat or Prism Studio.
