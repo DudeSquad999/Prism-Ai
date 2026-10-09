@@ -33,7 +33,6 @@ The release notes list Google Gemini, Anthropic, OpenAI, and Ollama as supported
 - [Project overview](README.md)
 - [Roadmap](ROADMAP.md)
 - [Prism AI design goals](Prism-Ai-How-I-Want-It-To-Work.md)
-- [How language models work: comparison](How-LLMs-Work-Comparison.md)
 
 ## Release history
 
