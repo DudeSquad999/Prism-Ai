@@ -1,26 +1,13 @@
-# Community Code of Conduct
+# Code of Conduct
 
-## Our standard
+Please keep Prism AI spaces respectful, useful, and welcoming.
 
-Prism AI welcomes respectful, constructive participation from people with different experience levels and perspectives. Help make project discussions useful, safe, and focused on the work.
+- Be kind, especially to people who are new to the project.
+- Critique ideas, not people.
+- Explain disagreements clearly and respectfully.
+- Respect privacy. Never share another person's private information, credentials, or API keys.
+- Do not harass, threaten, spam, or target people with personal attacks.
 
-Expected behavior:
+These expectations apply to issues, pull requests, discussions, reviews, and project spaces.
 
-- Be respectful and assume good faith while questioning claims and technical decisions.
-- Explain disagreements with evidence and specific reasoning.
-- Critique ideas and behavior, not someone's identity or personal worth.
-- Welcome beginner questions and offer actionable feedback.
-- Respect privacy. Do not publish another person's private information, conversations, credentials, or API keys.
-- Distinguish verified behavior from guesses or planned features.
-
-Unacceptable behavior includes harassment, personal attacks targeting protected or personal characteristics, threats, doxxing, deliberate intimidation, sexual harassment, spam, and knowingly sharing another person's private information.
-
-## Scope
-
-This standard applies to repository issues, pull requests, discussions, reviews, and project spaces operated for Prism AI.
-
-## Reporting
-
-Report harmful behavior to the repository maintainer privately through a verified channel on the maintainer's GitHub profile. Do not quote or repost private information in a public issue. Reports will be reviewed as reasonably as possible; no response time is guaranteed.
-
-Project maintainers may edit or remove contributions and restrict participation when necessary to protect the community. Moderation should be proportionate and focused on keeping the project safe and productive.
+If you experience or witness harmful behavior, contact the repository maintainer privately through a verified channel on their GitHub profile. Avoid reposting private details in public. The maintainer may remove harmful content or restrict participation when needed.
