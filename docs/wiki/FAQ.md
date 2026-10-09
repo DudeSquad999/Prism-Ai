@@ -1,37 +1,33 @@
-# Frequently asked questions
+# FAQ
 
-## Is the browser demo the actual Prism Chat app?
+### Where do I download Prism Chat and Prism Studio?
 
-No. The root HTML/CSS/JavaScript is a separate static interface demo with prewritten content. It does not call AI models or send network requests.
+Use the [latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest). Download the Windows package under **Assets**, then follow that release's setup instructions.
 
-## Where do I download the Windows applications?
+### Is the browser demo a live AI app?
 
-Use the [latest GitHub release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) and select the packaged Windows asset under **Assets**. Read the instructions for the exact release you download.
+No. It uses fixed example content and does not call AI models.
 
-## Why does the demo question not change the answers?
+### Why doesn't typing into the demo generate an answer?
 
-The question is display-only. The demo illustrates an interface concept; it does not simulate a working model.
+The demo is for exploring the interface. Its question field is display-only.
 
-## Does Prism AI eliminate hallucinations?
+### Does Prism AI guarantee correct answers?
 
-No. Prism AI does not guarantee factual accuracy. Check generated text, citations, and reference matches against reliable sources.
+No. AI answers and citations can be wrong. Quote matching is not proof that a claim is true.
 
-## Does local project storage mean cloud providers never receive my content?
+### Do cloud AI providers receive my prompts?
 
-No. If you configure a cloud AI provider, content included in requests is sent to that provider. A local interface or local project storage does not prevent the cloud provider from receiving those requests.
+Yes. Content included in cloud requests is sent to the configured provider. Do not include sensitive information unless you're comfortable sharing it with that provider.
 
-## Does Prism Studio compile PDFs automatically?
+### Why won't PDF compilation work in Prism Studio?
 
-PDF compilation depends on having a supported TeX engine installed and configured. Check the instructions for your release.
+PDF compilation requires a TeX engine to be installed and configured.
 
-## Is every roadmap feature implemented?
+### How do I report a problem?
 
-No. Roadmap and design documents describe intended direction, not a promise that every idea is currently available.
+Use the [bug report form](https://github.com/DudeSquad999/Prism-Ai/issues/new?template=bug_report.yml). Include the app version, what you did, and what happened. Remove API keys and private information.
 
-## How do I report a bug or suggest a feature?
+### How do I suggest an improvement?
 
-Use the [bug report form](https://github.com/DudeSquad999/Prism-Ai/issues/new?template=bug_report.yml) for reproducible defects and the [feature request form](https://github.com/DudeSquad999/Prism-Ai/issues/new?template=feature_request.yml) for proposals. Include relevant versions and never include secrets.
-
-## Can I contribute?
-
-Yes. Start with [CONTRIBUTING.md](../../CONTRIBUTING.md), keep changes focused, and record only the tests you actually performed.
+Use the [feature request form](https://github.com/DudeSquad999/Prism-Ai/issues/new?template=feature_request.yml), or start a discussion if you want feedback first.
