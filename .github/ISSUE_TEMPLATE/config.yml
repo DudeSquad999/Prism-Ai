@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: General questions and community discussion
+    url: https://github.com/DudeSquad999/Prism-Ai/discussions
+    about: Ask questions and share ideas here if GitHub Discussions is enabled.
+  - name: Security concerns
+    url: https://github.com/DudeSquad999/Prism-Ai/security/advisories/new
+    about: Use private vulnerability reporting when available. Do not publish secrets or exploit details.

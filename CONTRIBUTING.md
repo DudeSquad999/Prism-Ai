@@ -1,5 +1,7 @@
 # Contributing to Prism AI
 
+Before participating, please read the [Code of Conduct](CODE_OF_CONDUCT.md). For help choosing between a discussion, bug report, feature request, and pull request, see the [Community Guide](docs/COMMUNITY_GUIDE.md).
+
 ## Understand the project first
 
 Read the [README](README.md) for the project overview and repository map.
@@ -43,6 +45,10 @@ Do not test destructive changes with personal project data. For release packagin
 - [ ] Relevant documentation is updated.
 - [ ] Actual test results and untested areas are recorded.
 - [ ] Any behavior change or remaining limitation is disclosed.
+
+## Security and privacy
+
+Never commit API keys, credentials, private conversations, or real user data. For a possible vulnerability, follow [SECURITY.md](SECURITY.md) rather than posting exploit details publicly.
 
 ## License
 

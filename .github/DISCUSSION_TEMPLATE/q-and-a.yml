@@ -1,0 +1,29 @@
+title: "Question: "
+body:
+  - type: markdown
+    attributes:
+      value: "For a reproducible defect, use the bug report form. Never share API keys or private data."
+  - type: dropdown
+    id: component
+    attributes:
+      label: Which part of Prism AI?
+      options:
+        - Static interface demo
+        - Prism Chat
+        - Prism Studio
+        - Windows setup
+        - Documentation
+        - General
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: What would you like to know?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: What have you tried?
+      description: Include release version and sanitized error messages when relevant.
