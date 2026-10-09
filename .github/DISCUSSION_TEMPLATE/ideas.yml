@@ -1,0 +1,30 @@
+title: "Idea: "
+body:
+  - type: markdown
+    attributes:
+      value: "Share a proposal for feedback. A discussion is not a commitment to implement it. Do not include secrets or private data."
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Explain the user need or current limitation.
+      placeholder: "When I try to..., I need..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you change?
+      description: Describe the smallest useful improvement.
+    validations:
+      required: true
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Trade-offs or alternatives
+      description: What might this make harder, and what alternatives exist?
+  - type: textarea
+    id: success
+    attributes:
+      label: How could we tell if it helps?
+      description: Give a concrete example or acceptance check.
