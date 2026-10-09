@@ -11,6 +11,9 @@ const coreMode = document.querySelector('#core-mode');
 const synthesisStatus = document.querySelector('#synthesis-status');
 const runComparison = document.querySelector('#run-comparison');
 const liveStatus = document.querySelector('#live-status');
+const promptInput = document.querySelector('#prompt');
+const demoQuery = document.querySelector('#demo-query');
+const emptySelection = document.querySelector('#empty-selection');
 
 let introComplete = false;
 
@@ -55,7 +58,7 @@ function updateModules() {
   moduleCards.forEach((card) => {
     const isActive = card.getAttribute('aria-pressed') === 'true';
     card.classList.toggle('active', isActive);
-    card.querySelector('.module-state').textContent = isActive ? 'Online' : 'Offline';
+    card.querySelector('.module-state').textContent = isActive ? 'Selected' : 'Not selected';
   });
 
   responseCards.forEach((card) => {
@@ -66,9 +69,11 @@ function updateModules() {
 
   activeCount.textContent = count;
   activityMeter.style.width = `${count * 25}%`;
-  activityMeter.parentElement.setAttribute('aria-label', `${count} of 4 perspective modules active`);
-  coreMode.textContent = count ? `${count} active` : 'Standby';
-  synthesisStatus.textContent = `${count} module${count === 1 ? '' : 's'} reviewed`;
+  activityMeter.parentElement.setAttribute('aria-label', `${count} of 4 perspective modules selected`);
+  coreMode.textContent = count ? `${count} selected` : 'None selected';
+  emptySelection.hidden = count > 0;
+  runComparison.disabled = count === 0;
+  synthesisStatus.textContent = 'Fixed example';
 }
 
 moduleCards.forEach((card) => {
@@ -81,11 +86,17 @@ moduleCards.forEach((card) => {
 
 runComparison.addEventListener('click', () => {
   const count = getActiveModules().length;
+  if (count === 0) return;
+  const question = promptInput.value.trim();
   const visibleCards = responseCards.filter((card) => !card.hidden);
-  coreMode.textContent = 'Scanning';
+  demoQuery.hidden = false;
+  demoQuery.textContent = question
+    ? `Question entered (display only): “${question}”`
+    : 'No question entered. The prewritten examples below are unchanged.';
+  coreMode.textContent = 'Showing examples';
   runComparison.disabled = true;
-  runComparison.textContent = 'Running local scan...';
-  liveStatus.textContent = `Running a local demonstration with ${count} selected perspective modules. No prompt data is sent or stored.`;
+  runComparison.textContent = 'Showing examples...';
+  liveStatus.textContent = `Showing prewritten examples for ${count} selected perspective modules. Your question is not sent to a model or used to change the examples.`;
 
   visibleCards.forEach((card) => card.classList.remove('revealing'));
 
@@ -93,9 +104,10 @@ runComparison.addEventListener('click', () => {
     visibleCards.forEach((card, index) => {
       setTimeout(() => card.classList.add('revealing'), index * 140);
     });
-    coreMode.textContent = count ? `${count} active` : 'Standby';
-    runComparison.disabled = false;
-    runComparison.innerHTML = '<span aria-hidden="true">◈</span> Run local comparison';
+    const currentCount = getActiveModules().length;
+    coreMode.textContent = currentCount ? `${currentCount} selected` : 'None selected';
+    runComparison.disabled = currentCount === 0;
+    runComparison.innerHTML = '<span aria-hidden="true">◈</span> Show selected examples';
     document.querySelector('#comparison').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   }, 700);
 });

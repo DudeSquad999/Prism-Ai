@@ -81,11 +81,11 @@
             </div>
             <span class="local-badge">LOCAL INPUT</span>
           </div>
-          <label for="prompt">Exploration query</label>
+          <label for="prompt">Demo question (display only)</label>
           <textarea id="prompt" rows="4" placeholder="Example: How should a small team decide which project to prioritize?"></textarea>
           <div class="console-actions">
-            <p>Your text remains in this browser tab. The sample responses below are prewritten.</p>
-            <button class="primary-button" id="run-comparison" type="button"><span aria-hidden="true">◈</span> Run local comparison</button>
+            <p>Your question stays in this tab. It does not change the prewritten examples or get sent anywhere.</p>
+            <button class="primary-button" id="run-comparison" type="button"><span aria-hidden="true">◈</span> Show selected examples</button>
           </div>
           <p class="screen-reader-status" id="live-status" aria-live="polite"></p>
         </div>
@@ -108,8 +108,8 @@
             <div class="core-particles"><i></i><i></i><i></i><i></i><i></i><i></i></div>
           </div>
           <div class="activity-readout">
-            <div><span class="readout-number" id="active-count">3</span><span class="readout-label">Modules active</span></div>
-            <div class="meter" aria-label="Three of four perspective modules active"><span id="activity-meter"></span></div>
+            <div><span class="readout-number" id="active-count">3</span><span class="readout-label">Modules selected</span></div>
+            <div class="meter" aria-label="Three of four perspective modules selected"><span id="activity-meter"></span></div>
           </div>
         </section>
       </section>
@@ -128,25 +128,25 @@
             <span class="module-index">A1</span>
             <span class="module-symbol analytical">△</span>
             <span class="module-copy"><strong>Analytical</strong><small>Maps assumptions, constraints, and decision criteria.</small></span>
-            <span class="module-state">Online</span>
+            <span class="module-state">Selected</span>
           </button>
           <button class="module-card active" type="button" data-module="creative" aria-pressed="true">
             <span class="module-index">C2</span>
             <span class="module-symbol creative">✦</span>
             <span class="module-copy"><strong>Creative</strong><small>Suggests reframes and alternative paths forward.</small></span>
-            <span class="module-state">Online</span>
+            <span class="module-state">Selected</span>
           </button>
           <button class="module-card active" type="button" data-module="practical" aria-pressed="true">
             <span class="module-index">P3</span>
             <span class="module-symbol practical">◫</span>
             <span class="module-copy"><strong>Practical</strong><small>Focuses on effort, sequencing, and workable next steps.</small></span>
-            <span class="module-state">Online</span>
+            <span class="module-state">Selected</span>
           </button>
           <button class="module-card" type="button" data-module="skeptical" aria-pressed="false">
             <span class="module-index">S4</span>
             <span class="module-symbol skeptical">⌁</span>
             <span class="module-copy"><strong>Skeptical</strong><small>Looks for missing evidence, risks, and weak assumptions.</small></span>
-            <span class="module-state">Offline</span>
+            <span class="module-state">Not selected</span>
           </button>
         </div>
       </section>
@@ -159,6 +159,8 @@
           </div>
           <span class="demo-chip">PREWRITTEN DEMO CONTENT</span>
         </div>
+        <p class="demo-query" id="demo-query" hidden></p>
+        <p class="empty-selection" id="empty-selection" hidden>No perspectives selected. Choose at least one module above to show its example.</p>
         <div class="response-grid" id="response-grid">
           <article class="response-card" data-response="analytical">
             <header><span class="response-symbol analytical">△</span><div><p class="system-kicker">A1 module</p><h4>Analytical lens</h4></div><span class="lens-tag">Structure</span></header>
@@ -187,16 +189,16 @@
         <div class="synthesis-head">
           <div>
             <p class="system-kicker">03 // Prism synthesis</p>
-            <h3 id="synthesis-title">Make the unknowns visible.</h3>
+            <h3 id="synthesis-title">Example synthesis (fixed).</h3>
           </div>
-          <span class="synthesis-status" id="synthesis-status">3 modules reviewed</span>
+          <span class="synthesis-status" id="synthesis-status">Fixed example</span>
         </div>
         <div class="synthesis-grid">
           <article><span class="synthesis-icon agreement">+</span><h4>Common ground</h4><p>Begin with a limited experiment and make the decision criteria visible before comparing options.</p></article>
           <article><span class="synthesis-icon difference">↗</span><h4>Different emphasis</h4><p>The lenses prioritize structure, alternatives, action, and risk in different ways.</p></article>
-          <article><span class="synthesis-icon uncertainty">?</span><h4>Uncertainty remains</h4><p>This demonstration does not include real market data, capacity details, or user research.</p></article>
+          <article><span class="synthesis-icon uncertainty">?</span><h4>Uncertainty remains</h4><p>This is a fixed example, not a result generated from your selected lenses or real market data.</p></article>
         </div>
-        <div class="next-action"><span aria-hidden="true">→</span><div><p class="system-kicker">Suggested next action</p><strong>Identify one assumption that could change the decision, then design the smallest test that could challenge it.</strong></div></div>
+        <div class="next-action"><span aria-hidden="true">→</span><div><p class="system-kicker">Suggested next action</p><strong>Example next step: identify one assumption that could change the decision, then design the smallest test that could challenge it.</strong></div></div>
       </section>
     </main>
   </div>

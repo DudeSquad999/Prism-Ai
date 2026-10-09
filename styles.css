@@ -133,3 +133,9 @@ textarea::placeholder { color: #7490ad; }
 @media (max-width: 1050px) { .command-center { grid-template-columns: 1fr; }.sidebar { position: static; min-height: auto; padding: 1rem 1.2rem; border-right: 0; border-bottom: 1px solid var(--line); }.sidebar-status, .local-card { display: none; }.nav-list { display: flex; flex-wrap: wrap; }.hero-grid { grid-template-columns: 1fr; }.prism-panel { min-height: auto; }.core-stage { min-height: 10rem; } }
 @media (max-width: 760px) { .topbar, .section-heading, .synthesis-head, .console-actions { align-items: flex-start; flex-direction: column; }.hud-status, .section-copy { justify-content: flex-start; text-align: left; }.module-grid, .response-grid, .synthesis-grid { grid-template-columns: 1fr; }.primary-button { width: 100%; }.module-card { grid-template-columns: auto auto minmax(0, 1fr); }.module-state { display: none; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } .boot-screen { display: none; }.command-center { opacity: 1; transform: none; } }
+
+
+/* Clear states for the static demo and reduced-motion users. */
+.demo-query, .empty-selection { margin: 1rem 0 0; padding: 0.85rem 1rem; color: var(--muted); background: rgba(96, 230, 255, 0.06); border: 1px solid var(--line); border-radius: 0.7rem; overflow-wrap: anywhere; }
+.empty-selection { color: var(--amber); }
+.primary-button:disabled { cursor: not-allowed; opacity: 0.5; filter: grayscale(0.35); box-shadow: none; transform: none; }
