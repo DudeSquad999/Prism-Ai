@@ -1,12 +1,11 @@
-# Community and support
+# Help and feedback
 
-Use the [Community Guide](../COMMUNITY_GUIDE.md) to choose the right place for questions, ideas, bug reports, and contributions.
+- [Setup guide](../../GETTING_STARTED.md) — installing the Windows apps.
+- [FAQ](FAQ.md) — common questions.
+- [Discussions](https://github.com/DudeSquad999/Prism-Ai/discussions) — questions and ideas, if enabled.
+- [Bug report](https://github.com/DudeSquad999/Prism-Ai/issues/new?template=bug_report.yml) — report something broken.
+- [Feature request](https://github.com/DudeSquad999/Prism-Ai/issues/new?template=feature_request.yml) — suggest an improvement.
+- [Contributing](../../CONTRIBUTING.md) — code and documentation changes.
+- [Security policy](../../SECURITY.md) — report security concerns privately.
 
-- [Ask a question in Discussions](https://github.com/DudeSquad999/Prism-Ai/discussions), if enabled.
-- [Report a reproducible bug](https://github.com/DudeSquad999/Prism-Ai/issues/new?template=bug_report.yml).
-- [Suggest a feature](https://github.com/DudeSquad999/Prism-Ai/issues/new?template=feature_request.yml).
-- [Read contribution guidelines](../../CONTRIBUTING.md).
-- [Read the Code of Conduct](../../CODE_OF_CONDUCT.md).
-- [Read security reporting guidance](../../SECURITY.md).
-
-Keep each thread focused, identify the app or demo, and never post secrets or private data.
+Keep posts focused. Include the app or demo and version when relevant. Never share API keys, credentials, or private information.
