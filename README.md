@@ -2,7 +2,7 @@
 
 Prism AI is an early-stage research and writing project with two Windows apps: **Prism Chat** and **Prism Studio**. This repository also includes a small browser demo.
 
-[Windows downloads](https://github.com/DudeSquad999/Prism-Ai/releases/latest) · [Setup guide](GETTING_STARTED.md) · [Roadmap](ROADMAP.md)
+[Windows downloads](https://github.com/DudeSquad999/Prism-Ai/releases/latest) · [Setup guide](guides/GETTING_STARTED.md) · [Browser demo](demo/index.html)
 
 ## What's included?
 
@@ -10,13 +10,13 @@ Prism AI is an early-stage research and writing project with two Windows apps: *
 - **Prism Studio:** AI-assisted LaTeX writing and document workflows.
 - **Browser demo:** fixed example content; it does not use AI.
 
-The Windows apps are described in the published v2.0.0 release notes. Not every feature has been independently tested. The roadmap and design notes describe ideas, not guarantees.
+The Windows apps are described in the published v2.0.0 release notes. Not every feature has been independently tested. The project folder contains plans and design notes, not guarantees.
 
 ## Download the Windows apps
 
 1. Open [Releases](https://github.com/DudeSquad999/Prism-Ai/releases/latest).
 2. Download the Windows package under **Assets**, not the source-code ZIP.
-3. Extract it and follow the instructions for that release and in [GETTING_STARTED.md](GETTING_STARTED.md).
+3. Extract it and follow the [setup guide](guides/GETTING_STARTED.md) and the instructions included with that release.
 
 ## Try the browser demo
 
@@ -28,12 +28,13 @@ Live AI requires a configured cloud provider or local model. Cloud requests send
 
 AI answers and citations can be wrong. Quote matching does not prove a claim is true. Prism Studio PDF compilation requires a configured TeX engine.
 
-## More information
+## Repository
 
-- [Testing checklist](TESTING.md)
-- [Roadmap](ROADMAP.md)
-- [Design notes](Prism-Ai-How-I-Want-It-To-Work.md)
+- [Setup guide](guides/GETTING_STARTED.md)
+- [Testing checklist](guides/TESTING.md)
+- [Project plans and design notes](project/)
 - [Contributing](CONTRIBUTING.md)
+- [Security](SECURITY.md)
 - [License](LICENSE)
 
-The `demo/` folder contains the browser demo, not the source for Prism Chat or Prism Studio.
+Application packages are published under [Releases](https://github.com/DudeSquad999/Prism-Ai/releases). The `demo/` folder is separate from the Windows apps.
