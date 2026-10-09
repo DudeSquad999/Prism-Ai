@@ -7,7 +7,7 @@ Prism AI v2.0.0 packages Prism Chat and Prism Studio together for Windows.
 - [Release notes](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v2.0.0)
 - [Download PrismV2.0.0.zip](https://github.com/DudeSquad999/Prism-Ai/releases/download/v2.0.0/PrismV2.0.0.zip)
 
-The uploaded attachment is named `PrismV2.0.0.zip`; the release notes currently refer to it as `Prism-AI-Windows-v2.0.0.zip`. Use the download link above.
+The download link above points to the published `PrismV2.0.0.zip` attachment. If the release page's written instructions show a different filename, trust the actual attachment name and report the mismatch so the release notes can be corrected.
 
 ## Install and launch
 
