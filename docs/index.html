@@ -1,108 +1,117 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Prism AI — Local-first AI research and writing workspace for Windows</title>
-  <meta name="description" content="Prism AI is a local-first AI research and writing workspace for Windows. Organize sources, chat with local or cloud models, and create Markdown or LaTeX documents.">
-  <meta property="og:title" content="Prism AI — Local-first AI research and writing workspace for Windows">
-  <meta property="og:description" content="Organize sources, chat with local or cloud AI models, and turn research into Markdown or LaTeX documents.">
-  <meta property="og:type" content="website">
-  <style>
-    :root { color-scheme: dark; --bg:#0b1020; --panel:#131a2e; --text:#e8ecf8; --muted:#a7b0c7; --accent:#5eead4; --accent2:#818cf8; }
-    * { box-sizing:border-box; }
-    body { margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
-    .wrap { max-width:1080px; margin:0 auto; padding:48px 24px; }
-    header { text-align:center; padding:32px 0 8px; }
-    h1 { font-size:clamp(2rem,5vw,3.25rem); margin:0 0 12px; letter-spacing:-.02em; }
-    .tagline { color:var(--muted); font-size:1.15rem; max-width:760px; margin:0 auto; }
-    .cta { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin:28px 0 8px; }
-    .btn { display:inline-block; padding:12px 22px; border-radius:10px; text-decoration:none; font-weight:650; }
-    .primary { background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#08111f; }
-    .secondary { border:1px solid #2c3654; color:var(--text); }
-    .note { color:var(--muted); font-size:.9rem; }
-    .demo { margin:36px auto; max-width:900px; background:var(--panel); border:1px solid #232d49; border-radius:16px; padding:18px; text-align:center; }
-    .demo img { max-width:100%; border-radius:10px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin:42px 0; }
-    .card { background:var(--panel); border:1px solid #232d49; border-radius:14px; padding:22px; }
-    .card h3 { margin-top:0; }
-    .card p { color:var(--muted); }
-    h2 { font-size:1.65rem; margin-top:48px; }
-    ul { color:var(--muted); }
-    a { color:var(--accent); }
-    footer { margin-top:64px; padding-top:24px; border-top:1px solid #232d49; color:var(--muted); font-size:.9rem; text-align:center; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prism AI — Local-first AI research and writing workspace for Windows</title>
+<meta name="description" content="Prism AI is a local-first AI research and writing workspace for Windows. Organize sources, chat with local or cloud AI models, and turn research into Markdown or LaTeX documents.">
+<meta name="keywords" content="local-first AI research workspace, Windows AI writing app, local LLM note taking, AI research assistant, Markdown research tool, LaTeX AI writing assistant">
+<link rel="canonical" href="https://dudesquad999.github.io/Prism-Ai/">
+<meta property="og:site_name" content="Prism AI">
+<meta property="og:title" content="Prism AI — Local-first AI research and writing workspace for Windows">
+<meta property="og:description" content="Organize sources, chat with local or cloud AI models, and turn research into Markdown or LaTeX documents.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dudesquad999.github.io/Prism-Ai/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prism AI — Local-first AI research and writing workspace for Windows">
+<meta name="twitter:description" content="Organize sources, chat with local or cloud AI models, and turn research into Markdown or LaTeX documents.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Prism AI",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Windows",
+  "description": "A local-first AI research and writing workspace for Windows. Organize sources, chat with local or cloud AI models, and turn research into Markdown or LaTeX documents.",
+  "url": "https://dudesquad999.github.io/Prism-Ai/",
+  "downloadUrl": "https://github.com/DudeSquad999/Prism-Ai/releases/latest",
+  "softwareVersion": "3.1.0",
+  "license": "https://github.com/DudeSquad999/Prism-Ai/blob/main/LICENSE",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+:root{color-scheme:dark;--bg:#080d1a;--panel:#111827;--panel2:#151d31;--line:#24304d;--text:#e9edf8;--muted:#a3adc6;--accent:#5eead4;--accent2:#818cf8;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(1200px 600px at 80% -10%,#16213c 0%,var(--bg) 55%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6}.wrap{max-width:1120px;margin:auto;padding:56px 22px}a{color:var(--accent)}.center{text-align:center}.eyebrow{display:inline-block;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}h1{font-size:clamp(2.1rem,5.4vw,3.6rem);line-height:1.08;margin:18px 0 14px;letter-spacing:-.03em}.sub{color:var(--muted);font-size:1.14rem;max-width:760px;margin:0 auto}.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:30px 0 10px}.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:700;border:1px solid transparent}.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#071018}.secondary{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.02)}.note{color:var(--muted);font-size:.9rem}.panel{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:20px;padding:26px;margin:38px 0}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}@media(max-width:760px){.flow{grid-template-columns:1fr 1fr}}.step{background:#0d1424;border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center}.step b{display:block;margin-bottom:6px}.step span{color:var(--muted);font-size:.92rem}.arrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:1.4rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;margin:26px 0}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}.card h3{margin:0 0 8px}.card p{color:var(--muted);margin:0}h2{font-size:1.75rem;margin:52px 0 8px;letter-spacing:-.02em}h3{font-size:1.08rem}ul{color:var(--muted);padding-left:20px}details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0}summary{cursor:pointer;font-weight:650}details p{color:var(--muted);margin:10px 0 0}.badge{display:inline-block;background:#0d1424;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:5px 11px;font-size:.8rem;margin:4px 4px 0 0}footer{margin-top:70px;padding:26px 0;border-top:1px solid var(--line);color:var(--muted);text-align:center;font-size:.92rem}
+</style>
 </head>
 <body>
-  <main class="wrap">
-    <header>
-      <h1>Prism AI</h1>
-      <p class="tagline">A local-first AI research and writing workspace for Windows.</p>
-      <p class="tagline">Organize sources and notes, chat with local or cloud AI models, and turn research into Markdown or LaTeX documents.</p>
-      <div class="cta">
-        <a class="btn primary" href="https://github.com/DudeSquad999/Prism-Ai/releases/latest">Download for Windows</a>
-        <a class="btn secondary" href="https://github.com/DudeSquad999/Prism-Ai/tree/main/demo">View browser demo</a>
-        <a class="btn secondary" href="https://github.com/DudeSquad999/Prism-Ai">View on GitHub</a>
-      </div>
-      <p class="note">Early-stage software. AI answers and citations can be wrong; verify important claims.</p>
-    </header>
+<main class="wrap">
+<section class="center">
+<span class="eyebrow">Local-first · Windows · Research to writing</span>
+<h1>Your research.<br>Your files. Your local AI.</h1>
+<p class="sub">Prism AI is a <strong>local-first AI research and writing workspace for Windows</strong>. Organize sources and notes, chat with local or cloud models, and turn research into Markdown or LaTeX documents.</p>
+<div class="cta">
+<a class="btn primary" href="https://github.com/DudeSquad999/Prism-Ai/releases/latest">Download for Windows</a>
+<a class="btn secondary" href="https://github.com/DudeSquad999/Prism-Ai/tree/main/demo">View browser demo</a>
+<a class="btn secondary" href="https://github.com/DudeSquad999/Prism-Ai">View on GitHub</a>
+</div>
+<p class="note">Early-stage software · MIT licensed · AI answers and citations can be wrong</p>
+<div>
+<span class="badge">Prism Chat</span><span class="badge">Prism Studio</span><span class="badge">Ollama</span><span class="badge">Markdown</span><span class="badge">LaTeX</span><span class="badge">Windows</span>
+</div>
+</section>
 
-    <section class="demo">
-      <img src="images/prism-ai-workflow.gif" alt="Prism AI research-to-writing workflow demonstration" loading="lazy">
-      <p class="note">Demo showing research, sources, Markdown notes, and document writing.</p>
-    </section>
+<section class="panel">
+<div class="flow">
+<div class="step"><b>1. Collect</b><span>Add sources, notes, and research context</span></div>
+<div class="arrow">→</div>
+<div class="step"><b>2. Research</b><span>Chat with a local or cloud AI model</span></div>
+<div class="arrow">→</div>
+<div class="step"><b>3. Organize</b><span>Save findings as Markdown notes</span></div>
+<div class="arrow">→</div>
+<div class="step"><b>4. Write</b><span>Draft and compile LaTeX documents</span></div>
+</div>
+</section>
 
-    <section class="grid">
-      <article class="card">
-        <h3>Local-first workflow</h3>
-        <p>Use a configured local model through Ollama when you want AI processing on your own machine.</p>
-      </article>
-      <article class="card">
-        <h3>Research to writing</h3>
-        <p>Keep sources, conversations, notes, drafts, and documents in one workspace.</p>
-      </article>
-      <article class="card">
-        <h3>Made for Windows</h3>
-        <p>Prism Chat handles research and Markdown. Prism Studio handles AI-assisted LaTeX and PDF workflows.</p>
-      </article>
-    </section>
+<section>
+<h2>What Prism AI includes</h2>
+<div class="grid">
+<article class="card"><h3>Prism Chat</h3><p>Organize research projects, work with sources and citations, ask questions, and create Markdown notes.</p></article>
+<article class="card"><h3>Prism Studio</h3><p>Draft and revise LaTeX documents, manage references, review AI edits, and compile PDFs.</p></article>
+<article class="card"><h3>Local or cloud AI</h3><p>Use a local model through Ollama, or configure your own Google Gemini, Anthropic, or OpenAI API key.</p></article>
+</div>
+</section>
 
-    <h2>How Prism AI works</h2>
-    <div class="grid">
-      <article class="card">
-        <h3>Prism Chat</h3>
-        <p>Organize research projects, work with sources and citations, ask questions, and create Markdown notes.</p>
-      </article>
-      <article class="card">
-        <h3>Prism Studio</h3>
-        <p>Draft and revise LaTeX documents, manage references, review AI edits, and compile PDFs.</p>
-      </article>
-      <article class="card">
-        <h3>Browser demo</h3>
-        <p>The browser demo is a static interface preview. It does not connect to AI models or run the Windows applications.</p>
-      </article>
-    </div>
+<section>
+<h2>Who it is for</h2>
+<div class="grid">
+<article class="card"><h3>Researchers and students</h3><p>Keep sources, conversations, notes, and drafts connected throughout a research project.</p></article>
+<article class="card"><h3>Technical and academic writers</h3><p>Move from research material into structured Markdown or LaTeX documents.</p></article>
+<article class="card"><h3>Privacy-conscious AI users</h3><p>Use a configured local model when you want AI processing on your own machine.</p></article>
+</div>
+</section>
 
-    <h2>AI and privacy</h2>
-    <p>Prism AI can use a local model or a cloud provider.</p>
-    <ul>
-      <li><strong>Local models:</strong> When configured through Ollama, model inference runs on your own machine.</li>
-      <li><strong>Cloud providers:</strong> When configured with Google Gemini, Anthropic, or OpenAI, content included in the request is sent to that provider.</li>
-      <li><strong>Your responsibility:</strong> Keep API keys private and verify important claims and citations.</li>
-    </ul>
+<section>
+<h2>AI and privacy</h2>
+<div class="grid">
+<article class="card"><h3>Local models</h3><p>When configured through Ollama, model inference runs on your own machine. Performance depends on your hardware and selected model.</p></article>
+<article class="card"><h3>Cloud providers</h3><p>When configured with Google Gemini, Anthropic, or OpenAI, content included in the request is sent to that provider.</p></article>
+<article class="card"><h3>Your responsibility</h3><p>Keep API keys private and verify important claims, citations, and AI-generated content.</p></article>
+</div>
+</section>
 
-    <h2>Documentation</h2>
-    <ul>
-      <li><a href="installation.md">Install Prism AI on Windows</a></li>
-      <li><a href="local-models.md">Use Prism AI with Ollama</a></li>
-      <li><a href="research-workflow.md">Organize research and create Markdown notes</a></li>
-      <li><a href="latex-workflow.md">Write and compile LaTeX documents</a></li>
-      <li><a href="browser-demo.md">About the browser demo</a></li>
-    </ul>
+<section>
+<h2>Frequently asked questions</h2>
+<details><summary>Does Prism AI run entirely offline?</summary><p>Prism AI can use a local model through Ollama, but live AI features require a configured local model or cloud provider. Initial installation and first-time TeX package downloads may require internet access.</p></details>
+<details><summary>Does the browser demo use AI?</summary><p>No. The browser demo is a static interface preview with fixed example content. It does not connect to AI models or demonstrate the live Windows applications.</p></details>
+<details><summary>Which platforms are supported?</summary><p>The current release supports Windows. Prism Chat is for research and Markdown workflows; Prism Studio is for AI-assisted LaTeX and PDF workflows.</p></details>
+<details><summary>Can Prism AI verify facts?</summary><p>No. Prism can help organize sources and check whether a quote appears in retrieved text, but matching a quote does not prove that a broader claim is true.</p></details>
+<details><summary>Is Prism AI free?</summary><p>Prism AI is open source under the MIT License. Cloud AI providers may charge according to your own account and usage.</p></details>
+</section>
 
-    <footer>
-      <p>Prism AI is open source under the MIT License. <a href="https://github.com/DudeSquad999/Prism-Ai">View the repository</a>.</p>
-    </footer>
-  </main>
+<section class="center panel">
+<h2 style="margin-top:0">Start with your own research</h2>
+<p class="sub">Download the Windows release, configure a local model or cloud provider, and move from sources and notes to a finished document.</p>
+<div class="cta">
+<a class="btn primary" href="https://github.com/DudeSquad999/Prism-Ai/releases/latest">Download Prism AI</a>
+<a class="btn secondary" href="installation.md">Read the setup guide</a>
+</div>
+</section>
+
+<footer>
+<p>Prism AI is open source under the MIT License. <a href="https://github.com/DudeSquad999/Prism-Ai">View the repository</a> · <a href="https://github.com/DudeSquad999/Prism-Ai/releases/latest">Download</a></p>
+</footer>
+</main>
 </body>
 </html>
