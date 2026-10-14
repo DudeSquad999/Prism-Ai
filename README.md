@@ -2,101 +2,85 @@
 
 **A local-first AI research and writing workspace for Windows.**
 
-Prism AI helps you organize research, work with AI assistance, and move from notes and conversations into finished documents. It includes two Windows desktop applications: **Prism Chat** and **Prism Studio**.
+Prism AI helps you organize sources and notes, chat with local or cloud AI models, and move from research material to finished Markdown or LaTeX documents.
+
+[Download the Windows release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) · [Try the browser demo](demo/) · [Setup guide](docs/installation.md) · [Report an issue](https://github.com/DudeSquad999/Prism-Ai/issues)
+
+![Prism AI research-to-writing workflow](docs/images/prism-ai-workflow.gif)
+
+## Why Prism AI
+
+- **Local-first workflow:** Use a configured local model through Ollama when you want AI processing on your own machine.
+- **Research to writing:** Keep sources, conversations, notes, drafts, and documents in one workspace.
+- **Made for Windows:** Prism Chat handles research and Markdown; Prism Studio handles AI-assisted LaTeX and PDF workflows.
 
 > **Early-stage software:** AI answers and citations can be wrong. Prism helps you organize and inspect information, but you are responsible for verifying important claims.
 
-[Download the latest Windows release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) · [Setup guide](guides/) · [Browser demo](#browser-demo)
-
 ---
 
-## What Prism AI is for
+## What Prism AI includes
 
-Prism AI is for researchers, students, technical writers, and privacy-conscious AI users who want their research notes, AI conversations, documents, and writing work in one place.
-
-Use Prism when you want to:
-
-- Keep research projects and conversations organized.
-- Work with an AI assistant using a configured local model or cloud provider.
-- Create and manage Markdown notes and documents.
-- Draft, revise, and compile LaTeX documents.
-- Move from research and source material toward a finished document.
-
-Prism does not eliminate AI mistakes. It is a workspace for organizing information and working with AI assistance, not a replacement for careful research.
-
----
-
-## What is included
-
-Prism AI includes two Windows applications and a separate browser demo.
+Prism AI includes two Windows desktop applications and a separate static browser demo.
 
 ### Prism Chat
 
-**Prism Chat is for research, conversations, projects, and Markdown documents.**
+Prism Chat is for research projects, conversations, sources, and Markdown documents.
 
-Use Prism Chat when you want to:
+Use it to:
 
-- Create a research project.
-- Keep AI conversations organized by project.
-- Write and manage Markdown notes.
-- Ask questions and work through research material.
-- Keep research work separate from document writing.
-
-Prism Chat is the place to explore a topic, organize your thinking, and create notes before moving into a formal document.
+- Create research projects and organize conversations.
+- Work with a configured local model or cloud AI provider.
+- Collect article extracts and scholarly abstracts from supported sources.
+- Open source cards through clickable citation markers.
+- Create, edit, save, and download Markdown documents.
+- Export conversations, sources, and tasks as Markdown.
 
 ### Prism Studio
 
-**Prism Studio is for AI-assisted writing, LaTeX documents, and document workflows.**
+Prism Studio is for AI-assisted writing, LaTeX documents, and document workflows.
 
-Use Prism Studio when you want to:
+Use it to:
 
-- Write or revise a document.
-- Work with LaTeX.
-- Draft sections, outlines, or revisions with AI assistance.
-- Compile a PDF when a TeX engine is configured.
-- Turn research notes and drafts into a more structured document.
-
-Prism Studio is the writing side of Prism. It is intended for producing and improving documents, especially technical, academic, or research-style writing.
+- Write and revise papers, articles, and Beamer presentations in LaTeX.
+- Review AI-proposed revisions before applying them.
+- Search related work and retrieve BibTeX references.
+- Compile PDFs using Tectonic.
+- Import and export project ZIP files, including Overleaf-compatible projects.
 
 ### Browser demo
 
-**The browser demo is a static preview of the interface. It is not the real AI application.**
+The browser demo is a static preview of the interface. It does not connect to AI models or demonstrate the live Windows applications.
 
-Use the browser demo if you want to see the general interface without installing anything.
-
-The demo:
-
-- Uses fixed example content.
-- Does not connect to AI models.
-- Does not send requests to cloud providers.
-- Does not demonstrate the live Windows applications.
-
-To try the actual applications, download a Windows release instead.
+For details, see [What the browser demo includes](docs/browser-demo.md).
 
 ---
 
-## Download and install
+## Install on Windows
 
 1. Open the [latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest).
-2. Under **Assets**, download the Windows package.
-3. Extract the downloaded package.
-4. Follow the setup guide and any instructions included with that release.
+2. Under **Assets**, download the Windows `.exe` installer.
+3. Run the installer and follow the setup prompts.
+4. Configure a local model through Ollama or add a cloud-provider API key.
+5. Open **Prism Chat** to create a research project and begin working with sources.
+6. Open **Prism Studio** when you are ready to draft or revise a document.
 
-Do not download the source-code ZIP if you want to run the Windows applications. Application packages are published under **Releases**.
+For detailed instructions, see [Install Prism AI on Windows](docs/installation.md).
+
+Do not download the source-code ZIP if you only want to run the applications. Application packages are published under [Releases](https://github.com/DudeSquad999/Prism-Ai/releases/latest).
 
 ---
 
 ## AI and privacy
 
-Prism can use a configured cloud AI provider or a configured local model.
+Prism AI can use a local model or a cloud provider.
 
-### Cloud AI
+### Local models
 
-When you use a cloud provider, Prism sends included content in your request to that provider. Provider usage, data handling, and charges depend on the provider you configure.
+When you configure a local model through Ollama, model inference runs on your own machine. Performance depends on your hardware, the selected model, and available memory. You may need to download the model before first use.
 
-### Local AI
+### Cloud providers
 
-When you use a local model, AI processing happens on your own machine according to the model and setup you configure.
+When you configure Google Gemini, Anthropic, or OpenAI, content included in your request is sent to that provider. Provider availability, pricing, data handling, and usage limits depend on your account and provider configuration.
 
 ### Protect your information
 
@@ -109,43 +93,26 @@ Do not put API keys, passwords, private research, or personal information in pub
 Prism AI is early-stage software.
 
 - Features and behavior may change between releases.
-- Not every feature has been independently tested.
+- Windows is the supported platform in the current release.
+- Live AI features require a configured local model or cloud provider.
 - AI answers and citations can be incorrect.
-- Matching a quote does not prove that a larger claim is true.
-- Cloud AI requires a configured provider and may cost money.
-- Prism Studio PDF compilation requires a configured TeX engine.
-- The browser demo is static and does not run AI models.
+- Matching a quote in retrieved text does not prove that a larger claim is true.
+- Research retrieval uses article extracts and abstracts rather than complete research-paper PDFs.
+- PDF compilation requires a configured TeX engine; first-time package downloads may require internet access.
+- The browser demo is static and does not connect to AI models.
 
 ---
 
-## Repository contents
+## Documentation
 
-| Folder or file | What it is for |
+| Guide | What it covers |
 |---|---|
-| `guides/` | Setup instructions, testing information, and project documentation |
-| `project/` | Plans, design notes, and development materials; these are not guarantees |
-| `demo/` | Static browser demo; separate from the Windows applications |
-| `.github/ISSUE_TEMPLATE/` | Templates that help users submit useful bug reports and feature requests |
-| `.gitignore` | Tells Git which files should not be tracked in the repository |
-| `CONTRIBUTING.md` | Explains how to contribute to Prism AI |
-| `LICENSE` | Defines the legal terms for using, modifying, and sharing the project |
-| `README.md` | The main introduction to Prism AI and how to get started |
-| `SECURITY.md` | Explains how to responsibly report security issues |
-
-Application packages are published under [Releases](https://github.com/DudeSquad999/Prism-Ai/releases/latest). The `demo/` folder is separate from the Windows applications.
-
----
-
-## Getting started
-
-1. Download the latest Windows release.
-2. Extract the package.
-3. Follow the setup guide.
-4. Configure a cloud provider or local model if you want live AI features.
-5. Open Prism Chat to create a project and begin research.
-6. Open Prism Studio when you are ready to draft or revise a document.
-
-For detailed setup instructions, see the [setup guide](guides/).
+| [Install Prism AI on Windows](docs/installation.md) | Download, installation, AI configuration, and troubleshooting |
+| [Use Prism AI with Ollama](docs/local-models.md) | Local-model setup and privacy considerations |
+| [Organize research and create Markdown notes](docs/research-workflow.md) | Prism Chat research workflow |
+| [Write and compile LaTeX documents](docs/latex-workflow.md) | Prism Studio writing and PDF workflow |
+| [Browser demo](docs/browser-demo.md) | What the static demo includes and does not include |
+| [Changelog](CHANGELOG.md) | User-visible changes by release |
 
 ---
 
@@ -187,13 +154,3 @@ Feature requests and workflow feedback are welcome through [Issues](https://gith
 ## License
 
 This project is licensed under the terms in [LICENSE](LICENSE).
-
----
-
-## Links
-
-- [Latest Windows release](https://github.com/DudeSquad999/Prism-Ai/releases/latest)
-- [Setup guide](guides/)
-- [Contributing guide](CONTRIBUTING.md)
-- [Security policy](SECURITY.md)
-- [Issue tracker](https://github.com/DudeSquad999/Prism-Ai/issues)
