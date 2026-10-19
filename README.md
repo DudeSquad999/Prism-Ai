@@ -101,6 +101,8 @@ Prism AI is early-stage software.
 - PDF compilation requires a configured TeX engine; first-time package downloads may require internet access.
 - The browser demo is static and does not connect to AI models.
 
+> **Catalog:** The in-app catalog is currently inaccurate and is not planned for correction. Development is focused on the core research and writing workflows rather than ongoing catalog maintenance. Use the documentation and release notes to confirm available features.
+
 ---
 
 ## Documentation
