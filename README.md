@@ -4,7 +4,7 @@
 
 Prism AI helps you organize sources and notes, chat with local or cloud AI models, and move from research material to finished Markdown or LaTeX documents.
 
-[Download the Windows release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) · [Try the browser demo](demo/) · [Setup guide](docs/installation.md) · [Report an issue](https://github.com/DudeSquad999/Prism-Ai/issues)
+[Download the Windows release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) · [Browse static demo files](demo/) · [Setup guide](docs/installation.md) · [Report an issue](https://github.com/DudeSquad999/Prism-Ai/issues)
 
 ## Why Prism AI
 
