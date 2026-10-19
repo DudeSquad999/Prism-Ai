@@ -52,7 +52,7 @@ Never include API keys, private conversations, or personal project data in this 
 
 ## Documentation and packaging
 
-- [ ] Check that the README links to [Getting Started](GETTING_STARTED.md).
+- [ ] Confirm the README's Setup guide link opens [Install Prism AI on Windows](../docs/installation.md).
 - [ ] Confirm release version, attachment filename, and installation instructions agree.
 - [ ] Confirm application source for the release is available and the matching commit or tag is recorded.
 - [ ] List prerequisites, known failures, and features not tested.
