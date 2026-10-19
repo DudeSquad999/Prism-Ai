@@ -17,7 +17,7 @@ Never include API keys, private conversations, or personal project data in this 
 ## Installation and launch
 
 - [ ] Download the intended release attachment and confirm its filename matches the instructions.
-- [ ] Extract the ZIP before running the installer.
+- [ ] For v3.1.0, run `Prism-3.1.0-Setup.exe` directly; no ZIP extraction is required. For later releases, follow the packaging instructions supplied with that release.
 - [ ] Follow the documented installation steps on a Windows test machine.
 - [ ] Confirm the Prism Chat shortcut launches Chat.
 - [ ] Confirm the Prism Studio shortcut launches Studio.
