@@ -58,7 +58,7 @@ For details, see [What the browser demo includes](docs/browser-demo.md).
 ## Install on Windows
 
 1. Open the [latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest).
-2. Under **Assets**, download the Windows `.exe` installer.
+2. Under **Assets**, download the Windows installer—for v3.1.0, choose `Prism-3.1.0-Setup.exe`. The source ZIP files are for inspecting or developing the code, not installing the apps.
 3. Run the installer and follow the setup prompts.
 4. Configure a local model through Ollama or add a cloud-provider API key.
 5. Open **Prism Chat** to create a research project and begin working with sources.
