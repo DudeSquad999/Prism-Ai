@@ -6,8 +6,6 @@ Prism AI helps you organize sources and notes, chat with local or cloud AI model
 
 [Download the Windows release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) · [Try the browser demo](demo/) · [Setup guide](docs/installation.md) · [Report an issue](https://github.com/DudeSquad999/Prism-Ai/issues)
 
-![Prism AI research-to-writing workflow](docs/images/prism-ai-workflow.gif)
-
 ## Why Prism AI
 
 - **Local-first workflow:** Use a configured local model through Ollama when you want AI processing on your own machine.
