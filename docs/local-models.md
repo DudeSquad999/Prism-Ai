@@ -1,6 +1,6 @@
 # Use Prism AI with Ollama and local models
 
-Prism AI supports local models through Ollama. When configured to use a local model, model inference—the processing that generates AI responses—runs on your computer rather than at a cloud AI provider.
+Prism AI supports local models through Ollama. When configured to use a local model, model inference the processing that generates AI responses runs on your computer rather than at a cloud AI provider.
 
 Local AI configuration is separate from installing the Prism Windows applications.
 
