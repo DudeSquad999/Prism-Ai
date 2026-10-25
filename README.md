@@ -10,11 +10,11 @@ The browser preview uses fixed examples. It does not connect to AI models or dem
 
 ## Why Prism AI
 
-- **Local-first workflow:** Use a configured local model through Ollama when you want AI processing on your own machine.
-- **Research to writing:** Keep sources, conversations, notes, drafts, and documents in one workspace.
-- **Made for Windows:** Prism Chat handles research and Markdown; Prism Studio handles AI-assisted LaTeX and PDF workflows.
+- Local-first workflow: Use a configured local model through Ollama when you want AI processing on your own machine.
+- Research to writing: Keep sources, conversations, notes, drafts, and documents in one workspace.
+- Made for Windows: Prism Chat handles research and Markdown; Prism Studio handles AI-assisted LaTeX and PDF workflows.
 
-> **Early-stage software:** AI answers and citations can be wrong. Prism helps you organize and inspect information, but you are responsible for verifying important claims.
+> Early-stage software: AI answers and citations can be wrong. Prism helps you organize and inspect information, but you are responsible for verifying important claims.
 
 ---
 
@@ -58,11 +58,11 @@ For details, see [What the browser demo includes](docs/browser-demo.md).
 ## Install on Windows
 
 1. Open the [latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest).
-2. Under **Assets**, download the Windows installer—for v3.1.0, choose `Prism-3.1.0-Setup.exe`. The source ZIP files are for inspecting or developing the code, not installing the apps.
+2. Under Assets, download the Windows installer. For v3.1.0, choose `Prism-3.1.0-Setup.exe`. The source ZIP files are for inspecting or developing the code, not installing the apps.
 3. Run the installer and follow the setup prompts.
 4. Configure a local model through Ollama or add a cloud-provider API key.
-5. Open **Prism Chat** to create a research project and begin working with sources.
-6. Open **Prism Studio** when you are ready to draft or revise a document.
+5. Open Prism Chat to create a research project and begin working with sources.
+6. Open Prism Studio when you are ready to draft or revise a document.
 
 For detailed instructions, see [Install Prism AI on Windows](docs/installation.md).
 
@@ -101,7 +101,7 @@ Prism AI is early-stage software.
 - PDF compilation requires a configured TeX engine; first-time package downloads may require internet access.
 - The browser demo is static and does not connect to AI models.
 
-> **Catalog:** The in-app catalog is currently inaccurate and is not planned for correction. Development is focused on the core research and writing workflows rather than ongoing catalog maintenance. Use the documentation and release notes to confirm available features.
+> Catalog: The in-app catalog is currently inaccurate and is not planned for correction. Development is focused on the core research and writing workflows rather than ongoing catalog maintenance. Use the documentation and release notes to confirm available features.
 
 ---
 
