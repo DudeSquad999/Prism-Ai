@@ -1,5 +1,7 @@
 # Prism AI
 
+![Prism AI — Your research. Your ideas. Your AI.](prism-banner.png)
+
 **A local-first AI research and writing workspace for Windows.**
 
 Prism AI helps you organize sources and notes, chat with local or cloud AI models, and move from research material to finished Markdown or LaTeX documents.
