@@ -10,6 +10,15 @@ Prism AI helps you organize sources and notes, chat with local or cloud AI model
 
 The browser preview uses fixed examples. It does not connect to AI models or demonstrate the live Windows applications.
 
+## Quick start
+
+1. Download the latest Windows installer from [Releases](https://github.com/DudeSquad999/Prism-Ai/releases/latest).
+2. Run `Prism-3.1.0-Setup.exe`.
+3. Configure Ollama or a cloud AI provider.
+4. Open Prism Chat or Prism Studio.
+
+For detailed instructions, see [Install Prism AI on Windows](docs/installation.md).
+
 ## Why Prism AI
 
 - Local-first workflow: Use a configured local model through Ollama when you want AI processing on your own machine.
