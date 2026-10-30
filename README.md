@@ -19,6 +19,12 @@ The browser preview uses fixed examples. It does not connect to AI models or dem
 
 For detailed instructions, see [Install Prism AI on Windows](docs/installation.md).
 
+## Screenshots
+
+![Prism AI interface](prism-banner.png)
+
+*Prism AI brings research, conversations, Markdown, and LaTeX workflows into one Windows workspace.*
+
 ## Why Prism AI
 
 - Local-first workflow: Use a configured local model through Ollama when you want AI processing on your own machine.
