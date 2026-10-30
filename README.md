@@ -21,9 +21,9 @@ For detailed instructions, see [Install Prism AI on Windows](docs/installation.m
 
 ## Screenshots
 
-![Prism AI interface](prism-banner.png)
+![Prism Chat interface](v71_chat_1440x900_dark.png)
 
-*Prism AI brings research, conversations, Markdown, and LaTeX workflows into one Windows workspace.*
+*Prism Chat: organize research projects, sources, conversations, and Markdown documents.*
 
 ## Why Prism AI
 
