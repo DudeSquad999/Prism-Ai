@@ -19,23 +19,32 @@ Prism brings research projects, conversations, source material, Markdown notes, 
 
 > **New here?** Download the Windows installer from the [latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest), then follow the [setup guide](docs/installation.md). Select the installer asset, not the source-code archive.
 
-## Two apps, one writing workflow
+## Get started
 
-| <div align="center"><strong>🔎 Prism Chat</strong></div> | <div align="center"><strong>✍️ Prism Studio</strong></div> |
+1. Download the Windows installer from [Prism AI Releases](https://github.com/DudeSquad999/Prism-Ai/releases/latest).
+2. Install Prism Chat and Prism Studio.
+3. Configure a local model through [Ollama](docs/local-models.md) or add a supported cloud-provider API key.
+4. Create a research project in Chat, then open Studio when you are ready to write or compile a LaTeX document.
+
+See the [installation guide](docs/installation.md) for setup and troubleshooting.
+
+## What you can do
+
+| Prism Chat | Prism Studio |
 |---|---|
-| Keep projects, conversations, and notes organized. | Draft papers, articles, and Beamer presentations in LaTeX. |
+| Organize projects, conversations, and notes. | Draft papers, articles, and Beamer presentations in LaTeX. |
 | Search supported sources and review retrieved extracts and abstracts. | Review, accept, reject, or undo proposed edits. |
 | Follow citations to source cards and inspect matching passages. | Find related work, retrieve BibTeX, and compile PDFs with Tectonic. |
 | Create, edit, save, and export Markdown notes and conversations. | Import and export project ZIP files, including Overleaf-compatible projects. |
 
-Move from research and outlines in Chat to a polished paper in Studio. Follow the [research guide](docs/research-workflow.md) and [Studio guide](docs/latex-workflow.md) for step-by-step workflows.
+Move from research and outlines in Chat to a polished paper in Studio. Read the [research guide](docs/research-workflow.md) and [Studio guide](docs/latex-workflow.md) for step-by-step workflows.
 
 ## Screenshots
 
-Screenshots below show the Windows applications in the v7.1 screenshot set. Select an image to view it at full size.
+Screenshots are from the supplied v7.1 desktop set. Select an image to open it at full size.
 
 <details open>
-<summary><strong>01 · Your research workspace</strong></summary>
+<summary><strong>01 · Home, chat, and projects</strong></summary>
 
 | Home · dark | Home · light |
 |---|---|
@@ -49,27 +58,27 @@ Screenshots below show the Windows applications in the v7.1 screenshot set. Sele
 |---|---|
 | [![Prism projects view in dark theme](docs/screenshots/v71_projects_1440x900_dark.png)](docs/screenshots/v71_projects_1440x900_dark.png) | [![Prism projects view in light theme](docs/screenshots/v71_projects_1440x900_light.png)](docs/screenshots/v71_projects_1440x900_light.png) |
 
-**A safe place to explore:** the sample project is labeled as fictional and kept separate from your own work.
+The sample project is labeled fictional and kept separate from your own work:
 
 [![Confirmation dialog for opening the clearly labeled fictional sample project](docs/screenshots/v71_sample_project_open.png)](docs/screenshots/v71_sample_project_open.png)
 
 </details>
 
 <details>
-<summary><strong>02 · Tailor your workspace</strong></summary>
+<summary><strong>02 · Personalize your workspace</strong></summary>
 
 | My Prism · dark | My Prism · light |
 |---|---|
 | [![My Prism settings in dark theme](docs/screenshots/v71_myprism_1440x900_dark.png)](docs/screenshots/v71_myprism_1440x900_dark.png) | [![My Prism settings in light theme](docs/screenshots/v71_myprism_1440x900_light.png)](docs/screenshots/v71_myprism_1440x900_light.png) |
 
-Writing-style analysis lets you review a suggestion before choosing whether to save it.
+Review a writing-style suggestion before choosing whether to save it:
 
 [![My Prism writing-style sample analysis with a reviewable suggestion](docs/screenshots/v71_myprism_writing_sample_analyzed.png)](docs/screenshots/v71_myprism_writing_sample_analyzed.png)
 
 </details>
 
 <details>
-<summary><strong>03 · Research, models, and writing tools</strong></summary>
+<summary><strong>03 · Research, AI settings, and writing tools</strong></summary>
 
 | Evidence library | AI choice · dark | AI choice · light |
 |---|---|---|
@@ -79,7 +88,7 @@ Writing-style analysis lets you review a suggestion before choosing whether to s
 |---|---|---|
 | [![AI profiles in dark theme](docs/screenshots/v71_profiles_1440x900_dark.png)](docs/screenshots/v71_profiles_1440x900_dark.png) | [![AI profiles in light theme](docs/screenshots/v71_profiles_1440x900_light.png)](docs/screenshots/v71_profiles_1440x900_light.png) | [![Teach Prism settings](docs/screenshots/v71_teaching_1440x900_dark.png)](docs/screenshots/v71_teaching_1440x900_dark.png) |
 
-Add a teaching item with its own scope, status, and priority.
+Add a teaching item with its own scope, status, and priority:
 
 [![Dialog for adding a scoped Prism teaching item](docs/screenshots/v71_teaching_add_dialog.png)](docs/screenshots/v71_teaching_add_dialog.png)
 
@@ -90,31 +99,18 @@ Add a teaching item with its own scope, status, and priority.
 </details>
 
 <details>
-<summary><strong>04 · Plan work and see it on a small screen</strong></summary>
+<summary><strong>04 · Example workflows</strong></summary>
 
-| Overnight planning | Home · mobile | Chat · mobile |
-|---|---|---|
-| [![Overnight planning view](docs/screenshots/v71_overnight_1440x900_dark.png)](docs/screenshots/v71_overnight_1440x900_dark.png) | [![Prism home screen in a narrow mobile-sized layout](docs/screenshots/v71_home_390x844_light.png)](docs/screenshots/v71_home_390x844_light.png) | [![Prism Chat in a narrow mobile-sized layout](docs/screenshots/v71_chat_390x844_light.png)](docs/screenshots/v71_chat_390x844_light.png) |
-
-**A message ready to send** (the screenshot shows the offline interface; an AI provider is not connected):
-
-[![Chat composer with a typed example message](docs/screenshots/v71_chat_composer_typed.png)](docs/screenshots/v71_chat_composer_typed.png)
+| Chat prompt · offline interface | Overnight planning |
+|---|---|
+| [![Chat composer with a typed example message](docs/screenshots/v71_chat_composer_typed.png)](docs/screenshots/v71_chat_composer_typed.png) | [![Overnight planning view](docs/screenshots/v71_overnight_1440x900_dark.png)](docs/screenshots/v71_overnight_1440x900_dark.png) |
 
 </details>
-
-## Get started on Windows
-
-1. Download the installer from [Prism AI Releases](https://github.com/DudeSquad999/Prism-Ai/releases/latest). Choose the Windows installer asset; source-code ZIP files are for developers.
-2. Run the installer and open Prism Chat or Prism Studio.
-3. Configure a local model through [Ollama](docs/local-models.md) or add a supported cloud-provider API key.
-4. Create a project in Prism Chat to organize conversations and research; open Prism Studio to write or compile a LaTeX document.
-
-The [installation guide](docs/installation.md) has detailed setup and troubleshooting instructions.
 
 ## AI, privacy, and limitations
 
 - **Local models:** With Ollama configured, model inference runs on your computer. Model downloads and some research features may still require an internet connection.
-- **Cloud providers:** Requests containing your content go to the provider you configure. Review that provider’s privacy, pricing, and usage terms.
+- **Cloud providers:** Requests containing your content go to the provider you configure. Review that provider's privacy, pricing, and usage terms.
 - **Research:** Prism can retrieve article extracts and scholarly abstracts from supported sources. A matching quote does not prove a broader claim; check important sources and conclusions yourself.
 - **Early-stage software:** Features may change between releases. AI output and citations can be incorrect, and PDF compilation requires a configured TeX engine.
 - **Browser preview:** The browser preview is a separate static demonstration with fixed examples. It does not connect to models or represent the live desktop applications.
