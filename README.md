@@ -16,7 +16,7 @@
 
 Prism brings two desktop apps together: **Prism Chat** for conversations and research, and **Prism Studio** for LaTeX writing. Choose a local model through Ollama or connect a supported cloud provider. Keep your work organized from the first research question through the final paper.
 
-> **About this release:** Prism AI 3.1.0 is an early-stage Windows release. The screenshots in this README are supplied v7.1 preview images and may not match the released applications. See the [3.1.0 changelog](CHANGELOG.md) for confirmed release details.
+> **About this release:** Prism AI 3.1.0 is an early-stage Windows release. The screenshots in this README are supplied v7.1 preview images and may not match the released applications. See the [3.1.0 changelog](CHANGELOG.md) for confirmed release details.11
 
 ## Get started
 
