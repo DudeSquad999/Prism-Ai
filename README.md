@@ -49,6 +49,10 @@ Screenshots below show the Windows applications in the v7.1 screenshot set. Sele
 |---|---|
 | [![Prism projects view in dark theme](docs/screenshots/v71_projects_1440x900_dark.png)](docs/screenshots/v71_projects_1440x900_dark.png) | [![Prism projects view in light theme](docs/screenshots/v71_projects_1440x900_light.png)](docs/screenshots/v71_projects_1440x900_light.png) |
 
+**A safe place to explore:** the sample project is labeled as fictional and kept separate from your own work.
+
+[![Confirmation dialog for opening the clearly labeled fictional sample project](docs/screenshots/v71_sample_project_open.png)](docs/screenshots/v71_sample_project_open.png)
+
 </details>
 
 <details>
@@ -57,6 +61,10 @@ Screenshots below show the Windows applications in the v7.1 screenshot set. Sele
 | My Prism · dark | My Prism · light |
 |---|---|
 | [![My Prism settings in dark theme](docs/screenshots/v71_myprism_1440x900_dark.png)](docs/screenshots/v71_myprism_1440x900_dark.png) | [![My Prism settings in light theme](docs/screenshots/v71_myprism_1440x900_light.png)](docs/screenshots/v71_myprism_1440x900_light.png) |
+
+Writing-style analysis lets you review a suggestion before choosing whether to save it.
+
+[![My Prism writing-style sample analysis with a reviewable suggestion](docs/screenshots/v71_myprism_writing_sample_analyzed.png)](docs/screenshots/v71_myprism_writing_sample_analyzed.png)
 
 </details>
 
@@ -71,6 +79,10 @@ Screenshots below show the Windows applications in the v7.1 screenshot set. Sele
 |---|---|---|
 | [![AI profiles in dark theme](docs/screenshots/v71_profiles_1440x900_dark.png)](docs/screenshots/v71_profiles_1440x900_dark.png) | [![AI profiles in light theme](docs/screenshots/v71_profiles_1440x900_light.png)](docs/screenshots/v71_profiles_1440x900_light.png) | [![Teach Prism settings](docs/screenshots/v71_teaching_1440x900_dark.png)](docs/screenshots/v71_teaching_1440x900_dark.png) |
 
+Add a teaching item with its own scope, status, and priority.
+
+[![Dialog for adding a scoped Prism teaching item](docs/screenshots/v71_teaching_add_dialog.png)](docs/screenshots/v71_teaching_add_dialog.png)
+
 | Prism Studio · dark | Prism Studio · light |
 |---|---|
 | [![Prism Studio with LaTeX editor and assistant in dark theme](docs/screenshots/v71_studio_1440x900_dark.png)](docs/screenshots/v71_studio_1440x900_dark.png) | [![Prism Studio with LaTeX editor and assistant in light theme](docs/screenshots/v71_studio_1440x900_light.png)](docs/screenshots/v71_studio_1440x900_light.png) |
@@ -84,6 +96,9 @@ Screenshots below show the Windows applications in the v7.1 screenshot set. Sele
 |---|---|---|
 | [![Overnight planning view](docs/screenshots/v71_overnight_1440x900_dark.png)](docs/screenshots/v71_overnight_1440x900_dark.png) | [![Prism home screen in a narrow mobile-sized layout](docs/screenshots/v71_home_390x844_light.png)](docs/screenshots/v71_home_390x844_light.png) | [![Prism Chat in a narrow mobile-sized layout](docs/screenshots/v71_chat_390x844_light.png)](docs/screenshots/v71_chat_390x844_light.png) |
 
+**A message ready to send** (the screenshot shows the offline interface; an AI provider is not connected):
+
+[![Chat composer with a typed example message](docs/screenshots/v71_chat_composer_typed.png)](docs/screenshots/v71_chat_composer_typed.png)
 
 </details>
 
