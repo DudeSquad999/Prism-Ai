@@ -19,6 +19,17 @@ Prism brings research projects, conversations, source material, Markdown notes, 
 
 > **New here?** Download the Windows installer from the [latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest), then follow the [setup guide](docs/installation.md). Select the installer asset, not the source-code archive.
 
+## Watch the narrated tour
+
+See how projects, research, personalization, and LaTeX fit together in this 3 minute, 42 second illustrated walkthrough. It includes English voiceover and embedded captions. The linked transcript and subtitle file are also available separately.
+
+<div align="center">
+  <a href="docs/prism-product-tour.mp4"><img src="docs/prism-product-tour-poster.png" alt="Play the narrated Prism AI product tour" width="100%"></a>
+  <p><a href="docs/prism-product-tour.mp4"><strong>Watch or download the video</strong></a> · <a href="docs/prism-product-tour-transcript.md">Read the transcript</a> · <a href="docs/prism-product-tour.en.srt">Download captions</a></p>
+</div>
+
+The tour uses supplied v7.1 screenshots and is illustrative, not a recording of the latest release. See the [changelog](CHANGELOG.md) for current release details.
+
 ## Get started
 
 1. Download the Windows installer from [Prism AI Releases](https://github.com/DudeSquad999/Prism-Ai/releases/latest).
