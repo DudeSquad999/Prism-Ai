@@ -24,19 +24,13 @@ Local-model performance depends on your hardware, available memory, and selected
 
 1. Open the [latest Prism AI release](https://github.com/DudeSquad999/Prism-Ai/releases/latest).
 2. Expand **Assets** if the download list is collapsed.
-3. Download the Windows installer. For v3.1.0, the filename is:
-
-   `Prism-3.1.0-Setup.exe`
+3. Download the Windows installer (`.exe`) listed in that release. The filename changes between versions.
 
 For installation, do not choose:
 
-- `Prism-3.1.0-source.zip`
-- `Source code (zip)`
-- `Source code (tar.gz)`
+- Source-code ZIP or tar.gz archives.
 
 Those downloads contain source code rather than the Windows installer.
-
-The installer filename may change in future releases. Check the release notes for the version you are downloading.
 
 ## 2. Install and launch
 
@@ -106,9 +100,7 @@ For Prism Studio, check PDF compilation separately. A working AI connection does
 
 ### I downloaded a ZIP instead of the installer
 
-Return to the [latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) and choose the Windows `.exe` asset.
-
-For v3.1.0, choose `Prism-3.1.0-Setup.exe`.
+Return to the [latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) and choose its Windows installer (`.exe`), not a source-code archive.
 
 ### Live AI features are unavailable
 
