@@ -21,9 +21,30 @@ For detailed instructions, see [Install Prism AI on Windows](docs/installation.m
 
 ## Screenshots
 
-![Prism Chat interface](v71_chat_1440x900_dark.png)
+The Windows apps bring research, writing, and LaTeX work into one workspace.
 
-*Prism Chat: organize research projects, sources, conversations, and Markdown documents.*
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="docs/screenshots/v71_home_1440x900_dark.png" alt="Prism home screen with recent work, AI status, and getting-started actions" width="100%">
+      <strong>Home</strong><br>Pick up recent work and check connection status.
+    </td>
+    <td align="center" width="50%">
+      <img src="docs/screenshots/v71_chat_1440x900_dark.png" alt="Prism Chat with example prompts, a message composer, and project context" width="100%">
+      <strong>Chat</strong><br>Research and write with project context.
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="docs/screenshots/v71_library_1440x900_dark.png" alt="Prism Library with evidence search, project filters, and evidence status" width="100%">
+      <strong>Library</strong><br>Review evidence, drafts, and project materials.
+    </td>
+    <td align="center" width="50%">
+      <img src="docs/screenshots/v71_studio_1440x900_dark.png" alt="Prism Studio with a LaTeX editor, compile output, and writing assistant" width="100%">
+      <strong>Studio</strong><br>Edit LaTeX and review compile output.
+    </td>
+  </tr>
+</table>
 
 ## Why Prism AI
 
