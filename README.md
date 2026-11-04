@@ -41,7 +41,7 @@ Move from research and outlines in Chat to a polished paper in Studio. Read the 
 
 ## Screenshots
 
-Screenshots are from the supplied v7.1 desktop set. Select an image to open it at full size.
+Screenshots are from the supplied v7.1 desktop set and may differ from the latest published release. Check the [release notes](CHANGELOG.md) for currently available features. Select an image to open it at full size.
 
 <details open>
 <summary><strong>01 · Home, chat, and projects</strong></summary>
