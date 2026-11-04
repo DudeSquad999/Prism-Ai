@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="prism-banner.png" alt="Prism AI — Your research. Your ideas. Your AI." width="100%">
+  <img src="prism-banner.png" alt="Prism AI: Your research, your ideas, your AI." width="100%">
   <h1>Research deeply. Write with clarity.</h1>
   <p><strong>A Windows workspace for AI-assisted research, writing, and LaTeX.</strong></p>
   <p>
@@ -17,7 +17,7 @@
 
 Prism brings research projects, conversations, source material, Markdown notes, and document writing together. Use a configured local model through Ollama or connect a supported cloud provider. Choose **Prism Chat** for research and notes, or **Prism Studio** for LaTeX writing and PDFs.
 
-> **New here?** Download the Windows installer from the [latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest), then follow the [setup guide](docs/installation.md). Select the installer asset—not the source-code archive.
+> **New here?** Download the Windows installer from the [latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest), then follow the [setup guide](docs/installation.md). Select the installer asset, not the source-code archive.
 
 ## Two apps, one writing workflow
 
