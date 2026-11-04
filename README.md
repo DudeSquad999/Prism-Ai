@@ -1,58 +1,52 @@
 <div align="center">
-  <img src="prism-banner.png" alt="Prism AI: Your research, your ideas, your AI." width="100%">
+  <img src="prism-banner.png" alt="Prism AI" width="100%">
   <h1>Research deeply. Write with clarity.</h1>
-  <p><strong>A Windows workspace for AI-assisted research, writing, and LaTeX.</strong></p>
+  <p><strong>A Windows workspace for AI-assisted research and LaTeX writing.</strong></p>
   <p>
-    <a href="https://github.com/DudeSquad999/Prism-Ai/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/DudeSquad999/Prism-Ai?label=latest%20release"></a>
+    <a href="https://github.com/DudeSquad999/Prism-Ai/releases/tag/v3.1.0"><img alt="Prism AI 3.1.0" src="https://img.shields.io/badge/release-3.1.0-6b52d9"></a>
     <img alt="Windows" src="https://img.shields.io/badge/platform-Windows-6b52d9">
-    <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/DudeSquad999/Prism-Ai"></a>
+    <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/github/license/DudeSquad999/Prism-Ai"></a>
   </p>
   <p>
-    <a href="https://github.com/DudeSquad999/Prism-Ai/releases/latest"><strong>Download Prism</strong></a> ·
-    <a href="docs/installation.md">Get started</a> ·
-    <a href="https://dudesquad999.github.io/Prism-Ai/">Try the browser preview</a> ·
-    <a href="https://github.com/DudeSquad999/Prism-Ai/issues">Report a problem</a>
+    <a href="https://github.com/DudeSquad999/Prism-Ai/releases/download/v3.1.0/Prism-3.1.0.exe"><strong>Download Prism AI 3.1.0</strong></a>
+    · <a href="docs/installation.md">Installation guide</a>
+    · <a href="https://dudesquad999.github.io/Prism-Ai/">Explore the browser preview</a>
   </p>
 </div>
 
-Prism brings research projects, conversations, source material, Markdown notes, and document writing together. Use a configured local model through Ollama or connect a supported cloud provider. Choose **Prism Chat** for research and notes, or **Prism Studio** for LaTeX writing and PDFs.
+Prism brings two desktop apps together: **Prism Chat** for conversations and research, and **Prism Studio** for LaTeX writing. Choose a local model through Ollama or connect a supported cloud provider. Keep your work organized from the first research question through the final paper.
 
-> **New here?** Download the Windows installer from the [latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest), then follow the [setup guide](docs/installation.md). Select the installer asset, not the source-code archive.
-
-## Watch the narrated tour
-
-See how projects, research, personalization, and LaTeX fit together in this 3 minute, 42 second illustrated walkthrough. It includes English voiceover and embedded captions. The linked transcript and subtitle file are also available separately.
-
-<div align="center">
-  <a href="docs/prism-product-tour.mp4"><img src="docs/prism-product-tour-poster.png" alt="Play the narrated Prism AI product tour" width="100%"></a>
-  <p><a href="docs/prism-product-tour.mp4"><strong>Watch or download the video</strong></a> · <a href="docs/prism-product-tour-transcript.md">Read the transcript</a> · <a href="docs/prism-product-tour.en.srt">Download captions</a></p>
-</div>
-
-The tour uses supplied v7.1 screenshots and is illustrative, not a recording of the latest release. See the [changelog](CHANGELOG.md) for current release details.
+> **About this release:** Prism AI 3.1.0 is an early-stage Windows release. The screenshots in this README are supplied v7.1 preview images and may not match the released applications. See the [3.1.0 changelog](CHANGELOG.md) for confirmed release details.
 
 ## Get started
 
-1. Download the Windows installer from [Prism AI Releases](https://github.com/DudeSquad999/Prism-Ai/releases/latest).
-2. Install Prism Chat and Prism Studio.
-3. Configure a local model through [Ollama](docs/local-models.md) or add a supported cloud-provider API key.
-4. Create a research project in Chat, then open Studio when you are ready to write or compile a LaTeX document.
+1. **Download:** Get the [Prism AI 3.1.0 Windows installer](https://github.com/DudeSquad999/Prism-Ai/releases/download/v3.1.0/Prism-3.1.0.exe) from [GitHub Releases](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v3.1.0). Choose the `.exe` installer, not a source-code archive.
+2. **Install:** Launch Prism Chat or Prism Studio after setup.
+3. **Connect AI:** Configure [Ollama for local models](docs/local-models.md), or add your own API key for Google Gemini, Anthropic, or OpenAI.
+4. **Start a project:** Explore and organize research in Chat, then use Studio when you are ready to write.
 
-See the [installation guide](docs/installation.md) for setup and troubleshooting.
+The full [installation and troubleshooting guide](docs/installation.md) covers setup, provider configuration, and PDF compilation.
 
-## What you can do
+## Two apps, one workflow
 
 | Prism Chat | Prism Studio |
 |---|---|
-| Organize projects, conversations, and notes. | Draft papers, articles, and Beamer presentations in LaTeX. |
-| Search supported sources and review retrieved extracts and abstracts. | Review, accept, reject, or undo proposed edits. |
-| Follow citations to source cards and inspect matching passages. | Find related work, retrieve BibTeX, and compile PDFs with Tectonic. |
-| Create, edit, save, and export Markdown notes and conversations. | Import and export project ZIP files, including Overleaf-compatible projects. |
+| Organize research projects, conversations, and notes. | Draft papers, articles, and Beamer presentations in LaTeX. |
+| Explore research and review retrieved sources. | Review proposed edits before applying them. |
+| Create, edit, save, and export Markdown notes. | Find related work, check references, and compile PDFs with Tectonic. |
+| Move outlines and project material into your writing workflow. | Import and export project ZIP files, including Overleaf-compatible projects. |
 
-Move from research and outlines in Chat to a polished paper in Studio. Read the [research guide](docs/research-workflow.md) and [Studio guide](docs/latex-workflow.md) for step-by-step workflows.
+### Choose how AI runs
 
-## Screenshots
+| Local models with Ollama | Cloud providers |
+|---|---|
+| Model inference runs on your computer after setup. Model downloads and some research features may still need an internet connection. | Prism 3.1.0 supports Google Gemini, Anthropic, and OpenAI with your own API key. Requests containing your content go to the provider you configure. |
 
-Screenshots are from the supplied v7.1 desktop set. Select an image to open it at full size.
+For research workflows, see [Organize sources and create notes](docs/research-workflow.md). For LaTeX, references, and PDFs, see [Write and compile documents](docs/latex-workflow.md).
+
+## Preview the interface
+
+These supplied screenshots show a **v7.1 preview**, not a recording or verified representation of Prism AI 3.1.0. They illustrate the product's intended workflows; screens and features may differ in the released Windows apps. Select any image to view it full size.
 
 <details open>
 <summary><strong>01 · Home, chat, and projects</strong></summary>
@@ -69,81 +63,73 @@ Screenshots are from the supplied v7.1 desktop set. Select an image to open it a
 |---|---|
 | [![Prism projects view in dark theme](docs/screenshots/v71_projects_1440x900_dark.png)](docs/screenshots/v71_projects_1440x900_dark.png) | [![Prism projects view in light theme](docs/screenshots/v71_projects_1440x900_light.png)](docs/screenshots/v71_projects_1440x900_light.png) |
 
-The sample project is labeled fictional and kept separate from your own work:
+The sample project in this preview is labeled fictional and kept separate from personal work:
 
 [![Confirmation dialog for opening the clearly labeled fictional sample project](docs/screenshots/v71_sample_project_open.png)](docs/screenshots/v71_sample_project_open.png)
 
 </details>
 
 <details>
-<summary><strong>02 · Personalize your workspace</strong></summary>
+<summary><strong>02 · Research and personalization</strong></summary>
 
-| My Prism · dark | My Prism · light |
+| Evidence library | My Prism · dark | My Prism · light |
+|---|---|---|
+| [![Prism evidence library](docs/screenshots/v71_library_1440x900_dark.png)](docs/screenshots/v71_library_1440x900_dark.png) | [![My Prism settings in dark theme](docs/screenshots/v71_myprism_1440x900_dark.png)](docs/screenshots/v71_myprism_1440x900_dark.png) | [![My Prism settings in light theme](docs/screenshots/v71_myprism_1440x900_light.png)](docs/screenshots/v71_myprism_1440x900_light.png) |
+
+| Writing-style review | AI profiles · dark | AI profiles · light |
+|---|---|---|
+| [![My Prism writing-style sample analysis with a reviewable suggestion](docs/screenshots/v71_myprism_writing_sample_analyzed.png)](docs/screenshots/v71_myprism_writing_sample_analyzed.png) | [![AI profiles in dark theme](docs/screenshots/v71_profiles_1440x900_dark.png)](docs/screenshots/v71_profiles_1440x900_dark.png) | [![AI profiles in light theme](docs/screenshots/v71_profiles_1440x900_light.png)](docs/screenshots/v71_profiles_1440x900_light.png) |
+
+| Teach Prism | Add a teaching item |
 |---|---|
-| [![My Prism settings in dark theme](docs/screenshots/v71_myprism_1440x900_dark.png)](docs/screenshots/v71_myprism_1440x900_dark.png) | [![My Prism settings in light theme](docs/screenshots/v71_myprism_1440x900_light.png)](docs/screenshots/v71_myprism_1440x900_light.png) |
-
-Review a writing-style suggestion before choosing whether to save it:
-
-[![My Prism writing-style sample analysis with a reviewable suggestion](docs/screenshots/v71_myprism_writing_sample_analyzed.png)](docs/screenshots/v71_myprism_writing_sample_analyzed.png)
+| [![Teach Prism settings](docs/screenshots/v71_teaching_1440x900_dark.png)](docs/screenshots/v71_teaching_1440x900_dark.png) | [![Dialog for adding a scoped Prism teaching item](docs/screenshots/v71_teaching_add_dialog.png)](docs/screenshots/v71_teaching_add_dialog.png) |
 
 </details>
 
 <details>
-<summary><strong>03 · Research, AI settings, and writing tools</strong></summary>
+<summary><strong>03 · AI settings, writing, and example workflows</strong></summary>
 
-| Evidence library | AI choice · dark | AI choice · light |
-|---|---|---|
-| [![Prism evidence library](docs/screenshots/v71_library_1440x900_dark.png)](docs/screenshots/v71_library_1440x900_dark.png) | [![AI choice in dark theme](docs/screenshots/v71_aichoice_1440x900_dark.png)](docs/screenshots/v71_aichoice_1440x900_dark.png) | [![AI choice in light theme](docs/screenshots/v71_aichoice_1440x900_light.png)](docs/screenshots/v71_aichoice_1440x900_light.png) |
-
-| AI profiles · dark | AI profiles · light | Teach Prism |
-|---|---|---|
-| [![AI profiles in dark theme](docs/screenshots/v71_profiles_1440x900_dark.png)](docs/screenshots/v71_profiles_1440x900_dark.png) | [![AI profiles in light theme](docs/screenshots/v71_profiles_1440x900_light.png)](docs/screenshots/v71_profiles_1440x900_light.png) | [![Teach Prism settings](docs/screenshots/v71_teaching_1440x900_dark.png)](docs/screenshots/v71_teaching_1440x900_dark.png) |
-
-Add a teaching item with its own scope, status, and priority:
-
-[![Dialog for adding a scoped Prism teaching item](docs/screenshots/v71_teaching_add_dialog.png)](docs/screenshots/v71_teaching_add_dialog.png)
+| AI choice · dark | AI choice · light |
+|---|---|
+| [![AI choice in dark theme](docs/screenshots/v71_aichoice_1440x900_dark.png)](docs/screenshots/v71_aichoice_1440x900_dark.png) | [![AI choice in light theme](docs/screenshots/v71_aichoice_1440x900_light.png)](docs/screenshots/v71_aichoice_1440x900_light.png) |
 
 | Prism Studio · dark | Prism Studio · light |
 |---|---|
 | [![Prism Studio with LaTeX editor and assistant in dark theme](docs/screenshots/v71_studio_1440x900_dark.png)](docs/screenshots/v71_studio_1440x900_dark.png) | [![Prism Studio with LaTeX editor and assistant in light theme](docs/screenshots/v71_studio_1440x900_light.png)](docs/screenshots/v71_studio_1440x900_light.png) |
 
-</details>
-
-<details>
-<summary><strong>04 · Example workflows</strong></summary>
-
-| Chat prompt · offline interface | Overnight planning |
+| Chat prompt · preview | Overnight planning · preview |
 |---|---|
 | [![Chat composer with a typed example message](docs/screenshots/v71_chat_composer_typed.png)](docs/screenshots/v71_chat_composer_typed.png) | [![Overnight planning view](docs/screenshots/v71_overnight_1440x900_dark.png)](docs/screenshots/v71_overnight_1440x900_dark.png) |
 
 </details>
 
-## AI, privacy, and limitations
+## Privacy and important limitations
 
-- **Local models:** With Ollama configured, model inference runs on your computer. Model downloads and some research features may still require an internet connection.
-- **Cloud providers:** Requests containing your content go to the provider you configure. Review that provider's privacy, pricing, and usage terms.
-- **Research:** Prism can retrieve article extracts and scholarly abstracts from supported sources. A matching quote does not prove a broader claim; check important sources and conclusions yourself.
-- **Early-stage software:** Features may change between releases. AI output and citations can be incorrect, and PDF compilation requires a configured TeX engine.
-- **Browser preview:** The browser preview is a separate static demonstration with fixed examples. It does not connect to models or represent the live desktop applications.
+- **Local AI:** With Ollama configured, model inference runs locally. Initial model downloads and some research features still require internet access.
+- **Cloud AI:** Requests containing your content are sent to the provider you configure. Review its privacy, pricing, and usage terms.
+- **Research quality:** Retrieved excerpts and matching quotes are useful evidence to inspect, not proof that a broader claim is correct. Verify important conclusions against original sources.
+- **PDFs:** Prism Studio uses Tectonic to compile PDFs. Initial TeX package downloads may need an internet connection.
+- **Early-stage software:** Features and behavior may change between releases. AI responses and citations can be incorrect.
+- **Browser preview:** The browser preview is a separate demonstration with fixed examples. It does not connect to AI models or represent the live desktop applications.
 
-Do not post API keys, passwords, private research, or personal information in public issues or screenshots.
+Never include API keys, passwords, private research, or personal information in public issues, logs, or screenshots.
 
 ## Documentation
 
-| Guide | Description |
+| Guide | What it covers |
 |---|---|
 | [Install Prism AI on Windows](docs/installation.md) | Installer, AI configuration, and troubleshooting |
-| [Use Prism AI with Ollama](docs/local-models.md) | Configure local models and understand local inference |
-| [Research and Markdown notes](docs/research-workflow.md) | Organize projects, review sources, and create notes |
-| [Write and compile LaTeX documents](docs/latex-workflow.md) | Use Prism Studio for writing, references, and PDFs |
+| [Use Prism AI with Ollama](docs/local-models.md) | Local model setup, inference, and internet requirements |
+| [Research and Markdown notes](docs/research-workflow.md) | Projects, retrieved sources, and notes |
+| [LaTeX writing and PDFs](docs/latex-workflow.md) | Documents, references, revisions, and compilation |
 | [Browser preview](docs/browser-demo.md) | What the static browser demo does and does not do |
-| [Changelog](CHANGELOG.md) | User-visible changes by release |
-| [Roadmap](project/ROADMAP.md) | Development plans (not release guarantees) |
+| [Changelog](CHANGELOG.md) | Confirmed release information |
+| [Roadmap](project/ROADMAP.md) | Development plans, not release guarantees |
 
-## Contributing
+## Contributing and support
 
-Bug reports, documentation improvements, and usability feedback are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. For security concerns, follow [SECURITY.md](SECURITY.md) and do not post vulnerabilities publicly.
+Bug reports, documentation fixes, and usability feedback are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Report product issues on [GitHub Issues](https://github.com/DudeSquad999/Prism-Ai/issues). For security concerns, follow [SECURITY.md](SECURITY.md) and do not post vulnerabilities publicly.
 
 ## License
 
-See [LICENSE](LICENSE).
+Prism AI is released under the [MIT License](LICENSE).
