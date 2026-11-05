@@ -1,5 +1,7 @@
 # Organize research sources and create Markdown notes
 
+[Documentation home](README.md) · [Installation](installation.md) · [LaTeX writing](latex-workflow.md)
+
 Prism Chat is the research side of Prism AI. Use it to organize projects, work with sources, ask questions, and create Markdown notes.
 
 ## Create a research project

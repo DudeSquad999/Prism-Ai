@@ -1,5 +1,7 @@
 # Install Prism AI on Windows
 
+[Documentation home](README.md) · [Ollama setup](local-models.md) · [Browser demo](browser-demo.md)
+
 Prism AI is an early-stage research and writing project for Windows. It includes:
 
 - Prism Chat for research, conversations, projects, and Markdown documents.

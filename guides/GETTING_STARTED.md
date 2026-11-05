@@ -1,4 +1,6 @@
-# Getting Started with Prism AI
+# Prism AI v2.0.0 · Archived getting-started guide
+
+> This guide describes the older v2.0.0 release and is retained for existing users. For the current release, see the [Prism AI installation guide](../docs/installation.md).
 
 ## Download v2.0.0
 

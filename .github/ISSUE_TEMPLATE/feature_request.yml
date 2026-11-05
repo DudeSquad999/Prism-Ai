@@ -10,7 +10,7 @@ body:
     attributes:
       label: Affected component
       options:
-        - Static interface demo
+        - Interactive browser demo
         - Prism Chat
         - Prism Studio
         - Windows Setup
