@@ -12,7 +12,7 @@
     <a href="https://github.com/DudeSquad999/Prism-Ai/releases/download/v3.1.0/Prism-3.1.0.exe"><strong>Download Prism AI 3.1.0</strong></a>
     · <a href="#see-prism">See the interface</a>
     · <a href="docs/installation.md">Installation guide</a>
-    · <a href="https://dudesquad999.github.io/Prism-Ai/">Try the browser preview</a>
+    · <a href="https://dudesquad999.github.io/Prism-Ai/">Try the interactive browser demo</a>
   </p>
 </div>
 
@@ -20,7 +20,11 @@ Prism AI is a Windows research and writing workspace made up of two companion ap
 
 > **Release and screenshots:** Prism AI 3.1.0 is an early-stage Windows release. Screenshots below come from a supplied v7.1 preview set. They illustrate workflows but are not verified images of the 3.1.0 release; actual screens and features may differ. The [3.1.0 changelog](CHANGELOG.md) describes the published release.
 
-[Workflow](#from-research-question-to-paper) · [Chat and Studio](#two-companion-apps) · [AI options](#choose-your-ai-setup) · [Screenshots](#see-prism) · [FAQ](#frequently-asked-questions) · [Guides](#documentation-and-project-links)
+[Browser demo](#try-the-browser-demo) · [Workflow](#from-research-question-to-paper) · [Chat and Studio](#two-companion-apps) · [AI options](#choose-your-ai-setup) · [Screenshots](#see-prism) · [FAQ](#frequently-asked-questions) · [Guides](#documentation-and-project-links)
+
+## Try the browser demo
+
+[Open the interactive Prism AI demo](https://dudesquad999.github.io/Prism-Ai/) to explore a sample project without installing anything or creating an account. Create projects, try scripted chat examples, edit a Markdown draft, manage tasks, and export your demo data. The demo saves work in your browser only; its sample sources and chat replies are fictional, and it does not connect to AI, search the web, or upload your content. Read the [browser demo guide](docs/browser-demo.md) for details.
 
 ## From research question to paper
 
@@ -170,9 +174,9 @@ Studio supports importing and exporting project ZIP files, including Overleaf-co
 </details>
 
 <details>
-<summary><strong>Is the browser preview the full application?</strong></summary>
+<summary><strong>Is the browser demo the full application?</strong></summary>
 
-No. It is a static demonstration with fixed examples, runs in your browser, and does not connect to AI models. Use the Windows installer for the desktop applications and live AI configuration.
+No. It is an interactive, browser-only product preview: you can manage sample projects, tasks, source cards, chat examples, and Markdown drafts, with data saved locally in your browser. Chat replies and sources are fictional examples; the demo does not connect to AI, search the web, verify citations, or upload data. See the [browser demo guide](docs/browser-demo.md) for privacy, import, and reset details. For live AI features, install the Windows applications.
 
 </details>
 
@@ -182,7 +186,7 @@ No. It is a static demonstration with fixed examples, runs in your browser, and 
 |---|---|
 | [Installation guide](docs/installation.md) | [3.1.0 release notes](CHANGELOG.md) |
 | [Research and Markdown workflow](docs/research-workflow.md) | [LaTeX writing workflow](docs/latex-workflow.md) |
-| [Local models with Ollama](docs/local-models.md) | [Browser preview limitations](docs/browser-demo.md) |
+| [Local models with Ollama](docs/local-models.md) | [Interactive browser demo guide](docs/browser-demo.md) |
 | [Contributing](CONTRIBUTING.md) | [Roadmap](project/ROADMAP.md) |
 | [Report a bug or request a feature](https://github.com/DudeSquad999/Prism-Ai/issues) | [Security policy](SECURITY.md) |
 
