@@ -1,5 +1,7 @@
 # Write and compile LaTeX documents with Prism Studio
 
+[Documentation home](README.md) · [Installation](installation.md) · [Research and Markdown](research-workflow.md)
+
 Prism Studio is the writing side of Prism AI. It is designed for AI-assisted LaTeX writing, reference workflows, and PDF compilation.
 
 ## Start a document

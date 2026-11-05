@@ -1,5 +1,7 @@
 # Prism AI online browser demo
 
+[Documentation home](README.md) · [Installation](installation.md) · [Ollama setup](local-models.md)
+
 Try the [Prism AI browser demo](https://dudesquad999.github.io/Prism-Ai/) without installing the Windows applications. It runs as a static GitHub Pages website and does not require an account, API key, backend, or downloads.
 
 ## What you can do

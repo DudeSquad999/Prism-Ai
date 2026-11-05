@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dudesquad999.github.io/Prism-Ai/sitemap.xml
