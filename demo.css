@@ -1,0 +1,54 @@
+body {
+  overflow: hidden;
+}
+
+.page > p {
+  text-wrap: pretty;
+}
+
+@media (min-width: 761px) {
+  .page > h1 {
+    max-width: 22ch;
+    text-wrap: balance;
+  }
+
+  .page > p {
+    max-width: 68ch;
+  }
+}
+
+@media (max-width: 760px) {
+  .top {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) 38px;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .top .grow,
+  .top .badge {
+    display: none;
+  }
+
+  .crumb {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .view {
+    padding: 24px 18px;
+  }
+
+  h1 {
+    font-size: clamp(26px, 7vw, 32px);
+    line-height: 1.16;
+    text-wrap: pretty;
+  }
+}
+
+#privacyStatus,
+#settingsPrivacyStatus {
+  overflow-wrap: anywhere;
+}

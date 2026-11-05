@@ -1,89 +1,52 @@
-# Prism AI Roadmap
+# Prism AI roadmap
 
-## Purpose
+Prism AI is an early-stage Windows research and writing workspace. This roadmap describes areas the project may improve; it is not a release schedule or a promise that a feature will ship. The published [3.1.0 release](../CHANGELOG.md) is the source of truth for what is available today.
 
-This roadmap organizes the project owner's current direction for Prism AI. It is a planning document, not a promise of delivery dates or production capabilities. Priorities may change as the project owner learns from testing, feedback, and implementation work.
+## Product today
 
-## Current foundation
+Prism has two companion Windows applications:
 
-### Documentation and project clarity
+- **Prism Chat** organizes research projects, conversations, source material, and Markdown notes.
+- **Prism Studio** supports LaTeX writing, project import and export, and PDF compilation.
+- **The browser demo** is a separate, local-only preview with scripted examples. It does not connect to AI or search the web. See the [demo guide](../docs/browser-demo.md).
 
-- [x] Define the product vision and intended interaction model
-- [x] Document the role of perspectives, synthesis, memory, and verification
-- [x] Add contribution, security, issue, and pull request guidance
-- [x] Clarify authorship, AI-assistance disclosure, privacy, and prototype boundaries
+## Near-term focus
 
-### Local static demonstration
+These are proposed priorities, not delivery commitments. Work should be selected from user feedback and issues, and each change should have a clear way to verify it.
 
-- [x] Create a responsive browser prototype with prewritten example content
-- [x] Include perspective selection, comparison cards, and a synthesis panel
-- [x] Label the prototype as local and static
-- [x] Avoid API keys, model providers, backend services, analytics, tracking, and network requests
+| Area | Intended outcome | How to evaluate it |
+|---|---|---|
+| First-run clarity | Help new users understand Chat, Studio, and the difference between local and cloud AI setup. | A first-time user can choose an app and complete a small starter task using the installation guide. |
+| Reliability | Make common setup, provider connection, and document compilation failures easier to understand and recover from. | Reproduce documented failure cases and verify that messages identify a practical next step. |
+| Research workflow | Make it easier to keep conversations, source material, and notes together and review evidence before using it. | Users can find the source behind a claim and distinguish retrieved material from generated text. |
+| Writing workflow | Keep drafting, reviewing changes, and compiling a document understandable as one workflow. | Users can inspect a proposed edit, choose whether to apply it, and verify the resulting PDF. |
+| Browser demo | Keep the sample project, local persistence, import/export, and reset flow useful and clearly separate from live AI features. | Exercise the main workflows on desktop and mobile, including keyboard navigation and invalid imports. |
+| Documentation | Keep setup and feature guides aligned with the released applications, and label preview material accurately. | Verify links and instructions against the current release before publishing documentation changes. |
 
-## Next: prototype refinement
+## Product quality bar
 
-### Experience quality
+For changes that touch content or user data:
 
-- [ ] Test readability, mobile layout, keyboard navigation, and focus states
-- [ ] Improve sample scenarios to demonstrate meaningful agreement and disagreement
-- [ ] Add clearer empty states and explanation of what each perspective contributes
-- [ ] Review color contrast and motion preferences
+- Explain what is local, what is sent to a configured provider, and when network access is required.
+- Make important claims, citations, and AI-assisted edits easy to inspect rather than presenting them as verified by default.
+- Give saved context, exports, and destructive actions clear user controls.
+- Test accessibility, keyboard use, responsive layouts, and recovery from errors as part of the feature, not as follow-up polish.
 
-### Documentation quality
+## Longer-term exploration
 
-- [ ] Gather feedback on whether the vision and status are understandable to a new visitor
-- [ ] Keep the product specification aligned with design decisions
-- [ ] Document accepted and rejected design choices as the project evolves
+The ideas below need a clear user need, feasibility check, and explicit product decision before implementation:
 
-## MVP exploration
+- Optional, user-controlled project memory with inspect, edit, export, and delete controls.
+- Evidence review that displays supporting source context, publication details, and known limitations.
+- Optional project sharing or collaboration with deliberate access and privacy controls.
+- Repeatable evaluation of usefulness, clarity, citation quality, and failure cases across supported workflows.
 
-The MVP should be scoped only after a concrete user need and evaluation method are chosen.
+## Not currently planned
 
-Potential MVP capabilities:
+- Representing the browser demo as a live AI product or factual verification service.
+- Adding accounts, analytics, or server-side storage to the browser demo without a separate product and privacy decision.
+- Publishing delivery dates or claiming exploratory features are committed.
 
-- [ ] Selectable perspective set for a defined use case
-- [ ] Structured response format with assumptions and uncertainty labels
-- [ ] User-visible synthesis of agreements, differences, and open questions
-- [ ] Local or controlled sample data for product testing
-- [ ] Feedback collection that is optional, transparent, and privacy-aware
+## Contributing
 
-Potential MVP success criteria:
-
-- Users can explain what each perspective represents
-- Users can identify uncertainty and open questions after reading a synthesis
-- Users can distinguish example output from verified information
-- The workflow provides value beyond a single generic response for the target use case
-
-## Validation and safety
-
-Before presenting advanced features as reliable capabilities, evaluate them deliberately.
-
-- [ ] Define what a factual claim check means in the product
-- [ ] Establish evidence-quality and freshness guidelines
-- [ ] Design user controls for any saved context or memory
-- [ ] Test whether uncertainty labels are understandable and useful
-- [ ] Define limits and escalation paths for high-stakes topics
-- [ ] Conduct privacy and security review before adding storage or third-party services
-
-## Future exploration
-
-These ideas are exploratory. They are not currently implemented commitments.
-
-- [ ] Opt-in, user-managed memory with inspection and deletion controls
-- [ ] Claim review with source context and confidence limits
-- [ ] Configurable perspective libraries for different use cases
-- [ ] Comparison history that remains under user control
-- [ ] Collaboration features with explicit sharing controls
-- [ ] Evaluation harnesses for clarity, usefulness, safety, and calibration
-
-## Non-goals for the current prototype
-
-- No live AI provider connections
-- No API keys, tokens, or secrets
-- No user accounts or persistent data storage
-- No analytics or tracking
-- No claims that the prototype verifies facts or calls real AI models
-
-## How to contribute
-
-If you want to help, start with the documentation, interface accessibility, example scenarios, or clearly scoped issues. See [CONTRIBUTING.md](../CONTRIBUTING.md) and [SECURITY.md](../SECURITY.md).
+Small, verifiable improvements to reliability, accessibility, documentation, and the research-to-writing workflow are welcome. Check the [open issues](https://github.com/DudeSquad999/Prism-Ai/issues) before starting larger work, and see [contribution guidance](../CONTRIBUTING.md) and the [security policy](../SECURITY.md).
