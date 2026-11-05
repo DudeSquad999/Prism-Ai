@@ -22,6 +22,7 @@ Practical guides for installing Prism, exploring its workflows, and configuring 
 ## Project resources
 
 - [Project overview and screenshots](../README.md)
+- [Project wiki](https://github.com/DudeSquad999/Prism-Ai/wiki)
 - [Release notes](../CHANGELOG.md)
 - [Roadmap](../project/ROADMAP.md)
 - [Contributing guidelines](../CONTRIBUTING.md)

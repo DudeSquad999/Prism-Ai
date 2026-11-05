@@ -185,12 +185,12 @@ No. It is an interactive, browser-only product preview: you can manage sample pr
 
 | Start here | Learn more |
 |---|---|
-| [Documentation index](docs/README.md) | [3.1.0 release notes](CHANGELOG.md) |
+| [Documentation index](docs/README.md) | [Project wiki](https://github.com/DudeSquad999/Prism-Ai/wiki) |
 | [Installation guide](docs/installation.md) | [Roadmap](project/ROADMAP.md) |
 | [Research and Markdown workflow](docs/research-workflow.md) | [LaTeX writing workflow](docs/latex-workflow.md) |
 | [Local models with Ollama](docs/local-models.md) | [Interactive browser demo guide](docs/browser-demo.md) |
 | [Contributing](CONTRIBUTING.md) | [Apache 2.0 license](LICENSE) |
-| [Report a bug or request a feature](https://github.com/DudeSquad999/Prism-Ai/issues) | [Security policy](SECURITY.md) |
+| [Report a bug or request a feature](https://github.com/DudeSquad999/Prism-Ai/issues) | [3.1.0 release notes](CHANGELOG.md) |
 
 ## License
 
