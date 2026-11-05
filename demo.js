@@ -207,15 +207,15 @@
     renderNav();
     let html = '';
     if (screen === 'Home') {
-      html = `<div class="eyebrow">Prism browser demo · local workspace</div><h1>Your ideas, organized.</h1>
-      <p>This fictional sample is ready to explore. Edit it, or start a project of your own.</p>
+      html = `<h1>Start with a research question.</h1>
+      <p>Explore a sample workspace, shape a draft, and see how Prism keeps a project together.</p>
       <div class="notice">Demo only: chat replies and source cards are examples, not live AI or research. Your work saves in this browser and is not uploaded.</div>
       <div class="toolbar">${button('Try a sample conversation', 'sample', 'class="primary"')}${button('New project', 'newProject')}${button('Edit the draft', 'draft')}</div>
       <div class="grid"><article class="card"><h2>${esc(project.name)}</h2><p>${project.messages.length} messages · ${project.tasks.filter((task) => task.done).length}/${project.tasks.length} tasks complete</p>${button('Open project', 'projects')}</article><article class="card"><h2>Continue writing</h2><p>${wordCount(project.draft)} words in your Markdown draft.</p>${button('Open Library', 'draft')}</article></div>`;
     } else if (screen === 'Chat') {
       html = project.messages.length ? project.messages.map((message) =>
         `<article class="message ${message.role === 'You' ? 'user' : ''}"><div class="who">${esc(message.role)}</div><div class="body">${esc(message.text)}</div></article>`
-      ).join('') : `<div class="page"><div class="eyebrow">Scripted examples · no AI connected</div><h1>What are you working on?</h1><p>Send a prompt to see a clearly labeled sample response. Nothing leaves this browser.</p><div class="grid">${button('Plan a research question', 'sample', 'class="primary"')}${button('Draft an outline', 'createDraft')}</div></div>`;
+      ).join('') : `<div class="page"><h1>What are you working on?</h1><p>Try a sample prompt to see how a research conversation might fit into a project. Replies are scripted examples; nothing leaves this browser.</p><div class="grid">${button('Plan a research question', 'sample', 'class="primary"')}${button('Draft an outline', 'createDraft')}</div></div>`;
     } else if (screen === 'Projects') {
       html = `<h1>Projects</h1><p>Create projects and switch between their conversations, tasks, sample source cards, and drafts.</p><div class="toolbar">${button('New project', 'newProject', 'class="primary"')}${button('Rename this project', 'renameProject')}${button('Delete this project', 'deleteProject')}</div><div class="grid">${state.projects.map((item, index) => `<article class="card"><h2>${esc(item.name)}</h2><p>${item.messages.length} messages · ${item.tasks.length} tasks · ${wordCount(item.draft)} draft words</p><button data-project="${index}">${index === state.active ? 'Current project' : 'Open project'}</button></article>`).join('')}</div>`;
     } else if (screen === 'Library') {
