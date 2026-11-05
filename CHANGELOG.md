@@ -6,18 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [3.1.0] - 2026-10-13
 
+Prism AI 3.1.0 is a Windows release containing Prism Chat and Prism Studio. It is an early-stage release; review the installation guide and limitations before use.
+
 ### Added
 
-- Refreshed documentation and a clearer release format.
-- Prism Chat and Prism Studio in the Windows release.
+- **Prism Chat** for research projects, conversations, source material, and Markdown documents.
+- **Prism Studio** for AI-assisted LaTeX writing and document workflows.
 - Local-model support through Ollama.
 - Cloud-provider support through user-configured Google Gemini, Anthropic, or OpenAI API keys.
+- Refreshed release and installation documentation.
 
-### Changed
+### Before installing
 
-- Updated release documentation and release-notes structure.
+- Download the Windows `.exe` installer from the [3.1.0 release page](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v3.1.0). GitHub's source-code archives are not installers.
+- See the [installation guide](docs/installation.md) and [Ollama setup guide](docs/local-models.md).
 
-### Notes
+### Limitations and privacy
 
-- Prism AI remains early-stage software; features and behavior may change between releases.
-- Windows is the supported platform in this release.
+- Windows is the supported platform for this release.
+- Live AI requires a configured local model or cloud provider. Prism Chat may show offline demo behavior when live AI is unavailable.
+- Cloud requests send included content to the provider you configure. Local inference does not mean every feature works offline.
+- Retrieved sources, AI answers, and citations can be incomplete or wrong. Review original sources and verify important claims.
+- Prism AI is early-stage software; features and behavior may change between releases.
