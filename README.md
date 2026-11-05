@@ -1,8 +1,9 @@
 <div align="center">
   <img src="prism-banner.png" alt="Prism AI: your research, your ideas, your AI" width="100%">
-  <h1>Research deeply. Write with clarity.</h1>
-  <p><strong>Go from a research question to a polished paper in one connected workspace.</strong></p>
-  <p>Explore ideas in Prism Chat. Develop your document in Prism Studio. Choose local or cloud AI.</p>
+  <h1>AI research and LaTeX writing for Windows</h1>
+  <p><strong>Research deeply. Write with clarity.</strong></p>
+  <p>Bring research projects, Markdown notes, and AI-assisted papers together in one workspace.</p>
+  <p>Explore ideas in Prism Chat. Develop your document in Prism Studio. Choose local Ollama or cloud AI.</p>
   <p>
     <a href="https://github.com/DudeSquad999/Prism-Ai/releases/tag/v3.1.0"><img alt="Prism AI 3.1.0" src="https://img.shields.io/badge/release-3.1.0-6b52d9"></a>
     <img alt="Windows" src="https://img.shields.io/badge/platform-Windows-6b52d9">

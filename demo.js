@@ -207,10 +207,10 @@
     renderNav();
     let html = '';
     if (screen === 'Home') {
-      html = `<h1>Start with a research question.</h1>
-      <p>Explore a sample workspace, shape a draft, and see how Prism keeps a project together.</p>
+      html = `<h1>Explore Prism AI’s research and writing workspace.</h1>
+      <p>Try a sample research project, edit a Markdown draft, and see how Prism keeps your work together. No install or account needed.</p>
       <div class="notice">Demo only: chat replies and source cards are examples, not live AI or research. Your work saves in this browser and is not uploaded.</div>
-      <div class="toolbar">${button('Try a sample conversation', 'sample', 'class="primary"')}${button('New project', 'newProject')}${button('Edit the draft', 'draft')}</div>
+      <div class="toolbar">${button('Try a sample conversation', 'sample', 'class="primary"')}${button('Share the demo', 'share')}${button('New project', 'newProject')}${button('Edit the draft', 'draft')}<a class="button-link" href="https://github.com/DudeSquad999/Prism-Ai/releases/latest">Get Prism for Windows</a></div>
       <div class="grid"><article class="card"><h2>${esc(project.name)}</h2><p>${project.messages.length} messages · ${project.tasks.filter((task) => task.done).length}/${project.tasks.length} tasks complete</p>${button('Open project', 'projects')}</article><article class="card"><h2>Continue writing</h2><p>${wordCount(project.draft)} words in your Markdown draft.</p>${button('Open Library', 'draft')}</article></div>`;
     } else if (screen === 'Chat') {
       html = project.messages.length ? project.messages.map((message) =>
@@ -293,6 +293,30 @@
     setTheme(state.theme); render(); toast('Project data imported into this browser.');
   }
 
+  async function shareDemo() {
+    const shareData = {
+      title: 'Prism AI browser demo',
+      text: 'Explore Prism AI’s interactive research and writing demo. No install or account needed.',
+      url: `${location.origin}${location.pathname}`
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (error) {
+        if (error.name === 'AbortError') return;
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(shareData.url);
+      toast('Demo link copied. Share it with someone who might find Prism useful.');
+    } catch (error) {
+      showDialog('Share the Prism demo', `<p>Copy this link to share the interactive demo:</p><label class="field">Demo link<input type="url" readonly value="${esc(shareData.url)}"></label>`);
+      $('dialogBody').querySelector('input').focus();
+      $('dialogBody').querySelector('input').select();
+    }
+  }
+
   function sampleConversation() {
     current().messages.push(
       { role: 'You', text: 'Help me plan a question about urban tree cover.' },
@@ -315,6 +339,7 @@
     else if (action === 'privacy') {
       showDialog('Browser demo privacy', 'This demo has no backend and does not send prompts, projects, drafts, or imports anywhere. Data is saved in this browser only. Chat replies and source cards are fictional examples; no AI or web search is connected.');
     }
+    else if (action === 'share') shareDemo();
     else if (action === 'renameProject') projectForm(true);
     else if (action === 'deleteProject') {
       if (state.projects.length === 1) return toast('Keep at least one project. Clear all data in Settings to start blank.');
