@@ -6,7 +6,7 @@
   <p>
     <a href="https://github.com/DudeSquad999/Prism-Ai/releases/tag/v3.1.0"><img alt="Prism AI 3.1.0" src="https://img.shields.io/badge/release-3.1.0-6b52d9"></a>
     <img alt="Windows" src="https://img.shields.io/badge/platform-Windows-6b52d9">
-    <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/github/license/DudeSquad999/Prism-Ai"></a>
+    <a href="LICENSE"><img alt="Apache-2.0 License" src="https://img.shields.io/github/license/DudeSquad999/Prism-Ai"></a>
   </p>
   <p>
     <a href="https://github.com/DudeSquad999/Prism-Ai/releases/download/v3.1.0/Prism-3.1.0.exe"><strong>Download Prism AI 3.1.0</strong></a>
@@ -192,4 +192,4 @@ No. It is an interactive, browser-only product preview: you can manage sample pr
 
 ## License
 
-Prism AI is open source under the [MIT License](LICENSE). Contributions and constructive feedback are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
+The current Prism AI codebase is released under the [Apache License 2.0](LICENSE), which allows use, modification, and redistribution and includes an express patent license. Versions previously distributed under MIT remain available under the terms of their original license. Contributions and constructive feedback are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
