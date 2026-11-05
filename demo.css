@@ -6,6 +6,22 @@ body {
   text-wrap: pretty;
 }
 
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 12px;
+  color: var(--text);
+  background: var(--raised);
+  text-decoration: none;
+}
+
+.button-link:hover {
+  border-color: var(--accent);
+}
+
 @media (min-width: 761px) {
   .page > h1 {
     max-width: 22ch;
