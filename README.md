@@ -21,11 +21,80 @@ Prism AI is a Windows research and writing workspace made up of two companion ap
 
 > **Release and screenshots:** Prism AI 3.1.0 is an early-stage Windows release. Screenshots below come from a supplied v7.1 preview set. They illustrate workflows but are not verified images of the 3.1.0 release; actual screens and features may differ. The [3.1.0 changelog](CHANGELOG.md) describes the published release.
 
-[Browser demo](#try-the-browser-demo) · [Workflow](#from-research-question-to-paper) · [Chat and Studio](#two-companion-apps) · [AI options](#choose-your-ai-setup) · [Screenshots](#see-prism) · [FAQ](#frequently-asked-questions) · [Guides](#documentation-and-project-links)
+[Browser demo](#try-the-browser-demo) · [Demo architecture](#browser-demo-architecture) · [Workflow](#from-research-question-to-paper) · [Chat and Studio](#two-companion-apps) · [AI options](#choose-your-ai-setup) · [Screenshots](#see-prism) · [FAQ](#frequently-asked-questions) · [Guides](#documentation-and-project-links)
 
 ## Try the browser demo
 
 [Open the interactive Prism AI demo](https://dudesquad999.github.io/Prism-Ai/) to explore a sample project without installing anything or creating an account. Create projects, try scripted chat examples, edit a Markdown draft, manage tasks, and export your demo data. The demo saves work in your browser only; its sample sources and chat replies are fictional, and it does not connect to AI, search the web, or upload your content. Read the [browser demo guide](docs/browser-demo.md) for details.
+
+## Browser demo architecture
+
+The diagram below maps the browser-only demo in [`demo.js`](demo.js): scripted chat, sample sources, project views, tasks, Markdown drafts, import/export, browser storage, and downloads. It describes the demo experience only, not the full Windows applications or the separate private Prism web backend.
+
+[![Architecture diagram of the Prism AI browser demo](https://gitdiagram.com/dudesquad999/prism-ai/diagram.png)](https://gitdiagram.com/dudesquad999/prism-ai?utm_source=readme&utm_medium=picture)
+
+[![Architecture diagram](https://gitdiagram.com/diagram-badge.svg)](https://gitdiagram.com/dudesquad999/prism-ai?utm_source=readme&utm_medium=badge)
+
+<details>
+<summary><strong>View the Mermaid source</strong></summary>
+
+```mermaid
+flowchart TD
+
+subgraph group_workspace["Demo workspace"]
+  node_demo["Demo interface<br/>[demo.js]"]
+  node_chat["Scripted chat<br/>[demo.js]"]
+end
+
+subgraph group_project["Project features"]
+  node_project_views["Project views<br/>[demo.js]"]
+  node_sources["Sample sources<br/>[demo.js]"]
+  node_tasks["Project tasks<br/>[demo.js]"]
+  node_draft["Markdown draft<br/>[demo.js]"]
+end
+
+subgraph group_persistence["Browser data"]
+  node_project_transfer["Project import/export<br/>[demo.js]"]
+  node_browser_storage[("Browser storage")]
+  node_download["Browser downloads"]
+end
+
+node_visitor(("Visitor"))
+
+node_visitor -->|"uses"| node_demo
+node_demo -->|"shows scripted"| node_chat
+node_demo -->|"renders"| node_project_views
+node_project_views -->|"shows examples"| node_sources
+node_project_views -->|"renders"| node_tasks
+node_project_views -->|"opens"| node_draft
+node_demo -->|"handles"| node_project_transfer
+node_project_transfer -->|"downloads export"| node_download
+node_project_transfer -->|"saves import"| node_browser_storage
+node_demo -->|"saves locally"| node_browser_storage
+
+click node_demo "https://github.com/DudeSquad999/Prism-Ai/blob/Main/demo.js"
+click node_chat "https://github.com/DudeSquad999/Prism-Ai/blob/Main/demo.js"
+click node_project_views "https://github.com/DudeSquad999/Prism-Ai/blob/Main/demo.js"
+click node_sources "https://github.com/DudeSquad999/Prism-Ai/blob/Main/demo.js"
+click node_tasks "https://github.com/DudeSquad999/Prism-Ai/blob/Main/demo.js"
+click node_draft "https://github.com/DudeSquad999/Prism-Ai/blob/Main/demo.js"
+click node_project_transfer "https://github.com/DudeSquad999/Prism-Ai/blob/Main/demo.js"
+
+classDef toneNeutral fill:#f8fafc,stroke:#334155,stroke-width:1.5px,color:#0f172a
+classDef toneBlue fill:#dbeafe,stroke:#2563eb,stroke-width:1.5px,color:#172554
+classDef toneAmber fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#78350f
+classDef toneMint fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#14532d
+classDef toneRose fill:#ffe4e6,stroke:#e11d48,stroke-width:1.5px,color:#881337
+classDef toneIndigo fill:#e0e7ff,stroke:#4f46e5,stroke-width:1.5px,color:#312e81
+classDef toneTeal fill:#ccfbf1,stroke:#0f766e,stroke-width:1.5px,color:#134e4a
+class node_demo,node_chat toneBlue
+class node_project_views,node_sources,node_tasks,node_draft toneAmber
+class node_project_transfer,node_browser_storage,node_download toneMint
+class node_visitor toneIndigo
+```
+
+Generated with [GitDiagram](https://gitdiagram.com/dudesquad999/prism-ai).
+</details>
 
 ## From research question to paper
 
