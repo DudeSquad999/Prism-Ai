@@ -1,4 +1,4 @@
-# Prism AI 3.1.0 — Test Report
+# Prism AI 3.1.0: Test Report
 
 Status: PARTIALLY TESTED
 
@@ -29,8 +29,8 @@ installed Windows package.
 
 | Check | Result | Scope |
 | --- | --- | --- |
-| Installation and Prism Chat launch | PASS — maintainer reported | Installation options and warning behavior were not recorded |
-| Chat conversation persistence | PASS — maintainer reported | A conversation and message remained visible after closing and reopening Chat |
+| Installation and Prism Chat launch | PASS: maintainer reported | Installation options and warning behavior were not recorded |
+| Chat conversation persistence | PASS: maintainer reported | A conversation and message remained visible after closing and reopening Chat |
 
 These checks do not verify live AI, project persistence, Prism Studio,
 PDF compilation, upgrades, or other Windows behavior.
@@ -43,9 +43,9 @@ All results in this section are reported from the development environment.
 | --- | --- |
 | JavaScript syntax: Chat, Studio, shared UI | PASS |
 | Python syntax/imports: launcher and new modules | PASS |
-| Package audit | PASS — 5,183 files inspected |
-| Wheels match `requirements-lock.txt` | PASS — 29 Windows cp312 packages |
-| Brand consistency | PASS — checked against `brand/prism-mark.svg` |
+| Package audit | PASS: 5,183 files inspected |
+| Wheels match `requirements-lock.txt` | PASS: 29 Windows cp312 packages |
+| Brand consistency | PASS: checked against `brand/prism-mark.svg` |
 | Chat unit/API tests | 146 passed, 1 skipped |
 | Studio unit/API tests | 15 passed, including Tectonic compilation on Linux |
 
@@ -77,11 +77,11 @@ These results were reported on Linux, not Windows.
 
 | Check | Reported result | Limitation |
 | --- | --- | --- |
-| Ollama 0.40.1 model download through Prism | PASS — `qwen2.5:0.5b`, approximately 398 MB | Linux Ollama only |
-| Ollama connection, missing-model error, chat and follow-up | PASS — 3 tests | Does not verify Ollama for Windows |
-| Connect AI wizard with real Ollama | PASS — detected service, listed model, sent test message, displayed “AI ready” | Development environment only |
+| Ollama 0.40.1 model download through Prism | PASS: `qwen2.5:0.5b`, approximately 398 MB | Linux Ollama only |
+| Ollama connection, missing-model error, chat and follow-up | PASS: 3 tests | Does not verify Ollama for Windows |
+| Connect AI wizard with real Ollama | PASS: detected service, listed model, sent test message, displayed “AI ready” | Development environment only |
 | Gemini, OpenAI, Anthropic with real keys | NOT RUN | Live cloud connections remain unverified |
-| Research with live Wikipedia/Crossref and scripted AI output | Invented quote was marked “Quote not found — unsupported” | One observed case, not a general accuracy evaluation |
+| Research with live Wikipedia/Crossref and scripted AI output | Invented quote was marked “Quote not found: unsupported” | One observed case, not a general accuracy evaluation |
 
 Quote matching checks whether text appears in retrieved material.
 It does not establish that the source or broader claim is correct.
@@ -126,7 +126,7 @@ Wine results are not equivalent to real-Windows results.
 | Chat-to-Studio handoff | PASS |
 | Exit stops servers and releases the running instance | PASS after fix |
 | Uninstall removes program files/shortcuts and retains data | PASS |
-| Tray icon | NOT VERIFIED — failed to display under headless Wine |
+| Tray icon | NOT VERIFIED: failed to display under headless Wine |
 
 The report describes fixes for a startup hang during concurrent
 `platform.system()` calls and a helper thread preventing shutdown.
