@@ -254,6 +254,7 @@ For detailed steps and troubleshooting, see the [Windows installation guide](doc
 | [Project roadmap](project/ROADMAP.md) | Planned and ongoing project direction |
 | [Changelog](CHANGELOG.md) | Release history and changes |
 | [Testing guide](guides/TESTING.md) | Available test information |
+| [Repository structure](docs/PROJECT_STRUCTURE.md) | File layout, ownership, and maintenance checks |
 
 ## Project status
 

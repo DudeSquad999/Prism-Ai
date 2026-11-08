@@ -31,3 +31,15 @@ venv/
 *.p12
 *.pfx
 secrets/
+
+# Python tooling and test artifacts
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Temporary and operating-system metadata
+*.tmp
+*.bak
