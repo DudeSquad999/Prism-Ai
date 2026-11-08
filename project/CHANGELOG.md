@@ -16,7 +16,7 @@ This file separates repository documentation changes from published application 
 
 These changes did not modify application code, interface styling, the Windows installer, or existing release attachments. They do not establish that the applications have been tested.
 
-## v2.0.0 — 2026-10-08
+## v2.0.0: 2026-10-08
 
 [Published release](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v2.0.0)
 
@@ -35,7 +35,7 @@ These changes did not modify application code, interface styling, the Windows in
 - Research retrieval uses extracts and abstracts. Quote matching does not establish that a claim is correct.
 - The release notes do not certify independent testing of every feature or installation path.
 
-## v1.0.0 — 2026-09-23
+## v1.0.0: 2026-09-23
 
 [Published release](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v1.0.0)
 
