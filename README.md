@@ -95,6 +95,7 @@ The screenshots below come from the **v7.1 preview set**. They show the design d
 |---|---|
 | [Documentation home](docs/README.md) | Index of all guides |
 | [First session](docs/first-session.md) | A practical first workflow and feedback path |
+| [FAQ](docs/faq.md) | Product scope, preview vs. live AI, Ollama, privacy, citations, downloads, and troubleshooting |
 | [Installation](docs/installation.md) | Windows setup and troubleshooting |
 | [Browser demo](docs/browser-demo.md) | Preview features, limitations, and privacy |
 | [Local models](docs/local-models.md) | Ollama configuration |
