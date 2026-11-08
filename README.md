@@ -1,23 +1,13 @@
-<div align="center">
-  <img src="prism-banner.png" alt="Prism AI banner" width="100%">
-  <h1>Prism AI</h1>
-  <h3>Research and LaTeX writing for Windows</h3>
-  <p><strong>Your research. Your writing. Your AI.</strong></p>
-  <p>Created and developed by Aidan · Independent software project</p>
-  <p>A Windows workspace I built to bring research, AI-assisted writing, and LaTeX document creation into one connected workflow.</p>
-  <p>
-    <a href="https://github.com/DudeSquad999/Prism-Ai/releases/tag/v3.1.0"><img alt="Latest release 3.1.0" src="https://img.shields.io/badge/release-3.1.0-6b52d9"></a>
-    <img alt="Platform Windows" src="https://img.shields.io/badge/platform-Windows-6b52d9">
-    <a href="LICENSE"><img alt="Apache 2.0 license" src="https://img.shields.io/github/license/DudeSquad999/Prism-Ai"></a>
-  </p>
-  <p>
-    <a href="https://github.com/DudeSquad999/Prism-Ai/releases/latest"><strong>Download Prism AI</strong></a>
-    · <a href="https://dudesquad999.github.io/Prism-Ai/">Explore the browser demo</a>
-    · <a href="docs/installation.md">Read the installation guide</a>
-  </p>
-</div>
+## Follow development
 
----
+I share product demonstrations, development notes, and requests for honest feedback. Follow along or join the community:
+
+- **Instagram:** [@prismhq.ai](https://www.instagram.com/prismhq.ai/) for product walkthroughs and release previews.
+- **DEV Community:** [@prismaidev](https://dev.to/prismaidev) for build notes and longer updates.
+- **Reddit:** [r/PrismAIApp](https://www.reddit.com/r/PrismAIApp/) for questions, feedback, and workflow discussions.
+- **GitHub:** [Issues and feature requests](https://github.com/DudeSquad999/Prism-Ai/issues) for reproducible bugs and product suggestions.
+
+I am building Prism in public. Honest feedback about confusing setup, missing workflows, and actual usage is especially welcome.
 
 ## Why I built Prism AI
 
@@ -246,6 +236,7 @@ For detailed steps and troubleshooting, see the [Windows installation guide](doc
 | Resource | Description |
 |---|---|
 | [Documentation index](docs/README.md) | Overview of the available guides |
+| [First-session guide](docs/first-session.md) | Try Prism with a small workflow and find the right starting point |
 | [Installation guide](docs/installation.md) | Windows setup and troubleshooting |
 | [Local models with Ollama](docs/local-models.md) | Configure local AI |
 | [Research workflow](docs/research-workflow.md) | Organize research and notes |
