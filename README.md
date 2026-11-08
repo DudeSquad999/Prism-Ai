@@ -1,14 +1,3 @@
-## Follow development
-
-I share product demonstrations, development notes, and requests for honest feedback. Follow along or join the community:
-
-- **Instagram:** [@prismhq.ai](https://www.instagram.com/prismhq.ai/) for product walkthroughs and release previews.
-- **DEV Community:** [@prismaidev](https://dev.to/prismaidev) for build notes and longer updates.
-- **Reddit:** [r/PrismAIApp](https://www.reddit.com/r/PrismAIApp/) for questions, feedback, and workflow discussions.
-- **GitHub:** [Issues and feature requests](https://github.com/DudeSquad999/Prism-Ai/issues) for reproducible bugs and product suggestions.
-
-I am building Prism in public. Honest feedback about confusing setup, missing workflows, and actual usage is especially welcome.
-
 ## Why I built Prism AI
 
 I created Prism AI because I wanted a better way to move from a research question to a finished piece of writing without constantly switching between disconnected tools. I wanted research, notes, AI assistance, and document creation to feel like parts of the same process.
@@ -236,6 +225,7 @@ For detailed steps and troubleshooting, see the [Windows installation guide](doc
 | Resource | Description |
 |---|---|
 | [Documentation index](docs/README.md) | Overview of the available guides |
+| [First-session guide](docs/first-session.md) | Get started with a practical research-to-writing workflow |
 | [First-session guide](docs/first-session.md) | Try Prism with a small workflow and find the right starting point |
 | [Installation guide](docs/installation.md) | Windows setup and troubleshooting |
 | [Local models with Ollama](docs/local-models.md) | Configure local AI |
@@ -266,6 +256,7 @@ I welcome thoughtful feedback, reproducible bug reports, documentation improveme
 - [Read the contribution guide](CONTRIBUTING.md)
 - [Review the security policy](SECURITY.md)
 - [Join the Prism AI community on Reddit](https://www.reddit.com/r/PrismAIApp/)
+- [Follow product demonstrations and development updates on Instagram](https://www.instagram.com/prismhq.ai/)
 
 Please include reproducible steps when reporting a problem. Never post API keys, passwords, private research, or personal information in public issues.
 
