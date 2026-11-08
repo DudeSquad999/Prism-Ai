@@ -2,12 +2,13 @@
 
 Practical guides for installing Prism, exploring its workflows, and configuring AI.
 
-> **New to Prism?** Start with the [installation guide](installation.md) for the current Windows release. Want to explore first? Open the [interactive browser demo](browser-demo.md).
+> **New to Prism?** Start with the [first-session guide](first-session.md) for a quick orientation. To install the Windows apps, follow the [installation guide](installation.md). To explore without installing, open the [interactive browser demo](browser-demo.md).
 
 ## Get started
 
 | Guide | What it covers |
 |---|---|
+| [Your first Prism session](first-session.md) | Choose a workspace, try a small research-to-writing workflow, and share useful feedback |
 | [Install Prism AI](installation.md) | Download, install, configure, and troubleshoot the Windows apps |
 | [Try the browser demo](browser-demo.md) | Explore the sample workspace and understand its limits and privacy |
 | [Use local models with Ollama](local-models.md) | Configure local AI and check for connection issues |
@@ -22,12 +23,12 @@ Practical guides for installing Prism, exploring its workflows, and configuring 
 ## Project resources
 
 - [Repository structure and maintenance checks](PROJECT_STRUCTURE.md)
-
 - [Project overview and screenshots](../README.md)
 - [Project wiki](https://github.com/DudeSquad999/Prism-Ai/wiki)
 - [Release notes](../CHANGELOG.md)
 - [Roadmap](../project/ROADMAP.md)
 - [Contributing guidelines](../CONTRIBUTING.md)
+- [Community feedback on Reddit](https://www.reddit.com/r/PrismAIApp/)
 
 ## Repository maintenance
 
