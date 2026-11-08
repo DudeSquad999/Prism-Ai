@@ -3,7 +3,8 @@
   <h1>Prism AI</h1>
   <h3>Research and LaTeX writing for Windows</h3>
   <p><strong>Your research. Your writing. Your AI.</strong></p>
-  <p>A connected workspace for exploring ideas, organizing research, and developing polished academic documents.</p>
+  <p>Created and developed by Aidan · Independent software project</p>
+  <p>A Windows workspace I built to bring research, AI-assisted writing, and LaTeX document creation into one connected workflow.</p>
   <p>
     <a href="https://github.com/DudeSquad999/Prism-Ai/releases/tag/v3.1.0"><img alt="Latest release 3.1.0" src="https://img.shields.io/badge/release-3.1.0-6b52d9"></a>
     <img alt="Platform Windows" src="https://img.shields.io/badge/platform-Windows-6b52d9">
@@ -18,18 +19,20 @@
 
 ---
 
-## Overview
+## Why I built Prism AI
 
-Prism AI is an early-stage Windows research and writing workspace built around two companion applications:
+I created Prism AI because I wanted a better way to move from a research question to a finished piece of writing without constantly switching between disconnected tools. I wanted research, notes, AI assistance, and document creation to feel like parts of the same process.
 
-- **Prism Chat** helps you explore questions, organize research projects, keep conversations and source material together, and write Markdown notes.
-- **Prism Studio** helps you draft papers and presentations in LaTeX, review AI-proposed edits, manage references, and compile PDFs.
+I built Prism around two companion Windows applications:
 
-Choose a local model through Ollama or connect your own supported cloud AI provider. Prism is designed to keep research and writing in one workflow while leaving decisions about sources, edits, and AI providers in your hands.
+- **Prism Chat** is where I bring research projects, conversations, source material, and Markdown notes together. It is designed to help turn scattered information into a clearer direction.
+- **Prism Studio** is where I develop that work into papers and presentations. I focused it on LaTeX writing, reviewable AI-proposed edits, references, and PDF compilation.
+
+I also wanted users to choose how they work with AI. Prism supports local models through Ollama as well as supported cloud providers using the user's own API key. My goal is to give people control over their workflow, their sources, and the AI provider they choose.
 
 > **Release note:** The current documented Windows release is **3.1.0**. Prism AI is still early-stage software. Review the [changelog](CHANGELOG.md), [installation guide](docs/installation.md), and limitations described below before relying on it for important work.
 
-## At a glance
+## The two applications I built
 
 | Prism Chat | Prism Studio |
 |---|---|
@@ -38,17 +41,17 @@ Choose a local model through Ollama or connect your own supported cloud AI provi
 | Markdown editing and exports | Reference lookup and BibTeX |
 | Research-to-outline workflow | PDF compilation with Tectonic |
 
-## Explore the browser demo
+## Try the browser demo
 
-[**Open the interactive browser demo →**](https://dudesquad999.github.io/Prism-Ai/)
+[**Explore the Prism AI demo →**](https://dudesquad999.github.io/Prism-Ai/)
 
-The browser demo is a free, static preview that runs without an account, API key, or installation. You can create sample projects, explore scripted chat examples, edit Markdown drafts, manage tasks, and import or export demo data.
+I built a browser-based preview so people can explore the project without installing the Windows applications or creating an account. You can create sample projects, try the scripted chat, edit a Markdown draft, manage tasks, and import or export demo data.
 
-**Demo boundaries:** The preview uses fictional sample sources and fixed example replies. It does not connect to an AI model, search the web, verify citations, analyze documents, or upload your work. Changes are saved in your browser's local storage. See the [browser demo guide](docs/browser-demo.md) for details.
+The preview is intentionally separate from the live applications. It uses fictional sample sources and fixed example replies; it does not connect to an AI model, search the web, verify citations, analyze documents, or upload your work. Demo changes stay in your browser's local storage. I explain the behavior and data handling in the [browser demo guide](docs/browser-demo.md).
 
 ## Browser demo architecture
 
-The diagram below describes the browser-only preview implemented in [`demo.js`](demo.js). It maps the demo interface, scripted chat, project views, sample sources, tasks, Markdown drafts, import/export, browser storage, and downloads. It is not an architecture diagram for the full Windows applications or the separate private Prism web backend.
+I used GitDiagram to map the browser preview I built in [`demo.js`](demo.js). It shows how the demo interface connects to scripted chat, project views, sample sources, tasks, Markdown drafts, import/export, browser storage, and downloads. This diagram is specifically for the browser demo, not the full Windows applications or the separate private Prism web backend.
 
 [![Architecture diagram of the Prism AI browser demo](https://gitdiagram.com/dudesquad999/prism-ai/diagram.png)](https://gitdiagram.com/dudesquad999/prism-ai?utm_source=readme&utm_medium=picture)
 
@@ -115,7 +118,9 @@ class node_visitor toneIndigo
 Generated with [GitDiagram](https://gitdiagram.com/dudesquad999/prism-ai).
 </details>
 
-## Product workflow
+## How I designed the workflow
+
+I structured Prism around a simple path: explore an idea, organize the evidence, develop the writing, and produce a finished document.
 
 | Step | What happens |
 |---|---|
@@ -124,9 +129,11 @@ Generated with [GitDiagram](https://gitdiagram.com/dudesquad999/prism-ai).
 | **03 · Develop** | Shape an outline into a paper or presentation in Prism Studio. |
 | **04 · Deliver** | Review edits, check references, and compile the document to PDF. |
 
-## Core capabilities
+## What you can do with Prism
 
 ### Prism Chat · Research and organization
+
+I designed Chat to give each research effort a home, with its conversations, source material, and notes kept together.
 
 - Create research projects and keep related conversations and notes together.
 - Explore questions and review source cards and citation markers.
@@ -134,6 +141,8 @@ Generated with [GitDiagram](https://gitdiagram.com/dudesquad999/prism-ai).
 - Create, edit, save, download, and export Markdown notes and research material.
 
 ### Prism Studio · LaTeX writing
+
+I built Studio around a more deliberate writing process: develop the document, review suggested changes, check references, and compile the result.
 
 - Draft academic papers, articles, and Beamer presentations.
 - Review proposed edits before accepting, rejecting, or undoing them.
@@ -143,9 +152,9 @@ Generated with [GitDiagram](https://gitdiagram.com/dudesquad999/prism-ai).
 
 AI-generated text, retrieved material, and citations can be incomplete or incorrect. Check original sources and review document changes before submitting or publishing work.
 
-## Choose your AI setup
+## Why I included local and cloud AI
 
-Prism supports two approaches to AI. Availability and performance depend on the application, provider configuration, model, and your hardware.
+I wanted Prism to work with different AI setups rather than locking the project to one provider. You can use models served by Ollama locally or connect a supported cloud provider with your own API key. Availability and performance depend on the application, configuration, model, and your hardware.
 
 |  | Local AI · Ollama | Cloud AI provider |
 |---|---|---|
@@ -159,9 +168,9 @@ Prism does not supply cloud API keys. Configure the provider separately in each 
 - [Ollama and local-model setup](docs/local-models.md)
 - [Full installation and provider configuration](docs/installation.md)
 
-## Screenshots
+## A look inside Prism
 
-The images below are from a supplied **v7.1 preview set**. They illustrate the intended interface and workflows; they are not verified screenshots of the 3.1.0 release, and the actual release screens or features may differ.
+I included the following interface previews to show the visual direction and workflows behind the project. These images come from the **v7.1 preview set**; they are not verified screenshots of the 3.1.0 release, so the installed release may look or behave differently.
 
 | Prism Chat · dark preview | Prism Studio · dark preview |
 |---|---|
@@ -222,7 +231,7 @@ The sample project in this preview is labeled fictional and kept separate from p
 
 </details>
 
-## Get started
+## Try what I built
 
 1. **Download the installer.** Open the [latest GitHub release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) and download the Windows `.exe` asset. GitHub's source-code ZIP and tar archives are not installers.
 2. **Install and launch.** Follow the installer prompts. Open Prism Chat for research and Markdown work, or Prism Studio for LaTeX writing.
@@ -246,9 +255,9 @@ For detailed steps and troubleshooting, see the [Windows installation guide](doc
 | [Changelog](CHANGELOG.md) | Release history and changes |
 | [Testing guide](guides/TESTING.md) | Available test information |
 
-## Current status and limitations
+## Project status
 
-- **Early-stage release:** Prism AI 3.1.0 is an early-stage Windows release. Features and behavior may change.
+I am continuing to develop Prism AI. The current documented Windows release is **3.1.0**. It is an early-stage release, so features and behavior may change.
 - **Platform:** Windows is the supported platform for this release.
 - **Screenshots:** The screenshots in this README come from the v7.1 preview set and may not match 3.1.0.
 - **AI reliability:** AI responses, retrieved sources, and citations may be incomplete or wrong. Verify important claims against original sources.
@@ -257,9 +266,9 @@ For detailed steps and troubleshooting, see the [Windows installation guide](doc
 
 See the [3.1.0 changelog](CHANGELOG.md) and the guides for more detail.
 
-## Contributing and support
+## Feedback and contributions
 
-Bug reports, documentation improvements, setup feedback, and focused contributions are welcome.
+I welcome thoughtful feedback, reproducible bug reports, documentation improvements, and focused contributions. If you try Prism, your feedback helps me identify what needs clarification, fixing, or improving.
 
 - [Report a bug or request a feature](https://github.com/DudeSquad999/Prism-Ai/issues)
 - [Read the contribution guide](CONTRIBUTING.md)
@@ -276,5 +285,5 @@ Prism AI is distributed under the [Apache License 2.0](LICENSE). Versions previo
 
 <div align="center">
   <strong>Prism AI</strong><br>
-  Research deeply. Write with clarity.
+  Created by Aidan · Research deeply. Write with clarity.
 </div>
