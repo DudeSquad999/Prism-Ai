@@ -1,0 +1,30 @@
+name: Repository quality
+
+on:
+  push:
+    branches: ["Main"]
+  pull_request:
+    branches: ["Main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  repository-checks:
+    name: Validate repository links and tooling
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test repository checker
+        run: python -m unittest discover -s tests -v
+
+      - name: Check local references
+        run: python scripts/check_repo.py
