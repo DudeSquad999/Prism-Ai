@@ -15,8 +15,7 @@ Prism AI includes two Windows applications:
 - Prism Chat for research and Markdown workflows.
 - Prism Studio for AI-assisted LaTeX writing.
 
-The `demo/` folder contains a separate static browser preview.
-Changing that folder does not change the Windows applications.
+The public browser preview is served from the repository root: `index.html`, `demo.js`, and `demo.css`. The `demo/` folder contains an alternate entry page that reuses the root assets. The `docs/` folder contains user documentation and currently retains a matching copy of that alternate entry page. Changes to the browser preview do not change the Windows applications.
 
 ## Choose a contribution
 
@@ -77,14 +76,7 @@ AI output.
 
 ### Windows-application changes
 
-The v3.1.0 release lists the application source package as
-`Prism-3.1.0-source.zip`.
-
-See [Releases](https://github.com/DudeSquad999/Prism-Ai/releases)
-for the package and its accompanying instructions.
-
-The source package and the repository's `demo/` folder serve
-different purposes.
+The Windows application source is distributed separately from this repository's static browser preview. Check the [published releases](https://github.com/DudeSquad999/Prism-Ai/releases) for the assets actually attached to each version. This repository does not contain the complete Windows application source tree, and editing the browser preview does not modify the installed applications.
 
 Before starting a Windows-app code change, open an issue to confirm:
 
@@ -138,6 +130,17 @@ change, ask for clarification in the issue before proceeding.
 
 Record only checks you actually performed. Do not claim that a
 feature works merely because it appears in the README or release notes.
+
+### Repository checks
+
+This repository includes a local-reference checker and unit tests for that checker. From the repository root, run:
+
+```powershell
+python -m unittest discover -s tests -v
+python scripts/check_repo.py
+```
+
+The checker validates relative Markdown links and local HTML/CSS asset references. It does not test external website availability, browser behavior, or Windows application functionality.
 
 ## Submitting a pull request
 
