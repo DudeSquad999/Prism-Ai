@@ -1,6 +1,6 @@
 # Project structure
 
-This repository contains the public Prism AI project site, the static browser preview, user documentation, project planning notes, and repository-maintenance tools. It is not the complete source tree for the Windows applications; consult the published release and its source package for that material.
+This repository contains the public Prism AI project site, the static browser preview, user documentation, project planning notes, and repository-maintenance tools. It is not the complete source tree for the Windows applications. Check each published release for the downloadable assets and any version-specific source package; do not treat this repository's browser preview as the full Windows application.
 
 ## Repository map
 
