@@ -76,7 +76,7 @@ AI output.
 
 ### Windows-application changes
 
-The Windows application source is distributed separately from this repository's static browser preview. Check the [published releases](https://github.com/DudeSquad999/Prism-Ai/releases) for the assets actually attached to each version. This repository does not contain the complete Windows application source tree, and editing the browser preview does not modify the installed applications.
+The complete Windows application source is not stored in this repository's static browser-preview code. Check the [published releases](https://github.com/DudeSquad999/Prism-Ai/releases) for the downloadable build and any version-specific source package; available assets can differ by release. Editing this browser preview does not modify the installed applications.
 
 Before starting a Windows-app code change, open an issue to confirm:
 
