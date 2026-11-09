@@ -20,6 +20,9 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Check browser demo JavaScript syntax
+        run: node --check demo.js
+
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
