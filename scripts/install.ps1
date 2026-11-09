@@ -6,7 +6,7 @@ $expectedSha256 = '36b261bff2efb42195aa137d50f38cd81c7901f8c9aa78bbb761b5fb4f594
 $installerPath = Join-Path ([System.IO.Path]::GetTempPath()) "Prism-$version.exe"
 
 Write-Host "Downloading Prism AI $version from the official GitHub release..."
-Invoke-WebRequest -Uri $downloadUri -OutFile $installerPath -ErrorAction Stop
+Invoke-WebRequest -Uri $downloadUri -OutFile $installerPath -UseBasicParsing -ErrorAction Stop
 
 $actualSha256 = (Get-FileHash -Path $installerPath -Algorithm SHA256).Hash.ToLowerInvariant()
 if ($actualSha256 -ne $expectedSha256) {
