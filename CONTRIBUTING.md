@@ -173,3 +173,37 @@ first, as described above.
 ## License
 
 Review [LICENSE](LICENSE) before contributing.
+
+
+## Development environment
+
+The public repository contains the browser preview, documentation, repository tooling, and project records. The complete source for the packaged Windows applications is not currently included in this static-preview repository. Changes to the browser preview do not change the installed Windows applications.
+
+For repository work, use:
+
+- Git.
+- Node.js 24 or a compatible Node.js release for the browser-preview syntax check.
+- Python 3.12 or newer for repository tests and validation.
+- Ruby for the YAML syntax check used by CI.
+
+Clone the repository and enter its directory:
+
+```powershell
+git clone https://github.com/DudeSquad999/Prism-Ai.git
+Set-Location Prism-Ai
+```
+
+Run the same checks used by CI:
+
+```powershell
+node --check demo.js
+python -m unittest discover -s tests -v
+python scripts/check_repo.py
+python scripts/check_release_readiness.py
+```
+
+The checks validate the public repository. They do not establish that the packaged Windows applications, live AI providers, or every desktop workflow work correctly.
+
+## Maintainer response target
+
+The maintainer commits to acknowledge actionable public issues and private security reports within 24 hours of receipt. This is an acknowledgement commitment, not a guarantee of diagnosis, a workaround, a fix, or a release within that period. See the [support policy](docs/support.md) for scope and reporting channels.

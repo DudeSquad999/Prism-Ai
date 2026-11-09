@@ -50,3 +50,12 @@ See [project structure](PROJECT_STRUCTURE.md) for file ownership and safe editin
 ## Documentation accuracy
 
 Prism AI is an early-stage project. Guides should distinguish tested behavior from planned work, examples, and limitations. Do not describe the browser preview as live AI, and do not present an Ollama model or hardware configuration as tested unless it has been verified with the released Windows applications.
+
+
+## Community, support, and release history
+
+- [Support policy and 24-hour acknowledgement target](support.md)
+- [Good first issues](good-first-issues.md)
+- [Show HN launch draft and benchmark checklist](SHOW_HN_DRAFT.md)
+- [Historical v1.0.0 release notes](releases/v1.0.0.md)
+

@@ -15,6 +15,10 @@ Use GitHub's [private vulnerability reporting flow](https://github.com/DudeSquad
 
 Do not test against other people's accounts, systems, or data. Do not include real credentials in reports.
 
+## Response target
+
+The maintainer commits to acknowledge private vulnerability reports within 24 hours of receipt. This is an acknowledgement commitment only. It does not promise a fix, workaround, severity decision, or release within 24 hours. Please keep vulnerability details private while a report is being reviewed.
+
 ## Supported versions
 
-Prism AI is an early-stage project. No formal support window or guaranteed response time is promised. Include the exact release or commit so the maintainer can determine whether it is affected.
+Prism AI is an early-stage project. Include the exact release or commit so the maintainer can determine whether it is affected. The acknowledgement target is documented in the [support policy](docs/support.md).
