@@ -463,7 +463,11 @@
       if (perspectiveSaved) return toast('This brief is already saved to the project draft.');
       const previousDraft = current().draft;
       const existingDraft = previousDraft.trim();
-      current().draft = existingDraft ? `${existingDraft}\n\n---\n\n${perspectiveResult.markdown}` : perspectiveResult.markdown;
+      const nextDraft = existingDraft ? `${existingDraft}\n\n---\n\n${perspectiveResult.markdown}` : perspectiveResult.markdown;
+      if (nextDraft.length > 20000) {
+        return toast('This brief would exceed the 20,000-character project draft limit. Download the brief or shorten the existing draft before saving.');
+      }
+      current().draft = nextDraft;
       if (!save()) {
         current().draft = previousDraft;
         return;
