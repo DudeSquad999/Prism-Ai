@@ -3,6 +3,8 @@
 (() => {
   const $ = (id) => document.getElementById(id);
   const storageKey = 'prism-browser-demo-v2';
+  const aiStorageKey = 'prism-browser-ai-v1';
+  const defaultOllamaUrl = 'http://localhost:11434';
   const maxFileSize = 1024 * 1024;
   const views = ['Home', 'Chat', 'Perspectives', 'Projects', 'Library', 'Settings'];
   const taskIdeas = ['Define the question', 'Review the sample outline', 'Revise the draft'];
@@ -49,6 +51,12 @@
   });
   const fresh = () => ({ version: 2, projects: [starter()], active: 0, theme: 'dark' });
   let state = fresh();
+  let aiConfig = { url: defaultOllamaUrl, model: '', enabled: false };
+  let aiModels = [];
+  let aiConnection = { status: 'disconnected', message: 'Connect to Ollama to use a real local model.' };
+  let aiBusy = false;
+  let aiAbortController = null;
+  let aiStopRequested = false;
   let screen = 'Home';
   let mode = 'Ask';
   let panelTab = 'Tasks';
@@ -189,9 +197,269 @@
 
   function updatePrivacy() {
     const label = $('privacyStatus');
-    if (label) label.textContent = storageWarning || 'Saved only in this browser. Nothing is uploaded.';
     const settingsLabel = $('settingsPrivacyStatus');
-    if (settingsLabel) settingsLabel.textContent = storageWarning || 'Saved only in this browser. Nothing is uploaded.';
+    const message = storageWarning || (aiConnection.status === 'connected'
+      ? `Projects stay in this browser. Chat prompts and recent conversation context are sent to your configured Ollama server at ${aiConfig.url}.`
+      : 'Projects stay in this browser. No prompts are sent anywhere until you connect an AI model.');
+    if (label) label.textContent = message;
+    if (settingsLabel) settingsLabel.textContent = message;
+  }
+
+  function loadAIConfig() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(aiStorageKey) || 'null');
+      if (!saved || typeof saved !== 'object') return;
+      if (typeof saved.url === 'string') aiConfig.url = validateOllamaUrl(saved.url);
+      if (typeof saved.model === 'string' && saved.model.length <= 200) aiConfig.model = saved.model;
+      aiConfig.enabled = saved.enabled === true;
+      if (aiConfig.enabled) aiConnection = { status: 'connecting', message: 'Checking your saved Ollama connection...' };
+    } catch {
+      aiConfig = { url: defaultOllamaUrl, model: '', enabled: false };
+      aiConnection = { status: 'disconnected', message: 'Saved AI settings were invalid and have been reset.' };
+    }
+  }
+
+  function saveAIConfig() {
+    try {
+      localStorage.setItem(aiStorageKey, JSON.stringify(aiConfig));
+      return true;
+    } catch {
+      toast('Browser storage could not save the AI settings.');
+      return false;
+    }
+  }
+
+  function validateOllamaUrl(value) {
+    let parsed;
+    try { parsed = new URL(String(value || '').trim()); }
+    catch { throw new Error('Enter a valid Ollama server address, such as http://localhost:11434.'); }
+    if (!['http:', 'https:'].includes(parsed.protocol) || parsed.username || parsed.password ||
+        parsed.search || parsed.hash || !['', '/'].includes(parsed.pathname)) {
+      throw new Error('Use an HTTP or HTTPS server address without a path, username, password, or query string.');
+    }
+    return parsed.origin;
+  }
+
+  function updateAIChrome() {
+    const badge = $('connectionBadge');
+    const composerStatus = $('composerStatus');
+    const sendButton = $('composer')?.querySelector('button[type="submit"]');
+    const input = $('input');
+    const cancel = $('cancelAI');
+    const connected = aiConnection.status === 'connected' && aiConfig.enabled && Boolean(aiConfig.model);
+    if (badge) {
+      badge.textContent = connected ? `AI connected · ${aiConfig.model}` : (aiConnection.status === 'connecting' ? 'Connecting to AI...' : 'Sample mode');
+      badge.classList.toggle('connected', connected);
+    }
+    if (composerStatus) {
+      composerStatus.textContent = connected
+        ? `Live local AI · ${aiConfig.model}`
+        : 'Sample mode · connect Ollama in Settings for live AI';
+    }
+    if (sendButton) sendButton.disabled = aiBusy;
+    if (input) input.disabled = aiBusy;
+    if (cancel) cancel.hidden = !aiBusy;
+    updatePrivacy();
+  }
+
+  async function connectAI(silent = false) {
+    const urlField = $('ollamaUrl');
+    const modelField = $('ollamaModel');
+    try {
+      aiConfig.url = validateOllamaUrl(urlField ? urlField.value : aiConfig.url);
+      aiConnection = { status: 'connecting', message: 'Checking Ollama and discovering installed models...' };
+      updateAIChrome();
+      if (!silent) render();
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000);
+      let response;
+      try {
+        response = await fetch(`${aiConfig.url}/api/tags`, {
+          method: 'GET',
+          headers: { Accept: 'application/json' },
+          cache: 'no-store',
+          signal: controller.signal
+        });
+      } finally { clearTimeout(timeout); }
+      if (!response.ok) throw new Error(`Ollama returned HTTP ${response.status}. Check that the server is running.`);
+      const payload = await response.json();
+      aiModels = Array.isArray(payload.models)
+        ? payload.models.map((item) => item && (item.name || item.model)).filter((name) => typeof name === 'string' && name.length <= 200)
+        : [];
+      if (!aiModels.length) {
+        aiConfig.enabled = false;
+        aiConnection = { status: 'error', message: 'Ollama is running, but no models are installed yet. Install a model, then connect again.' };
+        saveAIConfig();
+        if (!silent) render();
+        updateAIChrome();
+        return;
+      }
+      if (!aiModels.includes(aiConfig.model)) aiConfig.model = aiModels[0];
+      aiConfig.enabled = true;
+      aiConnection = { status: 'connected', message: `Connected successfully. Found ${aiModels.length} installed model${aiModels.length === 1 ? '' : 's'}.` };
+      saveAIConfig();
+      if (!silent) toast(`Prism connected to Ollama. ${aiModels.length} model(s) ready.`);
+    } catch (error) {
+      aiConfig.enabled = false;
+      aiModels = [];
+      const detail = error && error.name === 'AbortError'
+        ? 'Ollama did not respond within 10 seconds.'
+        : (error && error.message ? error.message : 'The browser could not reach Ollama.');
+      aiConnection = {
+        status: 'error',
+        message: `${detail} Start Ollama and allow https://dudesquad999.github.io in OLLAMA_ORIGINS if the browser blocks the request.`
+      };
+      saveAIConfig();
+      if (!silent) toast('Could not connect to Ollama. Check the setup notes in Settings.');
+    }
+    if (!silent && screen !== 'Settings') screen = 'Settings';
+    render();
+    updateAIChrome();
+  }
+
+  function disconnectAI() {
+    if (aiAbortController) aiAbortController.abort();
+    aiConfig.enabled = false;
+    aiConnection = { status: 'disconnected', message: 'Disconnected. Your saved projects and drafts remain in this browser.' };
+    saveAIConfig();
+    render();
+    toast('Local AI disconnected.');
+  }
+
+  function updateStreamingMessage(project, message, messageIndex) {
+    if (screen !== 'Chat' || current().id !== project.id) return;
+    const body = document.querySelector(`[data-message-index="${messageIndex}"] .body`);
+    if (body) body.textContent = message.text || 'Thinking...';
+    const view = $('view');
+    if (view && screen === 'Chat') view.scrollTop = view.scrollHeight;
+  }
+
+  function buildOllamaMessages(project) {
+    const system = [
+      'You are Prism, a thoughtful research and writing assistant.',
+      'Be clear, practical, and honest. Structure answers with concise headings or numbered steps when useful.',
+      'Never invent sources, URLs, quotations, citations, statistics, or claims of live research.',
+      'This browser workspace has no web search or source-verification tool. In Research mode, help plan research and evaluate material the user provides, but clearly say you cannot perform a live web search.',
+      'Do not claim to have read files or sources unless their contents are included in the conversation.',
+      `Current project: ${project.name}. Workspace mode: ${mode}.`
+    ];
+    if (mode === 'Documents' || mode === 'Create') {
+      system.push('The project draft below is user-provided working text. Help revise it only as requested and explain substantial changes.');
+      system.push(`Current project draft (may be empty):\n${project.draft.slice(0, 8000)}`);
+    }
+    const history = project.messages.slice(0, -1).slice(-18).filter((item) => typeof item.text === 'string' && item.text.trim());
+    return [
+      { role: 'system', content: system.join('\n\n') },
+      ...history.map((item) => ({
+        role: item.role === 'You' ? 'user' : 'assistant',
+        content: item.text.slice(0, 10000)
+      }))
+    ];
+  }
+
+  async function streamOllamaChat(project, assistantMessage, messageIndex) {
+    const controller = new AbortController();
+    aiAbortController = controller;
+    aiStopRequested = false;
+    const timeout = setTimeout(() => controller.abort(), 180000);
+    try {
+      const response = await fetch(`${aiConfig.url}/api/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/x-ndjson, application/json' },
+        cache: 'no-store',
+        signal: controller.signal,
+        body: JSON.stringify({
+          model: aiConfig.model,
+          messages: buildOllamaMessages(project),
+          stream: true,
+          options: { temperature: 0.35 }
+        })
+      });
+      if (!response.ok) {
+        let detail = '';
+        try { detail = (await response.json()).error || ''; } catch {}
+        throw new Error(detail || `Ollama returned HTTP ${response.status}.`);
+      }
+      if (!response.body || !response.body.getReader) throw new Error('This browser does not support streamed responses. Try a current version of Edge or Chrome.');
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      const consume = (line) => {
+        if (!line.trim()) return;
+        const chunk = JSON.parse(line);
+        if (chunk.error) throw new Error(chunk.error);
+        const part = chunk.message && typeof chunk.message.content === 'string' ? chunk.message.content : '';
+        if (part && assistantMessage.text.length < 10000) {
+          assistantMessage.text += part.slice(0, 10000 - assistantMessage.text.length);
+          updateStreamingMessage(project, assistantMessage, messageIndex);
+        }
+      };
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const records = buffer.split('\n');
+        buffer = records.pop() || '';
+        records.forEach(consume);
+      }
+      buffer += decoder.decode();
+      if (buffer.trim()) consume(buffer);
+      if (!assistantMessage.text.trim()) throw new Error('Ollama returned an empty response. Check that the selected model is available.');
+    } finally {
+      clearTimeout(timeout);
+      if (aiAbortController === controller) aiAbortController = null;
+    }
+  }
+
+  async function submitChat(text) {
+    const project = current();
+    const selectedMode = mode;
+    const userMessage = { role: 'You', text };
+    project.messages.push(userMessage);
+    $('input').value = '';
+    screen = 'Chat';
+    const liveAI = aiConfig.enabled && aiConnection.status === 'connected' && Boolean(aiConfig.model);
+    const assistantMessage = {
+      role: liveAI ? `Prism · ${aiConfig.model}` : 'Prism · sample mode',
+      text: liveAI ? 'Thinking...' : reply(text)
+    };
+    project.messages.push(assistantMessage);
+    const messageIndex = project.messages.length - 1;
+    if (selectedMode === 'Create' && !liveAI) project.draft = assistantMessage.text;
+    if (!liveAI) {
+      save();
+      render();
+      return;
+    }
+    aiBusy = true;
+    save();
+    render();
+    updateAIChrome();
+    try {
+      await streamOllamaChat(project, assistantMessage, messageIndex);
+      if (selectedMode === 'Create' || selectedMode === 'Documents') {
+        const nextDraft = assistantMessage.text;
+        if (nextDraft.length <= 20000) project.draft = nextDraft;
+        else toast('The AI response is too long to save as the project draft. Download or copy it from the chat instead.');
+      }
+      save();
+    } catch (error) {
+      const stopped = aiStopRequested && error && error.name === 'AbortError';
+      assistantMessage.role = stopped ? 'Prism · response stopped' : 'Prism · connection issue';
+      const detail = error && error.name === 'AbortError'
+        ? (stopped ? 'Response stopped.' : 'The response timed out.')
+        : (error && error.message ? error.message : 'The connection to Ollama was interrupted.');
+      assistantMessage.text = assistantMessage.text === 'Thinking...'
+        ? `${detail} Check the Ollama server and selected model in Settings, then try again.`
+        : `${assistantMessage.text}\n\n[Connection interrupted: ${detail}]`;
+      save();
+    } finally {
+      aiBusy = false;
+      aiStopRequested = false;
+      aiAbortController = null;
+      render();
+      updateAIChrome();
+    }
   }
 
   function setTheme(theme) {
@@ -247,15 +515,28 @@
     renderNav();
     let html = '';
     if (screen === 'Home') {
-      html = `<h1>Explore Prism AI’s research and writing workspace.</h1>
-      <p>Try a sample research project, edit a Markdown draft, and see how Prism keeps your work together. No install or account needed.</p>
-      <div class="notice">Demo only: chat replies and source cards are examples, not live AI or research. Your work saves in this browser and is not uploaded.</div>
-      <div class="toolbar">${button('Try a sample conversation', 'sample', 'class="primary"')}${button('Share the demo', 'share')}${button('New project', 'newProject')}${button('Edit the draft', 'draft')}${button('Compare perspectives', 'perspectives')}<a class="button-link" href="https://github.com/DudeSquad999/Prism-Ai/releases/latest">Get Prism for Windows</a></div>
-      <div class="grid"><article class="card"><h2>${esc(project.name)}</h2><p>${project.messages.length} messages · ${project.tasks.filter((task) => task.done).length}/${project.tasks.length} tasks complete</p>${button('Open project', 'projects')}</article><article class="card"><h2>Continue writing</h2><p>${wordCount(project.draft)} words in your Markdown draft.</p>${button('Open Library', 'draft')}</article></div>`;
+      const aiReady = aiConnection.status === 'connected' && aiConfig.enabled;
+      html = `<section class="home-hero">
+        <div class="hero-kicker">RESEARCH · WRITING · YOUR AI</div>
+        <h1>Turn your research into work that is ready to move forward.</h1>
+        <p>Keep questions, notes, conversations, and drafts in one focused workspace. Connect your own local AI model when you want real assistance.</p>
+        <div class="hero-status"><span class="status-dot ${aiReady ? 'live' : ''}"></span><strong>${aiReady ? 'Local AI is connected' : 'Workspace ready'}</strong><span>${aiReady ? esc(aiConfig.model) : 'Connect Ollama to turn on live AI'}</span></div>
+        <div class="toolbar">${button('Open Prism Chat', 'openChat', 'class="primary"')}${button(aiReady ? 'AI connection settings' : 'Connect local AI', 'openAISettings')}${button('Create a project', 'newProject')}</div>
+      </section>
+      <div class="grid">
+        <article class="card"><div class="card-icon">01</div><h2>Research with structure</h2><p>Shape a question, keep source notes together, and build a plan that separates evidence from assumptions.</p>${button('Open research chat', 'openChat')}</article>
+        <article class="card"><div class="card-icon">02</div><h2>Write in one workspace</h2><p>Develop a Markdown draft, revise it with your connected model, and export your work at any time.</p>${button('Continue writing', 'draft')}</article>
+        <article class="card"><div class="card-icon">03</div><h2>Challenge your thinking</h2><p>Compare analytical, creative, practical, and skeptical perspectives before deciding what to do next.</p>${button('Compare perspectives', 'perspectives')}</article>
+      </div>
+      <div class="grid home-lower">
+        <article class="card"><h2>${esc(project.name)}</h2><p>${project.messages.length} messages · ${project.tasks.filter((task) => task.done).length}/${project.tasks.length} tasks complete</p>${button('Open project', 'projects')}</article>
+        <article class="card"><h2>Your working draft</h2><p>${wordCount(project.draft)} words saved in this browser.</p>${button('Open Library', 'draft')}</article>
+      </div>
+      <div class="notice">The browser workspace can use a model running on your computer through Ollama. It does not include cloud API keys or live web search. AI-generated content should be reviewed before use.</div>`;
     } else if (screen === 'Chat') {
-      html = project.messages.length ? project.messages.map((message) =>
-        `<article class="message ${message.role === 'You' ? 'user' : ''}"><div class="who">${esc(message.role)}</div><div class="body">${esc(message.text)}</div></article>`
-      ).join('') : `<div class="page"><h1>What are you working on?</h1><p>Try a sample prompt to see how a research conversation might fit into a project. Replies are scripted examples; nothing leaves this browser.</p><div class="grid">${button('Plan a research question', 'sample', 'class="primary"')}${button('Draft an outline', 'createDraft')}</div></div>`;
+      html = project.messages.length ? project.messages.map((message, index) =>
+        `<article class="message ${message.role === 'You' ? 'user' : ''}" data-message-index="${index}"><div class="who">${esc(message.role)}</div><div class="body">${esc(message.text)}</div></article>`
+      ).join('') : `<div class="page"><h1>What are you working on?</h1><p>Ask a question, plan a research workflow, or work on your current draft. Connect Ollama in Settings for live model responses.</p><div class="grid">${button('Plan a research question', 'openChat', 'class="primary"')}${button('Connect local AI', 'openAISettings')}</div></div>`;
     } else if (screen === 'Perspectives') {
       html = renderPerspectiveView();
     } else if (screen === 'Projects') {
@@ -263,14 +544,31 @@
     } else if (screen === 'Library') {
       html = `<h1>Draft library</h1><p>${esc(project.name)} · Markdown is editable and auto-saved in this browser.</p><div class="toolbar">${button('Download Markdown', 'exportDraft', 'class="primary"')}${button('Download conversation', 'exportChat')}</div><label class="field" for="draftEditor">Working draft</label><textarea id="draftEditor" class="editor" maxlength="20000" spellcheck="true">${esc(project.draft)}</textarea><p class="tiny">${wordCount(project.draft)} words · Changes remain on this device.</p>`;
     } else {
-      html = `<h1>Demo settings</h1><p>Local browser data and appearance.</p><div class="card"><p id="settingsPrivacyStatus"></p><div class="toolbar">${button('Export projects (JSON)', 'exportJSON')}${button('Import projects (JSON)', 'importJSON')}</div><div class="toolbar">${button('Restore fictional sample', 'restoreSample')}${button('Clear all data', 'clearData', 'class="danger"')}${button('Dark theme', 'dark')}${button('Light theme', 'light')}</div><p class="tiny">Import accepts Prism demo JSON exports only (1 MB maximum). Credentials and unknown fields are rejected. Clearing data cannot be undone.</p></div>`;
+      const modelOptions = aiModels.length
+        ? aiModels.map((name) => `<option value="${esc(name)}" ${name === aiConfig.model ? 'selected' : ''}>${esc(name)}</option>`).join('')
+        : `<option value="${esc(aiConfig.model)}">${aiConfig.model ? `Saved model: ${esc(aiConfig.model)} (reconnect to verify)` : 'Connect to discover installed models'}</option>`;
+      html = `<h1>Settings</h1><p>Connect a model, manage your local workspace, and control how Prism stores your work.</p>
+        <section class="card ai-connect-card">
+          <div class="ai-card-top"><div><div class="hero-kicker">OPTIONAL LOCAL AI</div><h2>Connect your own model</h2></div><span id="settingsAIStatus" class="status-chip ${aiConnection.status}">${aiConnection.status === 'connected' ? 'Connected' : aiConnection.status === 'connecting' ? 'Connecting' : aiConnection.status === 'error' ? 'Needs attention' : 'Not connected'}</span></div>
+          <p>Prism connects directly to Ollama running on your computer. Your model runs locally, and this browser page does not need a cloud API key.</p>
+          <label class="field" for="ollamaUrl">Ollama server address<input id="ollamaUrl" type="url" spellcheck="false" autocomplete="url" value="${esc(aiConfig.url)}" placeholder="http://localhost:11434"></label>
+          <label class="field" for="ollamaModel">Installed model<select id="ollamaModel" ${aiModels.length ? '' : 'disabled'}>${modelOptions}</select></label>
+          <div class="toolbar">${button('Connect and find models', 'connectAI', 'class="primary"')}${button('Disconnect', 'disconnectAI', aiConfig.enabled ? '' : 'disabled')}</div>
+          <p id="aiConnectionMessage" class="connection-note ${aiConnection.status}" role="status">${esc(aiConnection.message)}</p>
+          <details class="setup-details"><summary>How to connect Ollama on Windows</summary>
+            <ol><li>Install and open <a href="https://ollama.com/download/windows" target="_blank" rel="noopener noreferrer">Ollama for Windows</a>.</li><li>Make sure at least one model is installed. You can run <code>ollama list</code> in PowerShell to check.</li><li>Allow this website to contact your local Ollama server. In PowerShell, run <code>setx OLLAMA_ORIGINS "https://dudesquad999.github.io"</code>.</li><li>Quit Ollama from its system-tray icon, then open it again so the new setting takes effect.</li><li>Return here and select <strong>Connect and find models</strong>. Choose an installed model from the list.</li></ol>
+            <p class="tiny">The hosted browser preview requires the website origin to be allowed by Ollama. For other hosting URLs, replace the origin in the command with the exact URL shown in your browser.</p>
+          </details>
+        </section>
+        <section class="card settings-data-card"><h2>Data and privacy</h2><p id="settingsPrivacyStatus"></p><div class="toolbar">${button('Export projects (JSON)', 'exportJSON')}${button('Import projects (JSON)', 'importJSON')}</div><p class="tiny">The export contains project messages, tasks, sources, and drafts. It does not include AI server settings. Never place passwords, API keys, or private credentials in project files.</p></section>
+        <section class="card settings-data-card"><h2>Appearance and reset</h2><div class="toolbar">${button('Dark theme', 'dark')}${button('Light theme', 'light')}${button('Restore sample project', 'restoreSample')}${button('Clear all data', 'clearData', 'class="danger"')}</div><p class="tiny">Clearing all data removes saved projects and AI connection settings from this browser. This cannot be undone.</p></section>`;
     }
     $('view').innerHTML = screen === 'Chat' ? html : `<div class="page">${html}</div>`;
     $('modes').innerHTML = ['Ask', 'Research', 'Documents', 'Create'].map((name) =>
       `<button data-mode="${name}" class="${mode === name ? 'active' : ''}" aria-pressed="${mode === name}">${name}</button>`
     ).join('');
     renderPanel();
-    updatePrivacy();
+    updateAIChrome();
     if (screen === 'Chat') $('view').scrollTop = $('view').scrollHeight;
   }
 
@@ -486,6 +784,11 @@
     else if (action === 'downloadPerspective') {
       if (perspectiveResult) download('prism-perspective-brief.md', perspectiveResult.markdown, 'text/markdown;charset=utf-8');
     }
+    else if (action === 'openAISettings') { screen = 'Settings'; render(); }
+    else if (action === 'openChat') { screen = 'Chat'; render(); $('input').focus(); }
+    else if (action === 'connectAI') connectAI(false);
+    else if (action === 'disconnectAI') disconnectAI();
+    else if (action === 'cancelAI' && aiAbortController) { aiStopRequested = true; aiAbortController.abort(); }
     else if (action === 'newProject') projectForm();
     else if (action === 'newchat') {
       if (project.messages.length && !confirm('Start a new chat and remove this project’s current conversation?')) return;
@@ -496,7 +799,9 @@
       $('projectSearch').focus();
     }
     else if (action === 'privacy') {
-      showDialog('Browser demo privacy', 'This demo has no backend and does not send prompts, projects, drafts, or imports anywhere. Data is saved in this browser only. Chat replies and source cards are fictional examples; no AI or web search is connected.');
+      showDialog('Browser workspace privacy', aiConnection.status === 'connected'
+        ? `Projects and drafts are saved in this browser. When you use live chat, your prompt and recent conversation context are sent to your configured Ollama server at ${aiConfig.url}. Prism does not proxy those prompts through a Prism backend. No API key is stored by this page. This browser preview does not perform web search or verify citations.`
+        : 'Projects and drafts are saved in this browser. No prompts are sent anywhere until you connect a model. If you connect Ollama, your prompt and recent conversation context are sent directly to the configured Ollama server. No API key is stored by this page.');
     }
     else if (action === 'share') shareDemo();
     else if (action === 'renameProject') projectForm(true);
@@ -577,6 +882,12 @@
     }
   });
   document.addEventListener('change', (event) => {
+    if (event.target.id === 'ollamaModel') {
+      aiConfig.model = event.target.value;
+      saveAIConfig();
+      updateAIChrome();
+      return;
+    }
     if (event.target.dataset.perspective !== undefined) {
       selectedPerspectives = Array.from(document.querySelectorAll('input[data-perspective]:checked'))
         .map((input) => input.dataset.perspective)
@@ -613,14 +924,13 @@
     if (event.target.id === 'projectSearch') searchProjects(event.target.value);
   });
 
-  $('composer').addEventListener('submit', (event) => {
+  $('composer').addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (aiBusy) return;
     const text = $('input').value.trim();
     if (!text) return;
     if (text.length > 10000) return toast('Messages are limited to 10,000 characters.');
-    current().messages.push({ role: 'You', text }, { role: 'Prism · scripted example', text: reply(text) });
-    if (mode === 'Create') current().draft = reply(text);
-    $('input').value = ''; save(); screen = 'Chat'; render();
+    await submitChat(text);
   });
   $('jsonFile').addEventListener('change', async (event) => {
     try { await importProject(event.target.files[0]); }
@@ -640,5 +950,7 @@
   });
 
   load();
+  loadAIConfig();
   render();
+  if (aiConfig.enabled) connectAI(true);
 })();
