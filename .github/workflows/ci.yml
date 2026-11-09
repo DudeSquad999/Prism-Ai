@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: ["Main"]
+  pull_request:
+    branches: ["Main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Repository checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Check browser preview syntax
+        run: node --check demo.js
+
+      - name: Run repository checker tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Check local documentation and assets
+        run: python scripts/check_repo.py
+
+      - name: Check release readiness and documentation typography
+        run: python scripts/check_release_readiness.py
+
+      - name: Validate GitHub YAML files
+        run: ruby -e 'require "yaml"; Dir.glob(".github/**/*.yml").each { |path| YAML.load_file(path) }'

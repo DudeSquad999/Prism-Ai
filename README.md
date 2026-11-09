@@ -1,28 +1,12 @@
-<div align="center">
-  <img src="prism-banner.png" alt="Prism AI banner" width="100%">
-  <h1>Prism AI</h1>
-  <h3>A Windows workspace for research and LaTeX writing</h3>
-  <p><strong>Your research. Your writing. Your AI.</strong></p>
-  <p>Move from research questions and source material to organized notes, LaTeX documents, and PDFs in one connected workflow.</p>
-  <p>
-    <a href="https://github.com/DudeSquad999/Prism-Ai/releases/latest"><strong>Download Prism AI</strong></a>
-    · <a href="https://dudesquad999.github.io/Prism-Ai/">Try the browser preview</a>
-    · <a href="docs/first-session.md">Start here</a>
-  </p>
-  <p>
-    <a href="https://www.instagram.com/prismhq.ai/">Instagram</a>
-    · <a href="https://www.reddit.com/r/PrismAIApp/">Community</a>
-    · <a href="https://github.com/DudeSquad999/Prism-Ai/discussions">GitHub Discussions</a>
-  </p>
-  <p>
-    <img alt="Platform Windows" src="https://img.shields.io/badge/platform-Windows-6b52d9">
-    <a href="LICENSE"><img alt="Apache 2.0 license" src="https://img.shields.io/github/license/DudeSquad999/Prism-Ai"></a>
-    <a href="https://github.com/DudeSquad999/Prism-Ai/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/DudeSquad999/Prism-Ai"></a>
-  </p>
-  <p><sub>Created and developed by Aidan · Independent software project</sub></p>
-</div>
+# Prism AI
+A Windows research and writing workspace for AI-assisted research, Markdown, and LaTeX.
+`powershell -NoProfile -Command "$p=Join-Path $env:TEMP 'Prism-3.1.0.exe'; Invoke-WebRequest -UseBasicParsing 'https://github.com/DudeSquad999/Prism-Ai/releases/download/v3.1.0/Prism-3.1.0.exe' -OutFile $p; Start-Process -FilePath $p -Wait"`
+![Prism AI architecture banner](assets/images/banner.svg)
+<p align="center">
+  <a href="https://img.shields.io/badge/stack-Windows%20%7C%20Ollama%20%7C%20LaTeX-635bff"><img alt="Stack: Windows, Ollama, LaTeX" src="https://img.shields.io/badge/stack-Windows%20%7C%20Ollama%20%7C%20LaTeX-635bff"></a> <a href="LICENSE"><img alt="Apache 2.0 license" src="https://img.shields.io/github/license/DudeSquad999/Prism-Ai"></a> <a href="https://github.com/DudeSquad999/Prism-Ai/actions/workflows/ci.yml"><img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/DudeSquad999/Prism-Ai/ci.yml?branch=Main&label=CI"></a> <a href="docs/support.md"><img alt="24 hour maintainer response target" src="https://img.shields.io/badge/maintainer%20response-24h%20target-2ea44f"></a>
+</p>
 
----
+**Your research. Your writing. Your AI.**
 
 ## What is Prism AI?
 
@@ -106,6 +90,14 @@ The screenshots below come from the **v7.1 preview set**. They show the design d
 | [Contributing](CONTRIBUTING.md) | How to report issues and contribute |
 | [Testing](guides/TESTING.md) | Available testing guidance |
 | [Security](SECURITY.md) | Responsible vulnerability reporting |
+| [Good first issues](docs/good-first-issues.md) | Scoped tasks for new contributors |
+| [Support policy](docs/support.md) | Maintainer response target and support boundaries |
+| [Historical v1.0.0 notes](docs/releases/v1.0.0.md) | Archive notes for the original Transformer prototype |
+| [Show HN draft](docs/SHOW_HN_DRAFT.md) | Technical launch announcement draft |
+
+## Maintainer response target
+
+Maintainers commit to acknowledging new public issues and discussion posts within 24 hours. This is an initial-response commitment, not a promise that a fix, answer, or resolution will be delivered within 24 hours. Security reports must use the private process in [SECURITY.md](SECURITY.md), not a public issue. See the [support policy](docs/support.md).
 
 ## Feedback and community
 

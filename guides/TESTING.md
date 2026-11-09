@@ -2,6 +2,9 @@
 
 Status: PARTIALLY TESTED
 
+<details>
+<summary>Full test report, environments, results, and remaining validation</summary>
+
 This report separates maintainer-reported Windows checks from a supplied
 development report covering Linux, browser automation, and Wine.
 
@@ -184,3 +187,6 @@ For later releases, follow their accompanying instructions.
 - [Ollama setup](../docs/local-models.md)
 - [Contributing](../CONTRIBUTING.md)
 - [Releases](https://github.com/DudeSquad999/Prism-Ai/releases)
+
+
+</details>

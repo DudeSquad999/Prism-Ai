@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+  <title id="title">Prism AI research and writing workspace</title>
+  <desc id="desc">A dark technical architecture illustration connecting research sources to Prism Chat, Markdown notes, Prism Studio, LaTeX, and PDF output, with local Ollama and cloud AI provider paths.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10101d"/>
+      <stop offset="1" stop-color="#171b32"/>
+    </linearGradient>
+    <linearGradient id="prism" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b7bff"/>
+      <stop offset="1" stop-color="#58d6c7"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8b7bff" stop-opacity=".25"/>
+      <stop offset=".55" stop-color="#8b7bff"/>
+      <stop offset="1" stop-color="#58d6c7"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#8f98c7" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" rx="24" fill="url(#bg)"/>
+  <rect width="1200" height="400" rx="24" fill="url(#grid)"/>
+  <g fill="none" stroke="#8792c9" stroke-opacity=".18">
+    <path d="M44 70H1156M44 330H1156"/>
+    <circle cx="1080" cy="84" r="116"/>
+    <circle cx="1080" cy="84" r="82"/>
+    <circle cx="1080" cy="84" r="48"/>
+    <path d="M980 84h200M1080 -16v200"/>
+  </g>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <text x="76" y="126" fill="#f5f4ff" font-size="46" font-weight="700" letter-spacing="-1.4">Prism AI</text>
+    <text x="78" y="164" fill="#b9bfdc" font-size="19">Research in. Clear writing out.</text>
+    <text x="78" y="215" fill="#8d91b7" font-size="12" font-weight="700" letter-spacing="2.2">ONE CONNECTED WORKFLOW</text>
+  </g>
+  <g transform="translate(78 244)" fill="none" stroke="url(#line)" stroke-width="2">
+    <path d="M0 20H104l26-26h120l24 26h112l26-26h130"/>
+    <path d="M0 44H70l24-18h146l24 18h150l24-18h104" opacity=".5"/>
+    <circle cx="0" cy="20" r="5" fill="#8b7bff" stroke="none"/>
+    <circle cx="130" cy="-6" r="5" fill="#8b7bff" stroke="none"/>
+    <circle cx="274" cy="20" r="5" fill="#8b7bff" stroke="none"/>
+    <circle cx="438" cy="-6" r="5" fill="#58d6c7" stroke="none"/>
+  </g>
+  <g transform="translate(660 118)" font-family="Inter,Segoe UI,Arial,sans-serif">
+    <g>
+      <rect x="0" y="0" width="210" height="176" rx="18" fill="#20223b" stroke="#7169bd" stroke-opacity=".8"/>
+      <rect x="16" y="16" width="34" height="34" rx="9" fill="#7668d9"/>
+      <path d="M25 25h16M25 32h16M25 39h10" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <text x="16" y="78" fill="#f2f0ff" font-size="20" font-weight="650">Prism Chat</text>
+      <text x="16" y="103" fill="#aeb4d3" font-size="13">Research projects</text>
+      <text x="16" y="123" fill="#aeb4d3" font-size="13">Sources and notes</text>
+      <text x="16" y="143" fill="#aeb4d3" font-size="13">Markdown workspace</text>
+    </g>
+    <g transform="translate(236 0)">
+      <rect x="0" y="0" width="210" height="176" rx="18" fill="#20223b" stroke="#4caeaa" stroke-opacity=".8"/>
+      <rect x="16" y="16" width="34" height="34" rx="9" fill="#318f8c"/>
+      <path d="M25 25h16v16H25zM29 29h8M29 33h8M29 37h5" stroke="#fff" stroke-width="1.6" fill="none"/>
+      <text x="16" y="78" fill="#f2f0ff" font-size="20" font-weight="650">Prism Studio</text>
+      <text x="16" y="103" fill="#aeb4d3" font-size="13">LaTeX documents</text>
+      <text x="16" y="123" fill="#aeb4d3" font-size="13">References and BibTeX</text>
+      <text x="16" y="143" fill="#aeb4d3" font-size="13">PDF compilation</text>
+    </g>
+    <path d="M210 88h26" stroke="url(#line)" stroke-width="2"/>
+    <path d="M220 82l7 6-7 6" stroke="#8f8ae7" fill="none" stroke-width="2"/>
+    <text x="0" y="208" fill="#8e94b9" font-size="11" font-weight="700" letter-spacing="1.6">AI PROVIDER OPTIONS</text>
+    <rect x="0" y="222" width="210" height="42" rx="10" fill="#1b2b35" stroke="#3e8d88"/>
+    <circle cx="20" cy="243" r="5" fill="#58d6c7"/>
+    <text x="34" y="248" fill="#d5f4ef" font-size="13">Local models via Ollama</text>
+    <rect x="236" y="222" width="210" height="42" rx="10" fill="#29233e" stroke="#7669b8"/>
+    <circle cx="256" cy="243" r="5" fill="#a69bff"/>
+    <text x="270" y="248" fill="#e3defe" font-size="13">Configured cloud AI</text>
+  </g>
+  <g fill="#7d84ad" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" letter-spacing="1.5">
+    <text x="76" y="365">RESEARCH</text><text x="188" y="365">SOURCES</text><text x="290" y="365">WRITING</text><text x="382" y="365">PUBLISH</text>
+  </g>
+  <path d="M150 361h18m104 0h18m89 0h18" stroke="#555d8a" stroke-width="1.5"/>
+  <g transform="translate(1100 292)" filter="url(#glow)">
+    <path d="M0 -25L24 0 0 25 -24 0Z" fill="url(#prism)" fill-opacity=".9"/>
+    <path d="M0 -13L12 0 0 13 -12 0Z" fill="#f1f0ff" fill-opacity=".9"/>
+  </g>
+</svg>
