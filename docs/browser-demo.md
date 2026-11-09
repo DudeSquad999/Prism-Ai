@@ -25,7 +25,7 @@ The Perspectives workspace assembles a reusable review checklist locally. Its le
 
 Projects are saved in this browser's local storage and are not uploaded by the demo. They remain available in the same browser until you clear them or the browser's site data. Use **Settings → Clear all data** to remove the saved demo workspace, or export a JSON backup first. Browser privacy settings, storage limits, or clearing site data can prevent persistence.
 
-JSON import accepts only the versioned demo format, limits the file to 1 MB, rejects unknown and credential-shaped fields, and treats imported content as text. Never put passwords, API keys, or private research in demo data. The hosting platform may independently log website visits.
+JSON import accepts only the versioned demo format, limits the file to 1 MB, rejects unknown and credential-shaped fields, validates project IDs, rejects duplicate project IDs, and treats imported content as text. Never put passwords, API keys, or private research in demo data. The hosting platform may independently log website visits.
 
 ## Use the Windows applications
 
