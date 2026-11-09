@@ -9,8 +9,11 @@ Try the [Prism AI browser demo](https://dudesquad999.github.io/Prism-Ai/) withou
 - Start with a clearly labeled fictional research project, or create, rename, switch between, and delete your own demo projects.
 - Chat using fixed example replies, edit a Markdown draft, and download the draft or conversation.
 - Add and complete project tasks and inspect fictional source cards.
+- Build a **Perspectives** brief from analytical, creative, practical, and skeptical review prompts, then download it or save it into the current project's Markdown draft.
 - Save projects and edits in this browser, then restore the starter sample or clear the saved demo data.
 - Export and import versioned Prism demo JSON files (up to 1 MB) to move demo work between browsers.
+
+The Perspectives workspace assembles a reusable review checklist locally. Its lenses are prompts, not independent AI agents, generated conclusions, live research, or verified evidence.
 
 ## What it does not do
 
