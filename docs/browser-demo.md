@@ -9,8 +9,11 @@ Try the [Prism AI browser demo](https://dudesquad999.github.io/Prism-Ai/) withou
 - Start with a clearly labeled fictional research project, or create, rename, switch between, and delete your own demo projects.
 - Chat using fixed example replies, edit a Markdown draft, and download the draft or conversation.
 - Add and complete project tasks and inspect fictional source cards.
+- Build a **Perspectives** brief from analytical, creative, practical, and skeptical review prompts, then download it or save it into the current project's Markdown draft.
 - Save projects and edits in this browser, then restore the starter sample or clear the saved demo data.
 - Export and import versioned Prism demo JSON files (up to 1 MB) to move demo work between browsers.
+
+The Perspectives workspace assembles a reusable review checklist locally. Its lenses are prompts, not independent AI agents, generated conclusions, live research, or verified evidence.
 
 ## What it does not do
 
@@ -22,7 +25,7 @@ Try the [Prism AI browser demo](https://dudesquad999.github.io/Prism-Ai/) withou
 
 Projects are saved in this browser's local storage and are not uploaded by the demo. They remain available in the same browser until you clear them or the browser's site data. Use **Settings → Clear all data** to remove the saved demo workspace, or export a JSON backup first. Browser privacy settings, storage limits, or clearing site data can prevent persistence.
 
-JSON import accepts only the versioned demo format, limits the file to 1 MB, rejects unknown and credential-shaped fields, and treats imported content as text. Never put passwords, API keys, or private research in demo data. The hosting platform may independently log website visits.
+JSON import accepts only the versioned demo format, limits the file to 1 MB, rejects unknown and credential-shaped fields, validates project IDs, rejects duplicate project IDs, and treats imported content as text. Never put passwords, API keys, or private research in demo data. The hosting platform may independently log website visits.
 
 ## Use the Windows applications
 

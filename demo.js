@@ -4,8 +4,38 @@
   const $ = (id) => document.getElementById(id);
   const storageKey = 'prism-browser-demo-v2';
   const maxFileSize = 1024 * 1024;
-  const views = ['Home', 'Chat', 'Projects', 'Library', 'Settings'];
+  const views = ['Home', 'Chat', 'Perspectives', 'Projects', 'Library', 'Settings'];
   const taskIdeas = ['Define the question', 'Review the sample outline', 'Revise the draft'];
+  const perspectiveLenses = {
+    Analytical: {
+      purpose: 'Clarify the structure, assumptions, constraints, and measures that shape the question.',
+      prompts: [
+        'Which variables and constraints matter most?',
+        'What evidence or measure would show whether an option is working?'
+      ]
+    },
+    Creative: {
+      purpose: 'Reframe the problem and surface alternatives beyond the obvious first solution.',
+      prompts: [
+        'What overlooked option or new framing could change the available choices?',
+        'Can two existing ideas be combined into a better approach?'
+      ]
+    },
+    Practical: {
+      purpose: 'Translate options into resources, dependencies, trade-offs, and next steps.',
+      prompts: [
+        'What can be tried with the time, people, and budget available?',
+        'What is the smallest useful experiment?'
+      ]
+    },
+    Skeptical: {
+      purpose: 'Stress-test claims, inspect missing evidence, and look for counterexamples.',
+      prompts: [
+        'What would make the preferred conclusion wrong?',
+        'Which claims need verification or stronger supporting sources?'
+      ]
+    }
+  };
   const starter = () => ({
     id: 'urban-tree-cover',
     name: 'Sample: Urban tree cover',
@@ -24,6 +54,10 @@
   let panelTab = 'Tasks';
   let toastTimer;
   let storageWarning = '';
+  let perspectiveQuestion = 'How should a city decide where to add more street trees?';
+  let selectedPerspectives = Object.keys(perspectiveLenses);
+  let perspectiveResult = null;
+  let perspectiveSaved = false;
 
   const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -66,6 +100,7 @@
     inspect(project);
     if (!project || typeof project !== 'object' || Array.isArray(project) ||
         Object.keys(project).some((key) => !allowed.includes(key)) ||
+        (project.id !== undefined && (typeof project.id !== 'string' || !project.id.trim() || project.id.length > 120)) ||
         typeof project.name !== 'string' || !project.name.trim() || project.name.length > 100 ||
         typeof project.draft !== 'string' || !Array.isArray(project.messages) ||
         !Array.isArray(project.tasks) || !Array.isArray(project.sources)) {
@@ -112,9 +147,14 @@
         Object.keys(value).some((key) => !['version', 'projects', 'active', 'theme'].includes(key))) {
       throw new Error('Unsupported project file. Choose a Prism demo JSON export.');
     }
+    const projects = value.projects.map(validateProject);
+    const projectIds = projects.map((project) => project.id);
+    if (new Set(projectIds).size !== projectIds.length) {
+      throw new Error('This project file contains duplicate project IDs. Export a fresh backup from Prism and try again.');
+    }
     return {
       version: 2,
-      projects: value.projects.map(validateProject),
+      projects,
       active: value.active,
       theme: value.theme
     };
@@ -210,12 +250,14 @@
       html = `<h1>Explore Prism AI’s research and writing workspace.</h1>
       <p>Try a sample research project, edit a Markdown draft, and see how Prism keeps your work together. No install or account needed.</p>
       <div class="notice">Demo only: chat replies and source cards are examples, not live AI or research. Your work saves in this browser and is not uploaded.</div>
-      <div class="toolbar">${button('Try a sample conversation', 'sample', 'class="primary"')}${button('Share the demo', 'share')}${button('New project', 'newProject')}${button('Edit the draft', 'draft')}<a class="button-link" href="https://github.com/DudeSquad999/Prism-Ai/releases/latest">Get Prism for Windows</a></div>
+      <div class="toolbar">${button('Try a sample conversation', 'sample', 'class="primary"')}${button('Share the demo', 'share')}${button('New project', 'newProject')}${button('Edit the draft', 'draft')}${button('Compare perspectives', 'perspectives')}<a class="button-link" href="https://github.com/DudeSquad999/Prism-Ai/releases/latest">Get Prism for Windows</a></div>
       <div class="grid"><article class="card"><h2>${esc(project.name)}</h2><p>${project.messages.length} messages · ${project.tasks.filter((task) => task.done).length}/${project.tasks.length} tasks complete</p>${button('Open project', 'projects')}</article><article class="card"><h2>Continue writing</h2><p>${wordCount(project.draft)} words in your Markdown draft.</p>${button('Open Library', 'draft')}</article></div>`;
     } else if (screen === 'Chat') {
       html = project.messages.length ? project.messages.map((message) =>
         `<article class="message ${message.role === 'You' ? 'user' : ''}"><div class="who">${esc(message.role)}</div><div class="body">${esc(message.text)}</div></article>`
       ).join('') : `<div class="page"><h1>What are you working on?</h1><p>Try a sample prompt to see how a research conversation might fit into a project. Replies are scripted examples; nothing leaves this browser.</p><div class="grid">${button('Plan a research question', 'sample', 'class="primary"')}${button('Draft an outline', 'createDraft')}</div></div>`;
+    } else if (screen === 'Perspectives') {
+      html = renderPerspectiveView();
     } else if (screen === 'Projects') {
       html = `<h1>Projects</h1><p>Create projects and switch between their conversations, tasks, sample source cards, and drafts.</p><div class="toolbar">${button('New project', 'newProject', 'class="primary"')}${button('Rename this project', 'renameProject')}${button('Delete this project', 'deleteProject')}</div><div class="grid">${state.projects.map((item, index) => `<article class="card"><h2>${esc(item.name)}</h2><p>${item.messages.length} messages · ${item.tasks.length} tasks · ${wordCount(item.draft)} draft words</p><button data-project="${index}">${index === state.active ? 'Current project' : 'Open project'}</button></article>`).join('')}</div>`;
     } else if (screen === 'Library') {
@@ -230,6 +272,92 @@
     renderPanel();
     updatePrivacy();
     if (screen === 'Chat') $('view').scrollTop = $('view').scrollHeight;
+  }
+
+  function buildPerspectiveBrief(question, selected) {
+    const lenses = selected.map((name) => ({ name, ...perspectiveLenses[name] }));
+    const markdown = [
+      '# Prism perspective brief',
+      '',
+      `**Question or decision:** ${question}`,
+      '',
+      '> This is a locally assembled review framework from the browser demo. It is not an AI-generated answer or research.',
+      '',
+      ...lenses.flatMap((lens) => [
+        `## ${lens.name}`,
+        lens.purpose,
+        '',
+        ...lens.prompts.map((prompt) => `- ${prompt}`),
+        ''
+      ]),
+      '## Synthesis checklist',
+      '',
+      '- Where do the selected lenses agree, and where do they surface different priorities?',
+      '- Which assumptions explain the differences?',
+      '- Which factual claims need to be checked against original sources?',
+      '- What is the smallest practical next step, and what evidence would change the decision?'
+    ].join('\n');
+    return { projectId: current().id, question, lenses, markdown };
+  }
+
+  function renderPerspectiveView() {
+    const options = Object.entries(perspectiveLenses).map(([name, lens]) => `
+      <label class="card perspective-option">
+        <input type="checkbox" data-perspective="${esc(name)}" ${selectedPerspectives.includes(name) ? 'checked' : ''}>
+        <span><strong>${esc(name)}</strong><span class="tiny">${esc(lens.purpose)}</span></span>
+      </label>
+    `).join('');
+
+    let output = `<div id="perspectiveOutput" class="notice" aria-live="polite">Build a brief to see how different lenses can examine the same question. Choose at least two perspectives.</div>`;
+    if (perspectiveResult) {
+      const belongsToProject = perspectiveResult.projectId === current().id;
+      const resultCards = perspectiveResult.lenses.map((lens) => `
+        <article class="card">
+          <h3>${esc(lens.name)}</h3>
+          <p>${esc(lens.purpose)}</p>
+          <ul>${lens.prompts.map((prompt) => `<li>${esc(prompt)}</li>`).join('')}</ul>
+        </article>
+      `).join('');
+      output = `
+        <section id="perspectiveOutput" class="perspective-output" aria-live="polite" aria-atomic="true">
+          <span class="eyebrow">Structured review brief</span>
+          <h2>${esc(perspectiveResult.question)}</h2>
+          <div class="grid">${resultCards}</div>
+          <div class="notice">
+            <strong>Synthesis checklist</strong>
+            <ul>
+              <li>Where do the selected lenses agree, and where do they surface different priorities?</li>
+              <li>Which assumptions explain the differences?</li>
+              <li>Which factual claims need to be checked against original sources?</li>
+              <li>What is the smallest practical next step, and what evidence would change the decision?</li>
+            </ul>
+            <p class="tiny">Compare the reasoning, not the number of perspectives. These cards are structured prompts, not independent model outputs or verified findings.</p>
+          </div>
+          <div class="toolbar">
+            ${button('Download Markdown brief', 'downloadPerspective')}
+            ${belongsToProject
+              ? button(perspectiveSaved ? 'Saved to project draft' : 'Save to project draft', 'savePerspective', perspectiveSaved ? 'disabled' : '')
+              : '<span class="tiny">This brief belongs to a different project. Rebuild it before saving to the current project.</span>'}
+          </div>
+        </section>`;
+    }
+
+    return `
+      <h1>Look at the same question from different angles.</h1>
+      <p>Choose the perspectives that matter, then build a review brief you can use to challenge assumptions and plan your next step.</p>
+      <div class="notice">Browser demo only: this tool assembles a structured checklist locally. It does not call an AI model, search the web, produce factual conclusions, or verify sources. Perspectives are reasoning lenses, not separate AI agents.</div>
+      <form id="perspectiveForm" class="card">
+        <label class="field" for="perspectiveQuestion">Question or decision
+          <textarea id="perspectiveQuestion" rows="3" maxlength="1200" required>${esc(perspectiveQuestion)}</textarea>
+        </label>
+        <div class="toolbar">
+          <span class="tiny">Choose at least two perspectives</span>
+          <button type="button" data-action="perspectiveExample">Load sample question</button>
+        </div>
+        <div class="grid">${options}</div>
+        <button class="primary" type="submit">Build perspective brief</button>
+      </form>
+      ${output}`;
   }
 
   function reply(text) {
@@ -327,7 +455,38 @@
 
   function handleAction(action) {
     const project = current();
-    if (action === 'newProject') projectForm();
+    if (action === 'perspectives') { screen = 'Perspectives'; render(); }
+    else if (action === 'perspectiveExample') {
+      perspectiveQuestion = 'How should a city decide where to add more street trees?';
+      perspectiveResult = null;
+      perspectiveSaved = false;
+      screen = 'Perspectives';
+      render();
+    }
+    else if (action === 'savePerspective') {
+      if (!perspectiveResult) return;
+      if (perspectiveResult.projectId !== current().id) return toast('Switch to the project used to create this brief, or build a new one.');
+      if (perspectiveSaved) return toast('This brief is already saved to the project draft.');
+      const previousDraft = current().draft;
+      const existingDraft = previousDraft.trim();
+      const nextDraft = existingDraft ? `${existingDraft}\n\n---\n\n${perspectiveResult.markdown}` : perspectiveResult.markdown;
+      if (nextDraft.length > 20000) {
+        return toast('This brief would exceed the 20,000-character project draft limit. Download the brief or shorten the existing draft before saving.');
+      }
+      current().draft = nextDraft;
+      if (!save()) {
+        current().draft = previousDraft;
+        return;
+      }
+      perspectiveSaved = true;
+      screen = 'Library';
+      render();
+      toast('Perspective brief added to this project draft.');
+    }
+    else if (action === 'downloadPerspective') {
+      if (perspectiveResult) download('prism-perspective-brief.md', perspectiveResult.markdown, 'text/markdown;charset=utf-8');
+    }
+    else if (action === 'newProject') projectForm();
     else if (action === 'newchat') {
       if (project.messages.length && !confirm('Start a new chat and remove this project’s current conversation?')) return;
       project.messages = []; save(); screen = 'Chat'; render();
@@ -393,6 +552,22 @@
   });
 
   document.addEventListener('submit', (event) => {
+    if (event.target.id === 'perspectiveForm') {
+      event.preventDefault();
+      const question = $('perspectiveQuestion').value.trim();
+      if (!question) return toast('Enter a question or decision first.');
+      const selected = Array.from(document.querySelectorAll('input[data-perspective]:checked'))
+        .map((input) => input.dataset.perspective)
+        .filter((name) => Object.prototype.hasOwnProperty.call(perspectiveLenses, name));
+      if (selected.length < 2) return toast('Choose at least two perspectives to compare.');
+      perspectiveQuestion = question;
+      selectedPerspectives = selected;
+      perspectiveResult = buildPerspectiveBrief(question, selected);
+      perspectiveSaved = false;
+      render();
+      $('announce').textContent = `Perspective brief built with ${selected.length} lenses.`;
+      return;
+    }
     if (event.target.id === 'taskForm') {
       event.preventDefault();
       const input = $('taskText');
@@ -402,6 +577,16 @@
     }
   });
   document.addEventListener('change', (event) => {
+    if (event.target.dataset.perspective !== undefined) {
+      selectedPerspectives = Array.from(document.querySelectorAll('input[data-perspective]:checked'))
+        .map((input) => input.dataset.perspective)
+        .filter((name) => Object.prototype.hasOwnProperty.call(perspectiveLenses, name));
+      perspectiveResult = null;
+      perspectiveSaved = false;
+      const output = $('perspectiveOutput');
+      if (output) output.textContent = 'Perspective selection changed. Build a new brief to refresh the comparison.';
+      return;
+    }
     if (event.target.dataset.task === undefined) return;
     const index = Number(event.target.dataset.task);
     if (!Number.isInteger(index) || !current().tasks[index]) return;
@@ -411,6 +596,15 @@
   });
 
   document.addEventListener('input', (event) => {
+    if (event.target.id === 'perspectiveQuestion') {
+      perspectiveQuestion = event.target.value;
+      if (perspectiveResult) {
+        perspectiveResult = null;
+        perspectiveSaved = false;
+        const output = $('perspectiveOutput');
+        if (output) output.textContent = 'Your question changed. Build a new brief to refresh the comparison.';
+      }
+    }
     if (event.target.id === 'draftEditor') {
       current().draft = event.target.value; save();
       const count = document.querySelector('#view .tiny');

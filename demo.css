@@ -68,3 +68,46 @@ body {
 #settingsPrivacyStatus {
   overflow-wrap: anywhere;
 }
+
+.perspective-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.perspective-option:focus-within {
+  border-color: var(--accent);
+}
+
+.perspective-option input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  margin: 4px 0 0;
+  padding: 0;
+  accent-color: var(--accent);
+}
+
+.perspective-option > span {
+  display: grid;
+  gap: 7px;
+}
+
+.perspective-option strong {
+  color: var(--text);
+}
+
+.perspective-output {
+  margin-top: 22px;
+}
+
+.perspective-output ul {
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.perspective-output li + li {
+  margin-top: 6px;
+}
