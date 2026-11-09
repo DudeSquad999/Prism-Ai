@@ -1,125 +1,131 @@
-<div align="center">
-  <img src="prism-banner.png" alt="Prism AI banner" width="100%">
-  <h1>Prism AI</h1>
-  <h3>A Windows workspace for research and LaTeX writing</h3>
-  <p><strong>Your research. Your writing. Your AI.</strong></p>
-  <p>Move from research questions and source material to organized notes, LaTeX documents, and PDFs in one connected workflow.</p>
-  <p>
-    <a href="https://github.com/DudeSquad999/Prism-Ai/releases/latest"><strong>Download Prism AI</strong></a>
-    · <a href="https://dudesquad999.github.io/Prism-Ai/">Try the browser preview</a>
-    · <a href="docs/first-session.md">Start here</a>
-  </p>
-  <p>
-    <a href="https://www.instagram.com/prismhq.ai/">Instagram</a>
-    · <a href="https://www.reddit.com/r/PrismAIApp/">Community</a>
-    · <a href="https://github.com/DudeSquad999/Prism-Ai/discussions">GitHub Discussions</a>
-  </p>
-  <p>
-    <img alt="Platform Windows" src="https://img.shields.io/badge/platform-Windows-6b52d9">
-    <a href="LICENSE"><img alt="Apache 2.0 license" src="https://img.shields.io/github/license/DudeSquad999/Prism-Ai"></a>
-    <a href="https://github.com/DudeSquad999/Prism-Ai/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/DudeSquad999/Prism-Ai"></a>
-  </p>
-  <p><sub>Created and developed by Aidan · Independent software project</sub></p>
-</div>
+# Prism AI
+Windows research and LaTeX workspace with local and cloud AI.
+**Install on Windows (PowerShell):** `irm https://raw.githubusercontent.com/DudeSquad999/Prism-Ai/Main/scripts/install.ps1 | iex`
+<p align="center"><img src="assets/images/banner.svg" alt="Prism AI research and writing workflow" width="1200" height="400"></p>
+<p align="center"><img alt="Stack: Windows, Ollama, LaTeX" src="https://img.shields.io/badge/stack-Windows%20%7C%20Ollama%20%7C%20LaTeX-6554c0"> <a href="LICENSE"><img alt="Apache 2.0 license" src="https://img.shields.io/github/license/DudeSquad999/Prism-Ai"></a> <a href="https://github.com/DudeSquad999/Prism-Ai/actions/workflows/ci.yml"><img alt="CI build status" src="https://img.shields.io/github/actions/workflow/status/DudeSquad999/Prism-Ai/ci.yml?branch=Main&label=CI"></a> <a href="docs/support.md"><img alt="Maintainer response target: 24 hours" src="https://img.shields.io/badge/response%20target-24h-168f78"></a></p>
 
----
+## What Prism AI does
 
-## What is Prism AI?
+Prism AI is a Windows research and writing workspace built around two companion applications:
 
-Prism AI is an early-stage Windows research and writing workspace built around two companion applications.
+- **Prism Chat** organizes research projects, conversations, source material, and Markdown notes.
+- **Prism Studio** supports LaTeX papers and presentations, reference management with BibTeX, and PDF compilation with Tectonic.
+- **AI configuration** supports local models through Ollama and cloud providers configured with your own API key.
 
-| Prism Chat | Prism Studio |
-|---|---|
-| Organize research projects and conversations. | Draft papers, articles, and presentations in LaTeX. |
-| Review retrieved source material and citation markers. | Review AI-proposed edits before applying them. |
-| Create and export Markdown notes. | Work with references and BibTeX. |
-| Develop questions into structured research notes. | Compile documents to PDF with Tectonic. |
+The goal is to make the path from a research question to a finished document easier to manage while keeping provider choice and review of AI-proposed edits in the user's hands.
 
-The goal is to make the path from a question to a finished document more organized, without forcing everyone to use the same AI provider.
+## Install Prism AI
 
-## Try Prism before installing
+The one-command PowerShell installer downloads the published v3.1.0 Windows installer, verifies its SHA-256 digest, and then opens it. It is pinned to the verified v3.1.0 asset. Update the script's version and digest together when a new installer is published.
 
-[**Open the interactive browser preview →**](https://dudesquad999.github.io/Prism-Ai/)
+For a manual install, open the [latest GitHub release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) and download the Windows `.exe` asset. GitHub's automatically generated source archives are not Windows installers.
 
-The browser preview lets you explore a sample workspace without installing the Windows applications or creating an account. You can create sample projects, try scripted chat examples, edit Markdown, manage tasks, and import or export demo data.
+- [Windows installation guide](docs/installation.md)
+- [Published releases](https://github.com/DudeSquad999/Prism-Ai/releases)
 
-**Important:** The preview uses fictional sample sources and fixed example replies. It does not connect to an AI model, search the web, verify citations, analyze documents, or upload your work. It demonstrates selected interface interactions, not the live Windows applications. See the [browser demo guide](docs/browser-demo.md) for details.
+## Try the browser preview
 
-## Get started
+[Open the interactive browser preview](https://dudesquad999.github.io/Prism-Ai/).
 
-1. **Explore:** Open the [browser preview](https://dudesquad999.github.io/Prism-Ai/) if you want to look around first.
-2. **Download:** Open the [latest GitHub release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) and download its Windows `.exe` installer. Source-code ZIP and tar archives are not installers.
-3. **Install:** Follow the [Windows installation guide](docs/installation.md).
-4. **Configure AI:** Set up a local model through Ollama or configure your own API key for a supported cloud provider. Setup is separate in Chat and Studio.
-5. **Try one workflow:** Create a small research project in Chat, save a Markdown note, then start a short LaTeX document in Studio.
+The browser preview lets you explore a sample workspace without installing the Windows applications or creating an account. It includes sample projects, scripted chat examples, Markdown editing, tasks, and demo-data import and export.
 
-For a guided walkthrough, see [Your first Prism AI session](docs/first-session.md).
+**Preview limitation:** It uses fictional sample sources and fixed example replies. It does not connect to an AI model, search the web, verify citations, analyze documents, or upload your work. It demonstrates selected interface interactions, not the live Windows applications. Read the [browser demo guide](docs/browser-demo.md).
 
-## Choose your AI setup
+## First session
 
-Prism supports local models through Ollama and cloud providers configured with your own API key.
+1. Read [Your first Prism AI session](docs/first-session.md).
+2. Create a small research project in Prism Chat.
+3. Organize source material and save a Markdown note.
+4. Open Prism Studio and start a short LaTeX document.
+5. Review any AI-proposed edits before applying them.
 
-|  | Local AI · Ollama | Cloud AI provider |
-|---|---|---|
-| Where inference runs | On your computer | With the provider you configure |
-| What you need | Ollama and a downloaded model | A provider account and API key |
-| Important note | Initial model downloads and some other features may need internet access. | Content included in requests is sent to that provider. Review its privacy and pricing terms. |
+## Choose an AI setup
 
-The current release documentation lists Google Gemini, Anthropic, and OpenAI as cloud providers. Prism does not supply API keys. Configure each application separately; configuring Chat does not automatically configure Studio.
+**Local AI with Ollama**
+- Model inference runs on your computer after setup.
+- You need Ollama and a downloaded model.
+- Initial model downloads and some other features may require internet access.
+
+**Cloud AI provider**
+- Configure your own API key for a supported provider.
+- Content included in requests is sent to that provider.
+- Review provider privacy, pricing, and data-handling terms before use.
+
+The v3.1.0 release documentation lists Google Gemini, Anthropic, and OpenAI as cloud providers. Prism does not supply API keys. Configure each application separately; configuring Chat does not automatically configure Studio.
 
 - [Ollama and local-model guide](docs/local-models.md)
 - [Installation and provider setup](docs/installation.md)
+- [Issue #37: verify Ollama setup in Chat and Studio](https://github.com/DudeSquad999/Prism-Ai/issues/37)
 
-The exact Ollama controls and a tested model recommendation are still being documented. See [issue #37](https://github.com/DudeSquad999/Prism-Ai/issues/37) for that work. Do not treat an untested model recommendation as verified.
+Do not treat an untested model recommendation or an unverified provider workflow as confirmed.
 
-## A look inside Prism
+## Screenshots
 
-The screenshots below come from the **v7.1 preview set**. They show the design direction and example workflows, not verified screenshots of the current 3.1.0 Windows release. The installed release may look or behave differently.
+The current gallery in the documentation uses the **v7.1 preview set**. These images show the design direction and example workflows. They are not verified screenshots of the current 3.1.0 Windows release, and the installed release may look or behave differently.
 
-| Prism Chat · dark preview | Prism Studio · dark preview |
+| Prism Chat preview | Prism Studio preview |
 |---|---|
 | [![Prism Chat research workspace](docs/screenshots/v71_chat_1440x900_dark.png)](docs/screenshots/v71_chat_1440x900_dark.png) | [![Prism Studio LaTeX workspace](docs/screenshots/v71_studio_1440x900_dark.png)](docs/screenshots/v71_studio_1440x900_dark.png) |
 
-## What to know before relying on it
+## Release status and limitations
 
-- **Release status:** The latest published GitHub release currently documented in this repository is **3.1.0**. Check the [releases page](https://github.com/DudeSquad999/Prism-Ai/releases) for the actual latest published build.
-- **Platform:** Windows is the supported platform for the documented release.
-- **AI accuracy:** AI responses, retrieved material, and citations can be incomplete or incorrect. Check important claims against original sources.
-- **Local AI:** Local model inference runs on your computer after setup. This does not mean every Prism feature works offline.
-- **Cloud privacy:** Content included in cloud AI requests is sent to the provider you configure. Do not submit sensitive information unless you understand the provider's data handling.
+- **Current documented Windows release:** 3.1.0. Check the [releases page](https://github.com/DudeSquad999/Prism-Ai/releases) for the latest published build.
+- **Supported platform:** Windows for the documented desktop release.
+- **AI accuracy:** AI responses, retrieved material, and citations can be incomplete or incorrect. Verify important claims against original sources.
+- **Local AI:** Local inference does not mean every Prism feature works offline.
+- **Cloud privacy:** Content included in cloud requests is sent to the provider you configure. Do not submit sensitive information unless you understand that provider's data handling.
 - **Early-stage software:** Features and behavior may change. Keep backups of important work and review AI-proposed document changes.
+
+## Repository scope and licensing
+
+This public repository contains the browser preview, documentation, repository automation, and project records. The complete source for the packaged Windows applications is not currently included in this static-preview repository. Editing the browser preview does not modify Prism Chat or Prism Studio.
+
+The Apache License 2.0 applies to the files covered by the license in this repository. It does not automatically apply to omitted components, third-party software, or assets distributed separately. Check the notices and license terms accompanying each release. Earlier MIT-licensed versions remain under their original terms.
 
 ## Documentation
 
-| Guide | What it covers |
-|---|---|
-| [Prism AI handbook](docs/README.md) | Current product guides, setup, workflows, and project resources |
-| [First session](docs/first-session.md) | A practical first workflow and feedback path |
-| [FAQ](docs/faq.md) | Product scope, preview vs. live AI, Ollama, privacy, citations, downloads, and troubleshooting |
-| [Installation](docs/installation.md) | Windows setup and troubleshooting |
-| [Browser demo](docs/browser-demo.md) | Preview features, limitations, and privacy |
-| [Local models](docs/local-models.md) | Ollama configuration |
-| [Research workflow](docs/research-workflow.md) | Projects, sources, and Markdown notes |
-| [LaTeX workflow](docs/latex-workflow.md) | Writing, references, and PDF compilation |
-| [Changelog](CHANGELOG.md) | Published changes |
-| [Roadmap](project/ROADMAP.md) | Planned and ongoing work |
-| [Contributing](CONTRIBUTING.md) | How to report issues and contribute |
-| [Testing](guides/TESTING.md) | Available testing guidance |
-| [Security](SECURITY.md) | Responsible vulnerability reporting |
+<details>
+<summary>Product guides and technical project documentation</summary>
 
-## Feedback and community
+- [Prism AI handbook](docs/README.md)
+- [First session](docs/first-session.md)
+- [FAQ](docs/faq.md)
+- [Installation](docs/installation.md)
+- [Browser demo](docs/browser-demo.md)
+- [Local models](docs/local-models.md)
+- [Research workflow](docs/research-workflow.md)
+- [LaTeX workflow](docs/latex-workflow.md)
+- [Project structure and file ownership](docs/PROJECT_STRUCTURE.md)
+- [Testing guidance and report](guides/TESTING.md)
+- [Getting started for maintainers](guides/GETTING_STARTED.md)
+- [Roadmap](project/ROADMAP.md)
+- [Brand positioning strategy](project/BRAND_POSITIONING.md)
+- [Original project architecture notes](project/Prism-Ai-How-I-Want-It-To-Work.md)
+- [LLM architecture comparison](project/How-LLMs-Work-Comparison.md)
+- [Changelog](CHANGELOG.md)
+- [Historical v1.0.0 release notes](docs/releases/v1.0.0.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security policy](SECURITY.md)
+- [Support policy](docs/support.md)
+- [Good first issues](docs/good-first-issues.md)
 
-Prism is being developed in public, and honest feedback is welcome. Useful reports explain what you tried, what you expected, and what actually happened.
+</details>
+
+## Support and community
+
+The maintainer commits to acknowledge actionable public issues and private security reports within 24 hours of receipt. This is an acknowledgement commitment, not a guarantee of a fix or resolution within 24 hours. Read the [support policy](docs/support.md).
 
 - [Report a bug or request a feature](https://github.com/DudeSquad999/Prism-Ai/issues)
-- [Join the Prism AI Reddit community](https://www.reddit.com/r/PrismAIApp/)
-- [Follow product demonstrations on Instagram](https://www.instagram.com/prismhq.ai/)
-- [Join GitHub Discussions](https://github.com/DudeSquad999/Prism-Ai/discussions)
+- [GitHub Discussions](https://github.com/DudeSquad999/Prism-Ai/discussions)
+- [Prism AI Reddit community](https://www.reddit.com/r/PrismAIApp/)
+- [Product demonstrations on Instagram](https://www.instagram.com/prismhq.ai/)
 
-Please do not post API keys, passwords, private research, or unnecessary personal information in public issues.
+Do not post API keys, passwords, private research, private conversations, or unnecessary personal information in public issues.
 
-## About the project
+## Contributing
 
-I built Prism AI because I wanted a more organized way to move from research to writing. I'm continuing to improve the applications, onboarding, documentation, and browser preview. I share product demonstrations and development updates as the project evolves.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before making changes. Focused documentation, accessibility, testing, and browser-preview contributions are welcome. The [good first issues](docs/good-first-issues.md) page lists scoped starting points.
 
-Prism AI is distributed under the [Apache License 2.0](LICENSE). Versions previously distributed under MIT remain available under the terms of their original license.
+## Historical release notes
+
+The original [v1.0.0 release](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v1.0.0) was an educational PyTorch Transformer prototype. It is not the current Windows research and writing product. See the [archived v1.0.0 notes](docs/releases/v1.0.0.md).

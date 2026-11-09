@@ -28,3 +28,9 @@ Prism AI 3.1.0 is a Windows release containing Prism Chat and Prism Studio. It i
 - Cloud requests send included content to the provider you configure. Local inference does not mean every feature works offline.
 - Retrieved sources, AI answers, and citations can be incomplete or wrong. Review original sources and verify important claims.
 - Prism AI is early-stage software; features and behavior may change between releases.
+
+
+## Historical releases
+
+- [v2.0.0](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v2.0.0) is an earlier product milestone.
+- [v1.0.0 historical release notes](docs/releases/v1.0.0.md) describe the original educational PyTorch Transformer prototype. That release is not the current Windows research and writing product.
