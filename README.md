@@ -93,7 +93,7 @@ The screenshots below come from the **v7.1 preview set**. They show the design d
 
 | Guide | What it covers |
 |---|---|
-| [Documentation home](docs/README.md) | Index of all guides |
+| [Prism AI handbook](docs/README.md) | Current product guides, setup, workflows, and project resources |
 | [First session](docs/first-session.md) | A practical first workflow and feedback path |
 | [FAQ](docs/faq.md) | Product scope, preview vs. live AI, Ollama, privacy, citations, downloads, and troubleshooting |
 | [Installation](docs/installation.md) | Windows setup and troubleshooting |

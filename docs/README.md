@@ -1,6 +1,10 @@
-# Prism AI documentation
+# Prism AI handbook
 
-Practical guides for installing Prism, exploring its workflows, configuring AI, and troubleshooting.
+The canonical, maintained handbook for the current Prism AI Windows
+release. Use it to find setup instructions, workflow guides,
+troubleshooting, project information, and community resources.
+Release notes remain the source of truth for version-specific
+downloads and package details.
 
 > **New to Prism?** Start with the [first-session guide](first-session.md) for a safe orientation and a practical research-to-writing workflow. For short answers, see the [Prism AI FAQ](faq.md).
 

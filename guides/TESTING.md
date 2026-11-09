@@ -171,8 +171,13 @@ or sensitive information in logs, screenshots, or test reports.
 
 ## Related instructions
 
-For v3.1.0, the listed Windows installer is
-`Prism-3.1.0-Setup.exe`; no ZIP extraction is required.
+For v3.1.0, the published Windows installer asset is
+`Prism-3.1.0.exe`. Its published SHA-256 digest is
+`36b261bff2efb42195aa137d50f38cd81c7901f8c9aa78bbb761b5fb4f5947c9`.
+No ZIP extraction is required. The test environment table above does
+not record which exact filename was used during the original checks,
+so this correction identifies the published asset, not a retroactive
+claim about the test package.
 For later releases, follow their accompanying instructions.
 
 - [Windows installation](../docs/installation.md)

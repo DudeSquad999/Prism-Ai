@@ -68,7 +68,19 @@ Describe the problem before proposing a large implementation.
 
 ### Browser-preview changes
 
-The static preview files are in `demo/`.
+The public GitHub Pages preview is served from the repository root:
+
+- `index.html` contains the published page structure.
+- `demo.js` contains preview behavior and browser-local state.
+- `demo.css` contains the preview styles.
+
+The `demo/index.html` file is an alternate entry page that reuses
+the root assets. `docs/index.html` is a retained copy of that
+alternate page. For behavior or styling changes, edit the root
+`demo.js` or `demo.css`. If you deliberately change the alternate
+page markup, keep its two HTML copies synchronized. Read
+[`docs/PROJECT_STRUCTURE.md`](docs/PROJECT_STRUCTURE.md) before
+moving or duplicating preview files.
 
 Keep the preview clearly distinguished from the live Windows
 applications. Do not imply that fixed example responses are live
