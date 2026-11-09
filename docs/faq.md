@@ -15,11 +15,11 @@ See the [project README](../README.md) for the current overview and screenshots.
 
 It is a two-part workspace. Use Prism Chat for research organization and conversations. Use Prism Studio for LaTeX writing and document compilation. They are separate applications, and configuring an AI provider in one does not automatically configure the other.
 
-## Does the browser preview use a live AI model?
+## Does the browser workspace use a live AI model?
 
-No. The [browser preview](https://dudesquad999.github.io/Prism-Ai/) uses scripted sample content and example interactions. It does not connect to Ollama or a cloud model, search the web, verify citations, or upload your documents. Use it to inspect the interface, not to evaluate live AI behavior.
+It can. The [browser workspace](https://dudesquad999.github.io/Prism-Ai/) starts in sample mode, but you can connect it to Ollama running on your own computer. Go to **Settings**, connect to Ollama, and choose one of the installed models. The browser sends chat prompts directly to that Ollama server.
 
-To test live AI, install the Windows applications and configure a supported provider in the application you plan to use.
+The browser workspace does not include cloud API keys, live web search, citation verification, or document uploads. Read the [browser workspace guide](browser-demo.md) for setup and privacy details. The Windows applications remain separate and have their own provider settings.
 
 ## Can I use a local AI model with Ollama?
 
@@ -60,7 +60,7 @@ Use the [GitHub Releases page](https://github.com/DudeSquad999/Prism-Ai/releases
 1. Check the [installation guide](installation.md) and the relevant workflow guide.
 2. Confirm that you configured the provider in the correct Prism application.
 3. For Ollama, confirm that the model download completed and that the model name matches the one selected in Prism.
-4. Check whether the response is a demo/fallback response rather than a live model result.
+4. In the browser workspace, check the connection badge and confirm the selected Ollama model is connected. If the response is in sample mode, review the Ollama setup steps and the allowed browser origin.
 5. Report reproducible problems in [GitHub Issues](https://github.com/DudeSquad999/Prism-Ai/issues).
 
 Include the Prism version, Windows version, application (Chat or Studio), steps to reproduce, expected result, actual result, and relevant error message. Remove API keys, tokens, private documents, personal information, and unnecessary local file paths before sharing logs or screenshots.
