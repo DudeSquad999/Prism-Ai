@@ -1,10 +1,10 @@
 <div align="center">
   <img src="prism-banner.png" alt="Prism AI banner" width="100%">
   <h1>Prism AI</h1>
-  <h3>Research and LaTeX writing for Windows</h3>
+  <h3>Open-source AI research and LaTeX writing workspace for Windows</h3>
   <p><strong>Your research. Your writing. Your AI.</strong></p>
   <p>Created and developed by Aidan · Independent software project</p>
-  <p>A Windows workspace I built to bring research, AI-assisted writing, and LaTeX document creation into one connected workflow.</p>
+  <p>An open-source Windows workspace built around two companion apps: Prism Chat for research and Markdown notes, and Prism Studio for LaTeX papers, references, and PDF compilation. Use local Ollama models or supported cloud AI with your own API key.</p>
   <p>
     <a href="https://github.com/DudeSquad999/Prism-Ai/releases/tag/v3.1.0"><img alt="Latest release 3.1.0" src="https://img.shields.io/badge/release-3.1.0-6b52d9"></a>
     <img alt="Platform Windows" src="https://img.shields.io/badge/platform-Windows-6b52d9">
