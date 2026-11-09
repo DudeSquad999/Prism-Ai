@@ -35,7 +35,7 @@ def main() -> int:
     require(banner_path.is_file(), "prism-banner.png is missing.", errors)
     if banner_path.is_file():
         with banner_path.open("rb") as banner:
-            require(banner.read(8) == b"\\x89PNG\\r\\n\\x1a\\n", "prism-banner.png is not a valid PNG file.", errors)
+            require(banner.read(8) == b"\x89PNG\r\n\x1a\n", "prism-banner.png is not a valid PNG file.", errors)
 
     license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
     require("Apache License" in license_text and "Version 2.0" in license_text, "Root LICENSE must contain Apache License 2.0.", errors)
