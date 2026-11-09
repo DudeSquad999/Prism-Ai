@@ -30,7 +30,7 @@ def main() -> int:
         require("irm " in nonempty[2] and "| iex" in nonempty[2], "README line 3 must contain the one-command PowerShell installer.", errors)
         require("assets/images/banner.svg" in nonempty[3], "README line 4 must show the vector banner.", errors)
         require("shields.io" in nonempty[4], "README line 5 must contain the centered Shields.io badges.", errors)
-        require(len([line for line in readme.splitlines()[:8] if line.strip()]) == 5, "The required README top structure must fit within eight lines.", errors)
+        require(len([line for line in readme.splitlines()[:5] if line.strip()]) == 5, "The required README title, description, installer, banner, and badges must occupy the first five lines.", errors)
 
     banner_path = ROOT / "assets/images/banner.svg"
     require(banner_path.is_file(), "assets/images/banner.svg is missing.", errors)
