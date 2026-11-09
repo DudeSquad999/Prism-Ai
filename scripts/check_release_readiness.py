@@ -27,7 +27,7 @@ def main() -> int:
         require(nonempty[0] == "# Prism AI", "README line 1 must be the H1 project title.", errors)
         require(len(nonempty[1]) < 120 and not nonempty[1].startswith("#"), "README line 2 must be a plain one-line description under 120 characters.", errors)
         require("irm " in nonempty[2] and "| iex" in nonempty[2], "README line 3 must contain the one-command PowerShell installer.", errors)
-        require("assets/images/banner.svg" in nonempty[3], "README line 4 must show the vector banner.", errors)
+        require("prism-banner.png" in nonempty[3], "README line 4 must show the Prism PNG banner.", errors)
         require("shields.io" in nonempty[4], "README line 5 must contain the centered Shields.io badges.", errors)
         require(len([line for line in readme.splitlines()[:5] if line.strip()]) == 5, "The required README title, description, installer, banner, and badges must occupy the first five lines.", errors)
 
