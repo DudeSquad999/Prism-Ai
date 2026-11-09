@@ -1,15 +1,17 @@
 # Prism AI documentation
 
-Practical guides for installing Prism, exploring its workflows, and configuring AI.
+Practical guides for installing Prism, exploring its workflows, configuring AI, and troubleshooting.
 
-> **New to Prism?** Start with the [installation guide](installation.md) for the current Windows release. Want to explore first? Open the [interactive browser demo](browser-demo.md).
+> **New to Prism?** Start with the [first-session guide](first-session.md) for a safe orientation and a practical research-to-writing workflow. For short answers, see the [Prism AI FAQ](faq.md).
 
 ## Get started
 
 | Guide | What it covers |
 |---|---|
-| [Install Prism AI](installation.md) | Download, install, configure, and troubleshoot the Windows apps |
-| [Try the browser demo](browser-demo.md) | Explore the sample workspace and understand its limits and privacy |
+| [Your first Prism session](first-session.md) | Choose a workspace, try a small research-to-writing workflow, and share useful feedback |
+| [Prism AI FAQ](faq.md) | Product scope, live AI vs. preview, Ollama, privacy, citations, LaTeX, downloads, and troubleshooting |
+| [Install Prism AI](installation.md) | Download, install, configure, and troubleshoot the Windows applications |
+| [Try the browser preview](browser-demo.md) | Explore the sample workspace and understand what the preview does and does not do |
 | [Use local models with Ollama](local-models.md) | Configure local AI and check for connection issues |
 
 ## Work in Prism
@@ -21,13 +23,13 @@ Practical guides for installing Prism, exploring its workflows, and configuring 
 
 ## Project resources
 
-- [Repository structure and maintenance checks](PROJECT_STRUCTURE.md)
-
+- [Project structure and maintenance checks](PROJECT_STRUCTURE.md)
 - [Project overview and screenshots](../README.md)
-- [Project wiki](https://github.com/DudeSquad999/Prism-Ai/wiki)
-- [Release notes](../CHANGELOG.md)
-- [Roadmap](../project/ROADMAP.md)
+- [GitHub Releases](https://github.com/DudeSquad999/Prism-Ai/releases)
+- [Development roadmap](../project/ROADMAP.md)
 - [Contributing guidelines](../CONTRIBUTING.md)
+- [GitHub Discussions](https://github.com/DudeSquad999/Prism-Ai/discussions)
+- [Prism AI community on Reddit](https://www.reddit.com/r/PrismAIApp/)
 
 ## Repository maintenance
 
@@ -40,6 +42,6 @@ python scripts/check_repo.py
 
 See [project structure](PROJECT_STRUCTURE.md) for file ownership and safe editing guidance.
 
-## Archived guides
+## Documentation accuracy
 
-[Getting Started with Prism AI v2.0.0](../guides/GETTING_STARTED.md) describes an older release. For the current release, use the [installation guide](installation.md).
+Prism AI is an early-stage project. Guides should distinguish tested behavior from planned work, examples, and limitations. Do not describe the browser preview as live AI, and do not present an Ollama model or hardware configuration as tested unless it has been verified with the released Windows applications.
