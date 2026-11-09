@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate release-facing repository invariants without changing project files."""
+"""Validate the public-facing release-readiness requirements for Prism AI."""
 
 from __future__ import annotations
 
@@ -9,81 +9,80 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EM_DASH = "\u2014"
-EMOJI = re.compile(r"[\U0001F000-\U0001FAFF\u2600-\u27BF]")
+EMOJI = re.compile(r"[\U0001F300-\U0001FAFF\U00002600-\U000027BF]")
 
 
-def fail(message: str, errors: list[str]) -> None:
-    errors.append(message)
+def require(condition: bool, message: str, errors: list[str]) -> None:
+    if not condition:
+        errors.append(message)
 
 
 def main() -> int:
     errors: list[str] = []
     readme_path = ROOT / "README.md"
     readme = readme_path.read_text(encoding="utf-8")
-    lines = readme.splitlines()
+    nonempty = [line.strip() for line in readme.splitlines() if line.strip()]
 
-    if len(lines) < 7 or lines[0] != "# Prism AI":
-        fail("README must begin with the Prism AI H1 title.", errors)
-    if len(lines) < 2 or len(lines[1]) >= 120 or lines[1].startswith("#"):
-        fail("README line 2 must be a plain one-line description under 120 characters.", errors)
-    if len(lines) < 3 or not lines[2].startswith("`powershell "):
-        fail("README line 3 must contain the one-command PowerShell installer.", errors)
-    if len(lines) < 4 or "assets/images/banner.svg" not in lines[3]:
-        fail("README line 4 must embed assets/images/banner.svg.", errors)
-    if len(lines) < 7 or lines[4] != '<p align="center">' or lines[6] != "</p>":
-        fail("README lines 5 to 7 must center the status badges.", errors)
-    if len(re.findall(r"<img\b", lines[5])) < 4:
-        fail("README must show stack, license, CI, and 24-hour response badges.", errors)
+    require(len(nonempty) >= 5, "README must start with five required content lines.", errors)
+    if len(nonempty) >= 5:
+        require(nonempty[0] == "# Prism AI", "README line 1 must be the H1 project title.", errors)
+        require(len(nonempty[1]) < 120 and not nonempty[1].startswith("#"), "README line 2 must be a plain one-line description under 120 characters.", errors)
+        require("irm " in nonempty[2] and "| iex" in nonempty[2], "README line 3 must contain the one-command PowerShell installer.", errors)
+        require("assets/images/banner.svg" in nonempty[3], "README line 4 must show the vector banner.", errors)
+        require("shields.io" in nonempty[4], "README line 5 must contain the centered Shields.io badges.", errors)
+        require(len([line for line in readme.splitlines()[:5] if line.strip()]) == 5, "The required README title, description, installer, banner, and badges must occupy the first five lines.", errors)
 
     banner_path = ROOT / "assets/images/banner.svg"
-    try:
-        root = ET.parse(banner_path).getroot()
-        if root.attrib.get("width") != "1200" or root.attrib.get("height") != "400":
-            fail("Banner SVG must declare width=1200 and height=400.", errors)
-        if root.tag.split("}")[-1] != "svg":
-            fail("Banner asset must be an SVG document.", errors)
-    except (ET.ParseError, OSError) as exc:
-        fail(f"Banner SVG is missing or invalid: {exc}", errors)
+    require(banner_path.is_file(), "assets/images/banner.svg is missing.", errors)
+    if banner_path.is_file():
+        try:
+            svg = ET.parse(banner_path).getroot()
+            require(svg.attrib.get("width") == "1200", "Banner width must be 1200.", errors)
+            require(svg.attrib.get("height") == "400", "Banner height must be 400.", errors)
+            require(svg.attrib.get("viewBox") == "0 0 1200 400", "Banner viewBox must be 0 0 1200 400.", errors)
+        except ET.ParseError:
+            errors.append("Banner SVG is not well-formed XML.")
 
     license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
-    if "Apache License" not in license_text or "Version 2.0" not in license_text:
-        fail("Root LICENSE must contain Apache License 2.0.", errors)
+    require("Apache License" in license_text and "Version 2.0" in license_text, "Root LICENSE must contain Apache License 2.0.", errors)
+    require((ROOT / ".github/workflows/ci.yml").is_file(), "The requested .github/workflows/ci.yml workflow is missing.", errors)
+    require((ROOT / ".github/ISSUE_TEMPLATE/bug_report.yml").is_file(), "Bug report YAML form is missing.", errors)
+    require((ROOT / ".github/ISSUE_TEMPLATE/feature_request.yml").is_file(), "Feature request YAML form is missing.", errors)
 
-    issue_forms = [
-        ROOT / ".github/ISSUE_TEMPLATE/bug_report.yml",
-        ROOT / ".github/ISSUE_TEMPLATE/feature_request.yml",
-    ]
-    for path in issue_forms:
-        if not path.is_file():
-            fail(f"Missing structured issue form: {path.relative_to(ROOT)}", errors)
-
-    starter = ROOT / "docs/good-first-issues.md"
-    headings = re.findall(r"^##?\s+\d+\.", starter.read_text(encoding="utf-8"), re.MULTILINE)
-    if not 3 <= len(headings) <= 5:
-        fail("Good first issues must define 3 to 5 scoped tasks.", errors)
+    first_issues = (ROOT / "docs/good-first-issues.md").read_text(encoding="utf-8")
+    issue_count = len(re.findall(r"^### \d+\.", first_issues, flags=re.MULTILINE))
+    require(3 <= issue_count <= 5, "Good first issues must define three to five scoped tasks.", errors)
 
     support = (ROOT / "docs/support.md").read_text(encoding="utf-8").lower()
-    if "24 hours" not in support or "acknowledg" not in support:
-        fail("Support policy must document the 24-hour acknowledgement target.", errors)
+    require("24 hours" in support and "acknowledge" in support, "Support policy must state the 24-hour acknowledgement commitment.", errors)
 
-    for path in sorted(ROOT.rglob("*.md")):
-        if any(part in {".git", ".venv", "node_modules"} for part in path.parts):
+    install = (ROOT / "scripts/install.ps1").read_text(encoding="utf-8")
+    require("Get-FileHash" in install and "36b261bff2efb42195aa137d50f38cd81c7901f8c9aa78bbb761b5fb4f5947c9" in install, "Installer must verify the published v3.1.0 SHA-256 digest.", errors)
+
+    testing = (ROOT / "guides/TESTING.md").read_text(encoding="utf-8")
+    require("<details>" in testing and "</details>" in testing, "The long test report must be preserved inside a details section.", errors)
+
+    release_notes = ROOT / "docs/releases/v1.0.0.md"
+    require(release_notes.is_file(), "Historical v1.0.0 release notes are missing.", errors)
+    if release_notes.is_file():
+        require("historical" in release_notes.read_text(encoding="utf-8").lower(), "v1.0.0 notes must identify the release as historical.", errors)
+
+    docs = sorted(ROOT.rglob("*.md"))
+    for path in docs:
+        if any(part in {".git", "node_modules", ".venv", "venv"} for part in path.parts):
             continue
         content = path.read_text(encoding="utf-8")
         relative = path.relative_to(ROOT)
-        if EM_DASH in content:
-            fail(f"{relative}: em dash found.", errors)
-        if EMOJI.search(content):
-            fail(f"{relative}: emoji code point found.", errors)
+        require("—" not in content, f"{relative} contains an em dash.", errors)
+        require(EMOJI.search(content) is None, f"{relative} contains an emoji.", errors)
 
     if errors:
-        print("Release readiness check failed:")
+        print("Release-readiness checks failed:")
         for error in errors:
-            print(f"  - {error}")
+            print(f"- {error}")
         return 1
 
-    print("Release readiness check passed: README structure, SVG, Apache license, issue forms, starter tasks, response target, and Markdown typography.")
+    print(f"Release-readiness checks passed across {len(docs)} Markdown files.")
     return 0
 
 

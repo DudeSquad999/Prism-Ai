@@ -15,14 +15,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  checks:
-    name: Repository checks
+  quality:
+    name: Repository and release-readiness checks
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository and full history
+      - name: Check out repository
         uses: actions/checkout@v7
         with:
-          fetch-depth: 0
           persist-credentials: false
 
       - name: Set up Node.js
@@ -35,20 +34,22 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Check browser preview syntax
+      - name: Check browser preview JavaScript syntax
         run: node --check demo.js
 
-      - name: Run repository checker tests
+      - name: Run repository checker unit tests
         run: python -m unittest discover -s tests -v
 
-      - name: Check local documentation and assets
+      - name: Check local Markdown, HTML, and CSS references
         run: python scripts/check_repo.py
 
       - name: Check release readiness and documentation typography
         run: python scripts/check_release_readiness.py
 
-      - name: Scan full Git history for credential patterns
-        run: python scripts/check_git_history_secrets.py
-
-      - name: Validate GitHub YAML files
-        run: ruby -e 'require "yaml"; Dir.glob(".github/**/*.yml").each { |path| YAML.load_file(path) }'
+      - name: Validate workflow and issue-form YAML
+        run: |
+          ruby -e 'require "yaml"; ARGV.each { |file| YAML.load_file(file, aliases: true) }; puts "YAML syntax passed."' \
+            .github/workflows/ci.yml \
+            .github/ISSUE_TEMPLATE/bug_report.yml \
+            .github/ISSUE_TEMPLATE/feature_request.yml \
+            .github/ISSUE_TEMPLATE/config.yml

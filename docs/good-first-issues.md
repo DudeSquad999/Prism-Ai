@@ -1,54 +1,52 @@
 # Good first issues
 
-These are deliberately scoped contribution opportunities. Confirm that an item is still open before starting. The browser preview is separate from the Windows applications, and changes to this repository do not modify the installed Windows product.
+These tasks are intentionally scoped for contributors who want a clear starting point. Check the linked files and open issues before beginning. The packaged Windows application source is not included in this static-preview repository, so these tasks focus on files that are available here.
 
-## 1. Add Playwright smoke tests for the browser preview
+### 1. Expand local-reference checker tests
 
-**Scope:** Add a small Playwright test suite for the published root preview. Cover first load, creating a sample project, editing a note, and export/import of demo data.
+**Files:** `tests/test_check_repo.py`, `scripts/check_repo.py`
 
-**Acceptance checks:**
-- Tests run headlessly in GitHub Actions.
-- Tests use sample data and do not require credentials or external AI services.
+Add focused tests for relative links with query strings and fragments, percent-encoded paths, CSS `url()` references, and paths that attempt to escape the repository root.
+
+**Acceptance criteria:**
+- Each behavior has a small reproducible test.
+- Valid local references pass.
+- Missing or out-of-root references fail with a useful message.
+- Existing tests continue to pass.
+
+### 2. Add browser-preview smoke tests
+
+**Files:** `demo.js`, `demo/index.html`, new browser test configuration
+
+Introduce a small Playwright smoke-test suite for the public browser preview. Cover initial load, creating a project, editing a note, and importing or exporting demo data.
+
+**Acceptance criteria:**
+- Tests run in CI with a documented browser version.
+- Tests use fictional fixture data only.
+- The suite does not imply that the preview connects to live AI.
 - Failures identify the affected workflow.
-- Existing browser behavior and local-only preview disclaimers remain intact.
 
-**Out of scope:** Rewriting the demo architecture or testing the Windows applications.
+### 3. Improve keyboard accessibility checks
 
-## 2. Improve keyboard navigation and visible focus
+**Files:** `index.html`, `demo.css`, `demo.js`
 
-**Scope:** Audit the root browser preview for keyboard access to primary navigation, dialogs, forms, and project actions. Fix a small, clearly documented set of focus-order or visible-focus defects.
+Audit the primary navigation, dialogs, form controls, and project actions for keyboard-only use. Fix missing focus visibility or unclear accessible names in the browser preview.
 
-**Acceptance checks:**
-- Every changed interactive control can be reached and operated by keyboard.
-- Focus remains visible and is not lost when the UI updates.
-- A short manual test record lists browser, viewport, and tested controls.
+**Acceptance criteria:**
+- Main workflows can be reached without a mouse.
+- Focus remains visible in dark and light themes.
+- Dialogs expose an understandable title and keyboard dismissal.
+- Add a short manual verification checklist.
 
-**Out of scope:** Claiming full WCAG conformance without a complete audit.
+### 4. Add a browser-preview import and export test matrix
 
-## 3. Extend the local reference checker
+**Files:** `demo.js`, `tests/`, `docs/browser-demo.md`
 
-**Scope:** Add validation for Markdown heading fragments and HTML anchor references to `scripts/check_repo.py`, with focused unit tests in `tests/`.
+Document and test the expected behavior for valid exports, malformed JSON, oversized imports, duplicate project IDs, and reset behavior.
 
-**Acceptance checks:**
-- Existing local-path checks continue to pass.
-- Valid anchors pass and missing anchors fail with source-file context.
-- External URLs and fenced code examples are not misclassified.
-- Tests cover duplicate headings and percent-encoded fragments.
+**Acceptance criteria:**
+- Each case has a stated expected result.
+- Invalid input does not corrupt existing browser data.
+- The guide explains how to recover from a rejected import.
+- Tests use temporary browser storage and do not touch real user files.
 
-**Out of scope:** Network crawling or checking external website uptime.
-
-## 4. Write an Ollama troubleshooting decision tree
-
-**Scope:** Improve `docs/local-models.md` with a concise decision tree for common connection failures, clearly separating Chat and Studio configuration.
-
-**Acceptance checks:**
-- Each step maps to an observable symptom and a safe diagnostic action.
-- No model or Windows hardware combination is described as verified unless tested.
-- API keys and private data are never requested in public reports.
-- Links point to the current installation and support guidance.
-
-**Out of scope:** Changing the Windows applications or promising a specific model's performance.
-
-## Contribution process
-
-Read [CONTRIBUTING.md](../CONTRIBUTING.md), check the live issue list, and comment on the relevant issue before starting. Pull requests should state exactly what was tested and what remains unverified.

@@ -175,22 +175,35 @@ first, as described above.
 Review [LICENSE](LICENSE) before contributing.
 
 
-## Maintainer response target
+## Development environment
 
-Maintainers commit to acknowledging new public issues and discussion posts within 24 hours. This is an initial-response commitment, not a guaranteed fix or resolution time. Security reports are handled privately through [SECURITY.md](SECURITY.md) and are not covered by the public response clock.
+The public repository contains the browser preview, documentation, repository tooling, and project records. The complete source for the packaged Windows applications is not currently included in this static-preview repository. Changes to the browser preview do not change the installed Windows applications.
 
-## Contributor environment
+For repository work, use:
 
-For the repository checks, use Node.js 24 and Python 3.12 or newer. From the repository root, run:
+- Git.
+- Node.js 24 or a compatible Node.js release for the browser-preview syntax check.
+- Python 3.12 or newer for repository tests and validation.
+- Ruby for the YAML syntax check used by CI.
+
+Clone the repository and enter its directory:
+
+```powershell
+git clone https://github.com/DudeSquad999/Prism-Ai.git
+Set-Location Prism-Ai
+```
+
+Run the same checks used by CI:
 
 ```powershell
 node --check demo.js
 python -m unittest discover -s tests -v
 python scripts/check_repo.py
 python scripts/check_release_readiness.py
-ruby -e 'require "yaml"; Dir.glob(".github/**/*.yml").each { |path| YAML.load_file(path) }'
 ```
 
-The checks validate the browser-demo JavaScript syntax, the Python reference-checker tests, local documentation and asset references, release-readiness invariants, and YAML syntax. They do not verify the Windows applications, live AI providers, installer behavior, or external link availability. State those checks separately in a pull request.
+The checks validate the public repository. They do not establish that the packaged Windows applications, live AI providers, or every desktop workflow work correctly.
 
-Before picking up an issue, review [good first issues](docs/good-first-issues.md) and check that it is still open and unassigned.
+## Maintainer response target
+
+The maintainer commits to acknowledge actionable public issues and private security reports within 24 hours of receipt. This is an acknowledgement commitment, not a guarantee of diagnosis, a workaround, a fix, or a release within that period. See the [support policy](docs/support.md) for scope and reporting channels.

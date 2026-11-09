@@ -1,23 +1,24 @@
-# Support and response policy
+# Prism AI support policy
 
-## Public response target
+## Maintainer response commitment
 
-Maintainers commit to acknowledging new public GitHub issues and discussion posts within 24 hours.
+The maintainer commits to acknowledge actionable public issues and private security reports within **24 hours of receipt**.
 
-An acknowledgement confirms that the report has been received and gives an initial triage status when possible. It is not a promise that investigation, a fix, or a complete answer will be delivered within 24 hours. Complex reports may require additional information or time.
+This is an acknowledgement SLA. It means the maintainer will confirm receipt and, when possible, identify the next review step. It is not a guarantee that a report will be diagnosed, reproduced, fixed, or released within 24 hours. Complex issues may take longer to investigate.
 
-If a report has not received an acknowledgement after 24 hours, add one concise follow-up comment with the issue or discussion link. Avoid opening duplicate reports.
+## Where to ask for help
 
-## Where to ask
+- **Bugs and feature requests:** [GitHub Issues](https://github.com/DudeSquad999/Prism-Ai/issues).
+- **General questions and workflow feedback:** [GitHub Discussions](https://github.com/DudeSquad999/Prism-Ai/discussions).
+- **Community discussion:** [r/PrismAIApp](https://www.reddit.com/r/PrismAIApp/).
+- **Security vulnerabilities:** Use the private process in [SECURITY.md](../SECURITY.md). Do not publish exploit details or credentials in public.
 
-- Use [GitHub Issues](https://github.com/DudeSquad999/Prism-Ai/issues) for reproducible bugs and feature requests.
-- Use [GitHub Discussions](https://github.com/DudeSquad999/Prism-Ai/discussions) for general questions, ideas, and community help.
-- Review [CONTRIBUTING.md](../CONTRIBUTING.md) before preparing a pull request.
+## Make a report actionable
 
-## Security reports
+Include the affected component, release or commit, operating system, steps to reproduce, expected behavior, actual behavior, and sanitized error messages. State whether the problem affects Prism Chat, Prism Studio, the Windows installer, or the browser preview.
 
-Do not publish credentials, API keys, private research, exploit details, or unpatched vulnerability information in public issues or discussions. Follow [SECURITY.md](../SECURITY.md) and use GitHub's private vulnerability reporting when available.
+Do not include API keys, passwords, private conversations, personal research, or unnecessary personal information. Remove secrets from screenshots and logs before attaching them.
 
-## Support boundaries
+## Scope and availability
 
-Prism AI is an early-stage, independently maintained project. The 24-hour target is an initial public acknowledgement commitment, not 24/7 staffed support, a service-level guarantee for resolution, or a guarantee that every request will be implemented. Users should keep backups of important work and verify AI-generated claims against original sources.
+The 24-hour target applies to acknowledgement, not continuous support coverage or guaranteed resolution. Acknowledgement does not mean that a proposed feature is accepted or that a bug fix has been scheduled. If a report needs more information, the maintainer may ask for a minimal reproduction or a sanitized diagnostic log.

@@ -1,47 +1,57 @@
-# Show HN: Prism AI, an open-source Windows research and LaTeX writing workspace
+# Show HN draft: Prism AI, a Windows research and LaTeX workspace
 
-**Suggested title:** Show HN: Prism AI, an open-source Windows research and writing workspace
+> Draft for maintainer review. Confirm the current release, source-availability statement, and benchmark results before posting.
 
-**Post draft:**
+## Suggested title
 
-I built Prism AI because I wanted a more organized path from a research question to a finished document on Windows.
+Show HN: Prism AI, a Windows workspace for research and LaTeX writing
 
-The current product has two companion applications:
+## Draft post
+
+Hi HN. I am building Prism AI, a Windows workspace designed to keep research projects and technical writing in one workflow.
+
+It has two companion applications:
 
 - **Prism Chat** organizes research projects, conversations, source material, and Markdown notes.
-- **Prism Studio** supports LaTeX writing, references and BibTeX, and PDF compilation.
+- **Prism Studio** supports LaTeX papers and presentations, BibTeX references, review of proposed edits, and PDF compilation with Tectonic.
 
-The goal is not to hide the research process behind one generated answer. The workflow is designed around keeping project material organized, reviewing source context, and inspecting AI-proposed edits before applying them.
+The product can use local models through Ollama or a cloud provider configured with the user's own API key. Chat and Studio have separate provider configuration, so setup and validation need to be checked in each application.
 
-## Architecture and design decisions
+One of the harder product decisions has been keeping the browser preview honest. It is a scripted, local-only sample workspace. It does not connect to an AI model, search the web, verify citations, or analyze uploaded documents. It is useful for exploring selected interface workflows, but it is not presented as a live product backend.
 
-Prism supports local models through Ollama and cloud providers configured with the user's own API key. Chat and Studio have separate provider configuration, so setup in one application does not silently configure the other. Local inference keeps model execution on the user's machine, while cloud requests send included content to the selected provider.
+Another challenge is separating useful AI assistance from unsupported trust claims. Retrieved sources and generated answers can be incomplete or wrong, so important claims still need to be checked against original sources. Cloud requests send included content to the provider the user configures. Local inference does not mean every feature works offline.
 
-The browser preview is a separate, local-only demonstration. It uses fictional sample sources and fixed example replies. It does not connect to an AI model, search the web, verify citations, or represent the live Windows applications.
+The public repository contains the browser preview, documentation, project records, and repository tooling. The complete source for the packaged Windows applications is not currently included in this static-preview repository. I want to be explicit about that boundary rather than imply that the demo is the desktop application.
 
-The current repository contains the public browser preview, documentation, maintenance scripts, and release information. The complete Windows application source is not represented by the static preview code, so a change to the preview should not be mistaken for a change to the installed applications.
+I would appreciate feedback on the research-to-writing workflow, local versus cloud AI setup, evidence review, and what technical measurements would be most useful to publish next.
 
-## Technical hurdles
+## Architecture points to discuss
 
-The hardest product decisions are around trust and boundaries: clearly separating retrieved source material from generated text, making users review AI-proposed document changes, keeping local and cloud provider behavior understandable, and avoiding claims that a browser demo or a mocked test proves live AI correctness.
+- Two application workflows with separate provider setup.
+- Local Ollama inference versus user-configured cloud APIs.
+- A scripted browser preview that is deliberately separated from live AI behavior.
+- Markdown notes, BibTeX references, LaTeX authoring, and PDF compilation.
+- Explicit privacy and evidence limitations.
 
-LaTeX compilation adds another practical workflow boundary. Prism Studio uses Tectonic for PDF compilation, which means first-run package downloads and network requirements need to be explained separately from local model inference.
+## Benchmark publication checklist
 
-## Benchmarks and current limitations
+No reproducible performance benchmark figures are currently claimed by this draft. Before posting numerical results, measure and publish:
 
-I am not publishing performance numbers yet. There is no reproducible public benchmark suite covering startup time, response latency, memory use, model/hardware combinations, or PDF compilation time for the current Windows release. I would rather publish measured results with exact hardware, model, application version, and test procedure than invent a benchmark or compare unlike environments.
+| Measurement | Required context |
+|---|---|
+| Application cold start | Windows version, CPU, RAM, storage, release build, repeated runs, median and p95 |
+| Local model first-token latency | Ollama version, exact model, quantization, GPU/CPU, context length, prompt size |
+| Local generation throughput | Tokens per second, warm-up policy, prompt and output token counts, repeat count |
+| PDF compilation time | Tectonic version, document size, package cache state, repeat count |
+| Idle and active resource use | RAM, CPU, GPU memory, GPU utilization, and measurement interval |
 
-The current release is early-stage and Windows is the documented platform. The repository's test report explicitly distinguishes maintainer-reported Windows checks from Linux, browser automation, and Wine results. Live cloud-provider validation and several Windows-specific behaviors remain open validation items.
+Do not substitute estimates, isolated best runs, or results from a different application version. If the measurements are not complete, post without performance numbers and invite contributors to help define a reproducible benchmark protocol.
 
-## What feedback would help
+## Pre-publication checks
 
-- Is the separation between research organization and LaTeX production useful?
-- What evidence or citation controls would you expect before trusting a research workspace?
-- What should be measured in a fair local-versus-cloud workflow benchmark?
-- Which Windows setup or document-compilation failures should be prioritized?
+- Confirm the current release URL and installer checksum.
+- Confirm that the repository source-availability statement is accurate.
+- Replace no text with unsupported claims about citation verification or offline operation.
+- Add only benchmark data that has been reproduced and recorded with its environment.
+- Check the post against the current product screenshots and documentation.
 
-Project: https://github.com/DudeSquad999/Prism-Ai
-
-Browser preview: https://dudesquad999.github.io/Prism-Ai/
-
-I welcome critical feedback, especially from people who use LaTeX, local models, or research workflows. Please distinguish issues in the live Windows applications from behavior in the browser preview when reporting them.
