@@ -56,6 +56,7 @@
   let aiConnection = { status: 'disconnected', message: 'Connect to Ollama to use a real local model.' };
   let aiBusy = false;
   let aiAbortController = null;
+  let aiStopRequested = false;
   let screen = 'Home';
   let mode = 'Ask';
   let panelTab = 'Tasks';
@@ -326,6 +327,7 @@
   }
 
   function updateStreamingMessage(project, message, messageIndex) {
+    if (screen !== 'Chat' || current().id !== project.id) return;
     const body = document.querySelector(`[data-message-index="${messageIndex}"] .body`);
     if (body) body.textContent = message.text || 'Thinking...';
     const view = $('view');
@@ -339,13 +341,13 @@
       'Never invent sources, URLs, quotations, citations, statistics, or claims of live research.',
       'This browser workspace has no web search or source-verification tool. In Research mode, help plan research and evaluate material the user provides, but clearly say you cannot perform a live web search.',
       'Do not claim to have read files or sources unless their contents are included in the conversation.',
-      `Current project: ${current().name}. Workspace mode: ${mode}.`
+      `Current project: ${project.name}. Workspace mode: ${mode}.`
     ];
     if (mode === 'Documents' || mode === 'Create') {
       system.push('The project draft below is user-provided working text. Help revise it only as requested and explain substantial changes.');
       system.push(`Current project draft (may be empty):\n${project.draft.slice(0, 8000)}`);
     }
-    const history = project.messages.slice(-18).filter((item) => typeof item.text === 'string' && item.text.trim());
+    const history = project.messages.slice(0, -1).slice(-18).filter((item) => typeof item.text === 'string' && item.text.trim());
     return [
       { role: 'system', content: system.join('\n\n') },
       ...history.map((item) => ({
@@ -358,6 +360,7 @@
   async function streamOllamaChat(project, assistantMessage, messageIndex) {
     const controller = new AbortController();
     aiAbortController = controller;
+    aiStopRequested = false;
     const timeout = setTimeout(() => controller.abort(), 180000);
     try {
       const response = await fetch(`${aiConfig.url}/api/chat`, {
@@ -441,9 +444,10 @@
       }
       save();
     } catch (error) {
-      assistantMessage.role = 'Prism · connection issue';
+      const stopped = aiStopRequested && error && error.name === 'AbortError';
+      assistantMessage.role = stopped ? 'Prism · response stopped' : 'Prism · connection issue';
       const detail = error && error.name === 'AbortError'
-        ? 'The response was stopped or timed out.'
+        ? (stopped ? 'Response stopped.' : 'The response timed out.')
         : (error && error.message ? error.message : 'The connection to Ollama was interrupted.');
       assistantMessage.text = assistantMessage.text === 'Thinking...'
         ? `${detail} Check the Ollama server and selected model in Settings, then try again.`
@@ -451,6 +455,7 @@
       save();
     } finally {
       aiBusy = false;
+      aiStopRequested = false;
       aiAbortController = null;
       render();
       updateAIChrome();
@@ -783,7 +788,7 @@
     else if (action === 'openChat') { screen = 'Chat'; render(); $('input').focus(); }
     else if (action === 'connectAI') connectAI(false);
     else if (action === 'disconnectAI') disconnectAI();
-    else if (action === 'cancelAI' && aiAbortController) aiAbortController.abort();
+    else if (action === 'cancelAI' && aiAbortController) { aiStopRequested = true; aiAbortController.abort(); }
     else if (action === 'newProject') projectForm();
     else if (action === 'newchat') {
       if (project.messages.length && !confirm('Start a new chat and remove this project’s current conversation?')) return;
