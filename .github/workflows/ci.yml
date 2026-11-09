@@ -19,9 +19,10 @@ jobs:
     name: Repository and release-readiness checks
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out repository and full history
         uses: actions/checkout@v7
         with:
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Set up Node.js
@@ -45,6 +46,9 @@ jobs:
 
       - name: Check release readiness and documentation typography
         run: python scripts/check_release_readiness.py
+
+      - name: Scan full Git history for credential patterns
+        run: python scripts/check_git_history_secrets.py
 
       - name: Validate workflow and issue-form YAML
         run: |

@@ -4,6 +4,8 @@ Windows research and LaTeX workspace with local and cloud AI.
 <p align="center"><img src="assets/images/banner.svg" alt="Prism AI research and writing workflow" width="1200" height="400"></p>
 <p align="center"><img alt="Stack: Windows, Ollama, LaTeX" src="https://img.shields.io/badge/stack-Windows%20%7C%20Ollama%20%7C%20LaTeX-6554c0"> <a href="LICENSE"><img alt="Apache 2.0 license" src="https://img.shields.io/github/license/DudeSquad999/Prism-Ai"></a> <a href="https://github.com/DudeSquad999/Prism-Ai/actions/workflows/ci.yml"><img alt="CI build status" src="https://img.shields.io/github/actions/workflow/status/DudeSquad999/Prism-Ai/ci.yml?branch=Main&label=CI"></a> <a href="docs/support.md"><img alt="Maintainer response target: 24 hours" src="https://img.shields.io/badge/response%20target-24h-168f78"></a></p>
 
+**Your research. Your writing. Your AI.**
+
 ## What Prism AI does
 
 Prism AI is a Windows research and writing workspace built around two companion applications:
@@ -108,6 +110,8 @@ The Apache License 2.0 applies to the files covered by the license in this repos
 - [Security policy](SECURITY.md)
 - [Support policy](docs/support.md)
 - [Good first issues](docs/good-first-issues.md)
+- [Security audit](docs/SECURITY_AUDIT.md)
+- [Show HN draft](docs/SHOW_HN_DRAFT.md)
 
 </details>
 
