@@ -10,6 +10,12 @@ This file separates repository documentation changes from published application 
 - Added `TESTING.md` with a Windows release checklist. Checks remain untested unless actual results are recorded.
 - Reworked `README.md` to distinguish the static interface demo, packaged applications, and planned capabilities.
 - Added `CONTRIBUTING.md` with contribution scope, verification guidance, and a pull request checklist.
+- Corrected the contributor guide's browser-preview paths to point to the root Pages assets and documented the alternate HTML copies.
+- Published a canonical `docs/README.md` handbook index and linked it from the README and browser-preview navigation.
+- Corrected the v3.1.0 installer filename and published SHA-256 reference in the test guide.
+- Marked v1.0.0 and v2.0.0 release pages as historical, and corrected the v2.0.0 package filename to match its uploaded asset.
+- Improved the GitHub Discussions welcome page with current release, setup, handbook, and community links.
+- Added `documentation` and `help wanted` labels to the open Ollama setup verification issue.
 - Added bug-report and feature-request forms under `.github/ISSUE_TEMPLATE/`.
 
 ### Scope
@@ -30,7 +36,7 @@ These changes did not modify application code, interface styling, the Windows in
 ### Package and limitations
 
 - Uploaded attachment: `PrismV2.0.0.zip`.
-- Published notes refer to `Prism-AI-Windows-v2.0.0.zip`; the attachment name and notes should be aligned.
+- The archived release page now names the actual attachment and identifies v2.0.0 as superseded by the current release.
 - Live AI requires a configured provider or local model.
 - Research retrieval uses extracts and abstracts. Quote matching does not establish that a claim is correct.
 - The release notes do not certify independent testing of every feature or installation path.
@@ -49,7 +55,7 @@ These changes did not modify application code, interface styling, the Windows in
 ### Limitations
 
 - An educational and experimental implementation whose output quality depends on data, configuration, and training.
-- The v1 training workflow differs from the v2 Windows application package and the repository's static interface demo.
+- The v1 training workflow differs from the current Windows research and writing workspace; the release page now labels it as a historical prototype archive.
 
 ## Updating this file
 
