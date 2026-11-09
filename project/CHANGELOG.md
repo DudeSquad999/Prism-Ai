@@ -16,6 +16,11 @@ This file separates repository documentation changes from published application 
 - Marked v1.0.0 and v2.0.0 release pages as historical, and corrected the v2.0.0 package filename to match its uploaded asset.
 - Improved the GitHub Discussions welcome page with current release, setup, handbook, and community links.
 - Added `documentation` and `help wanted` labels to the open Ollama setup verification issue.
+- Reopened issue #38 because the README still uses v7.1 preview images rather than verified 3.1.0 Windows screenshots.
+- Updated the Help Wanted discussion with direct links to the current Ollama and screenshot verification tasks.
+- Corrected the GitHub latest-release pointer so `/releases/latest` resolves to v3.1.0, and linked the release to an Announcements discussion.
+- Added a Node.js syntax check for `demo.js` to the repository-quality workflow.
+- Added a documented brand-positioning strategy, including the product's differentiation and Prism-name confusion risk.
 - Added bug-report and feature-request forms under `.github/ISSUE_TEMPLATE/`.
 
 ### Scope

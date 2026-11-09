@@ -10,6 +10,16 @@ Prism has two companion Windows applications:
 - **Prism Studio** supports LaTeX writing, project import and export, and PDF compilation.
 - **The browser demo** is a separate, local-only preview with scripted examples. It does not connect to AI or search the web. See the [demo guide](../docs/browser-demo.md).
 
+## Current validation gaps
+
+These are known, tracked gaps in the current 3.1.0 release presentation and setup guidance. They are not claims that the features are broken; they identify what has not yet been independently verified.
+
+- [Issue #37: Verify Ollama setup in Prism Chat and Prism Studio](https://github.com/DudeSquad999/Prism-Ai/issues/37) — record exact controls, model, connection checks, and live-response behavior separately for each app.
+- [Issue #38: Capture verified Prism 3.1.0 Windows screenshots](https://github.com/DudeSquad999/Prism-Ai/issues/38) — the current gallery still uses clearly labelled v7.1 preview images until real release screenshots are captured.
+- Repository automation checks browser-demo JavaScript syntax, Python repository-checker tests, and local Markdown/HTML/CSS references. These checks do not replace Windows-app testing.
+
+The current [brand and positioning strategy](BRAND_POSITIONING.md) records the product's evidence-based message, competitor context, and name-confusion risk.
+
 ## Near-term focus
 
 These are proposed priorities, not delivery commitments. Work should be selected from user feedback and issues, and each change should have a clear way to verify it.

@@ -145,9 +145,10 @@ feature works merely because it appears in the README or release notes.
 
 ### Repository checks
 
-This repository includes a local-reference checker and unit tests for that checker. From the repository root, run:
+This repository includes a browser-demo JavaScript syntax check, a local-reference checker, and unit tests for that checker. From the repository root, run:
 
 ```powershell
+node --check demo.js
 python -m unittest discover -s tests -v
 python scripts/check_repo.py
 ```

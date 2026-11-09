@@ -50,9 +50,10 @@ Before moving, renaming, or deleting a file:
 
 ## Local quality checks
 
-The repository uses Python's standard library for its lightweight maintenance checks. From the repository root, run:
+The repository uses Node.js for a syntax-only check of the browser demo and Python's standard library for its lightweight maintenance checks. From the repository root, run:
 
 ```powershell
+node --check demo.js
 python -m unittest discover -s tests -v
 python scripts/check_repo.py
 ```

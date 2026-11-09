@@ -37,9 +37,10 @@ downloads and package details.
 
 ## Repository maintenance
 
-Run the repository checks from the project root:
+Run the repository checks from the project root. Node.js is needed for the browser-demo syntax check; Python 3.12 or newer is used for the repository tests:
 
 ```powershell
+node --check demo.js
 python -m unittest discover -s tests -v
 python scripts/check_repo.py
 ```
