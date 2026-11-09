@@ -100,6 +100,7 @@
     inspect(project);
     if (!project || typeof project !== 'object' || Array.isArray(project) ||
         Object.keys(project).some((key) => !allowed.includes(key)) ||
+        (project.id !== undefined && (typeof project.id !== 'string' || !project.id.trim() || project.id.length > 120)) ||
         typeof project.name !== 'string' || !project.name.trim() || project.name.length > 100 ||
         typeof project.draft !== 'string' || !Array.isArray(project.messages) ||
         !Array.isArray(project.tasks) || !Array.isArray(project.sources)) {
@@ -146,9 +147,14 @@
         Object.keys(value).some((key) => !['version', 'projects', 'active', 'theme'].includes(key))) {
       throw new Error('Unsupported project file. Choose a Prism demo JSON export.');
     }
+    const projects = value.projects.map(validateProject);
+    const projectIds = projects.map((project) => project.id);
+    if (new Set(projectIds).size !== projectIds.length) {
+      throw new Error('This project file contains duplicate project IDs. Export a fresh backup from Prism and try again.');
+    }
     return {
       version: 2,
-      projects: value.projects.map(validateProject),
+      projects,
       active: value.active,
       theme: value.theme
     };
