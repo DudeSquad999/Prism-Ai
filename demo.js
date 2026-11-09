@@ -461,10 +461,14 @@
       if (!perspectiveResult) return;
       if (perspectiveResult.projectId !== current().id) return toast('Switch to the project used to create this brief, or build a new one.');
       if (perspectiveSaved) return toast('This brief is already saved to the project draft.');
-      const existingDraft = current().draft.trim();
+      const previousDraft = current().draft;
+      const existingDraft = previousDraft.trim();
       current().draft = existingDraft ? `${existingDraft}\n\n---\n\n${perspectiveResult.markdown}` : perspectiveResult.markdown;
+      if (!save()) {
+        current().draft = previousDraft;
+        return;
+      }
       perspectiveSaved = true;
-      save();
       screen = 'Library';
       render();
       toast('Perspective brief added to this project draft.');
