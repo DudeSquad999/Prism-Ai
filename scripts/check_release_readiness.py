@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import re
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,15 +28,20 @@ def main() -> int:
         require(nonempty[0] == "# Prism AI", "README line 1 must be the H1 project title.", errors)
         require(len(nonempty[1]) < 120 and not nonempty[1].startswith("#"), "README line 2 must be a plain one-line description under 120 characters.", errors)
         require("irm " in nonempty[2] and "| iex" in nonempty[2], "README line 3 must contain the one-command PowerShell installer.", errors)
-        require("prism-banner.png" in nonempty[3], "README line 4 must show the Prism PNG banner.", errors)
+        require("assets/images/banner.svg" in nonempty[3], "README line 4 must show the vector banner.", errors)
         require("shields.io" in nonempty[4], "README line 5 must contain the centered Shields.io badges.", errors)
         require(len([line for line in readme.splitlines()[:5] if line.strip()]) == 5, "The required README title, description, installer, banner, and badges must occupy the first five lines.", errors)
 
-    banner_path = ROOT / "prism-banner.png"
-    require(banner_path.is_file(), "prism-banner.png is missing.", errors)
+    banner_path = ROOT / "assets/images/banner.svg"
+    require(banner_path.is_file(), "assets/images/banner.svg is missing.", errors)
     if banner_path.is_file():
-        with banner_path.open("rb") as banner:
-            require(banner.read(8) == b"\x89PNG\r\n\x1a\n", "prism-banner.png is not a valid PNG file.", errors)
+        try:
+            svg = ET.parse(banner_path).getroot()
+            require(svg.attrib.get("width") == "1200", "Banner width must be 1200.", errors)
+            require(svg.attrib.get("height") == "400", "Banner height must be 400.", errors)
+            require(svg.attrib.get("viewBox") == "0 0 1200 400", "Banner viewBox must be 0 0 1200 400.", errors)
+        except ET.ParseError:
+            errors.append("Banner SVG is not well-formed XML.")
 
     license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
     require("Apache License" in license_text and "Version 2.0" in license_text, "Root LICENSE must contain Apache License 2.0.", errors)

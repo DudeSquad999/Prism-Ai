@@ -15,7 +15,7 @@ downloads and package details.
 | [Your first Prism session](first-session.md) | Choose a workspace, try a small research-to-writing workflow, and share useful feedback |
 | [Prism AI FAQ](faq.md) | Product scope, live AI vs. preview, Ollama, privacy, citations, LaTeX, downloads, and troubleshooting |
 | [Install Prism AI](installation.md) | Download, install, configure, and troubleshoot the Windows applications |
-| [Try the browser preview](browser-demo.md) | Explore the sample workspace and understand what the preview does and does not do |
+| [Use the browser workspace](browser-demo.md) | Explore projects, drafts, and live local AI with Ollama |
 | [Use local models with Ollama](local-models.md) | Configure local AI and check for connection issues |
 
 ## Work in Prism
@@ -49,7 +49,7 @@ See [project structure](PROJECT_STRUCTURE.md) for file ownership and safe editin
 
 ## Documentation accuracy
 
-Prism AI is an early-stage project. Guides should distinguish tested behavior from planned work, examples, and limitations. Do not describe the browser preview as live AI, and do not present an Ollama model or hardware configuration as tested unless it has been verified with the released Windows applications.
+Prism AI is an early-stage project. Guides should distinguish tested behavior from planned work, examples, and limitations. Distinguish browser sample mode from a verified local Ollama connection. Do not present an Ollama model or hardware configuration as tested with the released Windows applications unless it has been verified there.
 
 
 ## Community, support, and release history
