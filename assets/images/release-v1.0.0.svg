@@ -1,1 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="t d"><title id="t">Prism AI v1.0.0: terminal prototype</title><desc id="d">Historical terminal-first PyTorch prototype. Python training and chat commands are shown in a schematic terminal, not an original screenshot.</desc><rect width="1200" height="400" rx="18" fill="#0f0e15"/><g font-family="Consolas, monospace"><text x="48" y="61" fill="#9d86ff" font-size="16">PRISM / PROJECT ARCHIVE</text><text x="44" y="143" fill="#ece9f5" font-size="49" font-weight="700">Prism v1.0.0</text><text x="48" y="194" fill="#ece9f5" font-size="25">It started in the terminal.</text><text x="48" y="236" fill="#b4afc6" font-size="15">A character-level Transformer in PyTorch.</text><rect x="48" y="272" width="189" height="34" rx="6" fill="#1d1b27" stroke="#2a2837"/><text x="63" y="294" fill="#9d86ff" font-size="13">HISTORICAL PROTOTYPE</text><text x="48" y="352" fill="#b4afc6" font-size="13">TRAIN / GENERATE / CHAT</text><text x="48" y="377" fill="#b4afc6" font-size="11">Not the Windows Chat and Studio applications.</text><rect x="560" y="40" width="592" height="300" rx="10" fill="#09090e" stroke="#2a2837"/><path d="M560 82H1152" stroke="#2a2837"/><text x="581" y="66" fill="#b4afc6" font-size="13">Prism / Python terminal</text><text x="588" y="124" fill="#9d86ff" font-size="17">&gt; python train.py --steps 2000</text><text x="588" y="157" fill="#b4afc6" font-size="13">Train the prototype model</text><text x="588" y="200" fill="#ece9f5" font-size="17">&gt; python generate.py --prompt "Hi"</text><text x="588" y="233" fill="#b4afc6" font-size="13">Generate text from a prompt</text><text x="588" y="276" fill="#9d86ff" font-size="17">&gt; python chat.py</text><text x="588" y="309" fill="#b4afc6" font-size="13">Open interactive terminal chat</text><text x="1152" y="377" text-anchor="end" fill="#b4afc6" font-size="10">COMMAND ILLUSTRATION / NOT ORIGINAL UI</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="t d">
+<title id="t">Prism AI v1.0.0: terminal prototype</title>
+<desc id="d">Historical terminal-first PyTorch prototype, presented with an illustrated Python terminal showing training, generation, and chat commands.</desc>
+<rect width="1200" height="400" rx="18" fill="#0f0e15"/>
+<rect x="1" y="1" width="1198" height="398" rx="17" fill="none" stroke="#2a2837"/>
+<g font-family="Consolas, monospace">
+<text x="48" y="58" fill="#9d86ff" font-size="12" letter-spacing="2">PRISM / THE FIRST CHAPTER</text>
+<text x="44" y="137" fill="#ece9f5" font-size="49" font-weight="700">Prism v1.0.0</text>
+<text x="48" y="187" fill="#ece9f5" font-size="24">It started in the terminal.</text>
+<text x="48" y="230" fill="#b4afc6" font-size="15">A character-level Transformer in PyTorch.</text>
+<rect x="48" y="267" width="194" height="34" rx="6" fill="#9d86ff" fill-opacity=".12" stroke="#514270"/>
+<text x="64" y="289" fill="#bcaaff" font-size="13">HISTORICAL PROTOTYPE</text>
+<path d="M48 329H494" stroke="#2a2837"/>
+<text x="48" y="359" fill="#b4afc6" font-size="12" letter-spacing="1">TRAIN / GENERATE / CHAT</text>
+<text x="48" y="382" fill="#8e879f" font-size="10">Not the Windows Chat and Studio applications.</text>
+<rect x="558" y="38" width="596" height="325" rx="12" fill="#09090e" stroke="#393248"/>
+<path d="M558 84H1154" stroke="#2a2837"/>
+<circle cx="581" cy="61" r="4" fill="#514c66"/><circle cx="597" cy="61" r="4" fill="#756a91"/><circle cx="613" cy="61" r="4" fill="#9d86ff"/>
+<text x="640" y="66" fill="#b4afc6" font-size="12">prism / python</text>
+<text x="1133" y="66" text-anchor="end" fill="#756e89" font-size="11">v1.0.0</text>
+<text x="584" y="117" fill="#756e89" font-size="12"># Train the prototype</text>
+<text x="584" y="143" fill="#9d86ff" font-size="17">&gt; python train.py --steps 2000</text>
+<path d="M584 161H1128" stroke="#1d1b27"/>
+<text x="584" y="192" fill="#756e89" font-size="12"># Generate from a prompt</text>
+<text x="584" y="218" fill="#ece9f5" font-size="17">&gt; python generate.py --prompt "Hi"</text>
+<path d="M584 236H1128" stroke="#1d1b27"/>
+<text x="584" y="267" fill="#756e89" font-size="12"># Start terminal chat</text>
+<text x="584" y="293" fill="#9d86ff" font-size="17">&gt; python chat.py</text>
+<text x="584" y="334" fill="#9d86ff" font-size="17">&gt;</text><rect x="605" y="320" width="9" height="18" fill="#9d86ff" fill-opacity=".7"/>
+</g>
+</svg>
