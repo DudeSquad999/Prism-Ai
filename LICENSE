@@ -1,54 +1,33 @@
-Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+DudeSquad999 Singularity License (DSL v3.0 - Airtight Edition)
+Copyright (c) 2026 DudeSquad999. All rights reserved.
 
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+1. DEFINITIONS
+   "Licensor" refers to DudeSquad999, the sole copyright holder and author of the Work.
+   "You" (or "Your") refers to any individual or legal entity exercising permissions granted by this License.
+   "The Work" refers to the software, source code, object code, scripts, documentation, and digital assets made available under this License.
+   "Derivative Works" means any work, whether in source or object form, that is based upon or derived from the Work.
 
-   1. Definitions.
-      "License": terms and conditions for use, reproduction, and distribution (Sections 1–9).
-      "Licensor": copyright owner or authorized entity granting the License.
-      "Legal Entity": acting entity plus all entities controlling, controlled by, or under common control (50% ownership/voting power).
-      "You" ("Your"): individual or Legal Entity exercising permissions.
-      "Source": preferred form for making modifications (source code, config files, documentation).
-      "Object": mechanical transformation/translation of Source (object code, generated docs).
-      "Work": authorship work in Source or Object form under the License, identified by copyright notice.
-      "Derivative Works": works based on the Work (excluding separable works or mere interface links).
-      "Contribution": intentionally submitted work for inclusion by copyright owner/authorized entity.
-      "Contributor": Licensor and any entity whose Contribution was incorporated into the Work.
+2. GRANT OF LICENSE
+   Subject to the terms and conditions of this License, Licensor hereby grants You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright and patent license to:
+   (a) Use, execute, and reproduce the Work in source or object form.
+   (b) Prepare, build, and compile Derivative Works.
+   (c) Publicly display, perform, sublicense, and distribute the Work and Derivative Works.
 
-   2. Grant of Copyright License. Perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare derivative works, publicly display/perform, sublicense, and distribute the Work.
+3. CONDITIONS OF REDISTRIBUTION
+   You may distribute copies of the Work or Derivative Works provided that You strictly adhere to all of the following conditions:
+   (a) Attribution: You must retain all original copyright notices, authorship attributions, and license headers in the source files.
+   (b) Modification Notice: Any file modified by You must contain prominent, clear notices stating that You modified that specific file.
+   (c) License Inclusion: You must include an unaltered copy of this License with any distribution of the Work.
+   (d) Trademark Restriction: This License grants no right to use the trade names, trademarks, service marks, or online handles of the Licensor ("DudeSquad999") for endorsement or marketing without prior written consent.
 
-   3. Grant of Patent License. Perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable patent license for claims infringed by Contributions alone or combined with the Work. Terminates immediately if You initiate patent litigation against the Work.
+4. PATENT RETALIATION & AUTOMATIC TERMINATION
+   If You or any corporate affiliate initiates, supports, or participates in any patent litigation, cross-claim, or counterclaim against Licensor—alleging that the Work or any component thereof constitutes direct or contributory patent infringement—all rights and licenses granted to You under this License shall terminate immediately and automatically as of the date such action is filed.
 
-   4. Redistribution. Permitted in any medium with/without modifications if You:
-      (a) Provide recipients a copy of this License;
-      (b) Mark modified files with prominent change notices;
-      (c) Retain all original copyright, patent, trademark, and attribution notices in Source form;
-      (d) Include a readable copy of the NOTICE file in distributions where applicable.
-      You may add your own license terms for modifications/derivatives.
+5. DISCLAIMER OF WARRANTY ("AS IS")
+   THE WORK IS PROVIDED BY THE LICENSOR ON AN "AS IS" BASIS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. YOU ASSUME TOTAL RESPONSIBILITY, ALL FINANCIAL COSTS, AND ALL RISKS ASSOCIATED WITH THE USE, MODIFICATION, DEPLOYMENT, OR DISTRIBUTION OF THE WORK.
 
-   5. Submission of Contributions. Unless stated otherwise, Your contributions are submitted under this License without additional terms.
+6. LIMITATION OF LIABILITY & INDEMNIFICATION
+   IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, DATA LOSS, SYSTEM FAILURE, WORK STOPPAGE, OR BUSINESS INTERRUPTION) ARISING OUT OF OR IN CONNECTION WITH THE USE OR INABILITY TO USE THE WORK, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. You agree to defend, indemnify, and hold harmless the Licensor from any claims, liabilities, or expenses arising from Your use or distribution of the Work.
 
-   6. Trademarks. No permission to use trade names, trademarks, or service marks except for reasonable description of origin.
-
-   7. Disclaimer of Warranty. Provided "AS IS", without warranties or conditions of any kind (express or implied), including title, non-infringement, merchantability, or fitness for a particular purpose. You assume all risks.
-
-   8. Limitation of Liability. No Contributor is liable for direct, indirect, special, incidental, or consequential damages (loss of goodwill, work stoppage, computer failure) under any legal theory unless required by law.
-
-   9. Additional Liability. You may charge for warranties or support services, provided you act solely on your own behalf and indemnify all Contributors against any resulting claims.
-
-   END OF TERMS AND CONDITIONS
-
-   Copyright 2026 DudeSquad999
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+7. SEVERABILITY & GOVERNING LAW
+   If any provision of this License is held to be unenforceable or invalid under applicable law, such provision shall be modified to the minimum extent necessary to make it enforceable, and the remaining provisions shall remain in full force and effect. This License shall be governed by and construed in accordance with the laws of the State of Maryland, without regard to conflict of law principles.
