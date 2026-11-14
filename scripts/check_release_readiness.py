@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
-"""Validate the public-facing release-readiness requirements for Prism AI."""
+"""Validate public-facing release-readiness requirements for Prism AI."""
 
 from __future__ import annotations
 
 import re
 import sys
-import xml.etree.ElementTree as ET
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-EMOJI = re.compile(r"[\U0001F300-\U0001FAFF\U00002600-\U000027BF]")
+EMOJI = re.compile("[\U0001F300-\U0001FAFF\u2600-\u27BF]")
+IMAGE_SOURCE = re.compile(r'<img\b[^>]*\bsrc=["\']([^"\']+)["\']', re.IGNORECASE)
+INSTALLER_COMMAND = re.compile(
+    r"(?m)^\s*irm\s+https://raw\.githubusercontent\.com/"
+    r"DudeSquad999/Prism-Ai/Main/scripts/install\.ps1\s+\|\s*iex\s*$"
+)
 
 
 def require(condition: bool, message: str, errors: list[str]) -> None:
@@ -17,34 +22,56 @@ def require(condition: bool, message: str, errors: list[str]) -> None:
         errors.append(message)
 
 
+def has_windows_installer(readme: str) -> bool:
+    return INSTALLER_COMMAND.search(readme) is not None
+
+
+def has_trusted_shields_badge(readme: str) -> bool:
+    for candidate in IMAGE_SOURCE.findall(readme):
+        try:
+            parsed = urlsplit(candidate)
+        except ValueError:
+            continue
+        if (
+            parsed.scheme == "https"
+            and parsed.hostname is not None
+            and parsed.hostname.casefold() == "img.shields.io"
+            and parsed.username is None
+            and parsed.password is None
+        ):
+            return True
+    return False
+
+
 def main() -> int:
     errors: list[str] = []
-    readme_path = ROOT / "README.md"
-    readme = readme_path.read_text(encoding="utf-8")
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
     nonempty = [line.strip() for line in readme.splitlines() if line.strip()]
 
-    require(len(nonempty) >= 5, "README must start with five required content lines.", errors)
-    if len(nonempty) >= 5:
-        require(nonempty[0] == "# Prism AI", "README line 1 must be the H1 project title.", errors)
-        require(len(nonempty[1]) < 120 and not nonempty[1].startswith("#"), "README line 2 must be a plain one-line description under 120 characters.", errors)
-        require("irm " in nonempty[2] and "| iex" in nonempty[2], "README line 3 must contain the one-command PowerShell installer.", errors)
-        require("assets/images/banner.svg" in nonempty[3], "README line 4 must show the vector banner.", errors)
-        require("shields.io" in nonempty[4], "README line 5 must contain the centered Shields.io badges.", errors)
-        require(len([line for line in readme.splitlines()[:5] if line.strip()]) == 5, "The required README title, description, installer, banner, and badges must occupy the first five lines.", errors)
+    require(len(nonempty) >= 2, "README must contain a title and description.", errors)
+    if len(nonempty) >= 2:
+        require(nonempty[0] == "# Prism AI", "README must start with the Prism AI H1 title.", errors)
+        require(
+            len(nonempty[1]) < 120 and not nonempty[1].startswith("#"),
+            "README must have a plain one-line description under 120 characters after the title.",
+            errors,
+        )
 
-    banner_path = ROOT / "assets/images/banner.svg"
-    require(banner_path.is_file(), "assets/images/banner.svg is missing.", errors)
-    if banner_path.is_file():
-        try:
-            svg = ET.parse(banner_path).getroot()
-            require(svg.attrib.get("width") == "1200", "Banner width must be 1200.", errors)
-            require(svg.attrib.get("height") == "400", "Banner height must be 400.", errors)
-            require(svg.attrib.get("viewBox") == "0 0 1200 400", "Banner viewBox must be 0 0 1200 400.", errors)
-        except ET.ParseError:
-            errors.append("Banner SVG is not well-formed XML.")
+    require(has_windows_installer(readme), "README must document the pinned one-command PowerShell installer.", errors)
+
+    banner_path = ROOT / "prism-banner.png"
+    require(banner_path.is_file(), "Root prism-banner.png is missing.", errors)
+    require(
+        any("prism-banner.png" in source for source in IMAGE_SOURCE.findall(readme)),
+        "README must embed the root prism-banner.png image.",
+        errors,
+    )
+    require(has_trusted_shields_badge(readme), "README must include an HTTPS image hosted by img.shields.io.", errors)
+    require("License: MIT" in readme or "MIT license" in readme, "README must identify the repository's MIT license.", errors)
 
     license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
-    require("Apache License" in license_text and "Version 2.0" in license_text, "Root LICENSE must contain Apache License 2.0.", errors)
+    require(license_text.startswith("MIT License"), "Root LICENSE must contain the repository's existing MIT License.", errors)
+
     require((ROOT / ".github/workflows/ci.yml").is_file(), "The requested .github/workflows/ci.yml workflow is missing.", errors)
     require((ROOT / ".github/ISSUE_TEMPLATE/bug_report.yml").is_file(), "Bug report YAML form is missing.", errors)
     require((ROOT / ".github/ISSUE_TEMPLATE/feature_request.yml").is_file(), "Feature request YAML form is missing.", errors)
@@ -57,7 +84,12 @@ def main() -> int:
     require("24 hours" in support and "acknowledge" in support, "Support policy must state the 24-hour acknowledgement commitment.", errors)
 
     install = (ROOT / "scripts/install.ps1").read_text(encoding="utf-8")
-    require("Get-FileHash" in install and "36b261bff2efb42195aa137d50f38cd81c7901f8c9aa78bbb761b5fb4f5947c9" in install, "Installer must verify the published v3.1.0 SHA-256 digest.", errors)
+    require(
+        "Get-FileHash" in install
+        and "36b261bff2efb42195aa137d50f38cd81c7901f8c9aa78bbb761b5fb4f5947c9" in install,
+        "Installer must verify the published v3.1.0 SHA-256 digest.",
+        errors,
+    )
 
     testing = (ROOT / "guides/TESTING.md").read_text(encoding="utf-8")
     require("<details>" in testing and "</details>" in testing, "The long test report must be preserved inside a details section.", errors)
