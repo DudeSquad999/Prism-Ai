@@ -18,19 +18,28 @@ A Windows research and writing workspace for Markdown, LaTeX, and AI.
 
 Prism AI brings research organization and academic writing into one Windows-first workflow. Use **Prism Chat** to organize projects and research notes, then use **Prism Studio** to develop LaTeX papers and presentations. Choose local AI with Ollama or configure a supported cloud provider with your own API key.
 
+[Latest Windows release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) · [Browser workspace](https://dudesquad999.github.io/Prism-Ai/) · [Installation guide](docs/installation.md) · [Handbook](docs/README.md) · [Changelog](CHANGELOG.md) · [Issues](https://github.com/DudeSquad999/Prism-Ai/issues)
+
 ## Get Prism AI for Windows
 
 [Download the latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest)
 
-The latest published Windows release documented here is **v3.1.0**. Download the Windows installer (.exe) from the release assets. GitHub's source-code ZIP and tar archives are not installers.
+The latest published Windows release documented in this README is **v3.1.0**. Download the Windows installer (.exe) from the release assets. GitHub's source-code ZIP and tar archives are not installers.
 
-**Quick install with PowerShell**
+**Recommended:** download the installer directly from the [latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest). Review the release notes and verify the published checksum before launching it.
 
-Open PowerShell and run:
+**Optional PowerShell helper**
 
-    irm https://raw.githubusercontent.com/DudeSquad999/Prism-Ai/Main/scripts/install.ps1 | iex
+The repository includes an installer helper pinned to v3.1.0. Download and inspect the script before running it; do not pipe a remote script directly into PowerShell:
 
-The installer downloads the published v3.1.0 Windows installer, verifies its SHA-256 checksum, and opens it. The script is pinned to that release. Check the releases page for a newer version before installing.
+\`\`\`powershell
+$script = Join-Path $env:TEMP "install-prism-ai.ps1"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/DudeSquad999/Prism-Ai/Main/scripts/install.ps1" -OutFile $script
+Get-Content $script
+& $script
+\`\`\`
+
+The helper downloads the published v3.1.0 Windows installer, verifies its SHA-256 checksum, and opens it. The helper itself is not a signed installer. Check the releases page for a newer version before using this pinned helper.
 
 Need help? Start with the [Windows installation guide](docs/installation.md).
 
@@ -45,12 +54,14 @@ The two applications have separate AI settings. Configuring a provider in Prism 
 
 ## Choose your AI setup
 
-**Local AI with Ollama**
+### Local AI with Ollama
+
 - Run model inference on your own computer.
 - Choose an Ollama model that fits your hardware.
 - Keep in mind that downloads and some other features may still require internet access.
 
-**Cloud AI**
+### Cloud AI
+
 - Configure your own API key for a supported provider.
 - The v3.1.0 documentation lists Google Gemini, Anthropic, and OpenAI.
 - Content included in requests is sent to the provider you configure. Provider pricing, privacy, and usage limits apply.
@@ -64,6 +75,7 @@ Prism does not provide cloud API keys. Review provider terms before sending priv
 Explore projects, conversations, tasks, Markdown drafts, and the interface without installing the Windows applications or creating an account. The browser workspace can also connect directly to an Ollama server running on your computer for live model responses.
 
 A few important distinctions:
+
 - Without an active Ollama connection, the workspace uses clearly labeled sample responses and fictional sample source cards.
 - The browser workspace does not include live web search, source retrieval, citation verification, or cloud AI providers.
 - Projects and drafts are saved in your browser's local storage. When live AI is connected, prompts and recent conversation context are sent directly to the Ollama server address you configure.
