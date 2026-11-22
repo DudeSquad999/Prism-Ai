@@ -11,10 +11,12 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 EMOJI = re.compile("[\U0001F300-\U0001FAFF\u2600-\u27BF]")
 IMAGE_SOURCE = re.compile(r'<img\b[^>]*\bsrc=["\']([^"\']+)["\']', re.IGNORECASE)
-INSTALLER_COMMAND = re.compile(
-    r"(?m)^\s*irm\s+https://raw\.githubusercontent\.com/"
-    r"DudeSquad999/Prism-Ai/Main/scripts/install\.ps1\s+\|\s*iex\s*$"
+INSTALLER_DOWNLOAD = re.compile(
+    r"(?im)^\s*Invoke-WebRequest\b(?=.*https://raw\.githubusercontent\.com/"
+    r"DudeSquad999/Prism-Ai/Main/scripts/install\.ps1)(?=.*-OutFile\s+\$script).*$"
 )
+INSTALLER_INSPECTION = re.compile(r"(?im)^\s*Get-Content\s+\$script\s*$")
+INSTALLER_EXECUTION = re.compile(r"(?im)^\s*&\s*\$script\s*$")
 
 
 def require(condition: bool, message: str, errors: list[str]) -> None:
@@ -23,7 +25,8 @@ def require(condition: bool, message: str, errors: list[str]) -> None:
 
 
 def has_windows_installer(readme: str) -> bool:
-    return INSTALLER_COMMAND.search(readme) is not None
+    required_steps = (INSTALLER_DOWNLOAD, INSTALLER_INSPECTION, INSTALLER_EXECUTION)
+    return all(pattern.search(readme) is not None for pattern in required_steps)
 
 
 def has_trusted_shields_badge(readme: str) -> bool:
@@ -57,7 +60,7 @@ def main() -> int:
             errors,
         )
 
-    require(has_windows_installer(readme), "README must document the pinned one-command PowerShell installer.", errors)
+    require(has_windows_installer(readme), "README must document downloading, inspecting, and running the pinned PowerShell installer helper.", errors)
 
     banner_path = ROOT / "prism-banner.png"
     require(banner_path.is_file(), "Root prism-banner.png is missing.", errors)

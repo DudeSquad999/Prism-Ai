@@ -26,9 +26,24 @@ class ReleaseReadinessHelperTests(unittest.TestCase):
         readme = '<img src="http://img.shields.io/badge/License-MIT">'
         self.assertFalse(has_trusted_shields_badge(readme))
 
-    def test_accepts_the_pinned_installer_command(self) -> None:
-        readme = "irm https://raw.githubusercontent.com/DudeSquad999/Prism-Ai/Main/scripts/install.ps1 | iex"
+    def test_accepts_the_reviewed_pinned_installer_helper(self) -> None:
+        readme = """
+        Invoke-WebRequest -Uri "https://raw.githubusercontent.com/DudeSquad999/Prism-Ai/Main/scripts/install.ps1" -OutFile $script
+        Get-Content $script
+        & $script
+        """
         self.assertTrue(has_windows_installer(readme))
+
+    def test_rejects_unreviewed_download_and_execute_pipe(self) -> None:
+        readme = "irm https://raw.githubusercontent.com/DudeSquad999/Prism-Ai/Main/scripts/install.ps1 | iex"
+        self.assertFalse(has_windows_installer(readme))
+
+    def test_rejects_pinned_download_without_inspection_and_execution(self) -> None:
+        readme = """
+        Invoke-WebRequest -Uri "https://raw.githubusercontent.com/DudeSquad999/Prism-Ai/Main/scripts/install.ps1" -OutFile $script
+        & $script
+        """
+        self.assertFalse(has_windows_installer(readme))
 
     def test_rejects_an_unrelated_installer_command(self) -> None:
         self.assertFalse(has_windows_installer("irm https://example.com/install.ps1 | iex"))
