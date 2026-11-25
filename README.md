@@ -34,7 +34,7 @@ The repository includes an installer helper pinned to v3.1.0. Download and inspe
 
 \`\`\`powershell
 $script = Join-Path $env:TEMP "install-prism-ai.ps1"
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/DudeSquad999/Prism-Ai/Main/scripts/install.ps1" -OutFile $script
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/akahn30/Prism-Ai/Main/scripts/install.ps1" -OutFile $script
 Get-Content $script
 & $script
 \`\`\`
