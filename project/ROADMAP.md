@@ -14,8 +14,8 @@ Prism has two companion Windows applications:
 
 These are known, tracked gaps in the current 3.1.0 release presentation and setup guidance. They are not claims that the features are broken; they identify what has not yet been independently verified.
 
-- [Issue #37: Verify Ollama setup in Prism Chat and Prism Studio](https://github.com/akahn30/Prism-Ai/issues/37) :  record exact controls, model, connection checks, and live-response behavior separately for each app.
-- [Issue #38: Capture verified Prism 3.1.0 Windows screenshots](https://github.com/akahn30/Prism-Ai/issues/38) :  the current gallery still uses clearly labelled v7.1 preview images until real release screenshots are captured.
+- [Issue #37: Verify Ollama setup in Prism Chat and Prism Studio](https://github.com/prismai-labs/Prism-Ai/issues/37) :  record exact controls, model, connection checks, and live-response behavior separately for each app.
+- [Issue #38: Capture verified Prism 3.1.0 Windows screenshots](https://github.com/prismai-labs/Prism-Ai/issues/38) :  the current gallery still uses clearly labelled v7.1 preview images until real release screenshots are captured.
 - Repository automation checks browser-demo JavaScript syntax, Python repository-checker tests, and local Markdown/HTML/CSS references. These checks do not replace Windows-app testing.
 
 The current [brand and positioning strategy](BRAND_POSITIONING.md) records the product's evidence-based message, competitor context, and name-confusion risk.
@@ -59,4 +59,4 @@ The ideas below need a clear user need, feasibility check, and explicit product 
 
 ## Contributing
 
-Small, verifiable improvements to reliability, accessibility, documentation, and the research-to-writing workflow are welcome. Check the [open issues](https://github.com/akahn30/Prism-Ai/issues) before starting larger work, and see [contribution guidance](../CONTRIBUTING.md) and the [security policy](../SECURITY.md).
+Small, verifiable improvements to reliability, accessibility, documentation, and the research-to-writing workflow are welcome. Check the [open issues](https://github.com/prismai-labs/Prism-Ai/issues) before starting larger work, and see [contribution guidance](../CONTRIBUTING.md) and the [security policy](../SECURITY.md).
