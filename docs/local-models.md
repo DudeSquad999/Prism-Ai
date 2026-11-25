@@ -99,7 +99,7 @@ See the [installation guide](installation.md) for the PDF troubleshooting sectio
 
 ### You still need help
 
-Open a [GitHub issue](https://github.com/DudeSquad999/Prism-Ai/issues) with:
+Open a [GitHub issue](https://github.com/akahn30/Prism-Ai/issues) with:
 
 ```text
 Prism version:
