@@ -8,8 +8,8 @@ This is an acknowledgement SLA. It means the maintainer will confirm receipt and
 
 ## Where to ask for help
 
-- **Bugs and feature requests:** [GitHub Issues](https://github.com/akahn30/Prism-Ai/issues).
-- **General questions and workflow feedback:** [GitHub Discussions](https://github.com/akahn30/Prism-Ai/discussions).
+- **Bugs and feature requests:** [GitHub Issues](https://github.com/prismai-labs/Prism-Ai/issues).
+- **General questions and workflow feedback:** [GitHub Discussions](https://github.com/prismai-labs/Prism-Ai/discussions).
 - **Community discussion:** [r/PrismAIApp](https://www.reddit.com/r/PrismAIApp/).
 - **Security vulnerabilities:** Use the private process in [SECURITY.md](../SECURITY.md). Do not publish exploit details or credentials in public.
 

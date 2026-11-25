@@ -13,7 +13,7 @@ EMOJI = re.compile("[\U0001F300-\U0001FAFF\u2600-\u27BF]")
 IMAGE_SOURCE = re.compile(r'<img\b[^>]*\bsrc=["\']([^"\']+)["\']', re.IGNORECASE)
 INSTALLER_DOWNLOAD = re.compile(
     r"(?im)^\s*Invoke-WebRequest\b(?=.*https://raw\.githubusercontent\.com/"
-    r"akahn30/Prism-Ai/Main/scripts/install\.ps1)(?=.*-OutFile\s+\$script).*$"
+    r"prismai-labs/Prism-Ai/Main/scripts/install\.ps1)(?=.*-OutFile\s+\$script).*$"
 )
 INSTALLER_INSPECTION = re.compile(r"(?im)^\s*Get-Content\s+\$script\s*$")
 INSTALLER_EXECUTION = re.compile(r"(?im)^\s*&\s*\$script\s*$")
