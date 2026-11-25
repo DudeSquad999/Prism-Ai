@@ -29,7 +29,7 @@ These changes did not modify application code, interface styling, the Windows in
 
 ## v2.0.0: 2026-10-08
 
-[Published release](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v2.0.0)
+[Published release](https://github.com/akahn30/Prism-Ai/releases/tag/v2.0.0)
 
 ### Release contents described in the notes
 
@@ -48,7 +48,7 @@ These changes did not modify application code, interface styling, the Windows in
 
 ## v1.0.0: 2026-09-23
 
-[Published release](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v1.0.0)
+[Published release](https://github.com/akahn30/Prism-Ai/releases/tag/v1.0.0)
 
 ### Release contents described in the notes
 
