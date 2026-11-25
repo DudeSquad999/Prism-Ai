@@ -29,10 +29,10 @@ downloads and package details.
 
 - [Project structure and maintenance checks](PROJECT_STRUCTURE.md)
 - [Project overview and screenshots](../README.md)
-- [GitHub Releases](https://github.com/DudeSquad999/Prism-Ai/releases)
+- [GitHub Releases](https://github.com/akahn30/Prism-Ai/releases)
 - [Development roadmap](../project/ROADMAP.md)
 - [Contributing guidelines](../CONTRIBUTING.md)
-- [GitHub Discussions](https://github.com/DudeSquad999/Prism-Ai/discussions)
+- [GitHub Discussions](https://github.com/akahn30/Prism-Ai/discussions)
 - [Prism AI community on Reddit](https://www.reddit.com/r/PrismAIApp/)
 
 ## Repository maintenance

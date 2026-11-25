@@ -24,7 +24,7 @@ Local-model performance depends on your hardware, available memory, and selected
 
 ## 1. Download the Windows installer
 
-1. Open the [latest Prism AI release](https://github.com/DudeSquad999/Prism-Ai/releases/latest).
+1. Open the [latest Prism AI release](https://github.com/akahn30/Prism-Ai/releases/latest).
 2. Expand **Assets** if the download list is collapsed.
 3. Download the Windows installer (`.exe`) listed in that release. The filename changes between versions.
 
@@ -102,7 +102,7 @@ For Prism Studio, check PDF compilation separately. A working AI connection does
 
 ### I downloaded a ZIP instead of the installer
 
-Return to the [latest release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) and choose its Windows installer (`.exe`), not a source-code archive.
+Return to the [latest release](https://github.com/akahn30/Prism-Ai/releases/latest) and choose its Windows installer (`.exe`), not a source-code archive.
 
 ### Live AI features are unavailable
 
@@ -129,7 +129,7 @@ AI configuration and PDF compilation are separate: one can work while the other 
 
 ### Installation or startup fails
 
-Report the problem through [GitHub Issues](https://github.com/DudeSquad999/Prism-Ai/issues).
+Report the problem through [GitHub Issues](https://github.com/akahn30/Prism-Ai/issues).
 
 Include the information below. If the application never opened, write “not configured” for the AI provider.
 
