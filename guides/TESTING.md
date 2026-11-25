@@ -188,6 +188,6 @@ For later releases, follow their accompanying instructions.
 - [Windows installation](../docs/installation.md)
 - [Ollama setup](../docs/local-models.md)
 - [Contributing](../CONTRIBUTING.md)
-- [Releases](https://github.com/akahn30/Prism-Ai/releases)
+- [Releases](https://github.com/prismai-labs/Prism-Ai/releases)
 
 </details>

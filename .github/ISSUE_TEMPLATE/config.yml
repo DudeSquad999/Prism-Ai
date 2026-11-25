@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: General questions and community discussion
-    url: https://github.com/akahn30/Prism-Ai/discussions
+    url: https://github.com/prismai-labs/Prism-Ai/discussions
     about: Ask questions and share ideas here if GitHub Discussions is enabled.
   - name: Security concerns
-    url: https://github.com/akahn30/Prism-Ai/security/advisories/new
+    url: https://github.com/prismai-labs/Prism-Ai/security/advisories/new
     about: Use private vulnerability reporting when available. Do not publish secrets or exploit details.

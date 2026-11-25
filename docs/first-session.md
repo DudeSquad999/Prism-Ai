@@ -9,7 +9,7 @@ Prism AI is an early-stage Windows research and writing workspace with two compa
 
 ## 1. Explore before installing
 
-Open the [Prism AI browser preview](https://akahn30.github.io/Prism-Ai/).
+Open the [Prism AI browser preview](https://prismai-labs.github.io/Prism-Ai/).
 
 You can explore a sample workspace without installing the Windows applications or creating an account. Try creating a sample project, editing a Markdown draft, managing tasks, or exporting demo data.
 
@@ -19,7 +19,7 @@ You can explore a sample workspace without installing the Windows applications o
 
 When you're ready to try the installed software:
 
-1. Open the [Prism AI releases](https://github.com/akahn30/Prism-Ai/releases/latest).
+1. Open the [Prism AI releases](https://github.com/prismai-labs/Prism-Ai/releases/latest).
 2. Download the Windows `.exe` installer from the release assets. The source-code ZIP and tar archives are not installers.
 3. Run the installer and launch Prism Chat or Prism Studio.
 4. Follow the [Windows installation guide](installation.md) if you need setup or troubleshooting help.
@@ -44,7 +44,7 @@ Live AI features require either a local model through Ollama or your own API key
 
 Configure the provider separately in each application you use. Do not assume that configuring Prism Chat also configures Prism Studio.
 
-The exact Ollama controls and a tested model recommendation are still being documented. See [issue #37](https://github.com/akahn30/Prism-Ai/issues/37) for the open documentation task. Do not rely on an untested model recommendation.
+The exact Ollama controls and a tested model recommendation are still being documented. See [issue #37](https://github.com/prismai-labs/Prism-Ai/issues/37) for the open documentation task. Do not rely on an untested model recommendation.
 
 ## 5. Complete one small workflow
 
@@ -73,7 +73,7 @@ A successful demo response is not proof that a live model is connected. Prism Ch
 
 Prism is an early-stage independent project. Clear feedback is more useful than a general rating.
 
-[Open a bug report or feature request](https://github.com/akahn30/Prism-Ai/issues) and include:
+[Open a bug report or feature request](https://github.com/prismai-labs/Prism-Ai/issues) and include:
 
 - Which application you used: Prism Chat, Prism Studio, or the browser preview.
 - Your Prism version and Windows version, when relevant.

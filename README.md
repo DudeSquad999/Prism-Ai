@@ -4,7 +4,7 @@ A Windows research and writing workspace for Markdown, LaTeX, and AI.
 
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square"></a>
-  <a href="https://github.com/akahn30/Prism-Ai/actions/workflows/ci.yml"><img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/DudeSquad999/Prism-Ai/ci.yml?branch=Main&label=CI"></a>
+  <a href="https://github.com/prismai-labs/Prism-Ai/actions/workflows/ci.yml"><img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/prismai-labs/Prism-Ai/ci.yml?branch=Main&label=CI"></a>
   <a href="https://www.instagram.com/prismhq.ai/"><img alt="Instagram" src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=flat-square&logo=Instagram&logoColor=white"></a>
   <a href="https://www.reddit.com/r/PrismAIApp/"><img alt="Reddit community" src="https://img.shields.io/badge/Reddit-%23FF4500.svg?style=flat-square&logo=reddit&logoColor=white"></a>
   <a href="https://dev.to/prismaidev"><img alt="DEV Community" src="https://img.shields.io/badge/DEV.to-%230a0a0a.svg?style=flat-square&logo=devdotto&logoColor=white"></a>
@@ -18,15 +18,15 @@ A Windows research and writing workspace for Markdown, LaTeX, and AI.
 
 Prism AI brings research organization and academic writing into one Windows-first workflow. Use **Prism Chat** to organize projects and research notes, then use **Prism Studio** to develop LaTeX papers and presentations. Choose local AI with Ollama or configure a supported cloud provider with your own API key.
 
-[Latest Windows release](https://github.com/akahn30/Prism-Ai/releases/latest) · [Browser workspace](https://akahn30.github.io/Prism-Ai/) · [Installation guide](docs/installation.md) · [Handbook](docs/README.md) · [Changelog](CHANGELOG.md) · [Issues](https://github.com/akahn30/Prism-Ai/issues)
+[Latest Windows release](https://github.com/prismai-labs/Prism-Ai/releases/latest) · [Browser workspace](https://prismai-labs.github.io/Prism-Ai/) · [Installation guide](docs/installation.md) · [Handbook](docs/README.md) · [Changelog](CHANGELOG.md) · [Issues](https://github.com/prismai-labs/Prism-Ai/issues)
 
 ## Get Prism AI for Windows
 
-[Download the latest release](https://github.com/akahn30/Prism-Ai/releases/latest)
+[Download the latest release](https://github.com/prismai-labs/Prism-Ai/releases/latest)
 
 The latest published Windows release documented in this README is **v3.1.0**. Download the Windows installer (.exe) from the release assets. GitHub's source-code ZIP and tar archives are not installers.
 
-**Recommended:** download the installer directly from the [latest release](https://github.com/akahn30/Prism-Ai/releases/latest). Review the release notes and verify the published checksum before launching it.
+**Recommended:** download the installer directly from the [latest release](https://github.com/prismai-labs/Prism-Ai/releases/latest). Review the release notes and verify the published checksum before launching it.
 
 **Optional PowerShell helper**
 
@@ -34,7 +34,7 @@ The repository includes an installer helper pinned to v3.1.0. Download and inspe
 
 \`\`\`powershell
 $script = Join-Path $env:TEMP "install-prism-ai.ps1"
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/akahn30/Prism-Ai/Main/scripts/install.ps1" -OutFile $script
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/prismai-labs/Prism-Ai/Main/scripts/install.ps1" -OutFile $script
 Get-Content $script
 & $script
 \`\`\`
@@ -70,7 +70,7 @@ Prism does not provide cloud API keys. Review provider terms before sending priv
 
 ## Try the browser workspace
 
-[Open the Prism AI browser workspace](https://akahn30.github.io/Prism-Ai/)
+[Open the Prism AI browser workspace](https://prismai-labs.github.io/Prism-Ai/)
 
 Explore projects, conversations, tasks, Markdown drafts, and the interface without installing the Windows applications or creating an account. The browser workspace can also connect directly to an Ollama server running on your computer for live model responses.
 
@@ -86,7 +86,7 @@ Read the [browser workspace guide](docs/browser-demo.md) for connection instruct
 ## Start here
 
 1. Read [Your first Prism AI session](docs/first-session.md).
-2. Install the Windows applications from the [latest release](https://github.com/akahn30/Prism-Ai/releases/latest).
+2. Install the Windows applications from the [latest release](https://github.com/prismai-labs/Prism-Ai/releases/latest).
 3. Create a focused project in Prism Chat and organize your notes.
 4. Open Prism Studio to draft a short LaTeX document or presentation.
 5. Review AI-proposed changes and verify important claims against original sources.
@@ -126,8 +126,8 @@ The repository's [MIT License](LICENSE) applies to the files covered by that lic
 
 ## Community and support
 
-- [Report a bug or request a feature](https://github.com/akahn30/Prism-Ai/issues)
-- [GitHub Discussions](https://github.com/akahn30/Prism-Ai/discussions)
+- [Report a bug or request a feature](https://github.com/prismai-labs/Prism-Ai/issues)
+- [GitHub Discussions](https://github.com/prismai-labs/Prism-Ai/discussions)
 - [Prism AI on Reddit](https://www.reddit.com/r/PrismAIApp/)
 - [Instagram: @prismhq.ai](https://www.instagram.com/prismhq.ai/)
 - [DEV Community](https://dev.to/prismaidev)

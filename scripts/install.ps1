@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 
 $version = '3.1.0'
-$downloadUri = 'https://github.com/akahn30/Prism-Ai/releases/download/v3.1.0/Prism-3.1.0.exe'
+$downloadUri = 'https://github.com/prismai-labs/Prism-Ai/releases/download/v3.1.0/Prism-3.1.0.exe'
 $expectedSha256 = '36b261bff2efb42195aa137d50f38cd81c7901f8c9aa78bbb761b5fb4f5947c9'
 $installerPath = Join-Path ([System.IO.Path]::GetTempPath()) "Prism-$version.exe"
 
