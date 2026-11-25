@@ -2,7 +2,7 @@
 
 [Documentation home](README.md) · [Installation](installation.md) · [Ollama setup](local-models.md)
 
-Open the [Prism AI browser workspace](https://dudesquad999.github.io/Prism-Ai/). It runs as a static GitHub Pages site and does not require a Prism account or a download.
+Open the [Prism AI browser workspace](https://akahn30.github.io/Prism-Ai/). It runs as a static GitHub Pages site and does not require a Prism account or a download.
 
 ## What works in the browser
 
@@ -27,7 +27,7 @@ The browser workspace uses the Ollama HTTP API directly from your browser. The m
 3. Allow the hosted Prism website to make browser requests to Ollama. In PowerShell, run:
 
    ```powershell
-   setx OLLAMA_ORIGINS "https://dudesquad999.github.io"
+   setx OLLAMA_ORIGINS "https://akahn30.github.io"
    ```
 
 4. Quit Ollama from its system-tray icon, then start Ollama again so it reads the updated environment variable.
@@ -66,4 +66,4 @@ Use **Settings → Export projects (JSON)** to back up project work. Use **Clear
 
 ## Use the Windows applications
 
-For the full Windows applications, including the native research and LaTeX workflows, download the [latest Prism AI release](https://github.com/DudeSquad999/Prism-Ai/releases/latest) and follow the [installation guide](installation.md). The browser workspace is a companion preview and does not replace Prism Chat or Prism Studio.
+For the full Windows applications, including the native research and LaTeX workflows, download the [latest Prism AI release](https://github.com/akahn30/Prism-Ai/releases/latest) and follow the [installation guide](installation.md). The browser workspace is a companion preview and does not replace Prism Chat or Prism Studio.
