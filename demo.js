@@ -307,7 +307,7 @@
         : (error && error.message ? error.message : 'The browser could not reach Ollama.');
       aiConnection = {
         status: 'error',
-        message: `${detail} Start Ollama and allow https://dudesquad999.github.io in OLLAMA_ORIGINS if the browser blocks the request.`
+        message: `${detail} Start Ollama and allow https://akahn30.github.io in OLLAMA_ORIGINS if the browser blocks the request.`
       };
       saveAIConfig();
       if (!silent) toast('Could not connect to Ollama. Check the setup notes in Settings.');
@@ -556,7 +556,7 @@
           <div class="toolbar">${button('Connect and find models', 'connectAI', 'class="primary"')}${button('Disconnect', 'disconnectAI', aiConfig.enabled ? '' : 'disabled')}</div>
           <p id="aiConnectionMessage" class="connection-note ${aiConnection.status}" role="status">${esc(aiConnection.message)}</p>
           <details class="setup-details"><summary>How to connect Ollama on Windows</summary>
-            <ol><li>Install and open <a href="https://ollama.com/download/windows" target="_blank" rel="noopener noreferrer">Ollama for Windows</a>.</li><li>Make sure at least one model is installed. You can run <code>ollama list</code> in PowerShell to check.</li><li>Allow this website to contact your local Ollama server. In PowerShell, run <code>setx OLLAMA_ORIGINS "https://dudesquad999.github.io"</code>.</li><li>Quit Ollama from its system-tray icon, then open it again so the new setting takes effect.</li><li>Return here and select <strong>Connect and find models</strong>. Choose an installed model from the list.</li></ol>
+            <ol><li>Install and open <a href="https://ollama.com/download/windows" target="_blank" rel="noopener noreferrer">Ollama for Windows</a>.</li><li>Make sure at least one model is installed. You can run <code>ollama list</code> in PowerShell to check.</li><li>Allow this website to contact your local Ollama server. In PowerShell, run <code>setx OLLAMA_ORIGINS "https://akahn30.github.io"</code>.</li><li>Quit Ollama from its system-tray icon, then open it again so the new setting takes effect.</li><li>Return here and select <strong>Connect and find models</strong>. Choose an installed model from the list.</li></ol>
             <p class="tiny">The hosted browser preview requires the website origin to be allowed by Ollama. For other hosting URLs, replace the origin in the command with the exact URL shown in your browser.</p>
           </details>
         </section>
