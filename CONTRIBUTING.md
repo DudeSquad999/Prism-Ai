@@ -33,7 +33,7 @@ Do not present a planned feature or an untested step as working.
 
 ### Bug reports
 
-Check [existing issues](https://github.com/DudeSquad999/Prism-Ai/issues)
+Check [existing issues](https://github.com/akahn30/Prism-Ai/issues)
 before opening a new report.
 
 Use the bug-report form when available. Include:
@@ -88,7 +88,7 @@ AI output.
 
 ### Windows-application changes
 
-The complete Windows application source is not stored in this repository's static browser-preview code. Check the [published releases](https://github.com/DudeSquad999/Prism-Ai/releases) for the downloadable build and any version-specific source package; available assets can differ by release. Editing this browser preview does not modify the installed applications.
+The complete Windows application source is not stored in this repository's static browser-preview code. Check the [published releases](https://github.com/akahn30/Prism-Ai/releases) for the downloadable build and any version-specific source package; available assets can differ by release. Editing this browser preview does not modify the installed applications.
 
 Before starting a Windows-app code change, open an issue to confirm:
 
@@ -189,7 +189,7 @@ For repository work, use:
 Clone the repository and enter its directory:
 
 ```powershell
-git clone https://github.com/DudeSquad999/Prism-Ai.git
+git clone https://github.com/akahn30/Prism-Ai.git
 Set-Location Prism-Ai
 ```
 
