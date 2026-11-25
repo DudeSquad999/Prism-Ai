@@ -17,7 +17,7 @@ It is a two-part workspace. Use Prism Chat for research organization and convers
 
 ## Does the browser workspace use a live AI model?
 
-It can. The [browser workspace](https://akahn30.github.io/Prism-Ai/) starts in sample mode, but you can connect it to Ollama running on your own computer. Go to **Settings**, connect to Ollama, and choose one of the installed models. The browser sends chat prompts directly to that Ollama server.
+It can. The [browser workspace](https://prismai-labs.github.io/Prism-Ai/) starts in sample mode, but you can connect it to Ollama running on your own computer. Go to **Settings**, connect to Ollama, and choose one of the installed models. The browser sends chat prompts directly to that Ollama server.
 
 The browser workspace does not include cloud API keys, live web search, citation verification, or document uploads. Read the [browser workspace guide](browser-demo.md) for setup and privacy details. The Windows applications remain separate and have their own provider settings.
 
@@ -53,7 +53,7 @@ See the [LaTeX workflow guide](latex-workflow.md).
 
 ## Where can I download the Windows installer?
 
-Use the [GitHub Releases page](https://github.com/akahn30/Prism-Ai/releases/latest). Download the Windows installer asset from the latest published release. Source-code ZIP and TAR archives are not Windows installers.
+Use the [GitHub Releases page](https://github.com/prismai-labs/Prism-Ai/releases/latest). Download the Windows installer asset from the latest published release. Source-code ZIP and TAR archives are not Windows installers.
 
 ## What should I do if something does not work?
 
@@ -61,15 +61,15 @@ Use the [GitHub Releases page](https://github.com/akahn30/Prism-Ai/releases/late
 2. Confirm that you configured the provider in the correct Prism application.
 3. For Ollama, confirm that the model download completed and that the model name matches the one selected in Prism.
 4. In the browser workspace, check the connection badge and confirm the selected Ollama model is connected. If the response is in sample mode, review the Ollama setup steps and the allowed browser origin.
-5. Report reproducible problems in [GitHub Issues](https://github.com/akahn30/Prism-Ai/issues).
+5. Report reproducible problems in [GitHub Issues](https://github.com/prismai-labs/Prism-Ai/issues).
 
 Include the Prism version, Windows version, application (Chat or Studio), steps to reproduce, expected result, actual result, and relevant error message. Remove API keys, tokens, private documents, personal information, and unnecessary local file paths before sharing logs or screenshots.
 
 ## Where can I ask a question or suggest an improvement?
 
-- [GitHub Discussions](https://github.com/akahn30/Prism-Ai/discussions) for questions, feedback, ideas, and workflow examples.
-- [Q&A](https://github.com/akahn30/Prism-Ai/discussions/categories/q-a) for setup and usage questions.
-- [Feature ideas](https://github.com/akahn30/Prism-Ai/discussions/categories/ideas) for proposed improvements.
+- [GitHub Discussions](https://github.com/prismai-labs/Prism-Ai/discussions) for questions, feedback, ideas, and workflow examples.
+- [Q&A](https://github.com/prismai-labs/Prism-Ai/discussions/categories/q-a) for setup and usage questions.
+- [Feature ideas](https://github.com/prismai-labs/Prism-Ai/discussions/categories/ideas) for proposed improvements.
 - [r/PrismAIApp](https://www.reddit.com/r/PrismAIApp/) for community discussion.
 
 Prism AI is actively developed. Features and setup details can change between releases, so check the current release notes and documentation before relying on a workflow.

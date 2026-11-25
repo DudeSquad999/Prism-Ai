@@ -4,7 +4,7 @@
 
 Do not publish exploitable security details, credentials, API keys, private user data, or proof-of-concept payloads in a public issue or discussion.
 
-Use GitHub's [private vulnerability reporting flow](https://github.com/akahn30/Prism-Ai/security/advisories/new) if it is enabled for this repository. If that option is unavailable, contact the maintainer privately through a verified channel listed on their GitHub profile. Do not post secrets publicly to get attention.
+Use GitHub's [private vulnerability reporting flow](https://github.com/prismai-labs/Prism-Ai/security/advisories/new) if it is enabled for this repository. If that option is unavailable, contact the maintainer privately through a verified channel listed on their GitHub profile. Do not post secrets publicly to get attention.
 
 ## What to include
 
