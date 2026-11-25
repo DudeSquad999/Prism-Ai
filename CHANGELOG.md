@@ -18,7 +18,7 @@ Prism AI 3.1.0 is a Windows release containing Prism Chat and Prism Studio. It i
 
 ### Before installing
 
-- Download the Windows `.exe` installer from the [3.1.0 release page](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v3.1.0). GitHub's source-code archives are not installers.
+- Download the Windows `.exe` installer from the [3.1.0 release page](https://github.com/akahn30/Prism-Ai/releases/tag/v3.1.0). GitHub's source-code archives are not installers.
 - See the [installation guide](docs/installation.md) and [Ollama setup guide](docs/local-models.md).
 
 ### Limitations and privacy
@@ -32,5 +32,5 @@ Prism AI 3.1.0 is a Windows release containing Prism Chat and Prism Studio. It i
 
 ## Historical releases
 
-- [v2.0.0](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v2.0.0) is an earlier product milestone.
+- [v2.0.0](https://github.com/akahn30/Prism-Ai/releases/tag/v2.0.0) is an earlier product milestone.
 - [v1.0.0 historical release notes](docs/releases/v1.0.0.md) describe the original educational PyTorch Transformer prototype. That release is not the current Windows research and writing product.
