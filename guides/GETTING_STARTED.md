@@ -6,8 +6,8 @@
 
 Prism AI v2.0.0 packages Prism Chat and Prism Studio together for Windows.
 
-- [Release notes](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v2.0.0)
-- [Download PrismV2.0.0.zip](https://github.com/DudeSquad999/Prism-Ai/releases/download/v2.0.0/PrismV2.0.0.zip)
+- [Release notes](https://github.com/akahn30/Prism-Ai/releases/tag/v2.0.0)
+- [Download PrismV2.0.0.zip](https://github.com/akahn30/Prism-Ai/releases/download/v2.0.0/PrismV2.0.0.zip)
 
 The download link above points to the published `PrismV2.0.0.zip` attachment. If the release page's written instructions show a different filename, trust the actual attachment name and report the mismatch so the release notes can be corrected.
 
@@ -38,8 +38,8 @@ The release notes list Google Gemini, Anthropic, OpenAI, and Ollama as supported
 
 ## Release history
 
-- [v2.0.0](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v2.0.0): Windows package for Prism Chat and Prism Studio.
-- [v1.0.0](https://github.com/DudeSquad999/Prism-Ai/releases/tag/v1.0.0): release notes describe an experimental PyTorch Transformer with local training, text generation, and terminal chat. Its setup instructions differ from v2.
+- [v2.0.0](https://github.com/akahn30/Prism-Ai/releases/tag/v2.0.0): Windows package for Prism Chat and Prism Studio.
+- [v1.0.0](https://github.com/akahn30/Prism-Ai/releases/tag/v1.0.0): release notes describe an experimental PyTorch Transformer with local training, text generation, and terminal chat. Its setup instructions differ from v2.
 
 ## Privacy and limitations
 
@@ -49,7 +49,7 @@ Prism AI is an early-stage local application. Research retrieval uses extracts a
 
 ## Report a problem
 
-[Open a GitHub issue](https://github.com/DudeSquad999/Prism-Ai/issues) and include:
+[Open a GitHub issue](https://github.com/akahn30/Prism-Ai/issues) and include:
 
 - Affected component: Chat, Studio, or Windows Setup.
 - Steps to reproduce.
